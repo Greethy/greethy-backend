@@ -1,0 +1,13 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: services-discovery
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false #Avoid the server registering to itself
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}
