@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: personal-services
+  cloud:
+    config:
+      uri: http://localhost:8888/config-repo

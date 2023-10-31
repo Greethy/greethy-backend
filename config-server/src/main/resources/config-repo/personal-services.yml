@@ -1,8 +1,5 @@
 server:
   port: 8085
-spring:
-  application:
-    name: user-services
   data:
     mongodb:
       database: Greethy

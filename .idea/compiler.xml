@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="personal" />
+        <module name="nutrition" />
+        <module name="config" />
+        <module name="gateway" />
+        <module name="financial" />
+        <module name="discovery" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="reactive-parent" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config" options="-parameters" />
+      <module name="discovery" options="-parameters" />
+      <module name="financial" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="nutrition" options="-parameters" />
+      <module name="personal" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,8 +1,5 @@
 server:
   port: 8761
-spring:
-  application:
-    name: services-discovery
 eureka:
   instance:
     hostname: localhost

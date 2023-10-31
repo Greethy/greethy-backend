@@ -1,12 +1,22 @@
 server:
   port: 8888
 spring:
-  application.name: config-server
+  application:
+    name: config-server
+  profiles:
+    active: native, vault
   cloud:
     config:
       server:
-        git:
-          uri:
+        native:
+          search-locations: classpath:/config-repo
+        vault:
+          host: 127.0.0.1
+          port: 8200
+          authentication: token
+          token: hvs.qwl5tMoLElmgMVZLGyKvK14k
+  main:
+    allow-bean-definition-overriding: true
 management:
   health:
     livenessstate.enabled: true
@@ -15,9 +25,3 @@ management:
     health:
       probes:
         enabled: true
-eureka:
-  server:
-    hostname: localhost:8761
-  client:
-    service-url:
-      defaultZone: http://${eureka.server.hostname}/eureka
