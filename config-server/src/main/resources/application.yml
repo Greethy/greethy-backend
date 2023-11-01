@@ -14,7 +14,7 @@ spring:
           host: 127.0.0.1
           port: 8200
           authentication: token
-          token: hvs.qwl5tMoLElmgMVZLGyKvK14k
+          token: hvs.GPXheKklcDWQfMYFmnvx4CZB
   main:
     allow-bean-definition-overriding: true
 management:

@@ -1,5 +1,16 @@
+#SERVER CONFIG
 server:
   port: 8222
+
+#APPLICATION CONFIG
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+#EUREKA CLIENT CONFIG
 eureka:
   server:
     host: localhost:8761
@@ -8,6 +19,8 @@ eureka:
       defaultZone: http://${eureka.server.host}/eureka
     register-with-eureka: true
     fetch-registry: false
+
+#ACTUATOR CONFIG
 management:
   endpoints:
     web:

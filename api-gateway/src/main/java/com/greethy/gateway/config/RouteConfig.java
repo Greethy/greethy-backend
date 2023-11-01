@@ -10,13 +10,14 @@ import org.springframework.context.annotation.Configuration;
  * @author ThanhKien
  * */
 @Configuration
-public class GatewayConfig {
+public class RouteConfig {
 
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route(predicate -> predicate.path("/api/v*/**")
-                        .uri("http://localhost:8085"))
+                .route("personal-services-router",
+                        route -> route.path("/api/v*/user/**")
+                                .uri("http://localhost:8085"))
                 .build();
     }
 
