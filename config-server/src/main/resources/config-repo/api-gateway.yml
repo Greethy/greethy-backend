@@ -18,11 +18,14 @@ eureka:
     service-url:
       defaultZone: http://${eureka.server.host}/eureka
     register-with-eureka: true
-    fetch-registry: false
+    fetch-registry: true
 
 #ACTUATOR CONFIG
 management:
   endpoints:
+    gateway:
+      enabled: true
+  endpoint:
     web:
       exposure:
         include: gateway

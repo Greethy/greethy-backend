@@ -1,5 +1,7 @@
 spring:
   application:
-    name: personal-services
+    name: auth-services
   config:
     import: optional:configserver:http://localhost:8888
+
+
