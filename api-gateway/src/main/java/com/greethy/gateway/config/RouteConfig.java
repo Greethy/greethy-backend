@@ -1,5 +1,7 @@
 package com.greethy.gateway.config;
 
+import com.greethy.gateway.filter.AuthenticationPreFilter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @author ThanhKien
  * */
 @Configuration
+@RequiredArgsConstructor
 public class RouteConfig {
 
     /**
@@ -22,12 +25,13 @@ public class RouteConfig {
      * @return A RouteLocator that contains the defined routes.
      */
     @Bean
-    public RouteLocator routeLocator(RouteLocatorBuilder builder) {
+    public RouteLocator routeLocator(RouteLocatorBuilder builder, AuthenticationPreFilter authFilter) {
         return builder.routes()
-                .route("personal-services-router",
+                .route("personal-services-route",
                         predicate -> predicate.path("/api/v*/user/**")
+                                .filters(filter -> filter.filter(authFilter.apply(new AuthenticationPreFilter.Config())))
                                 .uri("lb://personal-services"))
-                .route("auth-services-router",
+                .route("auth-services-route",
                         predicate -> predicate.path("api/v*/auth/**")
                                 .uri("lb://auth-services"))
                 .build();

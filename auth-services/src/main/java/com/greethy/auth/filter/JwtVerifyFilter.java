@@ -9,6 +9,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ *
+ *
+ * @author ThanhKien
+ * */
 public class JwtVerifyFilter extends OncePerRequestFilter {
 
     @Override
