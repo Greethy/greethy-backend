@@ -26,7 +26,6 @@ public class AuthenticationPreFilter extends AbstractGatewayFilterFactory<Authen
         this.webClientBuilder = webClientBuilder;
     }
 
-
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
@@ -34,23 +33,22 @@ public class AuthenticationPreFilter extends AbstractGatewayFilterFactory<Authen
             if (!headers.containsKey(HttpHeaders.AUTHORIZATION)) {
                 throw new InvalidAuthorizationException("Missing authorization information");
             }
-            Optional<String> token = Optional.ofNullable(headers.getFirst(HttpHeaders.AUTHORIZATION));
-            assert token.isPresent();
-            String[] tokenParts = token.get().split("\\s+");
+            Optional<String> bearerToken = Optional.ofNullable(headers.getFirst(HttpHeaders.AUTHORIZATION));
+            assert bearerToken.isPresent();
+            String[] tokenParts = bearerToken.get().split("\\s+");
             if (!tokenParts[0].equals("Bearer") || tokenParts.length != 2){
                 throw new InvalidAuthorizationException("Incorrect authorization structure");
             }
             return webClientBuilder.build()
                     .get()
-                    .uri("lb://auth-services/api/v1/validateToken?token=" + tokenParts[1])
+                    .uri("lb://auth-services/api/v1/validateToken")
+                    .header(HttpHeaders.AUTHORIZATION, tokenParts[1])
                     .retrieve()
                     .bodyToMono(AuthResponse.class)
                     .map(response -> exchange)
                     .flatMap(chain::filter);
         };
     }
-
-
 
     /**
      * This class contain the configuration properties
