@@ -2,18 +2,16 @@ package com.greethy.auth.controller;
 
 import com.greethy.auth.dto.LoginRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/v1/auth")
 public class AuthController {
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request){
-        return null;
+    @PostMapping("/token")
+    public ResponseEntity<?> provideToken(@RequestBody LoginRequest loginRequest){
+        System.out.println(loginRequest.username() + " " + loginRequest.password());
+        return ResponseEntity.ok("testing");
     }
 
     @PostMapping("/register")
@@ -21,9 +19,9 @@ public class AuthController {
 
     }
 
-
-    public void authenticateToken(){
-
+    @GetMapping("/authenticateToken")
+    public String authenticateToken(){
+        return "Validating Token !!!!";
     }
 
 }

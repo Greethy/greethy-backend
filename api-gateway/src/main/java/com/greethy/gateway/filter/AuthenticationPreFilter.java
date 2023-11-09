@@ -41,7 +41,7 @@ public class AuthenticationPreFilter extends AbstractGatewayFilterFactory<Authen
             }
             return webClientBuilder.build()
                     .get()
-                    .uri("lb://auth-services/api/v1/validateToken")
+                    .uri("lb://auth-services/api/v1/auth/authenticateToken")
                     .header(HttpHeaders.AUTHORIZATION, tokenParts[1])
                     .retrieve()
                     .bodyToMono(AuthResponse.class)

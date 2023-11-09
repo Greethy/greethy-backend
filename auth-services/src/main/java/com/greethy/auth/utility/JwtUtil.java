@@ -77,19 +77,18 @@ public class JwtUtil {
      * @return The generated access token.
      */
     public String generateToken(String subject) {
-        return generateToken(new HashMap<>(), subject);
+        return generateToken(subject, new HashMap<>());
     }
 
     /**
      * Generates an access token with the specified extra claims and subject.
-     *
-     * @param extraClaims Additional claims to include in the token.
      * @param subject     The subject for the token.
+     * @param extraClaims Additional claims to include in the token.
      * @return The generated access token.
      */
-    public String generateToken(Map<String, Object> extraClaims,
-                                String subject) {
-        return createToken(extraClaims, subject, expiredTime);
+    public String generateToken(String subject,
+                                Map<String, Object> extraClaims) {
+        return createToken(subject, extraClaims, expiredTime);
     }
 
     /**
@@ -99,7 +98,17 @@ public class JwtUtil {
      * @return The generated refresh token.
      */
     public String generateRefreshToken(String subject) {
-        return createToken(new HashMap<>(), subject, refreshExpiredTime);
+        return generateRefreshToken( subject, new HashMap<>());
+    }
+
+    /**
+     * Generates a refresh token with the specified extra claims and subject.
+     * @param subject     The subject for the token.
+     * @param extraClaims Additional claims to include in the token.
+     * @return The generated refresh token.
+     */
+    public String generateRefreshToken(String subject, Map<String, Object> extraClaims) {
+        return createToken(subject, extraClaims, refreshExpiredTime);
     }
 
     /**
@@ -110,12 +119,12 @@ public class JwtUtil {
      * @param expiredTime The expiration time for the token in milliseconds.
      * @return The generated JWT token.
      */
-    private String createToken(Map<String, Object> extraClaims,
-                               String subject,
+    private String createToken(String subject,
+                               Map<String, Object> extraClaims,
                                long expiredTime) {
         return Jwts.builder()
-                .setClaims(extraClaims)
                 .setSubject(subject)
+                .setClaims(extraClaims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiredTime))
                 .signWith(signinKey(), SignatureAlgorithm.RS256)

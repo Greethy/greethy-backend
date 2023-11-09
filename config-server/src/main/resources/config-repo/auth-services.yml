@@ -9,14 +9,8 @@ spring:
 
 #DATA SOURCE CONFIG
   data:
-    redis:
-      repositories:
-        enabled: true
-      host: 127.0.0.1
-      port: 6379
-      timeout: 2000
     mongodb:
-      database: Greethy
+      database: Greethy_User
       host: localhost
       port: 27017
 

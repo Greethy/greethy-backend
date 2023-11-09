@@ -24,6 +24,8 @@ public class User implements UserDetails {
 
     private String password;
 
+    private List<Token> tokens;
+
     private boolean enabled;
 
     private List<Role> roles;

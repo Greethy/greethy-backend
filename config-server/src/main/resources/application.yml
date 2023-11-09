@@ -4,17 +4,17 @@ spring:
   application:
     name: config-server
   profiles:
-    active: native, vault
+    active: native #,vault
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/config-repo
-        vault:
-          host: 127.0.0.1
-          port: 8200
-          authentication: token
-          token: hvs.hAlwLieE8R7Iz4Tgg0nsBc3N
+#        vault:
+#          host: 127.0.0.1
+#          port: 8200
+#          authentication: token
+#          token: ${VAULT_TOKEN}
   main:
     allow-bean-definition-overriding: true
 management:

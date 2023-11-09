@@ -1,18 +1,26 @@
 package com.greethy.auth.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import org.springframework.data.redis.core.RedisHash;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 
-@RedisHash
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @AllArgsConstructor
 public class Token {
 
+    @Id
     private String id;
 
-    private String username;
+    private String access;
+
+    private String refresh;
+
+    @LastModifiedDate
+    private LocalDateTime modifiedAt;
+
+    private boolean revoked;
 
 }
