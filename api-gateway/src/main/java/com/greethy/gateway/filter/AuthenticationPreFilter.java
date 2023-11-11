@@ -29,7 +29,7 @@ public class AuthenticationPreFilter extends AbstractGatewayFilterFactory<Authen
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
-            var headers = exchange.getRequest().getHeaders();
+            HttpHeaders headers = exchange.getRequest().getHeaders();
             if (!headers.containsKey(HttpHeaders.AUTHORIZATION)) {
                 throw new InvalidAuthorizationException("Missing authorization information");
             }
@@ -55,7 +55,7 @@ public class AuthenticationPreFilter extends AbstractGatewayFilterFactory<Authen
      * of the custom filter (AuthenticationPreFilter)
      * */
     @NoArgsConstructor
-    public static class Config{
+    public static class Config {
 
     }
 

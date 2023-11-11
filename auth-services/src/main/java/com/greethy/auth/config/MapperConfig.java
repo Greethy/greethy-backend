@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,5 +34,18 @@ public class MapperConfig {
         mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 
         return mapper;
+    }
+
+    /**
+     * Creates and configures a ModelMapper for mapping object.
+     *
+     * @return An instance of {@code ModelMapper} configured
+     * with skipNullEnabled set to true.
+     */
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setSkipNullEnabled(true);
+        return modelMapper;
     }
 }

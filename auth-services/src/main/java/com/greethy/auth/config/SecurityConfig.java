@@ -1,6 +1,5 @@
 package com.greethy.auth.config;
 
-//import com.greethy.auth.filter.JwtAuthenticationFilter;
 import com.greethy.auth.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,18 +7,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -33,47 +29,27 @@ public class SecurityConfig {
 
     private final UserServiceImpl userService;
 
-    //private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/api/v1/auth/authenticateToken", "/api/v1/auth/token").permitAll();
-                    auth.anyRequest().authenticated();
-                })
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/**").permitAll())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                //.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .authenticationProvider(authenticationProvider())
                 .build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager() {
-            return new ProviderManager(authenticationProvider());
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
     }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
         var provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
-        //provider.setUserDetailsService(userService);
-        provider.setUserDetailsService(inMemoryUserDetailsManager());
-        return provider;
-    }
+        provider.setUserDetailsService(userService);
 
-    /**
-     * This method defines and configures an in-memory user details manager using Spring Security.
-     * In-memory user details managers are typically used for testing and development purposes.
-     *
-     * @return An instance of InMemoryUserDetailsManager with a single user.
-     */
-    @Bean
-    public UserDetailsService inMemoryUserDetailsManager() {
-        var user = User.withUsername("test")
-                .password("{noop}test123")
-                .authorities("READ")
-                .build();
-        return new InMemoryUserDetailsManager(user);
+        return provider;
     }
 
     /**

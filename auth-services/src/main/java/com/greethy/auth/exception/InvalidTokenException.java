@@ -1,9 +1,11 @@
 package com.greethy.auth.exception;
 
-public class InvalidTokenException extends RuntimeException {
+import org.springframework.http.HttpStatus;
 
-    public InvalidTokenException(String message){
-        super(message);
+public class InvalidTokenException extends BaseException {
+
+    public InvalidTokenException(HttpStatus status, String message){
+        super(status, message);
     }
 
 }

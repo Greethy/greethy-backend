@@ -14,13 +14,12 @@ public class Token {
     @Id
     private String id;
 
-    private String access;
+    private String accessToken;
 
-    private String refresh;
-
-    @LastModifiedDate
-    private LocalDateTime modifiedAt;
+    private String refreshToken;
 
     private boolean revoked;
+
+
 
 }

@@ -1,16 +1,26 @@
-#SERVER CONFIG
+# SERVER CONFIG
 server:
   port: 8222
 
-#APPLICATION CONFIG
+# GATEWAY CONFIG
 spring:
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
       discovery:
         locator:
           enabled: true
 
-#EUREKA CLIENT CONFIG
+# EUREKA CLIENT CONFIG
 eureka:
   server:
     host: localhost:8761
@@ -20,7 +30,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
 
-#ACTUATOR CONFIG
+# ACTUATOR CONFIG
 management:
   endpoints:
     gateway:

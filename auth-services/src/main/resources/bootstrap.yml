@@ -1,4 +1,21 @@
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: knkuro00@gmail.com
+    password: wtlfcvnepwgrmnub
+    properties:
+      mail:
+        smtp:
+          transport:
+            protocol: smtp
+          starttls:
+            enabled: true
+            required: true
+          auth: true
+          connectionTimeout: 5000
+          timeout: 5000
+
   application:
     name: auth-services
     encoder:

@@ -9,21 +9,23 @@
         <outputRelativeToContentRoot value="true" />
         <module name="nutrition" />
         <module name="greethy" />
+        <module name="auth" />
         <module name="financial" />
         <module name="discovery" />
         <module name="personal" />
         <module name="config" />
         <module name="gateway" />
-        <module name="authentication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="authentication" target="17" />
       <module name="keycloak" target="17" />
       <module name="reactive-parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="auth" options="-parameters" />
       <module name="authentication" options="-parameters" />
       <module name="config" options="-parameters" />
       <module name="discovery" options="-parameters" />

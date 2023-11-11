@@ -127,7 +127,7 @@ public class JwtUtil {
                 .setClaims(extraClaims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiredTime))
-                .signWith(signinKey(), SignatureAlgorithm.RS256)
+                .signWith(signinKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
