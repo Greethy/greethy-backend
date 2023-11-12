@@ -1,7 +1,6 @@
 package com.greethy.auth.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.apache.avro.Schema;
 import org.apache.avro.specific.AvroGenerated;
 import org.apache.avro.specific.SpecificRecord;
@@ -10,6 +9,9 @@ import org.apache.avro.specific.SpecificRecordBase;
 import java.util.List;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @AvroGenerated
 public class Email extends SpecificRecordBase implements SpecificRecord {

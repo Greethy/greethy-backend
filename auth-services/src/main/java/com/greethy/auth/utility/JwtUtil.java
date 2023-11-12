@@ -22,6 +22,9 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
+    @Value("${spring.application.jwt.issuer}")
+    private String issuer;
+
     @Value("${spring.application.jwt.secret}")
     private String secretKey;
 
@@ -123,8 +126,9 @@ public class JwtUtil {
                                Map<String, Object> extraClaims,
                                long expiredTime) {
         return Jwts.builder()
-                .setSubject(subject)
                 .setClaims(extraClaims)
+                .setIssuer(issuer)
+                .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiredTime))
                 .signWith(signinKey(), SignatureAlgorithm.HS256)

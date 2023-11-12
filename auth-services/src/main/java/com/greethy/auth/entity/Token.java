@@ -1,9 +1,11 @@
 package com.greethy.auth.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -17,7 +19,7 @@ public class Token {
 
     private String refreshToken;
 
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     private boolean revoked;
 

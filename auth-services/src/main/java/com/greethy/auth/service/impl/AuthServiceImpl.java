@@ -20,7 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -55,18 +55,24 @@ public class AuthServiceImpl implements AuthService {
         return inputString.map(String::trim).orElse("");
     }
 
+    /**
+     * Registers a new user based on the provided registration request.
+     *
+     * @param registerRequest The registration request containing user details.
+     * @return The response containing user registration information.
+     */
     @Override
     public RegisterResponse register(RegisterRequest registerRequest){
         checkIfUserExists(registerRequest.getUsername(), registerRequest.getEmail());
 
         User user = mapper.map(registerRequest, User.class);
         String username = user.getUsername();
+        Role role = roleRepository.findByName("ROLE_USER");
         Token token = Token.builder()
                 .accessToken(jwtUtil.generateToken(username))
                 .refreshToken(jwtUtil.generateRefreshToken(username))
-                .createdAt(LocalDate.now()).revoked(false)
+                .createdAt(LocalDateTime.now()).revoked(false)
                 .build();
-        Role role = roleRepository.findByName("ROLE_USER");
 
         user.setTokens(Collections.singletonList(token));
         user.setPassword(encoder.encode(user.getPassword()));
@@ -80,10 +86,22 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
+    /**
+     * Checks if a user with the provided username or email already exists in the database.
+     *
+     * @param username The username to check.
+     * @param email    The email to check.
+     * @throws DuplicateUniqueFieldException If a user with the given username or email already exists.
+     */
     private void checkIfUserExists(String username, String email) {
         if (userRepository.existsByUsernameOrEmail(username, email)) {
             throw new DuplicateUniqueFieldException(HttpStatus.CONFLICT, "Email or Username already used!");
         }
     }
+
+    public void sendVerifyEmail(){
+
+    }
+
 
 }

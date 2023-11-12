@@ -27,6 +27,7 @@ public class AuthController {
         return ResponseEntity.ok(loginRequest.getUsername() + " " + loginRequest.getPassword());
     }
 
+
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest){
         var response =  authService.register(registerRequest);
@@ -34,7 +35,9 @@ public class AuthController {
                 .body(response);
     }
 
-    @GetMapping("/authenticateToken")
+    @PostMapping(value = "/verify/email")
+
+    @GetMapping("/verify/token")
     public String authenticateToken(){
         return "Validating Token !!!!";
     }
