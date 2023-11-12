@@ -3,9 +3,11 @@ package com.greethy.auth.service.impl;
 import com.greethy.auth.dto.LoginRequest;
 import com.greethy.auth.dto.RegisterRequest;
 import com.greethy.auth.dto.RegisterResponse;
+import com.greethy.auth.entity.Role;
 import com.greethy.auth.entity.Token;
 import com.greethy.auth.entity.User;
 import com.greethy.auth.exception.DuplicateUniqueFieldException;
+import com.greethy.auth.repository.RoleRepository;
 import com.greethy.auth.repository.UserRepository;
 import com.greethy.auth.service.AuthService;
 import com.greethy.auth.utility.JwtUtil;
@@ -18,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -25,15 +28,17 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private final AuthenticationManager manager;
+    private final JwtUtil jwtUtil;
 
     private final ModelMapper mapper;
 
+    private final PasswordEncoder encoder;
+
     private final UserRepository userRepository;
 
-    private final JwtUtil jwtUtil;
+    private final RoleRepository roleRepository;
 
-    private final PasswordEncoder encoder;
+    private final AuthenticationManager manager;
 
     @Override
     public void authenticate(LoginRequest loginRequest) {
@@ -51,18 +56,22 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public RegisterResponse registerUser(RegisterRequest registerRequest){
+    public RegisterResponse register(RegisterRequest registerRequest){
         checkIfUserExists(registerRequest.getUsername(), registerRequest.getEmail());
+
         User user = mapper.map(registerRequest, User.class);
         String username = user.getUsername();
         Token token = Token.builder()
                 .accessToken(jwtUtil.generateToken(username))
                 .refreshToken(jwtUtil.generateRefreshToken(username))
-
-                .revoked(false).build();
+                .createdAt(LocalDate.now()).revoked(false)
+                .build();
+        Role role = roleRepository.findByName("ROLE_USER");
 
         user.setTokens(Collections.singletonList(token));
         user.setPassword(encoder.encode(user.getPassword()));
+        user.setRoles(Collections.singletonList(role));
+        user.setEnabled(true);
 
         return RegisterResponse.builder()
                 .id(userRepository.save(user).getId())

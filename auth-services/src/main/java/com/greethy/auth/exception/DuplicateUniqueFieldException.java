@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
  * @author ThanhKien
  */
 public class DuplicateUniqueFieldException extends BaseException {
+
     /**
      * Constructs a new {@code DuplicateUniqueFieldException} with the specified HTTP status and message.
      *

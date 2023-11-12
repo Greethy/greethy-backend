@@ -7,5 +7,5 @@ import com.greethy.auth.dto.RegisterResponse;
 public interface AuthService {
     void authenticate(LoginRequest loginRequest);
 
-    RegisterResponse registerUser(RegisterRequest registerRequest);
+    RegisterResponse register(RegisterRequest registerRequest);
 }
