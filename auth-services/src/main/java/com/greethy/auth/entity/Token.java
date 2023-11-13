@@ -21,6 +21,4 @@ public class Token {
 
     private LocalDateTime createdAt;
 
-    private boolean revoked;
-
 }

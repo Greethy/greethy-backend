@@ -126,7 +126,7 @@ public class JwtUtil {
                                Map<String, Object> extraClaims,
                                long expiredTime) {
         return Jwts.builder()
-                .setClaims(extraClaims)
+                .setClaims(extraClaims)     //setClaims must be set first to avoid overwriting Issuer or Subject.
                 .setIssuer(issuer)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))

@@ -71,7 +71,7 @@ public class AuthServiceImpl implements AuthService {
         Token token = Token.builder()
                 .accessToken(jwtUtil.generateToken(username))
                 .refreshToken(jwtUtil.generateRefreshToken(username))
-                .createdAt(LocalDateTime.now()).revoked(false)
+                .createdAt(LocalDateTime.now())
                 .build();
 
         user.setTokens(Collections.singletonList(token));
@@ -97,10 +97,6 @@ public class AuthServiceImpl implements AuthService {
         if (userRepository.existsByUsernameOrEmail(username, email)) {
             throw new DuplicateUniqueFieldException(HttpStatus.CONFLICT, "Email or Username already used!");
         }
-    }
-
-    public void sendVerifyEmail(){
-
     }
 
 
