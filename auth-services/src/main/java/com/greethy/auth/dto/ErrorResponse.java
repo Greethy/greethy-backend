@@ -7,6 +7,11 @@ import org.springframework.http.HttpStatus;
 import java.time.Instant;
 import java.util.Date;
 
+/**
+ * Represents an error response with details such as date, code, status, and message.
+ *
+ * @author ThanhKien
+ */
 @Getter
 public class ErrorResponse {
 
@@ -19,10 +24,19 @@ public class ErrorResponse {
 
     private String message;
 
+    /**
+     * Default constructor that sets the date to the current timestamp.
+     */
     public ErrorResponse() {
         date = Date.from(Instant.now());
     }
 
+    /**
+     * Constructor to create an ErrorResponse with specified HTTP status and message.
+     *
+     * @param status  The HTTP status of the error.
+     * @param message A detailed message describing the error.
+     */
     public ErrorResponse(HttpStatus status, String message){
         this();
         this.code = status.value();

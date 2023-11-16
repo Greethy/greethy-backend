@@ -5,6 +5,7 @@ import org.apache.avro.Schema;
 import org.apache.avro.specific.AvroGenerated;
 import org.apache.avro.specific.SpecificRecord;
 import org.apache.avro.specific.SpecificRecordBase;
+import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @AvroGenerated
 public class Email extends SpecificRecordBase implements SpecificRecord {
+
+    @Id
+    private String id;
 
     private String from;
 

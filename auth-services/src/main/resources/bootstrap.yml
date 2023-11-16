@@ -1,4 +1,8 @@
 spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -22,7 +26,6 @@ spring:
           auth: true
           connectionTimeout: 5000
           timeout: 5000
-
   application:
     name: auth-services
     encoder:

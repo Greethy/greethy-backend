@@ -16,7 +16,12 @@ public class EmailServiceImpl implements EmailService {
     private final JavaMailSender sender;
 
     @Override
-    public void sendVerificationEmail(Email email) throws MessagingException {
+    public void sendVerificationEmail(String to) throws MessagingException {
+        Email email = Email.builder()
+                .from("knkuro00@gmail.com").to(to)
+                .subject("Email Verification").body("Bla bla")
+                .build();
+
         MimeMessage mimeMessage = sender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true);
         messageHelper.setFrom(email.getFrom());
