@@ -1,6 +1,7 @@
 package com.greethy.auth.service.impl;
 
 import com.greethy.auth.dto.LoginRequest;
+import com.greethy.auth.dto.LoginResponse;
 import com.greethy.auth.dto.RegisterRequest;
 import com.greethy.auth.dto.RegisterResponse;
 import com.greethy.auth.entity.Role;
@@ -19,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,15 +46,37 @@ public class AuthServiceImpl implements AuthService {
 
     private final RedisTemplate<String, String> redisTemplate;
 
+    /**
+     * Authenticates a user based on the provided login credentials.
+     *
+     * @param loginRequest The login request containing user credentials.
+     * @return A LoginResponse containing authentication details, including access and refresh tokens.
+     * @throws AuthenticationException If authentication fails.
+     */
     @Override
-    public void authenticate(LoginRequest loginRequest) {
+    public LoginResponse authenticate(LoginRequest loginRequest) throws AuthenticationException {
         String username = obtain(Optional.ofNullable(loginRequest.getUsername()));
         String password = obtain(Optional.ofNullable(loginRequest.getPassword()));
+
         var authToken = UsernamePasswordAuthenticationToken.unauthenticated(username, password);
-        System.out.println(username + " " + password);
-        System.out.println(authToken.isAuthenticated());
         Authentication authentication = manager.authenticate(authToken);
-        System.out.println(authentication.isAuthenticated());
+
+        User user = userRepository.findByUsername(username).orElseThrow();
+        Token token = Token.builder()
+                .accessToken(jwtUtil.generateToken(username))
+                .refreshToken(jwtUtil.generateRefreshToken(username))
+                .createdAt(LocalDateTime.now())
+                .build();
+
+        user.getTokens().add(token);
+        userRepository.save(user);
+
+        return LoginResponse.builder()
+                .id(user.getId())
+                .accessToken(token.getAccessToken())
+                .refreshToken(token.getRefreshToken())
+                .isAuthenticated(authentication.isAuthenticated())
+                .build();
     }
 
     /**

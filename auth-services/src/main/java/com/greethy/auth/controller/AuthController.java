@@ -18,15 +18,13 @@ public class AuthController {
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity<?> login(LoginRequest loginRequest){
-        authService.authenticate(loginRequest);
-        return ResponseEntity.ok(loginRequest.getUsername() + " " + loginRequest.getPassword());
+        var response = authService.authenticate(loginRequest);
+        return ResponseEntity.ok(response);
     }
 
 
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest){
-//        System.out.println(registerRequest.getOtp());
-//        System.out.println(registerRequest.getEmail());
         var response =  authService.register(registerRequest);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);

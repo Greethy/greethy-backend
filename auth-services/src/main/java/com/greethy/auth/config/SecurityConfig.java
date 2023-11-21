@@ -1,5 +1,6 @@
 package com.greethy.auth.config;
 
+import com.greethy.auth.entrypoint.LoginFailureEntryPoint;
 import com.greethy.auth.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -29,13 +31,18 @@ public class SecurityConfig {
 
     private final UserServiceImpl userService;
 
+    private final LoginFailureEntryPoint loginFailureEntryPoint;
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/**").permitAll())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
-                .build();
+                .exceptionHandling(exceptionHandler -> {
+                    var requestMatcher = new AntPathRequestMatcher("api/v1/auth/**");
+                    exceptionHandler.defaultAuthenticationEntryPointFor(loginFailureEntryPoint, requestMatcher);
+                }).build();
     }
 
     @Bean
@@ -60,4 +67,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(encoderStrength);
     }
+
 }

@@ -3,13 +3,12 @@ package com.greethy.auth.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Setter;
+import lombok.Data;
 
-
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
-public class RegisterResponse {
+public class LoginResponse {
 
     @JsonProperty("user_id")
     private String id;
@@ -19,5 +18,9 @@ public class RegisterResponse {
 
     @JsonProperty("refresh_token")
     private String refreshToken;
+
+    @JsonProperty("is_authenticated")
+    private boolean isAuthenticated;
+
 
 }
