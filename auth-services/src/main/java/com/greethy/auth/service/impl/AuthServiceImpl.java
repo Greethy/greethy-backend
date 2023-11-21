@@ -7,12 +7,14 @@ import com.greethy.auth.entity.Role;
 import com.greethy.auth.entity.Token;
 import com.greethy.auth.entity.User;
 import com.greethy.auth.exception.DuplicateUniqueFieldException;
+import com.greethy.auth.exception.InvalidTokenException;
 import com.greethy.auth.repository.RoleRepository;
 import com.greethy.auth.repository.UserRepository;
 import com.greethy.auth.service.AuthService;
 import com.greethy.auth.utility.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,6 +42,8 @@ public class AuthServiceImpl implements AuthService {
 
     private final AuthenticationManager manager;
 
+    private final RedisTemplate<String, String> redisTemplate;
+
     @Override
     public void authenticate(LoginRequest loginRequest) {
         String username = obtain(Optional.ofNullable(loginRequest.getUsername()));
@@ -51,6 +55,14 @@ public class AuthServiceImpl implements AuthService {
         System.out.println(authentication.isAuthenticated());
     }
 
+    /**
+     * Obtains a trimmed String value from an Optional<String>.If the Optional
+     * contains a non-null and non-empty String, the String will be trimmed and returned.
+     * If the Optional is empty or contains a null String, an empty String is returned.
+     *
+     * @param inputString an Optional<String> that may contain a String value
+     * @return a trimmed String value if present, or an empty String if not present or null
+     */
     private String obtain(Optional<String> inputString){
         return inputString.map(String::trim).orElse("");
     }
@@ -58,11 +70,15 @@ public class AuthServiceImpl implements AuthService {
     /**
      * Registers a new user based on the provided registration request.
      *
-     * @param registerRequest The registration request containing user details.
-     * @return The response containing user registration information.
+     * @param registerRequest The registration request containing user information.
+     * @return A response containing the user ID, access token, and refresh token.
+     * @throws DuplicateUniqueFieldException If a user with the given username or email already exists.
+     * @throws InvalidTokenException If the provided OTP is invalid.
      */
     @Override
-    public RegisterResponse register(RegisterRequest registerRequest){
+    public RegisterResponse register(RegisterRequest registerRequest)
+            throws DuplicateUniqueFieldException, InvalidTokenException {
+        verifyOTP(registerRequest.getEmail(), registerRequest.getOtp());
         checkIfUserExists(registerRequest.getUsername(), registerRequest.getEmail());
 
         User user = mapper.map(registerRequest, User.class);
@@ -95,8 +111,23 @@ public class AuthServiceImpl implements AuthService {
      */
     private void checkIfUserExists(String username, String email) {
         if (userRepository.existsByUsernameOrEmail(username, email)) {
-            throw new DuplicateUniqueFieldException(HttpStatus.CONFLICT, "Email or Username already used!");
+            throw new DuplicateUniqueFieldException(HttpStatus.CONFLICT, "Mail or Username already used!");
         }
+    }
+
+    /**
+     * Verifies the OTP (One-Time Password) for the given username.
+     *
+     * @param email The email associated with the OTP.
+     * @param userOtp The OTP provided by the user for verification.
+     * @throws InvalidTokenException If the provided OTP is invalid.
+     */
+    private void verifyOTP(String email, String userOtp) {
+        String otp = redisTemplate.opsForValue().get(email);
+        if (Optional.ofNullable(otp).isEmpty() || !userOtp.equals(otp)) {
+            throw new InvalidTokenException (HttpStatus.BAD_REQUEST, "invalid OTP !");
+        }
+        redisTemplate.delete(email);
     }
 
 

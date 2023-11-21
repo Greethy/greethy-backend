@@ -1,15 +1,10 @@
 spring:
+  cache:
+    type: redis
   data:
     redis:
       host: localhost
       port: 6379
-  kafka:
-    bootstrap-servers: localhost:9092
-    consumer:
-      group-id: group-id
-      auto-offset-reset: earliest
-    producer:
-      schema-registry-url: http://localhost:8081
   mail:
     host: smtp.gmail.com
     port: 587

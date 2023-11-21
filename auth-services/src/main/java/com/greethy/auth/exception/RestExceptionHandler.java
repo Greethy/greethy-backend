@@ -30,4 +30,9 @@ public class RestExceptionHandler {
         return new ErrorResponse(ex.getStatus(), ex.getMessage());
     }
 
+    @ExceptionHandler(InvalidTokenException.class)
+    public ErrorResponse handleInvalidTokenExceptions(InvalidTokenException ex){
+        return new ErrorResponse(ex.getStatus(), ex.getMessage());
+    }
+
 }

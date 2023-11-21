@@ -5,6 +5,7 @@ networks:
   frontend:
 
 services:
+  #ZOO-KEEPER SERVICE DISCOVERY FOR KAFKA
   zoo-keeper:
     image: confluentinc/cp-zookeeper:7.4.3
     hostname: zoo-keeper
@@ -16,6 +17,7 @@ services:
       ZOOKEEPER_SERVER_ID: 1
       ZOOKEEPER_SERVERS: zookeeper:2888:3888
 
+  #CONFLUENT KAFKA FOR DATA MESSAGING
   kafka:
     image: confluentinc/cp-kafka:7.4.3
     hostname: kafka
@@ -41,6 +43,7 @@ services:
     depends_on:
       - zoo-keeper
 
+  #KEYCLOAK FOR STANDALONE AUTHORIZATION SERVER
   keycloak:
     image: quay.io/keycloak/keycloak:22.0.5
     container_name: keycloak
@@ -58,7 +61,7 @@ services:
       - start-dev
     depends_on:
       - mongodb
-
+  #MONGODB FOR DATA RESOURCE
   mongodb:
     image: mongo:7.0.2
     container_name: mongodb
@@ -66,3 +69,10 @@ services:
     ports:
       - "27017:27017"
 
+  #REDIS FOR CACHE MEMORY
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    hostname: redis
+    ports:
+      - "6379:6379"

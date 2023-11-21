@@ -1,12 +1,16 @@
 package com.greethy.auth.controller;
 
-import com.greethy.auth.dto.EmailRequest;
 import com.greethy.auth.service.EmailService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,15 +20,12 @@ public class EmailController {
     private final EmailService emailService;
 
     @GetMapping(value = "/verify")
-    public ResponseEntity<?> sendDefaultVerificationEmail(@RequestParam(name = "to") String to) throws MessagingException {
-        emailService.sendVerificationEmail(to);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Email Sent !");
-    }
+    public ResponseEntity<?> sendDefaultVerificationEmail(@RequestParam String emailTo)
+            throws MessagingException, NoSuchAlgorithmException {
 
-    @PostMapping(value = "/send")
-    public ResponseEntity<?> sendEmail(@RequestBody EmailRequest emailRequest){
-        return null;
+        emailService.sendVerificationCode(emailTo);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("Mail Sent !");
     }
 
 }
