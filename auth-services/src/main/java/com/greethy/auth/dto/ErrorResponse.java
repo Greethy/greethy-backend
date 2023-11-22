@@ -1,11 +1,15 @@
 package com.greethy.auth.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-import java.time.Instant;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * Represents an error response with details such as date, code, status, and message.
@@ -15,8 +19,10 @@ import java.util.Date;
 @Getter
 public class ErrorResponse {
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private final Date date;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss.SSS")
+    private final LocalDateTime date;
 
     private int code;
 
@@ -28,7 +34,7 @@ public class ErrorResponse {
      * Default constructor that sets the date to the current timestamp.
      */
     public ErrorResponse() {
-        date = Date.from(Instant.now());
+        date = ZonedDateTime.now().toLocalDateTime();
     }
 
     /**

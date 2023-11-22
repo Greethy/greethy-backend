@@ -1,6 +1,7 @@
 package com.greethy.auth.config;
 
 import com.greethy.auth.entrypoint.LoginFailureEntryPoint;
+import com.greethy.auth.filter.JwtAuthenticationFilter;
 import com.greethy.auth.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +19,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -26,6 +27,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    /**
+     * Strength of the BCrypt password encoder. The higher
+     * the strength, the more secure but slower the encoding.
+     */
     @Value("${spring.application.encoder.strength}")
     private int encoderStrength;
 
@@ -33,23 +38,39 @@ public class SecurityConfig {
 
     private final LoginFailureEntryPoint loginFailureEntryPoint;
 
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/**").permitAll())
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("api/v1/auth/register", "api/v1/auth/login", "api/v1/email/**").permitAll();
+                    auth.requestMatchers("api/v1/auth/token").authenticated();
+                })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
-                .exceptionHandling(exceptionHandler -> {
-                    var requestMatcher = new AntPathRequestMatcher("api/v1/auth/**");
-                    exceptionHandler.defaultAuthenticationEntryPointFor(loginFailureEntryPoint, requestMatcher);
-                }).build();
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(exceptionHandler -> exceptionHandler.authenticationEntryPoint(loginFailureEntryPoint))
+                .build();
     }
 
+    /**
+     * Exposes the authentication manager as a bean for autowiring.
+     *
+     * @param configuration The authentication configuration.
+     * @return The authentication manager.
+     * @throws Exception If an error occurs while building the authentication manager.
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
 
+    /**
+     * Configures a DaoAuthenticationProvider with a custom UserDetailsService and passwordEncoder instance.
+     *
+     * @return The configured authentication provider.
+     */
     @Bean
     public AuthenticationProvider authenticationProvider() {
         var provider = new DaoAuthenticationProvider();

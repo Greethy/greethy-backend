@@ -1,11 +1,13 @@
 package com.greethy.auth.utility;
 
+import com.greethy.auth.exception.InvalidTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -39,27 +41,36 @@ public class JwtUtil {
      *
      * @param token The JWT from which the username needs to be extracted.
      * @return The username extracted from the JWT, or null if it cannot be extracted.
+     * @throws InvalidTokenException if the token is invalid, expired, or if an exception occurs
+     *                               during the parsing process
      */
-    public String extractUsername(String token) {
+    public String extractUsername(String token) throws InvalidTokenException {
         return extractClaim(token, Claims::getSubject);
     }
 
     /**
-     * Extracts information from a JSON Web Token (JWT) using a Claims resolver function.
+     * Extracts a specific claim from a JWT (JSON Web Token) by parsing the token and applying
+     * a provided {@link Function} to resolve the desired claim from the token's {@link Claims}.
      *
-     * @param token          The JWT (JS Web Token) from which information needs to be extracted.
-     * @param claimsResolver A functional interface that resolves Claims
-     *                       and returns the extracted value from the Claims.
-     * @param <T>            The data type of the extracted value.
-     * @return The extracted value from the JWT using the provided Claims resolver.
+     * @param <T>             the type of the claim to be extracted
+     * @param token           the JWT from which to extract the claim
+     * @param claimsResolver  a {@link Function} that takes a {@link Claims} object and returns
+     *                        the desired claim of type {@code T}
+     * @return the extracted claim of type {@code T}
+     * @throws InvalidTokenException if the token is invalid, expired, or if an exception occurs
+     *                               during the parsing process
      */
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = Jwts.parserBuilder()
-                .setSigningKey(signinKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-        return claimsResolver.apply(claims);
+        try {
+            final Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(signinKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+            return claimsResolver.apply(claims);
+        } catch (Exception ex) {
+            throw new InvalidTokenException(HttpStatus.UNAUTHORIZED, "This token has expired or invalid !");
+        }
     }
 
     /**

@@ -30,7 +30,7 @@ public class AuthController {
                 .body(response);
     }
 
-    @GetMapping("/verify/token")
+    @GetMapping("/token")
     public String authenticateToken(){
         return "Validating Token !!!!";
     }

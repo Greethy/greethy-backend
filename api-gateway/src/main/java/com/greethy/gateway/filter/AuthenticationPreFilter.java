@@ -30,19 +30,12 @@ public class AuthenticationPreFilter extends AbstractGatewayFilterFactory<Authen
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
             HttpHeaders headers = exchange.getRequest().getHeaders();
-            if (!headers.containsKey(HttpHeaders.AUTHORIZATION)) {
-                throw new InvalidAuthorizationException("Missing authorization information");
-            }
-            Optional<String> bearerToken = Optional.ofNullable(headers.getFirst(HttpHeaders.AUTHORIZATION));
-            assert bearerToken.isPresent();
-            String[] tokenParts = bearerToken.get().split("\\s+");
-            if (!tokenParts[0].equals("Bearer") || tokenParts.length != 2){
-                throw new InvalidAuthorizationException("Incorrect authorization structure");
-            }
+            String bearerToken = Optional.ofNullable(headers.getFirst(HttpHeaders.AUTHORIZATION))
+                    .orElseThrow(() -> new InvalidAuthorizationException("Missing authorization information"));
             return webClientBuilder.build()
-                    .get()
-                    .uri("lb://auth-services/api/v1/auth/authenticateToken")
-                    .header(HttpHeaders.AUTHORIZATION, tokenParts[1])
+                    .post()
+                    .uri("lb://auth-services/api/v1/auth/token")
+                    .header(HttpHeaders.AUTHORIZATION, bearerToken)
                     .retrieve()
                     .bodyToMono(AuthResponse.class)
                     .map(response -> exchange)

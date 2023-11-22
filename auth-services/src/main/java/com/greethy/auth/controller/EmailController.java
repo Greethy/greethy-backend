@@ -22,7 +22,6 @@ public class EmailController {
     @GetMapping(value = "/verify")
     public ResponseEntity<?> sendDefaultVerificationEmail(@RequestParam String emailTo)
             throws MessagingException, NoSuchAlgorithmException {
-
         emailService.sendVerificationCode(emailTo);
         return ResponseEntity.status(HttpStatus.OK)
                 .body("Mail Sent !");
