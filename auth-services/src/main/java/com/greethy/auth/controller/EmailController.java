@@ -19,7 +19,7 @@ public class EmailController {
 
     private final EmailService emailService;
 
-    @GetMapping(value = "/verify")
+    @GetMapping(value = "/otp")
     public ResponseEntity<?> sendDefaultVerificationEmail(@RequestParam String emailTo)
             throws MessagingException, NoSuchAlgorithmException {
         emailService.sendVerificationCode(emailTo);

@@ -25,7 +25,7 @@ public class AuthController {
 
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest){
-        var response =  authService.register(registerRequest);
+        var response = authService.register(registerRequest);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);
     }
