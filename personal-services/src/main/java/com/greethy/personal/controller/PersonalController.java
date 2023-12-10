@@ -14,19 +14,17 @@ public class PersonalController {
 
     private final PersonalService personalService;
 
-    @PostMapping("/{id}")
+    @PostMapping("/profile/{id}")
     public ResponseEntity<?> createProfile(@PathVariable String id,
                                            @RequestBody ProfileRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(personalService.createNewProfile(id, request));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findProfileById(@PathVariable String id){
+    @GetMapping("/profile/{id}")
+    public ResponseEntity<?> readProfile(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(personalService.findById(id));
+                .body(personalService.getUserProfile(id));
     }
-
-
 
 }

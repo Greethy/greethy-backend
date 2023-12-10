@@ -6,21 +6,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Profile {
-
-    @Field(name = "created_date")
-    private LocalDate createdDate;
-
-    @Field(name = "updated_date")
-    private LocalDate updatedDate;
-
-    private String username;
-
-    private String email;
 
     @Field(name = "first_name")
     private String firstname;
@@ -32,11 +23,12 @@ public class Profile {
 
     private Address address;
 
-    @Field(name = "avatar_url")
-    private String avatarUrl;
+    private List<Contact> contact;
 
-    private String bannerUrl;
+    @Field(name = "created_date")
+    private LocalDate createdDate;
 
-    private Contact contact;
+    @Field(name = "updated_date")
+    private LocalDate updatedDate;
 
 }

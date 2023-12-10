@@ -5,6 +5,7 @@ networks:
   frontend:
 
 services:
+
   #ZOO-KEEPER SERVICE DISCOVERY FOR KAFKA
   zoo-keeper:
     image: confluentinc/cp-zookeeper:7.4.3
@@ -61,13 +62,22 @@ services:
       - start-dev
     depends_on:
       - mongodb
+
+
   #MONGODB FOR DATA RESOURCE
   mongodb:
-    image: mongo:7.0.2
-    container_name: mongodb
+    image: mongo:latest
+    container_name: greethy_mongodb
     hostname: mongodb
     ports:
       - "27017:27017"
+    volumes:
+      - ./mongodb/data:/data/db
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=GreethyDB
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
 
   #REDIS FOR CACHE MEMORY
   redis:

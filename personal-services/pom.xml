@@ -3,22 +3,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.greethy</groupId>
+        <artifactId>greethy-project</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.greethy</groupId>
+
     <artifactId>personal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>personal-services</name>
     <description>personal-services</description>
     <properties>
         <java.version>17</java.version>
-        <spring-cloud.version>2022.0.4</spring-cloud.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
     </properties>
 
     <dependencies>
+        <!-- Infrastructure Module -->
+        <dependency>
+            <groupId>com.greethy</groupId>
+            <artifactId>mapper</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- REACTIVE WEB -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,17 +37,7 @@
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>
 
-        <!-- SECURITY -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-        </dependency>
-
-        <!-- MICROSERVICES -->
+        <!-- MICROSERVICES PATTERN-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -72,29 +68,11 @@
             <version>2.0</version>
         </dependency>
 
-        <!-- MONITORING -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- TEST TOOLS FOR INTEGRATED TESTING -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <dependencyManagement>

@@ -29,7 +29,7 @@ public class RouteConfig {
         return builder.routes()
                 .route("personal-services-route",
                         predicate -> predicate.path("/api/v*/user/**")
-                                .filters(filter -> filter.filter(authFilter.apply(new AuthenticationPreFilter.Config())))
+                                //.filters(filter -> filter.filter(authFilter.apply(new AuthenticationPreFilter.Config())))
                                 .uri("lb://personal-services"))
                 .route("auth-services-route",
                         predicate -> predicate.path("api/v*/auth/**")

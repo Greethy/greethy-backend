@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -21,6 +22,7 @@ public class PersonalServiceImpl implements PersonalService {
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public Mono<User> createNewProfile(String id, ProfileRequest request) {
         return userRepository.findById(id)
                 .map(user -> {
@@ -33,8 +35,9 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
-    public Mono<User> findById(String id) {
-        return userRepository.findById(id);
+    public Mono<Profile> getUserProfile(String id) {
+        return userRepository.findById(id)
+                .map(User::getProfile);
     }
 
 }
