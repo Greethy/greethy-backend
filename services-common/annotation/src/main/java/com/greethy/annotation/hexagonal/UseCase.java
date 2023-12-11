@@ -1,0 +1,33 @@
+package com.greethy.annotation.hexagonal;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import org.springframework.core.annotation.AliasFor;
+import org.springframework.stereotype.Component;
+
+/**
+ * This annotation, {@code @UseCase}, is a custom annotation designed to be used on types (classes, interfaces, enums).
+ * It is marked with Spring's {@code @Component} annotation, indicating that classes annotated with {@code @UseCase}
+ * should be treated as Spring components during auto-detection.
+ *
+ * @author ThanhKien
+ * */
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface UseCase {
+
+    /**
+     * The value may indicate a suggestion for a logical component name,
+     * to be turned into a Spring bean in case of an autodetected component.
+     * @return the suggested component name, if any (or empty String otherwise)
+     */
+    @AliasFor(annotation = Component.class)
+    String value() default "";
+
+}

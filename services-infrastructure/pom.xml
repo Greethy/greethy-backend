@@ -10,10 +10,11 @@
     </parent>
 
     <artifactId>infrastructure</artifactId>
+    <name>services-infrastructure</name>
+    <version>${parent.version}</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>mapper</module>
         <module>docker</module>
     </modules>
 
@@ -21,7 +22,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.greethy</groupId>
-                <artifactId>mapper</artifactId>
+                <artifactId>docker</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

@@ -1,4 +1,4 @@
-package com.greethy.personal.entity;
+package com.greethy.personal.domain.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
