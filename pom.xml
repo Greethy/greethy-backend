@@ -16,15 +16,18 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<!-- MICROSERVICE PATTERN -->
 		<module>config-server</module>
 		<module>api-gateway</module>
 		<module>services-discovery</module>
+
 		<module>personal-services</module>
 		<module>nutrition-services</module>
 		<module>auth-services</module>
 		<module>financial-services</module>
-		<module>services-infrastructure</module>
-		<module>services-common</module>
+
+		<module>infrastructure</module>
+		<module>common</module>
 	</modules>
 
 	<dependencies>

@@ -10,7 +10,9 @@ import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
 
 /**
- * This annotation, {@code @UseCase}, is a custom annotation designed to be used on types (classes, interfaces, enums).
+ * Indicates that an annotated class is a "Component"
+ *
+ * <p>This annotation, {@code @UseCase}, is a custom annotation designed to be used on types (classes, interfaces, enums).
  * It is marked with Spring's {@code @Component} annotation, indicating that classes annotated with {@code @UseCase}
  * should be treated as Spring components during auto-detection.
  *

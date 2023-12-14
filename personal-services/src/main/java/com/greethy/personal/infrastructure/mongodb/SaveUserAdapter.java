@@ -2,7 +2,7 @@ package com.greethy.personal.infrastructure.mongodb;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.personal.domain.entity.User;
-import com.greethy.personal.domain.port.out.SaveUserPort;
+import com.greethy.personal.domain.port.outbound.SaveUserPort;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 

@@ -16,11 +16,6 @@
         <module name="mapper" />
         <module name="config" />
         <module name="gateway" />
-      </profile>
-      <profile name="Annotation profile for greethy-project" enabled="true">
-        <sourceOutputDir name="../../infrastructure/docker/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../../infrastructure/docker/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
         <module name="docker" />
       </profile>
     </annotationProcessing>

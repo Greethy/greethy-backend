@@ -1,13 +1,15 @@
 package com.greethy.personal.application.rest.controller;
 
+import com.greethy.annotation.hexagonal.ApplicationAdapter;
 import com.greethy.personal.application.rest.request.ProfileRequest;
-import com.greethy.personal.domain.port.in.CreateUserProfileUseCase;
+import com.greethy.personal.domain.port.inbound.CreateUserProfileUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@ApplicationAdapter
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/personal")
 public class PersonalController {
