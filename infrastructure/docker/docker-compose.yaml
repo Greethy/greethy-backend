@@ -72,8 +72,8 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./mongodb/data:/data/db
-    restart: always
+      - ./db-data/mongodb:/data/db
+    command: [--auth]
     environment:
       - MONGO_INITDB_DATABASE=GreethyDB
       - MONGO_INITDB_ROOT_USERNAME=root

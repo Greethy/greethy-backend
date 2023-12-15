@@ -1,4 +1,4 @@
-package com.greethy.personal.application.rest.controller;
+package com.greethy.personal.application.rest.router;
 
 import com.greethy.annotation.hexagonal.ApplicationAdapter;
 import com.greethy.personal.application.rest.request.ProfileRequest;

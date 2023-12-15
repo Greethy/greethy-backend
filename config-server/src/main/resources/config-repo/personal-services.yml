@@ -3,10 +3,11 @@ spring:
     name: personal-services
   data:
     mongodb:
-      database: Greethy
+      database: GreethyDB
       host: localhost
       port: 27017
-
+      username: root
+      password: password
 server:
   port: 8085
 
