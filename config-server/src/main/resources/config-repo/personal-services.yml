@@ -8,6 +8,7 @@ spring:
       port: 27017
       username: root
       password: password
+      authentication-database: admin
 server:
   port: 8085
 

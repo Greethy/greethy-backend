@@ -8,17 +8,25 @@
 
 ## 📋 Table of Contents
 
-* [Greethy Project: Backend](#greethy-project-backend)
-  * 👋 [About this Project](#-about-this-project)
-  * 📋 [Table of Contents](#-table-of-contents)
-  * 🏛️ [Project Architecture](#-project-architecture)
-    * 🏙️ [Architecture Implementation](#-architecture-implementation)
-    * 🎡 [Microservice Component](#-microservice-component)
-    * 📦 [Modular Component](#-modular-component)
-    * 📁️ [File Structure](#-file-structure)
+[Greethy Project: Backend](#greethy-project-backend)
+* 👋 [About this Project](#-about-this-project)
+* 📋 [Table of Contents](#-table-of-contents)
+* 📝 [Prerequisites of Development](#-prerequisites-of-development)
+* 🏛️ [Project Architecture](#-project-architecture)
+  * 🏙️ [Architecture Implementation](#-architecture-implementation)
+  * 🎡 [Microservice Component](#-microservice-component)
+  * 📦 [Modular Component](#-modular-component)
+  * 📁️ [File Structure](#-file-structure)
   * 👟 [Run the Application](#-run-the-application)
     * 🖥️ [Running on Local Machine](#-running-on-local-machine)
     * ⛴️ [Using Docker (Not finished yet)](#-using-docker-not-finished-yet)
+
+## 📝 Prerequisites of Development
+
+* [Git](https://git-scm.com/downloads)
+* [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+* [Maven](https://maven.apache.org/download.cgi)
+* [Docker Desktop](https://docs.docker.com/get-docker/) 
 
 ## 🏛️ Project Architecture
 

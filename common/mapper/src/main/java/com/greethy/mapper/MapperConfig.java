@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
+
 /**
  * Mapping configuration class for application settings.
  *
@@ -26,7 +28,10 @@ public class MapperConfig {
     @Bean
     public ModelMapper modelMapper() {
         ModelMapper mapper = new ModelMapper();
-        mapper.getConfiguration().setSkipNullEnabled(true);
+        mapper.getConfiguration()
+                .setFieldMatchingEnabled(true)
+                .setFieldAccessLevel(PRIVATE)
+                .setSkipNullEnabled(true);
         configureLocalDateMapping(mapper);
         return mapper;
     }

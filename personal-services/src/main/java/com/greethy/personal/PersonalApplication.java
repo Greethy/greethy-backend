@@ -5,7 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
-@SpringBootApplication(scanBasePackages = {"com.greethy.mapper"})
+@SpringBootApplication(scanBasePackages = {
+        "com.greethy.personal",
+        "com.greethy.mapper"})
 public class PersonalApplication {
 
     public static void main(String[] args) {
