@@ -14,8 +14,10 @@ public class PersonalRouter {
 
     @Bean
     public RouterFunction<ServerResponse> route(UserHandler userHandler) {
-        return RouterFunctions.route(POST("/api/v1/user").and(accept(MediaType.APPLICATION_JSON)), userHandler::save)
-                .andRoute(GET("/api/v1/users"), userHandler::findAll);
+        return RouterFunctions.route()
+                .POST("/api/v1/user", accept(MediaType.APPLICATION_JSON), userHandler::save)
+                .GET("/api/v1/users", request -> userHandler.findAll())
+                .build();
     }
 
 }

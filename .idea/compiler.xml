@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="annotation" />
+        <module name="core" />
         <module name="nutrition" />
         <module name="auth" />
         <module name="financial" />
@@ -34,6 +35,7 @@
       <module name="authentication" options="-parameters" />
       <module name="common" options="" />
       <module name="config" options="-parameters" />
+      <module name="core" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="docker" options="-parameters" />
       <module name="financial" options="-parameters" />

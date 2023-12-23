@@ -3,6 +3,7 @@ package com.greethy.personal.infrastructure.mongodb;
 import com.greethy.personal.domain.entity.User;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
 
 /**
  * {@code UserRepository} is a Spring Data ReactiveMongoRepository interface
@@ -27,5 +28,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserRepository extends ReactiveMongoRepository<User, String> {
+
+    Mono<Boolean> existsByUsernameOrEmail(String username, String email);
 
 }

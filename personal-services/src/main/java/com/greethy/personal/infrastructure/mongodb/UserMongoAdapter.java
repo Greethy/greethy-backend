@@ -2,18 +2,15 @@ package com.greethy.personal.infrastructure.mongodb;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.personal.domain.entity.User;
-import com.greethy.personal.domain.port.outbound.CreateUserPort;
-import com.greethy.personal.domain.port.outbound.DeleteUserPort;
-import com.greethy.personal.domain.port.outbound.FindUserPort;
-import com.greethy.personal.domain.port.outbound.UpdateUserPort;
+import com.greethy.personal.domain.port.outbound.*;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @InfrastructureAdapter
 @RequiredArgsConstructor
-public class UserMongoAdapter
-        implements CreateUserPort, FindUserPort, UpdateUserPort, DeleteUserPort {
+public class UserMongoAdapter implements CreateUserPort, ExistsUserPort,
+        FindUserPort, UpdateUserPort, DeleteUserPort {
 
     private final UserRepository userRepository;
 
@@ -36,5 +33,15 @@ public class UserMongoAdapter
     @Override
     public Flux<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public Mono<Boolean> existsById(String id) {
+        return userRepository.existsById(id);
+    }
+
+    @Override
+    public Mono<Boolean> existsByUsernameOrEmail(String username, String email) {
+        return userRepository.existsByUsernameOrEmail(username, email);
     }
 }

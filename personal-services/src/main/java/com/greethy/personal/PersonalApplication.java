@@ -7,6 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = {
         "com.greethy.personal",
+        "com.greethy.core",
         "com.greethy.mapper"})
 public class PersonalApplication {
 

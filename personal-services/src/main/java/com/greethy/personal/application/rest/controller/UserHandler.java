@@ -5,7 +5,7 @@ import com.greethy.personal.application.rest.request.UserRequest;
 import com.greethy.personal.application.rest.response.UserResponse;
 import com.greethy.personal.domain.entity.User;
 import com.greethy.personal.domain.port.inbound.FindAllUserUseCase;
-import com.greethy.personal.domain.port.inbound.SaveUserUseCase;
+import com.greethy.personal.domain.port.inbound.CreateUserUseCase;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ public class UserHandler {
 
     private final ModelMapper mapper;
 
-    private final SaveUserUseCase saveUserUseCase;
+    private final CreateUserUseCase createUserUseCase;
 
     private final FindAllUserUseCase findAllUserUseCase;
 
@@ -28,7 +28,7 @@ public class UserHandler {
         return serverRequest.bodyToMono(UserRequest.class)
                 .map(request -> mapper.map(request, User.class))
                 .flatMap(user -> {
-                            var response = saveUserUseCase.saveUser(user)
+                            var response = createUserUseCase.createUser(user)
                                     .map(savedUser -> mapper.map(savedUser, UserResponse.class));
                             return ServerResponse.status(HttpStatus.CREATED)
                                     .contentType(MediaType.APPLICATION_JSON)
@@ -37,7 +37,7 @@ public class UserHandler {
                 );
     }
 
-    public Mono<ServerResponse> findAll(ServerRequest serverRequest) {
+    public Mono<ServerResponse> findAll() {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(findAllUserUseCase.findAll()

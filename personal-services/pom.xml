@@ -29,6 +29,11 @@
             <artifactId>annotation</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.greethy</groupId>
+            <artifactId>core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <!-- REACTIVE WEB -->
         <dependency>
