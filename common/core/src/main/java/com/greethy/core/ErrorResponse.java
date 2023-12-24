@@ -21,10 +21,10 @@ public class ErrorResponse {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss.SSS")
     private final LocalDateTime date = ZonedDateTime.now().toLocalDateTime();
 
-    private int code;
+    private final int code;
 
-    private String status;
+    private final String status;
 
-    private String message;
+    private final String message;
 
 }
