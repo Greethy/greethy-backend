@@ -87,7 +87,7 @@ Go to [run-all-modules.sh](run-all-modules.sh) to run all services component in 
 
 #### Overview
 
-Docker is an open source platform for developing, shipping and running applications. It enables to separate applications from infrastructure so that can deliver software quickly. 
+`Docker` is an open source platform for developing, shipping and running applications. It enables to separate applications from infrastructure so that can deliver software quickly. 
 
 Reference: https://docs.docker.com/get-started/overview/
 
