@@ -21,12 +21,9 @@
 		<module>api-gateway</module>
 		<module>services-discovery</module>
 
-		<module>personal-services</module>
-		<module>nutrition-services</module>
-		<module>auth-services</module>
-		<module>financial-services</module>
+		<module>user-services</module>
 
-		<module>infrastructure</module>
+		<module>greethy-docker</module>
 		<module>common</module>
 	</modules>
 
@@ -45,11 +42,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.jayway.jsonpath</groupId>
-			<artifactId>json-path</artifactId>
-			<version>2.9.0</version>
 		</dependency>
 
 

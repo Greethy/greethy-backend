@@ -29,9 +29,6 @@ public class RouteConfig {
                 .route("personal-services-route",
                         predicate -> predicate.path("/api/v*/user/**")
                                 .uri("lb://personal-services"))
-                .route("auth-services-route",
-                        predicate -> predicate.path("api/v*/auth/**")
-                                .uri("lb://auth-services"))
                 .build();
     }
 
