@@ -18,7 +18,7 @@
     </properties>
 
     <dependencies>
-        <!-- Infrastructure Module -->
+        <!-- COMMON MODULES -->
         <dependency>
             <groupId>com.greethy</groupId>
             <artifactId>mapper</artifactId>

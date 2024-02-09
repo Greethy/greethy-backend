@@ -1,6 +1,6 @@
 package com.greethy.personal.infrastructure.mongodb;
 
-import com.greethy.personal.application.domain.entity.User;
+import com.greethy.personal.core.domain.entity.User;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
