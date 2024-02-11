@@ -1,4 +1,4 @@
-package com.greethy.user.api.rest.request;
+package com.greethy.user.api.rest.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,12 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateUserRequest {
+public class CreateUserRequest {
 
     private String username;
 
     private String email;
 
-    private String avatar;
+    private String password;
 
 }

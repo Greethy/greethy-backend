@@ -1,12 +1,11 @@
-package com.greethy.user.api.query;
+package com.greethy.user.core.port.in.query;
 
 import com.greethy.core.message.query.BaseQuery;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class FindAllUserQuery extends BaseQuery {
+public class FindAllUserQuery {
 
     private String username;
 

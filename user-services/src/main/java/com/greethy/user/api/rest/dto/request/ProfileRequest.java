@@ -1,4 +1,4 @@
-package com.greethy.user.api.rest.request;
+package com.greethy.user.api.rest.dto.request;
 
 import com.greethy.user.core.domain.entity.Address;
 import com.greethy.user.core.domain.entity.Contact;

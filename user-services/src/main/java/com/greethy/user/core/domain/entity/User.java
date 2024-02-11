@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 /**
  * This class represent for user, including login information,
  * personal information, body specified, and referenced ids to other documents.
@@ -31,5 +33,7 @@ public class User {
 
     @DBRef
     private Network network;
+
+    private List<Role> roles;
 
 }

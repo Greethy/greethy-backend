@@ -13,10 +13,10 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class UserEndpointRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> route(UserEndpointHandler userHandler) {
+    public RouterFunction<ServerResponse> route(UserCommandEndpointHandler userCommandEndpointHandler,
+                                                UserQueriesEndpointHandler userQueriesEndpointHandler) {
         return RouterFunctions.route()
-                .POST("/api/v1/user", accept(MediaType.APPLICATION_JSON), userHandler::save)
-                .GET("/api/v1/users", request -> userHandler.findAll())
+                .POST("/api/v1/user", accept(MediaType.APPLICATION_JSON), userCommandEndpointHandler::registerUser)
                 .build();
     }
 }

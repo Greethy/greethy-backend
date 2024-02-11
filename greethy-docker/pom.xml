@@ -10,7 +10,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>greethy-docker</artifactId>
+    <name>greethy-docker</name>
+    <artifactId>docker</artifactId>
 
     <dependencies>
         <!-- DOCKER COMPOSE SUPPORTER -->

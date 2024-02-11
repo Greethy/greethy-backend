@@ -6,25 +6,13 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
 /**
- * {@code UserRepository} is a Spring Data ReactiveMongoRepository interface
- * for managing {@link User} entities in a MongoDB database in a reactive way.
- * extends from {@link org.springframework.data.mongodb.repository.ReactiveMongoRepository},
- * It's providing CRUD (Create, Read, Update, Delete) operations for the {@code User} entity.
- *
- * <p>
- * Example usage:
- * <pre>
- * {@code
- * private final UserRepository userRepository;
- *
- * Flux<User> users = userRepository.findAll();
- * }
- * </pre>
- * </p>
+ * {@code UserRepository} is a Reactive Spring-Data ReactiveMongoRepository interface for
+ * managing {@link User} entities in a MongoDB database in a reactive way. extends from
+ * {@link org.springframework.data.mongodb.repository.ReactiveMongoRepository}, it's
+ * providing default CRUD (Create, Read, Update, Delete) operations for the {@code User} entity.
  *
  * @see org.springframework.data.mongodb.repository.ReactiveMongoRepository
- * @see User
- * @author ThanhKien
+ * @author KienThanh
  */
 @Repository
 public interface UserRepository extends ReactiveMongoRepository<User, String> {

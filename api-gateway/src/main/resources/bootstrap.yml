@@ -6,15 +6,3 @@ spring:
   cloud:
     config:
       profile: dev
-  security:
-    oauth2:
-      client:
-        registration:
-          gateway:
-            client-id: greethy-rest-api
-            client-secret:
-            authorization-grant-type: authorization_code
-            redirect-uri: "http://localhost:8222/login/oauth2/code/{registrationId}"
-            scope:
-              - openid
-              - client.read
