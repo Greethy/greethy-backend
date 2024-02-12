@@ -1,4 +1,54 @@
 version: '3.3'
 
+services:
+  #AXON SERVER
+  axonserver:
+    image: axoniq/axonserver
+    hostname: greethy-axonserver
+    volumes:
+      - type: bind
+        source: ./axon/data
+        target: /axon/data
+      - type: bind
+        source: ./axon/events
+        target: /axon/eventdata
+      - type: bind
+        source: ./axon/config
+        target: /axon/config
+        read_only: true
+    ports:
+      - '8024:8024'
+      - '8124:8124'
+      - '8224:8224'
+  #MONGO_DB
+  mongodb:
+    image: mongo:latest
+    container_name: greethy-mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/mongodb/data
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: root
+      MONGODB_INITDB_ROOT_PASSWORD: 123456
 
-
+volumes:
+  axonserver-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/axon/data
+      o: bind
+  axonserver-events:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/axon/events
+      o: bind
+  axonserver-config:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/axon/config
+      o: bind
+  mongodb_data:

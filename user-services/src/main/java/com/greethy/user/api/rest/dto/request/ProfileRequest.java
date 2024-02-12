@@ -1,7 +1,7 @@
 package com.greethy.user.api.rest.dto.request;
 
-import com.greethy.user.core.domain.entity.Address;
-import com.greethy.user.core.domain.entity.Contact;
+import com.greethy.user.infrastructure.entity.Address;
+import com.greethy.user.infrastructure.entity.Contact;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

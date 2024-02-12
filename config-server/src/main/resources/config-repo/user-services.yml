@@ -1,6 +1,6 @@
 spring:
   application:
-    name: personal-services
+    name: user-services
   data:
     mongodb:
       database: GreethyDB

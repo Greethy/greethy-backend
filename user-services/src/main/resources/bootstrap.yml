@@ -1,5 +1,8 @@
 spring:
   application:
-    name: personal-services
+    name: user-services
   config:
     import: optional:configserver:http://localhost:8888
+axon:
+  axonserver:
+    servers: localhost:8024

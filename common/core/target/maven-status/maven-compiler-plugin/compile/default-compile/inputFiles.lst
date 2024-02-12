@@ -1,0 +1,7 @@
+C:\Users\ADMIN\OneDrive\Desktop\Master Dev\Java Backend\IntelliJ Workspace\greethy-backend\common\core\src\main\java\com\greethy\core\exception\BaseException.java
+C:\Users\ADMIN\OneDrive\Desktop\Master Dev\Java Backend\IntelliJ Workspace\greethy-backend\common\core\src\main\java\com\greethy\core\message\event\BaseEvent.java
+C:\Users\ADMIN\OneDrive\Desktop\Master Dev\Java Backend\IntelliJ Workspace\greethy-backend\common\core\src\main\java\com\greethy\core\CoreApplication.java
+C:\Users\ADMIN\OneDrive\Desktop\Master Dev\Java Backend\IntelliJ Workspace\greethy-backend\common\core\src\main\java\com\greethy\core\message\Message.java
+C:\Users\ADMIN\OneDrive\Desktop\Master Dev\Java Backend\IntelliJ Workspace\greethy-backend\common\core\src\main\java\com\greethy\core\domain\AggregateRoot.java
+C:\Users\ADMIN\OneDrive\Desktop\Master Dev\Java Backend\IntelliJ Workspace\greethy-backend\common\core\src\main\java\com\greethy\core\message\event\DomainEvent.java
+C:\Users\ADMIN\OneDrive\Desktop\Master Dev\Java Backend\IntelliJ Workspace\greethy-backend\common\core\src\main\java\com\greethy\core\message\query\BaseQuery.java

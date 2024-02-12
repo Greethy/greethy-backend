@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.greethy.core.CoreApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.229 s -- in com.greethy.core.CoreApplicationTests
