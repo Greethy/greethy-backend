@@ -10,6 +10,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class UserProfileUpdatedEvent {
 
+    private String userId;
+
     private Profile profile;
 
 }

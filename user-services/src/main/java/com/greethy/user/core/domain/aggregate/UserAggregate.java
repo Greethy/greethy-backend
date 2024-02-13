@@ -32,6 +32,8 @@ public class UserAggregate {
 
     private String email;
 
+    private boolean verified;
+
     private String password;
 
     private Profile profile;
@@ -51,7 +53,7 @@ public class UserAggregate {
 
     @CommandHandler
     public void handle(UpdateUserProfileCommand command) {
-        var event = UpdateUserProfileCommand.builder()
+        var event = UserProfileUpdatedEvent.builder()
                 .userId(command.getUserId())
                 .profile(command.getProfile())
                 .build();
@@ -60,6 +62,7 @@ public class UserAggregate {
 
     @EventSourcingHandler
     public void on(UserProfileUpdatedEvent event){
+        this.id = event.getUserId();
         this.profile = event.getProfile();
     }
 

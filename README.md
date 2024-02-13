@@ -2,9 +2,11 @@
 
 ## 👋 About this Project
 
-**Greethy** is a project that offers solutions for nutrition management, workout support, personal finance tracking, and a mini social network where people can join together to manage and share their achievements.
+**Greethy** is a project that offers solutions for nutrition management, workout support, personal finance tracking, and a mini social network where people can join together to manage
+and share their achievements.
 
-**Greethy Server**, built with `Spring Boot`, provides efficient handling of large-scale data, project scalability, resilience, flexibility, security and seamless integration capabilities.
+**Greethy Server**, powered by `Spring Framework`, `Axon Framework`, `Apache Kafka` and `MongoDB`, provides efficient handling of large-scale data, project scalability, resilience, 
+flexibility, security and seamless integration capabilities.
 
 ## 📋 Table of Contents
 
@@ -36,17 +38,17 @@
 
 *Greethy Server* consists of multiple services represented as modules in the project file, including:
 
-* **Configuration Server** ([config-server](config-server/README.md)): is Spring's client/server approach for storing and serving distributed configurations across multiple modules and environments.
+* **Configuration Server** ([config-server](config-server/README.md)): is Spring's client/server approach for storing and serving distributed configurations across multiple modules 
+and environments.
 
-* **Service Discovery** ([services-discovery](services-discovery/README.md)): is a Microservice Component help to know where each instance of a service is located. It acts as a registry in which the addresses of all instances are tracked.
+* **Service Discovery** ([services-discovery](services-discovery/README.md)): is a Microservice Component help to know where each instance of a service is located. It acts as a registry
+in which the addresses of all instances are tracked.
 
 * **API Gateway** ([api-gateway](api-gateway/README.md)): 
 
 ### 📦 Modular Component
 
 * **Common** ([common](common/README.md)): 
-
-* **Infrastructure** ([infrastructure](infrastructure/README.md)): 
 
 ### 📁 File Structure
 
@@ -95,7 +97,7 @@ Reference: https://docs.docker.com/get-started/overview/
 
 #### Run MongoDB Server
 
-* Start MongoDB Instance: Use the following content for the [docker-compose.yaml](infrastructure/docker/docker-compose.yaml) file, then run the service.
+* Start MongoDB Instance: Use the following content for the [docker-compose.yaml](/greethy-docker/docker-compose.yaml) file, then run the service.
 
 ````yaml
 #MONGODB FOR DATA RESOURCE

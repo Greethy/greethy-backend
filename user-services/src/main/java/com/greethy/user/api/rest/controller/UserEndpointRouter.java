@@ -17,6 +17,7 @@ public class UserEndpointRouter {
                                                 UserQueriesEndpointHandler userQueriesEndpointHandler) {
         return RouterFunctions.route()
                 .POST("/api/v1/user", accept(MediaType.APPLICATION_JSON), userCommandEndpointHandler::registerUser)
+                .PUT("/api/v1/user/profile", accept(MediaType.APPLICATION_JSON), userCommandEndpointHandler::updateUserProfile)
                 .build();
     }
 }

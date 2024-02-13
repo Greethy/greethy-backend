@@ -2,7 +2,10 @@ package com.greethy.user.api.rest.controller;
 
 import com.greethy.annotation.reactive.Handler;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
+import com.greethy.user.api.rest.dto.request.UpdateUserProfileRequest;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
+import com.greethy.user.core.port.in.command.UpdateUserProfileCommand;
+import com.greethy.user.infrastructure.constant.MessageConstant;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.modelmapper.ModelMapper;
@@ -33,7 +36,18 @@ public class UserCommandEndpointHandler {
                     commandGateway.send(command);
                     return ServerResponse.status(HttpStatus.CREATED)
                             .contentType(MediaType.APPLICATION_JSON)
-                            .body(Mono.just("User registered successfully!"), String.class);
+                            .body(Mono.just(MessageConstant.SUCCESS_USER_REGISTERED_MSG), String.class);
+                });
+    }
+
+    public Mono<ServerResponse> updateUserProfile(ServerRequest serverRequest) {
+        return serverRequest.bodyToMono(UpdateUserProfileRequest.class)
+                .map(request -> mapper.map(request, UpdateUserProfileCommand.class))
+                .flatMap(command -> {
+                    commandGateway.send(command);
+                    return ServerResponse.status(HttpStatus.OK)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .body(Mono.just(MessageConstant.SUCCESS_USER_PROFILE_UPDATED_MSG), String.class);
                 });
     }
 

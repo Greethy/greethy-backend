@@ -31,9 +31,6 @@ public class Profile {
 
     private List<Contact> contact;
 
-    @Field(name = "created_date")
-    private LocalDate createdDate;
-
     @Field(name = "updated_date")
     private LocalDate updatedDate;
 
