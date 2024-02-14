@@ -1,14 +1,6 @@
 spring:
   application:
     name: user-services
-  data:
-    mongodb:
-      database: GreethyDB
-      host: localhost
-      port: 27017
-      username: root
-      password: 123456
-      authentication-database: admin
 server:
   port: 8085
 

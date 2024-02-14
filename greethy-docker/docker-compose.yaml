@@ -19,7 +19,7 @@ services:
     ports:
       - '8024:8024'
       - '8124:8124'
-      - '8224:8224'
+
   #MONGO_DB
   mongodb:
     image: mongo:latest

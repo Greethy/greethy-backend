@@ -42,6 +42,7 @@ public class UserAggregate {
 
     @CommandHandler
     public UserAggregate(RegisterUserCommand command) {
+
         var event = UserRegisteredEvent.builder()
                 .userId(command.getUserId())
                 .username(command.getUsername())

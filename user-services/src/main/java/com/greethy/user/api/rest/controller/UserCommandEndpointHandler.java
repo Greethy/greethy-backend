@@ -32,12 +32,10 @@ public class UserCommandEndpointHandler {
                     command.setUserId(UUID.randomUUID().toString());
                     return command;
                 })
-                .flatMap(command -> {
-                    commandGateway.send(command);
-                    return ServerResponse.status(HttpStatus.CREATED)
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .body(Mono.just(MessageConstant.SUCCESS_USER_REGISTERED_MSG), String.class);
-                });
+                .doOnNext(commandGateway::send)
+                .flatMap(command -> ServerResponse.status(HttpStatus.CREATED)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(Mono.just(MessageConstant.SUCCESS_USER_REGISTERED_MSG), String.class));
     }
 
     public Mono<ServerResponse> updateUserProfile(ServerRequest serverRequest) {
