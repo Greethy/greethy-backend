@@ -19,6 +19,8 @@ services:
     ports:
       - '8024:8024'
       - '8124:8124'
+    environment:
+      - AXONIQ_AXONSERVER_DEVMODE_ENABLED=true
 
   #MONGO_DB
   mongodb:

@@ -1,19 +1,19 @@
 package com.greethy.user.core.domain.aggregate;
 
 import com.greethy.user.core.event.UserProfileUpdatedEvent;
-import com.greethy.user.core.port.in.command.UpdateUserProfileCommand;
-import com.greethy.user.infrastructure.entity.Profile;
 import com.greethy.user.core.event.UserRegisteredEvent;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
+import com.greethy.user.core.port.in.command.UpdateUserProfileCommand;
+import com.greethy.user.infrastructure.entity.Profile;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
-import org.axonframework.spring.stereotype.Aggregate;
 import org.axonframework.modelling.command.AggregateLifecycle;
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import org.axonframework.spring.stereotype.Aggregate;
 
 /**
  *
@@ -52,6 +52,12 @@ public class UserAggregate {
         AggregateLifecycle.apply(event);
     }
 
+    @EventSourcingHandler
+    public void on(UserProfileUpdatedEvent event){
+        this.id = event.getUserId();
+        this.profile = event.getProfile();
+    }
+
     @CommandHandler
     public void handle(UpdateUserProfileCommand command) {
         var event = UserProfileUpdatedEvent.builder()
@@ -59,12 +65,6 @@ public class UserAggregate {
                 .profile(command.getProfile())
                 .build();
         AggregateLifecycle.apply(event);
-    }
-
-    @EventSourcingHandler
-    public void on(UserProfileUpdatedEvent event){
-        this.id = event.getUserId();
-        this.profile = event.getProfile();
     }
 
     @EventSourcingHandler

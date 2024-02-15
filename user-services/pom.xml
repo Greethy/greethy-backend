@@ -77,7 +77,7 @@
         </dependency>
         <dependency>
             <groupId>org.axonframework.extensions.reactor</groupId>
-            <artifactId>axon-reactor</artifactId>
+            <artifactId>axon-reactor-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.axonframework</groupId>

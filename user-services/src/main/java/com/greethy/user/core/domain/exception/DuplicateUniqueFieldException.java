@@ -1,13 +1,9 @@
 package com.greethy.user.core.domain.exception;
 
-import com.greethy.core.exception.BaseException;
-import lombok.Getter;
+public class DuplicateUniqueFieldException extends UserException {
 
-@Getter
-public class DuplicateUniqueFieldException extends BaseException {
-
-    public DuplicateUniqueFieldException(String message) {
-        super(message);
+    public DuplicateUniqueFieldException() {
+        super("Username or email already used !");
     }
 
 }

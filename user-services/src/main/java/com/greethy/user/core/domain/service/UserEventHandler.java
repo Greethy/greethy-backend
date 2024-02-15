@@ -1,8 +1,6 @@
-package com.greethy.user.core.service;
+package com.greethy.user.core.domain.service;
 
-import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import com.greethy.user.core.event.UserRegisteredEvent;
-import com.greethy.user.core.port.out.CheckIfExistsUserPort;
 import com.greethy.user.core.port.out.CreateUserPort;
 import com.greethy.user.infrastructure.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -28,28 +26,16 @@ public class UserEventHandler {
 
     private final PasswordEncoder passwordEncoder;
 
-    @Qualifier("mongodb-check-adapter")
-    private final CheckIfExistsUserPort checkIfExistsUserPort;
-
-
     @EventHandler
     public void on(UserRegisteredEvent event) {
-        checkIfExistsUserPort.existsByUsernameOrEmail(event.getUsername(), event.getEmail())
-                .flatMap(isExisted -> {
-                    if (isExisted) {
-                        var error = new DuplicateUniqueFieldException("");
-                        return Mono.error(error);
-                    }
-                    var user = mapper.map(event, User.class);
-                    return Mono.just(user);
-                })
+        Mono.just(event)
+                .map(userRegisteredEvent -> mapper.map(userRegisteredEvent, User.class))
                 .doOnNext(user -> {
                     String hashedPassword = passwordEncoder.encode(user.getPassword());
                     user.setPassword(hashedPassword);
                 })
                 .flatMap(createUserPort::create)
-
-                .subscribe(user -> log.info("User" + user.getId() + "has been created"));
+                .subscribe(user -> log.info("User " + user.getId() + " has been created"));
     }
 
 }
