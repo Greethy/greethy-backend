@@ -42,7 +42,6 @@ public class UserAggregate {
 
     @CommandHandler
     public UserAggregate(RegisterUserCommand command) {
-
         var event = UserRegisteredEvent.builder()
                 .userId(command.getUserId())
                 .username(command.getUsername())
@@ -53,9 +52,11 @@ public class UserAggregate {
     }
 
     @EventSourcingHandler
-    public void on(UserProfileUpdatedEvent event){
+    public void on(UserRegisteredEvent event) {
         this.id = event.getUserId();
-        this.profile = event.getProfile();
+        this.username = event.getUsername();
+        this.email = event.getEmail();
+        this.password = event.getPassword();
     }
 
     @CommandHandler
@@ -68,11 +69,10 @@ public class UserAggregate {
     }
 
     @EventSourcingHandler
-    public void on(UserRegisteredEvent event) {
+    public void on(UserProfileUpdatedEvent event){
         this.id = event.getUserId();
-        this.username = event.getUsername();
-        this.email = event.getEmail();
-        this.password = event.getPassword();
+        this.profile = event.getProfile();
     }
+
 
 }

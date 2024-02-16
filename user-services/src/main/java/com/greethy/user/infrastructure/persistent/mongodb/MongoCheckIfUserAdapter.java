@@ -17,7 +17,7 @@ public class MongoCheckIfUserAdapter implements CheckIfExistsUserPort {
     }
 
     @Override
-    public Mono<Boolean> existsByUsernameOrEmail(String username, String email) {
-        return userRepository.existsByUsernameOrEmail(username, email);
+    public Boolean existsByUsernameOrEmail(String username, String email) {
+        return userRepository.existsByUsernameOrEmail(username, email).block();
     }
 }

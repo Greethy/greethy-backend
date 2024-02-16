@@ -1,18 +1,16 @@
-package com.greethy.user.api.rest.dto.response;
+package com.greethy.user.api.rest.dto;
 
 import com.greethy.user.infrastructure.entity.Network;
 import com.greethy.user.infrastructure.entity.Profile;
 import com.greethy.user.infrastructure.entity.Role;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Getter
+@Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class FindAllUserResponse {
+public class UserDto {
 
     private String id;
 

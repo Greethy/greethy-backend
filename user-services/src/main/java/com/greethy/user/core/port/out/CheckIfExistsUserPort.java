@@ -6,6 +6,6 @@ public interface CheckIfExistsUserPort {
 
     Mono<Boolean> existsById(String id);
 
-    Mono<Boolean> existsByUsernameOrEmail(String username, String email);
+    Boolean existsByUsernameOrEmail(String username, String email);
 
 }

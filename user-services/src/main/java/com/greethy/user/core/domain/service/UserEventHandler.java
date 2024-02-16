@@ -2,6 +2,7 @@ package com.greethy.user.core.domain.service;
 
 import com.greethy.user.core.event.UserRegisteredEvent;
 import com.greethy.user.core.port.out.CreateUserPort;
+import com.greethy.user.infrastructure.entity.Role;
 import com.greethy.user.infrastructure.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+
+import java.util.Collections;
 
 @Slf4j
 @Service
@@ -33,6 +36,7 @@ public class UserEventHandler {
                 .doOnNext(user -> {
                     String hashedPassword = passwordEncoder.encode(user.getPassword());
                     user.setPassword(hashedPassword);
+                    user.setRoles(Collections.singletonList(Role.ROLE_USER));
                 })
                 .flatMap(createUserPort::create)
                 .subscribe(user -> log.info("User " + user.getId() + " has been created"));
