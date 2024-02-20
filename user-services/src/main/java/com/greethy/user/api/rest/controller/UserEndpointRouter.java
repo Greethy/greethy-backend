@@ -8,6 +8,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+import static org.springframework.web.reactive.function.server.RequestPredicates.queryParam;
 
 @Configuration
 public class UserEndpointRouter {
@@ -21,8 +22,11 @@ public class UserEndpointRouter {
                         userCommandEndpointHandler::registerUser)
                 .GET("api/v1/user",
                         request -> userQueriesEndpointHandler.findAllUser())
+                .GET("api/v1/user/page",
+                        queryParam("page", t -> true),
+                        userQueriesEndpointHandler::findAllUserWithPageable)
                 .GET("/api/v1/user",
-                        accept(MediaType.APPLICATION_JSON).and(accept(MediaType.MULTIPART_FORM_DATA)),
+                        accept(MediaType.APPLICATION_JSON),
                         userQueriesEndpointHandler::findUserByUsername)
                 .PUT("/api/v1/user/profile",
                         accept(MediaType.APPLICATION_JSON),

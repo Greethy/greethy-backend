@@ -3,6 +3,7 @@ package com.greethy.user.core.domain.service;
 import com.greethy.user.api.rest.dto.UserDto;
 import com.greethy.user.api.rest.dto.response.UserLookupResponse;
 import com.greethy.user.core.port.in.query.FindAllUserQuery;
+import com.greethy.user.core.port.in.query.GetAllUserWithPageableQuery;
 import com.greethy.user.core.port.out.FindUserPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,10 +26,17 @@ public class UserQueryHandler {
     public UserLookupResponse findAllUser(FindAllUserQuery query) {
         List<UserDto> userDtos = findUserPort.findAll()
                 .map(user -> mapper.map(user, UserDto.class))
-                .collectList().block();
+                .collectList()
+                .block();
         return UserLookupResponse.builder()
                 .users(userDtos)
                 .build();
+    }
+
+    @QueryHandler
+    public UserLookupResponse getAllUserWithPageable(GetAllUserWithPageableQuery query) {
+
+        return null;
     }
 
 }

@@ -15,4 +15,5 @@ public class AxonConfig {
         commandBus.registerHandlerInterceptor(exceptionWrappingHandlerInterceptor);
     }
 
+
 }

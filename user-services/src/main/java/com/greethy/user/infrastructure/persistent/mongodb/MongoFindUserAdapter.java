@@ -4,6 +4,7 @@ import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.user.core.port.out.FindUserPort;
 import com.greethy.user.infrastructure.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -21,5 +22,10 @@ public class MongoFindUserAdapter implements FindUserPort {
     @Override
     public Flux<User> findAll() {
         return userMongoRepository.findAll();
+    }
+
+    @Override
+    public Flux<User> findAll(Pageable pageable) {
+        return userMongoRepository.findAllBy(pageable);
     }
 }
