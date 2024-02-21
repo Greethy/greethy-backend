@@ -1,4 +1,4 @@
-package com.greethy.core.exception;
+package com.greethy.core.domain.exception;
 
 import lombok.Getter;
 

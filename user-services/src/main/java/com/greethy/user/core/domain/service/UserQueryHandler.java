@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.queryhandling.QueryHandler;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,8 +37,14 @@ public class UserQueryHandler {
 
     @QueryHandler
     public UserLookupResponse getAllUserWithPageable(GetAllUserWithPageableQuery query) {
-
-        return null;
+        Pageable pageable = PageRequest.of(query.getPage(), query.getSize());
+        List<UserDto> users = findUserPort.findAll(pageable)
+                .map(user -> mapper.map(user, UserDto.class))
+                .collectList()
+                .block();
+        return UserLookupResponse.builder()
+                .users(users)
+                .build();
     }
 
 }

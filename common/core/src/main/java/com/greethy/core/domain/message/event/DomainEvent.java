@@ -1,4 +1,4 @@
-package com.greethy.core.message.event;
+package com.greethy.core.domain.message.event;
 
 import lombok.Builder;
 import lombok.Data;

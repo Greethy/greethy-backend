@@ -7,8 +7,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
-import static org.springframework.web.reactive.function.server.RequestPredicates.queryParam;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
 public class UserEndpointRouter {
@@ -20,10 +19,11 @@ public class UserEndpointRouter {
                 .POST("/api/v1/user",
                         accept(MediaType.APPLICATION_JSON),
                         userCommandEndpointHandler::registerUser)
-                .GET("api/v1/user",
+                .GET("api/v1/user/",
+                        contentType(MediaType.ALL),
                         request -> userQueriesEndpointHandler.findAllUser())
-                .GET("api/v1/user/page",
-                        queryParam("page", t -> true),
+                .GET("api/v1/user",
+                        queryParam("page", t -> true).and(queryParam("size", t -> true)),
                         userQueriesEndpointHandler::findAllUserWithPageable)
                 .GET("/api/v1/user",
                         accept(MediaType.APPLICATION_JSON),
@@ -33,4 +33,5 @@ public class UserEndpointRouter {
                         userCommandEndpointHandler::updateUserProfile)
                 .build();
     }
+
 }

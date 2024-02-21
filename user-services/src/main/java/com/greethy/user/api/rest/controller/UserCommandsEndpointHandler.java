@@ -3,12 +3,13 @@ package com.greethy.user.api.rest.controller;
 import com.greethy.annotation.reactive.Handler;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserProfileRequest;
-import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
+import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserProfileCommand;
-import com.greethy.user.core.port.out.CheckIfExistsUserPort;
 import com.greethy.user.infrastructure.constant.MessageConstant;
+
 import lombok.RequiredArgsConstructor;
+
 import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -25,18 +26,10 @@ public class UserCommandsEndpointHandler {
 
     private final ModelMapper mapper;
 
-    private final CheckIfExistsUserPort checkIfExistsUserPort;
-
     private final ReactorCommandGateway reactorCommandGateway;
 
     public Mono<ServerResponse> registerUser(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(RegisterUserRequest.class)
-                .doOnNext(request -> {
-                    Boolean isExisted = checkIfExistsUserPort.existsByUsernameOrEmail(request.getUsername(), request.getEmail());
-                    if(Boolean.TRUE.equals(isExisted)) {
-                        throw new DuplicateUniqueFieldException();
-                    }
-                })
                 .map(request -> mapper.map(request, RegisterUserCommand.class))
                 .doOnNext(command -> command.setUserId(UUID.randomUUID().toString()))
                 .flatMap(command -> reactorCommandGateway.send(command)
@@ -53,6 +46,15 @@ public class UserCommandsEndpointHandler {
                         .flatMap(it -> ServerResponse.status(HttpStatus.OK)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(Mono.just(MessageConstant.SUCCESS_USER_PROFILE_UPDATED_MSG), String.class))
+                );
+    }
+
+    public Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
+        String userId = serverRequest.pathVariable("id");
+        return Mono.just(userId)
+                .map(id -> DeleteUserCommand.builder().userId(id).build())
+                .flatMap(command -> reactorCommandGateway.send(command)
+                        .flatMap(it -> ServerResponse.status(HttpStatus.OK).bodyValue("Delete User successfully"))
                 );
     }
 

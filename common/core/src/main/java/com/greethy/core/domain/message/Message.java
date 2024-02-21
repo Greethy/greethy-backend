@@ -1,9 +1,7 @@
-package com.greethy.core.message.event;
+package com.greethy.core.domain.message;
 
-import com.greethy.core.message.Message;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -16,9 +14,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public abstract class BaseEvent extends Message {
+public abstract class Message {
 
-    private int version;
+    private String id;
 
 }

@@ -22,6 +22,10 @@ public class UserQueriesEndpointHandler {
 
     private final ModelMapper mapper;
 
+    private final String DEFAULT_PAGE_VALUE = "0";
+
+    private final String DEFAULT_SIZE_VALUE = "10";
+
     private final ReactorQueryGateway queryGateway;
 
     public Mono<ServerResponse> findAllUser() {
@@ -35,30 +39,24 @@ public class UserQueriesEndpointHandler {
     public Mono<ServerResponse> findAllUserWithPageable(ServerRequest serverRequest) {
         Integer page = serverRequest.queryParam("page")
                 .filter(pageValue -> !pageValue.isEmpty())
-                .or(() -> Optional.of("0"))
-                .map(Integer::valueOf)
-                .get();
+                .or(() -> Optional.of(DEFAULT_PAGE_VALUE))
+                .map(Integer::valueOf).get();
         Integer size = serverRequest.queryParam("size")
                 .filter(sizeValue -> !sizeValue.isEmpty())
-                .or(() -> Optional.of("10"))
-                .map(Integer::valueOf)
-                .get();
-        System.out.println(page);
+                .or(() -> Optional.of(DEFAULT_SIZE_VALUE))
+                .map(Integer::valueOf).get();
         var query = GetAllUserWithPageableQuery.builder()
-                .page(page)
-                .size(size)
-                .sort("userId")
+                .page(page).size(size).sort("userId")
                 .build();
         return queryGateway.query(query, ResponseTypes.instanceOf(UserLookupResponse.class))
                 .switchIfEmpty(Mono.just(UserLookupResponse.builder().build()))
-                .doOnNext(System.out::println)
                 .flatMap(this::handleQueryResponse);
     }
 
     private Mono<ServerResponse> handleQueryResponse(UserLookupResponse response) {
         if (response.getUsers().isEmpty()) {
             return ServerResponse.status(HttpStatus.NO_CONTENT)
-                    .body("No user found", String.class);
+                    .bodyValue("No user found");
         }
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)

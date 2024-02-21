@@ -1,6 +1,6 @@
-package com.greethy.core.message.query;
+package com.greethy.core.domain.message.query;
 
-import com.greethy.core.message.Message;
+import com.greethy.core.domain.message.Message;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
