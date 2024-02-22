@@ -5,6 +5,8 @@ import com.greethy.user.core.event.UserRegisteredEvent;
 import com.greethy.user.core.event.VerificationEmailSentEvent;
 import com.greethy.user.core.port.out.CreateUserPort;
 import com.greethy.user.core.port.out.DeleteUserPort;
+import com.greethy.user.infrastructure.entity.Network;
+import com.greethy.user.infrastructure.entity.Profile;
 import com.greethy.user.infrastructure.entity.Role;
 import com.greethy.user.infrastructure.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -41,10 +43,14 @@ public class UserEventHandler {
                 .doOnNext(user -> {
                     String hashedPassword = passwordEncoder.encode(user.getPassword());
                     user.setPassword(hashedPassword);
+                })
+                .doOnNext(user -> {
+                    user.setProfile(new Profile());
+                    user.setNetwork(new Network());
                     user.setRoles(Collections.singletonList(Role.ROLE_USER));
                 })
                 .flatMap(createUserPort::create)
-                .subscribe(user -> log.info("User " + user.getId() + " has been created"));
+                .subscribe(user -> log.info("User " + user + " has been created"));
     }
 
     @EventHandler
@@ -54,7 +60,10 @@ public class UserEventHandler {
 
     @EventHandler
     public void on(UserDeletedEvent event) {
-
+        Mono.just(event)
+                .map(UserDeletedEvent::getUserId)
+                .flatMap(deleteUserPort::deleteById)
+                .subscribe();
     }
 
 }

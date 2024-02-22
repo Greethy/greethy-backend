@@ -3,7 +3,6 @@ package com.greethy.user.infrastructure.entity;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -27,13 +26,12 @@ public class User {
     @Indexed(unique = true)
     private String email;
 
-    private Boolean verified;
+    private Boolean verified = Boolean.FALSE;
 
     private String password;
 
     private Profile profile;
 
-    @DBRef
     private Network network;
 
     private List<Role> roles;

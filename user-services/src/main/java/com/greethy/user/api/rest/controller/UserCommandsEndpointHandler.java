@@ -35,7 +35,8 @@ public class UserCommandsEndpointHandler {
                 .flatMap(command -> reactorCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .body(Mono.just(MessageConstant.SUCCESS_USER_REGISTERED_MSG), String.class))
+                                .body(Mono.just(MessageConstant.SUCCESS_USER_REGISTERED_MSG), String.class)
+                        )
                 );
     }
 
@@ -45,16 +46,19 @@ public class UserCommandsEndpointHandler {
                 .flatMap(command -> reactorCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.OK)
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .body(Mono.just(MessageConstant.SUCCESS_USER_PROFILE_UPDATED_MSG), String.class))
+                                .body(Mono.just(MessageConstant.SUCCESS_USER_PROFILE_UPDATED_MSG), String.class)
+                        )
                 );
     }
 
     public Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
-        String userId = serverRequest.pathVariable("id");
-        return Mono.just(userId)
-                .map(id -> DeleteUserCommand.builder().userId(id).build())
+        String id = serverRequest.pathVariable("id");
+        return Mono.just(id)
+                .map(userId -> DeleteUserCommand.builder().userId(userId).build())
                 .flatMap(command -> reactorCommandGateway.send(command)
-                        .flatMap(it -> ServerResponse.status(HttpStatus.OK).bodyValue("Delete User successfully"))
+                        .flatMap(it -> ServerResponse.status(HttpStatus.NO_CONTENT)
+                                .body(Mono.just("Delete User successfully"), String.class)
+                        )
                 );
     }
 

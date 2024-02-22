@@ -55,8 +55,8 @@ public class UserAggregate {
                 .email(command.getEmail())
                 .password(command.getPassword())
                 .build();
-        AggregateLifecycle.apply(event)
-                .andThenApplyIf(this::getVerified, VerificationEmailSentEvent::new);
+        AggregateLifecycle.apply(event);
+                //.andThenApplyIf(this::getVerified, VerificationEmailSentEvent::new);
     }
 
     @EventSourcingHandler
@@ -94,7 +94,7 @@ public class UserAggregate {
     @CommandHandler
     public void handle(DeleteUserCommand command,
                        CheckIfExistsUserPort checkIfExistsUserPort) {
-        if(checkIfExistsUserPort.existsById(command.getUserId())) {
+        if(!checkIfExistsUserPort.existsById(command.getUserId())) {
             throw new IllegalArgumentException();
         }
         var event = UserDeletedEvent.builder()

@@ -28,9 +28,12 @@ public class UserEndpointRouter {
                 .GET("/api/v1/user",
                         accept(MediaType.APPLICATION_JSON),
                         userQueriesEndpointHandler::findUserByUsername)
-                .PUT("/api/v1/user/profile",
+                .PUT("/api/v1/user/{id}/profile",
                         accept(MediaType.APPLICATION_JSON),
                         userCommandEndpointHandler::updateUserProfile)
+                .DELETE("/api/v1/user/{id}",
+                        accept(MediaType.TEXT_PLAIN),
+                        userCommandEndpointHandler::deleteUserPermanently)
                 .build();
     }
 
