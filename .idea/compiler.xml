@@ -15,6 +15,7 @@
         <module name="config" />
         <module name="user" />
         <module name="gateway" />
+        <module name="finance" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -38,6 +39,7 @@
       <module name="config" options="-parameters" />
       <module name="core" options="-parameters" />
       <module name="discovery" options="-parameters" />
+      <module name="finance" options="-parameters" />
       <module name="financial" options="" />
       <module name="gateway" options="-parameters" />
       <module name="greethy" options="-parameters" />
