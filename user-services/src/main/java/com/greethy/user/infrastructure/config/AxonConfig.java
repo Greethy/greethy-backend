@@ -4,16 +4,13 @@ import com.greethy.user.core.domain.exception.ExceptionWrappingHandlerIntercepto
 import org.axonframework.commandhandling.CommandBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
-@Profile("command")
 @Configuration
 public class AxonConfig {
 
     @Autowired
-    void commandBus(CommandBus commandBus, ExceptionWrappingHandlerInterceptor exceptionWrappingHandlerInterceptor) {
-        commandBus.registerHandlerInterceptor(exceptionWrappingHandlerInterceptor);
+    void commandBus(CommandBus commandBus) {
+        commandBus.registerHandlerInterceptor(new ExceptionWrappingHandlerInterceptor());
     }
-
 
 }

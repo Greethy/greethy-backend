@@ -1,8 +1,6 @@
 package com.greethy.user.infrastructure.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
@@ -13,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Profile {
 
-    private String avatar;
+    private Avatar avatar;
 
     private String background;
 
@@ -34,4 +32,16 @@ public class Profile {
     @Field(name = "updated_date")
     private LocalDate updatedDate;
 
+    @Data
+    static class Avatar {
+
+        String url;
+
+        final Integer width = 300;
+
+        final Integer height = 300;
+
+    }
+
 }
+

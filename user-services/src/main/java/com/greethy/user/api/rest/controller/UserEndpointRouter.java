@@ -31,7 +31,7 @@ public class UserEndpointRouter {
                 .PUT("/api/v1/user/{id}/profile",
                         accept(MediaType.APPLICATION_JSON),
                         userCommandEndpointHandler::updateUserProfile)
-                .DELETE("/api/v1/user/{id}",
+                .DELETE("/api/v1/user/{user_id}",
                         accept(MediaType.TEXT_PLAIN),
                         userCommandEndpointHandler::deleteUserPermanently)
                 .build();

@@ -1,4 +1,4 @@
-package com.greethy.gateway.config;
+package com.greethy.gateway.config.route;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -28,7 +28,7 @@ public class RouteConfig {
         return builder.routes()
                 .route("personal-services-route",
                         predicate -> predicate.path("/api/v*/user/**")
-                                .uri("lb://personal-services"))
+                                .uri("lb://user-services"))
                 .build();
     }
 

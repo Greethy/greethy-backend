@@ -11,7 +11,6 @@ public class MongoDeleteUserAdapter implements DeleteUserPort {
 
     private final UserMongoRepository userRepository;
 
-
     @Override
     public Mono<Void> deleteById(String id) {
         return userRepository.deleteById(id);

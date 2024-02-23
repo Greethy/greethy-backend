@@ -52,7 +52,7 @@ public class UserCommandsEndpointHandler {
     }
 
     public Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
-        String id = serverRequest.pathVariable("id");
+        String id = serverRequest.pathVariable("user_id");
         return Mono.just(id)
                 .map(userId -> DeleteUserCommand.builder().userId(userId).build())
                 .flatMap(command -> reactorCommandGateway.send(command)

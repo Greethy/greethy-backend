@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  #AXON SERVER
+  #AXON_SERVER
   axonserver:
     image: axoniq/axonserver
     hostname: greethy-axonserver
@@ -22,7 +22,7 @@ services:
     environment:
       - AXONIQ_AXONSERVER_DEVMODE_ENABLED=true
 
-  #MONGO_DB
+  #DATASOURCE_MONGODB
   mongodb:
     image: mongo:latest
     container_name: greethy-mongodb
@@ -33,6 +33,22 @@ services:
     environment:
       MONGODB_INITDB_ROOT_USERNAME: root
       MONGODB_INITDB_ROOT_PASSWORD: 123456
+
+  #AUTHSERVER_KEYCLOAK
+  keycloak:
+    image: quay.io/keycloak/keycloak
+    container_name: greethy-keycloak
+    ports:
+      - "8080:8080"
+    command:
+      - start-dev
+      - --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - /home/keycloak/realm.json:/opt/keycloak/data/import/realm.json
+
 
 volumes:
   axonserver-data:

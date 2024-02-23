@@ -1,1 +1,10 @@
-
+spring:
+  application:
+    name: finance-services
+  data:
+    mongodb:
+      database: GreethyDB
+      host: localhost
+      port: 27017
+  config:
+    import: optional:configserver:http://localhost:8888
