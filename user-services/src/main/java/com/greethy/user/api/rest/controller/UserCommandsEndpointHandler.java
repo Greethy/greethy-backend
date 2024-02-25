@@ -6,7 +6,7 @@ import com.greethy.user.api.rest.dto.request.UpdateUserProfileRequest;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserProfileCommand;
-import com.greethy.user.infrastructure.constant.MessageConstant;
+import com.greethy.user.infra.constant.MessageConstant;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,6 +1,6 @@
-package com.greethy.user.infrastructure.persistent.mongodb;
+package com.greethy.user.infra.persistent.mongodb;
 
-import com.greethy.user.infrastructure.entity.User;
+import com.greethy.user.core.domain.entity.User;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;

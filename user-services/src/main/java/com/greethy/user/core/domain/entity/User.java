@@ -1,10 +1,12 @@
-package com.greethy.user.infrastructure.entity;
+package com.greethy.user.core.domain.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -35,5 +37,11 @@ public class User {
     private Network network;
 
     private List<Role> roles;
+
+    @Field(name = "created_date")
+    private LocalDateTime createdDate;
+
+    @Field(name = "updated_date")
+    private LocalDateTime updatedDate;
 
 }

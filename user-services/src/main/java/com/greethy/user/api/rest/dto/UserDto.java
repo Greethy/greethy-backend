@@ -1,8 +1,8 @@
 package com.greethy.user.api.rest.dto;
 
-import com.greethy.user.infrastructure.entity.Network;
-import com.greethy.user.infrastructure.entity.Profile;
-import com.greethy.user.infrastructure.entity.Role;
+import com.greethy.user.core.domain.entity.Network;
+import com.greethy.user.core.domain.entity.Profile;
+import com.greethy.user.core.domain.entity.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

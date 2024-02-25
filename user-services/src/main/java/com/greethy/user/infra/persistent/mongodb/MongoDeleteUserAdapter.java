@@ -1,4 +1,4 @@
-package com.greethy.user.infrastructure.persistent.mongodb;
+package com.greethy.user.infra.persistent.mongodb;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.user.core.port.out.DeleteUserPort;

@@ -1,4 +1,4 @@
-package com.greethy.user.infrastructure.config;
+package com.greethy.user.infra.config;
 
 import com.greethy.user.core.domain.exception.ExceptionWrappingHandlerInterceptor;
 import org.axonframework.commandhandling.CommandBus;

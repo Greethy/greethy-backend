@@ -1,8 +1,8 @@
-package com.greethy.user.infrastructure.persistent.mongodb;
+package com.greethy.user.infra.persistent.mongodb;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.user.core.port.out.FindUserPort;
-import com.greethy.user.infrastructure.entity.User;
+import com.greethy.user.core.domain.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;

@@ -1,4 +1,4 @@
-package com.greethy.user.infrastructure.entity;
+package com.greethy.user.core.domain.entity;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -28,9 +28,6 @@ public class Profile {
     private String bio;
 
     private List<Contact> contact;
-
-    @Field(name = "updated_date")
-    private LocalDate updatedDate;
 
     @Data
     static class Avatar {

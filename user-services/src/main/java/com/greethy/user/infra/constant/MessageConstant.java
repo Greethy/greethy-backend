@@ -1,4 +1,4 @@
-package com.greethy.user.infrastructure.constant;
+package com.greethy.user.infra.constant;
 
 public class MessageConstant {
 

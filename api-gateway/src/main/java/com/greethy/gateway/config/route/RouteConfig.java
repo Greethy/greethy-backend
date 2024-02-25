@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * This class defines custom route's configuration for Gateway. Using Spring Cloud Gateway's RouteLocator
+ *  class {@link RouteConfig} custom route's configuration for Gateway. Using Spring Cloud Gateway's RouteLocator
  * to create routing rules for directing incoming requests from client's side to private Microservice which
  * handled the requests and return a response.
  *

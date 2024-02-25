@@ -1,4 +1,4 @@
-package com.greethy.user.infrastructure.entity;
+package com.greethy.user.core.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

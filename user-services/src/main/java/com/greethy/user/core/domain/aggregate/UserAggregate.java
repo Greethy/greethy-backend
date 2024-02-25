@@ -9,7 +9,7 @@ import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserProfileCommand;
 import com.greethy.user.core.port.out.CheckIfExistsUserPort;
-import com.greethy.user.infrastructure.entity.Profile;
+import com.greethy.user.core.domain.entity.Profile;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +19,8 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
+
+import java.time.LocalDateTime;
 
 /**
  *
@@ -43,6 +45,10 @@ public class UserAggregate {
 
     private Profile profile;
 
+    private LocalDateTime createdDate;
+
+    private LocalDateTime updatedDate;
+
     @CommandHandler
     public UserAggregate(RegisterUserCommand command,
                          CheckIfExistsUserPort checkIfExistsUserPort) {
@@ -55,8 +61,8 @@ public class UserAggregate {
                 .email(command.getEmail())
                 .password(command.getPassword())
                 .build();
-        AggregateLifecycle.apply(event);
-                //.andThenApplyIf(this::getVerified, VerificationEmailSentEvent::new);
+        AggregateLifecycle.apply(event)
+                .andThenApplyIf(() -> !this.verified, VerificationEmailSentEvent::new);
     }
 
     @EventSourcingHandler
@@ -65,6 +71,7 @@ public class UserAggregate {
         this.username = event.getUsername();
         this.email = event.getEmail();
         this.password = event.getPassword();
+        this.createdDate = LocalDateTime.now();
     }
 
     @EventSourcingHandler
@@ -89,6 +96,7 @@ public class UserAggregate {
     public void on(UserProfileUpdatedEvent event){
         this.id = event.getUserId();
         this.profile = event.getProfile();
+        this.updatedDate = LocalDateTime.now();
     }
 
     @CommandHandler
