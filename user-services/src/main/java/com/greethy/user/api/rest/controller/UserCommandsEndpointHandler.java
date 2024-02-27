@@ -5,7 +5,7 @@ import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserProfileRequest;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
-import com.greethy.user.core.port.in.command.UpdateUserProfileCommand;
+import com.greethy.user.core.port.in.command.UpdatePersonalDetailCommand;
 import com.greethy.user.infra.constant.MessageConstant;
 
 import lombok.RequiredArgsConstructor;
@@ -42,7 +42,7 @@ public class UserCommandsEndpointHandler {
 
     public Mono<ServerResponse> updateUserProfile(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(UpdateUserProfileRequest.class)
-                .map(request -> mapper.map(request, UpdateUserProfileCommand.class))
+                .map(request -> mapper.map(request, UpdatePersonalDetailCommand.class))
                 .flatMap(command -> reactorCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.OK)
                                 .contentType(MediaType.APPLICATION_JSON)

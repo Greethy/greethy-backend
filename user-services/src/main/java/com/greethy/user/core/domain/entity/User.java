@@ -28,11 +28,19 @@ public class User {
     @Indexed(unique = true)
     private String email;
 
-    private Boolean verified = Boolean.FALSE;
+    private Boolean verified;
 
     private String password;
 
-    private Profile profile;
+    private String avatar;
+
+    private String bannerImage;
+
+    private String bio;
+
+    private PersonalDetail personalDetail;
+
+    private Premium premium;
 
     private Network network;
 

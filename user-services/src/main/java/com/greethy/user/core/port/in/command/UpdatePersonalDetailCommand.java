@@ -1,6 +1,6 @@
 package com.greethy.user.core.port.in.command;
 
-import com.greethy.user.core.domain.entity.Profile;
+import com.greethy.user.core.domain.entity.PersonalDetail;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,11 +12,11 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateUserProfileCommand {
+public class UpdatePersonalDetailCommand {
 
     @TargetAggregateIdentifier
     private String userId;
 
-    private Profile profile;
+    private PersonalDetail personalDetail;
 
 }

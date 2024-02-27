@@ -1,7 +1,8 @@
 package com.greethy.user.api.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.greethy.user.core.domain.entity.Network;
-import com.greethy.user.core.domain.entity.Profile;
+import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,8 @@ public class UserDto {
 
     private String email;
 
-    private Profile profile;
+    @JsonProperty("personal_info")
+    private PersonalDetail profile;
 
     private Network network;
 

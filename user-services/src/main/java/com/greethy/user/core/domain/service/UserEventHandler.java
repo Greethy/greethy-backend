@@ -6,7 +6,7 @@ import com.greethy.user.core.event.VerificationEmailSentEvent;
 import com.greethy.user.core.port.out.CreateUserPort;
 import com.greethy.user.core.port.out.DeleteUserPort;
 import com.greethy.user.core.domain.entity.Network;
-import com.greethy.user.core.domain.entity.Profile;
+import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Role;
 import com.greethy.user.core.domain.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -45,7 +45,7 @@ public class UserEventHandler {
                     user.setPassword(hashedPassword);
                 })
                 .doOnNext(user -> {
-                    user.setProfile(new Profile());
+                    user.setPersonalDetail(new PersonalDetail());
                     user.setNetwork(new Network());
                     user.setRoles(Collections.singletonList(Role.ROLE_USER));
                 })

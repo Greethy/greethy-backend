@@ -14,5 +14,4 @@ public class UpdateUserProfileRequest {
     private String userId;
 
 
-
 }

@@ -1,5 +1,6 @@
 package com.greethy.user.core.domain.aggregate;
 
+import com.greethy.user.core.domain.entity.Premium;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import com.greethy.user.core.event.UserDeletedEvent;
 import com.greethy.user.core.event.UserProfileUpdatedEvent;
@@ -7,9 +8,9 @@ import com.greethy.user.core.event.UserRegisteredEvent;
 import com.greethy.user.core.event.VerificationEmailSentEvent;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
-import com.greethy.user.core.port.in.command.UpdateUserProfileCommand;
+import com.greethy.user.core.port.in.command.UpdatePersonalDetailCommand;
 import com.greethy.user.core.port.out.CheckIfExistsUserPort;
-import com.greethy.user.core.domain.entity.Profile;
+import com.greethy.user.core.domain.entity.PersonalDetail;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,7 +44,15 @@ public class UserAggregate {
 
     private String password;
 
-    private Profile profile;
+    private String avatar;
+
+    private String bannerImage;
+
+    private String bio;
+
+    private PersonalDetail personalDetail;
+
+    private Premium premium;
 
     private LocalDateTime createdDate;
 
@@ -80,14 +89,14 @@ public class UserAggregate {
     }
 
     @CommandHandler
-    public void handle(UpdateUserProfileCommand command,
+    public void handle(UpdatePersonalDetailCommand command,
                        CheckIfExistsUserPort checkIfExistsUserPort) {
         if(checkIfExistsUserPort.existsById(command.getUserId())) {
             throw new IllegalArgumentException();
         }
         var event = UserProfileUpdatedEvent.builder()
                 .userId(command.getUserId())
-                .profile(command.getProfile())
+                .profile(command.getPersonalDetail())
                 .build();
         AggregateLifecycle.apply(event);
     }
@@ -95,7 +104,7 @@ public class UserAggregate {
     @EventSourcingHandler
     public void on(UserProfileUpdatedEvent event){
         this.id = event.getUserId();
-        this.profile = event.getProfile();
+        this.personalDetail = event.getProfile();
         this.updatedDate = LocalDateTime.now();
     }
 
