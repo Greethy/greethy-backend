@@ -40,5 +40,39 @@ public class Profile {
 
     }
 
+    /**
+     * {@link Contact} class represents a contact entry, containing information such as label, icon, and contact details.
+     *
+     * @author ThanhKien
+     */
+    @Data
+    static class Contact {
+
+        private String label;
+
+        private String icon;
+
+        private String information;
+
+    }
+
+    /**
+     * {@link Address} class represents an address with country, city, district, and detail information.
+     *
+     * @author ThanhKien
+     */
+    @Data
+    static class Address {
+
+        private String country;
+
+        private String city;
+
+        private String district;
+
+        private String detail;
+
+    }
+
 }
 

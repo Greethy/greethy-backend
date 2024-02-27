@@ -1,4 +1,4 @@
-package com.greethy.gateway.config.route;
+package com.greethy.gateway.route;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gateway.route.RouteLocator;

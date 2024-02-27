@@ -17,4 +17,6 @@ public class Network {
 
     @Field(name = "total_followers")
     private Integer totalFollowers = 0;
+
+
 }

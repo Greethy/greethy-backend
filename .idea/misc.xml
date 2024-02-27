@@ -22,7 +22,6 @@
         <option value="$PROJECT_DIR$/auth-services/pom.xml" />
         <option value="$PROJECT_DIR$/financial-services/pom.xml" />
         <option value="$PROJECT_DIR$/infrastructure/pom.xml" />
-        <option value="$PROJECT_DIR$/nutrition-services/pom.xml" />
       </set>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
