@@ -2,10 +2,10 @@ package com.greethy.user.api.rest.controller;
 
 import com.greethy.annotation.reactive.Handler;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
-import com.greethy.user.api.rest.dto.request.UpdateUserProfileRequest;
+import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
-import com.greethy.user.core.port.in.command.UpdatePersonalDetailCommand;
+import com.greethy.user.core.port.in.command.UpdateUserCommand;
 import com.greethy.user.infra.constant.MessageConstant;
 
 import lombok.RequiredArgsConstructor;
@@ -40,21 +40,20 @@ public class UserCommandsEndpointHandler {
                 );
     }
 
-    public Mono<ServerResponse> updateUserProfile(ServerRequest serverRequest) {
-        return serverRequest.bodyToMono(UpdateUserProfileRequest.class)
-                .map(request -> mapper.map(request, UpdatePersonalDetailCommand.class))
+    public Mono<ServerResponse> updateUser(ServerRequest serverRequest) {
+        String userId = serverRequest.pathVariable("user_id");
+        return serverRequest.bodyToMono(UpdateUserRequest.class)
+                .map(request -> mapper.map(request, UpdateUserCommand.class))
+                .doOnNext(command -> command.setUserId(userId))
                 .flatMap(command -> reactorCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.OK)
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .body(Mono.just(MessageConstant.SUCCESS_USER_PROFILE_UPDATED_MSG), String.class)
-                        )
-                );
+                                .body(Mono.just(MessageConstant.SUCCESS_USER_PROFILE_UPDATED_MSG), String.class)));
     }
 
     public Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
-        String id = serverRequest.pathVariable("user_id");
-        return Mono.just(id)
-                .map(userId -> DeleteUserCommand.builder().userId(userId).build())
+        String userId = serverRequest.pathVariable("user_id");
+        return Mono.just(DeleteUserCommand.builder().userId(userId).build())
                 .flatMap(command -> reactorCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.NO_CONTENT)
                                 .body(Mono.just("Delete User successfully"), String.class)

@@ -1,14 +1,13 @@
 package com.greethy.user.core.domain.service;
 
-import com.greethy.user.core.event.UserDeletedEvent;
-import com.greethy.user.core.event.UserRegisteredEvent;
-import com.greethy.user.core.event.VerificationEmailSentEvent;
-import com.greethy.user.core.port.out.CreateUserPort;
+import com.greethy.user.core.event.*;
+import com.greethy.user.core.port.out.SaveUserPort;
 import com.greethy.user.core.port.out.DeleteUserPort;
 import com.greethy.user.core.domain.entity.Network;
 import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Role;
 import com.greethy.user.core.domain.entity.User;
+import com.greethy.user.core.port.out.FindUserPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
@@ -19,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 
 @Slf4j
@@ -30,7 +30,9 @@ public class UserEventHandler {
     private final ModelMapper mapper;
 
     @Qualifier("mongodb-create-adapter")
-    private final CreateUserPort createUserPort;
+    private final SaveUserPort saveUserPort;
+
+    private final FindUserPort findUserPort;
 
     private final DeleteUserPort deleteUserPort;
 
@@ -49,13 +51,27 @@ public class UserEventHandler {
                     user.setNetwork(new Network());
                     user.setRoles(Collections.singletonList(Role.ROLE_USER));
                 })
-                .flatMap(createUserPort::create)
+                .doOnNext(user -> user.setCreatedAt(LocalDateTime.now()))
+                .flatMap(saveUserPort::save)
                 .subscribe(user -> log.info("User " + user + " has been created"));
     }
 
     @EventHandler
     public void on(VerificationEmailSentEvent event) {
+    }
 
+    @EventHandler
+    public void on(UserUpdatedEvent event) {
+        findUserPort.findById(event.getUserId())
+                .doOnNext(user -> {
+                    user.setAvatar(event.getAvatar());
+                    user.setBannerImage(event.getBannerImage());
+                    user.setBio(event.getBio());
+                    user.setPersonalDetail(event.getPersonalDetail());
+                })
+                .doOnNext(user -> user.setUpdatedAt(LocalDateTime.now()))
+                .flatMap(saveUserPort::save)
+                .subscribe(user -> log.info("User: " + user + " updated successfully "));
     }
 
     @EventHandler

@@ -34,6 +34,7 @@ public class User {
 
     private String avatar;
 
+    @Field(name = "banner_image")
     private String bannerImage;
 
     private String bio;
@@ -47,9 +48,9 @@ public class User {
     private List<Role> roles;
 
     @Field(name = "created_date")
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
 
     @Field(name = "updated_date")
-    private LocalDateTime updatedDate;
+    private LocalDateTime updatedAt;
 
 }

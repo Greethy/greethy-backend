@@ -2,13 +2,10 @@ package com.greethy.user.core.domain.aggregate;
 
 import com.greethy.user.core.domain.entity.Premium;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
-import com.greethy.user.core.event.UserDeletedEvent;
-import com.greethy.user.core.event.UserProfileUpdatedEvent;
-import com.greethy.user.core.event.UserRegisteredEvent;
-import com.greethy.user.core.event.VerificationEmailSentEvent;
+import com.greethy.user.core.event.*;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
-import com.greethy.user.core.port.in.command.UpdatePersonalDetailCommand;
+import com.greethy.user.core.port.in.command.UpdateUserCommand;
 import com.greethy.user.core.port.out.CheckIfExistsUserPort;
 import com.greethy.user.core.domain.entity.PersonalDetail;
 
@@ -54,9 +51,9 @@ public class UserAggregate {
 
     private Premium premium;
 
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
 
-    private LocalDateTime updatedDate;
+    private LocalDateTime updatedAt;
 
     @CommandHandler
     public UserAggregate(RegisterUserCommand command,
@@ -80,7 +77,8 @@ public class UserAggregate {
         this.username = event.getUsername();
         this.email = event.getEmail();
         this.password = event.getPassword();
-        this.createdDate = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     @EventSourcingHandler
@@ -89,23 +87,29 @@ public class UserAggregate {
     }
 
     @CommandHandler
-    public void handle(UpdatePersonalDetailCommand command,
+    public void handle(UpdateUserCommand command,
                        CheckIfExistsUserPort checkIfExistsUserPort) {
-        if(checkIfExistsUserPort.existsById(command.getUserId())) {
+        if (!checkIfExistsUserPort.existsById(command.getUserId())) {
             throw new IllegalArgumentException();
         }
-        var event = UserProfileUpdatedEvent.builder()
+        var event = UserUpdatedEvent.builder()
                 .userId(command.getUserId())
-                .profile(command.getPersonalDetail())
+                .avatar(command.getAvatar())
+                .bannerImage(command.getBannerImage())
+                .bio(command.getBio())
+                .personalDetail(command.getPersonalDetail())
                 .build();
         AggregateLifecycle.apply(event);
     }
 
     @EventSourcingHandler
-    public void on(UserProfileUpdatedEvent event){
+    public void on(UserUpdatedEvent event) {
         this.id = event.getUserId();
-        this.personalDetail = event.getProfile();
-        this.updatedDate = LocalDateTime.now();
+        this.avatar = event.getAvatar();
+        this.bannerImage = event.getBannerImage();
+        this.bio = event.getBio();
+        this.personalDetail = event.getPersonalDetail();
+        this.updatedAt = LocalDateTime.now();
     }
 
     @CommandHandler

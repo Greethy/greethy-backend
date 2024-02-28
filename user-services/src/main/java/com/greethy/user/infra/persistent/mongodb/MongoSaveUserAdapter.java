@@ -8,12 +8,12 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @InfrastructureAdapter("mongodb-create-adapter")
-public class MongoCreateUserAdapter implements CreateUserPort {
+public class MongoSaveUserAdapter implements SaveUserPort {
 
     private final UserMongoRepository userRepository;
 
     @Override
-    public Mono<User> create(User user) {
+    public Mono<User> save(User user) {
         return userRepository.save(user);
     }
 

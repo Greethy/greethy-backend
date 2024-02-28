@@ -1,21 +1,23 @@
 package com.greethy.user.core.port.in.command;
 
 import com.greethy.user.core.domain.entity.PersonalDetail;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdatePersonalDetailCommand {
+public class UpdateUserCommand {
 
     @TargetAggregateIdentifier
     private String userId;
+
+    private String avatar;
+
+    private String bannerImage;
+
+    private String bio;
 
     private PersonalDetail personalDetail;
 

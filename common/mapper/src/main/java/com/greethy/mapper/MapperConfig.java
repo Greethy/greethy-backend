@@ -49,7 +49,7 @@ public class MapperConfig {
         mapper.addConverter(new AbstractConverter<String, LocalDate>() {
             @Override
             protected LocalDate convert(String source) {
-                return LocalDate.parse(source, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                return LocalDate.parse(source, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
         });
         mapper.getTypeMap(String.class, LocalDate.class)

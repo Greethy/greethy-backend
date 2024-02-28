@@ -1,9 +1,6 @@
 package com.greethy.user.core.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
@@ -22,18 +19,6 @@ public class PersonalDetail {
 
     private String website;
 
-    private Gender gender;
+    private Integer gender;
 
-    @Getter
-    @AllArgsConstructor
-    public enum Gender{
-
-        FEMALE(0, "FEMALE"),
-        MALE(1, "MALE"),
-        OTHER(2, "OTHER");
-
-        private final int type;
-        private final String name;
-    }
 }
-

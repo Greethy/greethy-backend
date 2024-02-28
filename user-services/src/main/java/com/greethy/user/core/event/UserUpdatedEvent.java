@@ -8,10 +8,16 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class UserProfileUpdatedEvent {
+public class UserUpdatedEvent {
 
     private String userId;
 
-    private PersonalDetail profile;
+    private String avatar;
+
+    private String bannerImage;
+
+    private String bio;
+
+    private PersonalDetail personalDetail;
 
 }
