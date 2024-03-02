@@ -24,6 +24,7 @@
 		<module>user-services</module>
 		<module>nutrition-services</module>
 		<module>finance-services</module>
+		<module>authorization-services</module>
 
 		<module>greethy-docker</module>
 		<module>common</module>
