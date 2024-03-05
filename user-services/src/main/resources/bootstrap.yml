@@ -8,3 +8,8 @@ spring:
       port: 27017
   config:
     import: optional:configserver:http://localhost:8888
+springdoc:
+  swagger-ui:
+    use-root-path: true
+  api-docs:
+    version: openapi_3_1
