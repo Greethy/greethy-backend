@@ -21,10 +21,10 @@ public class UserEndpointRouter {
                 .POST("/api/v1/user",
                         accept(MediaType.APPLICATION_JSON),
                         userCommandEndpointHandler::registerUser)
-                .GET("api/v1/user/",
+                .GET("/api/v1/user/",
                         contentType(MediaType.ALL),
                         request -> userQueriesEndpointHandler.findAllUser())
-                .GET("api/v1/user",
+                .GET("/api/v1/user",
                         queryParam("page", t -> true).and(queryParam("size", t -> true)),
                         userQueriesEndpointHandler::findAllUserWithPageable)
                 .GET("/api/v1/user",

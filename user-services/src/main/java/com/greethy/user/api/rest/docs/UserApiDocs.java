@@ -23,9 +23,9 @@ import java.lang.annotation.Target;
                 method = RequestMethod.POST,
                 path = "/api/v1/user",
                 operation = @Operation(
-                        description = "Register new user",
+                        description = "Register a new Greethy User using basic authenticating Username/Password with an Email to verify",
                         operationId = "registerUser",
-                        tags = "user",
+                        tags = "Users",
                         requestBody = @RequestBody(
                                 description = "User basic authenticate information",
                                 required = true,
@@ -36,11 +36,63 @@ import java.lang.annotation.Target;
                         ),
                         responses = {
                                 @ApiResponse(
+                                        responseCode = "201",
+                                        description = "A Greethy user has been registered successfully.",
+                                        content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+                                @ApiResponse(
+                                        responseCode = "400",
+                                        description = "username or email already in used."
+                                ),
+                                @ApiResponse(
+                                        responseCode = "401",
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user."
+                                ),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The Greethy Server exceeded its rate limits."
+                                )
+                        }
+                )
+        ),
+        @RouterOperation(
+                method = RequestMethod.PUT,
+                path = "/api/v1/user/{user_id}",
+                operation = @Operation(
+                        description = "Update user's public profile (Exclude username, password and email)",
+                        operationId = "updateUserById",
+                        tags = "Users",
+                        responses = {
+                                @ApiResponse(
                                         responseCode = "200",
-                                        description = "User registered successfully !",
-                                        content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)})
+                                        description = "A updated profile detail of user."
+                                ),
+                                @ApiResponse(
+                                        responseCode = "401",
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user."
+                                ),
+                                @ApiResponse(
+                                        responseCode = "403",
+                                        description = "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here."
+                                ),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The Greethy Server exceeded its rate limits."
+                                )
+                        }
+                )
+        ),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/user/{user_id}",
+                operation = @Operation(
+                        description = "Get public profile information about a Greethy user.",
+                        operationId = "GetUserById",
+                        tags = "Users",
+                        responses = {
+                                @ApiResponse()
                         }
                 )
         )
 })
-public @interface UserApiDocs {}
+public @interface UserApiDocs {
+}

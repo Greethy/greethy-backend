@@ -1,9 +1,12 @@
 package com.greethy.user.core.domain.exception;
 
-public class DuplicateUniqueFieldException extends UserException {
+import com.greethy.core.domain.exception.BaseException;
+import org.springframework.http.HttpStatus;
 
-    public DuplicateUniqueFieldException() {
-        super("Username or email already used !");
+public class DuplicateUniqueFieldException extends BaseException {
+
+    public DuplicateUniqueFieldException(HttpStatus status, String message) {
+        super(status, message);
     }
 
 }

@@ -1,22 +1,24 @@
 package com.greethy.user.core.domain.aggregate;
 
+import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Premium;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
-import com.greethy.user.core.event.*;
+import com.greethy.user.core.event.UserDeletedEvent;
+import com.greethy.user.core.event.UserRegisteredEvent;
+import com.greethy.user.core.event.UserUpdatedEvent;
+import com.greethy.user.core.event.VerificationEmailSentEvent;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
 import com.greethy.user.core.port.out.CheckIfExistsUserPort;
-import com.greethy.user.core.domain.entity.PersonalDetail;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
+import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
@@ -57,9 +59,9 @@ public class UserAggregate {
 
     @CommandHandler
     public UserAggregate(RegisterUserCommand command,
-                         CheckIfExistsUserPort checkIfExistsUserPort) {
+                         CheckIfExistsUserPort checkIfExistsUserPort) throws DuplicateUniqueFieldException {
         if(checkIfExistsUserPort.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
-            throw new DuplicateUniqueFieldException();
+            throw new DuplicateUniqueFieldException(HttpStatus.BAD_REQUEST, "Username or email already used !");
         }
         var event = UserRegisteredEvent.builder()
                 .userId(command.getUserId())
