@@ -1,6 +1,6 @@
 package com.greethy.user.infra.config;
 
-import com.greethy.user.api.error.ExceptionWrappingHandlerInterceptor;
+import com.greethy.user.api.error.interceptor.ExceptionWrappingHandlerInterceptor;
 import org.axonframework.commandhandling.CommandBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Configuration;
 public class AxonConfig {
 
     @Autowired
-    public void commandBus(CommandBus commandBus, ExceptionWrappingHandlerInterceptor exceptionWrappingHandlerInterceptor) {
+    public void commandBus(CommandBus commandBus,
+                           ExceptionWrappingHandlerInterceptor exceptionWrappingHandlerInterceptor) {
+        
         commandBus.registerHandlerInterceptor(exceptionWrappingHandlerInterceptor);
     }
 

@@ -58,9 +58,9 @@ public class UserAggregate {
     private LocalDateTime updatedAt;
 
     @CommandHandler
-    public UserAggregate(RegisterUserCommand command,
-                         CheckIfExistsUserPort checkIfExistsUserPort) throws DuplicateUniqueFieldException {
-        if(checkIfExistsUserPort.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
+    UserAggregate(RegisterUserCommand command,
+                  CheckIfExistsUserPort port) {
+        if(port.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
             throw new DuplicateUniqueFieldException(HttpStatus.BAD_REQUEST, "Username or email already used !");
         }
         var event = UserRegisteredEvent.builder()
@@ -74,7 +74,7 @@ public class UserAggregate {
     }
 
     @EventSourcingHandler
-    public void on(UserRegisteredEvent event) {
+    void on(UserRegisteredEvent event) {
         this.id = event.getUserId();
         this.username = event.getUsername();
         this.email = event.getEmail();
@@ -84,13 +84,13 @@ public class UserAggregate {
     }
 
     @EventSourcingHandler
-    public void on(VerificationEmailSentEvent event) {
+    void on(VerificationEmailSentEvent event) {
         this.verified = Boolean.TRUE;
     }
 
     @CommandHandler
-    public void handle(UpdateUserCommand command,
-                       CheckIfExistsUserPort checkIfExistsUserPort) {
+    void handle(UpdateUserCommand command,
+                CheckIfExistsUserPort checkIfExistsUserPort) {
         if (!checkIfExistsUserPort.existsById(command.getUserId())) {
             throw new IllegalArgumentException();
         }
@@ -105,7 +105,7 @@ public class UserAggregate {
     }
 
     @EventSourcingHandler
-    public void on(UserUpdatedEvent event) {
+    void on(UserUpdatedEvent event) {
         this.id = event.getUserId();
         this.avatar = event.getAvatar();
         this.bannerImage = event.getBannerImage();
@@ -115,8 +115,8 @@ public class UserAggregate {
     }
 
     @CommandHandler
-    public void handle(DeleteUserCommand command,
-                       CheckIfExistsUserPort checkIfExistsUserPort) {
+    void handle(DeleteUserCommand command,
+                CheckIfExistsUserPort checkIfExistsUserPort) {
         if(!checkIfExistsUserPort.existsById(command.getUserId())) {
             throw new IllegalArgumentException();
         }
@@ -127,7 +127,7 @@ public class UserAggregate {
     }
 
     @EventSourcingHandler
-    public void on(UserDeletedEvent event) {
+    void on(UserDeletedEvent event) {
         AggregateLifecycle.markDeleted();
     }
 

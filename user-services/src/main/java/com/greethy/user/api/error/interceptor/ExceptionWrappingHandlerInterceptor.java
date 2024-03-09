@@ -1,5 +1,6 @@
-package com.greethy.user.api.error;
+package com.greethy.user.api.error.interceptor;
 
+import com.greethy.user.api.error.DomainError;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import org.axonframework.commandhandling.CommandExecutionException;
 import org.axonframework.commandhandling.CommandMessage;
@@ -20,7 +21,11 @@ public class ExceptionWrappingHandlerInterceptor implements MessageHandlerInterc
         try {
             return interceptorChain.proceed();
         } catch (Throwable throwable) {
-            throw new CommandExecutionException(throwable.getMessage(), throwable, exceptionDetails(throwable));
+            throw new CommandExecutionException(
+                    throwable.getMessage(),
+                    throwable,
+                    exceptionDetails(throwable)
+            );
         }
     }
 

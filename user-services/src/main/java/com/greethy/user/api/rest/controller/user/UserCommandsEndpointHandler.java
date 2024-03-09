@@ -1,13 +1,15 @@
 package com.greethy.user.api.rest.controller.user;
 
 import com.greethy.annotation.reactive.Handler;
+import com.greethy.user.api.error.DomainError;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
+import com.greethy.user.api.rest.dto.response.ErrorResponse;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
-import com.greethy.user.infra.constant.MessageConstant;
 import lombok.RequiredArgsConstructor;
+import org.axonframework.commandhandling.CommandExecutionException;
 import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -51,7 +53,23 @@ public class UserCommandsEndpointHandler {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(Map.of("user_id", it))
                         )
-                );
+                ).onErrorResume(throwable -> {
+                    if (throwable instanceof CommandExecutionException exception) {
+                        ErrorResponse response = exception.getDetails()
+                                .map(detail -> {
+                                    var error = (DomainError) detail;
+                                    return mapper.map(error, ErrorResponse.class);
+                                }).orElse(ErrorResponse.builder()
+                                        .message("Something wrong with Server")
+                                        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                        .build());
+                        return ServerResponse.status(response.getStatus())
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .bodyValue(response);
+                    }
+                    return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                            .build();
+                });
     }
 
     /**
@@ -70,7 +88,9 @@ public class UserCommandsEndpointHandler {
                 .flatMap(command -> reactorCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.OK)
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .body(Mono.just(MessageConstant.SUCCESS_USER_PROFILE_UPDATED_MSG), String.class)));
+                                .bodyValue(Map.of("user_id", it))
+                        )
+                );
     }
 
     /**
