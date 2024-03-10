@@ -1,13 +1,13 @@
 package com.greethy.user.core.domain.service;
 
-import com.greethy.user.core.event.*;
-import com.greethy.user.core.port.out.SaveUserPort;
-import com.greethy.user.core.port.out.DeleteUserPort;
 import com.greethy.user.core.domain.entity.Network;
 import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Role;
 import com.greethy.user.core.domain.entity.User;
+import com.greethy.user.core.event.*;
+import com.greethy.user.core.port.out.DeleteUserPort;
 import com.greethy.user.core.port.out.FindUserPort;
+import com.greethy.user.core.port.out.SaveUserPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
@@ -21,6 +21,10 @@ import reactor.core.publisher.Mono;
 import java.time.LocalDateTime;
 import java.util.Collections;
 
+/**
+ *
+ * @author Kien N.Thanh
+ * */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -49,7 +53,7 @@ public class UserEventHandler {
                 .doOnNext(user -> {
                     user.setPersonalDetail(new PersonalDetail());
                     user.setNetwork(new Network());
-                    user.setRoles(Collections.singletonList(Role.ROLE_USER));
+                    user.setRoles(Collections.singletonList(Role.ROLE_USER.getType()));
                 })
                 .doOnNext(user -> user.setCreatedAt(LocalDateTime.now()))
                 .flatMap(saveUserPort::save)

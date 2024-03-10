@@ -1,25 +1,30 @@
 package com.greethy.user.api.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.greethy.user.core.domain.entity.Network;
-import com.greethy.user.core.domain.entity.Premium;
-import com.greethy.user.core.domain.entity.Role;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
+
+/**
+ * Data Transfer Object (DTO) representing a user.
+ * This class encapsulates user-related information for RESTful API communication.
+ *
+ * @author Kien N.Thanh
+ */
 @Data
 @NoArgsConstructor
 public class UserDto {
 
-    private String id;
-
+    @Schema(description = "The name displayed on the user's profile, as entered by the user when creating their account. Important!")
     private String username;
 
+    @Schema(description = "The user's email address, as entered by the user when creating their account. Important!")
     private String email;
 
+    @Schema(description = "Represents whether the user is verified their email by confirmed in their Gmail or not.")
     private Boolean verified;
 
     private String avatar;
@@ -32,15 +37,15 @@ public class UserDto {
     @JsonProperty("personal_info")
     private PersonalDetailDto personalDetail;
 
-    private Premium premium;
+    private PremiumDto premium;
 
-    private Network network;
+    private NetworkDto network;
 
-    private List<Role> roles;
+    private List<String> roles;
 
     @JsonProperty("created_at")
-    private LocalDateTime createdAt;
+    private String createdAt;
 
     @JsonProperty("updated_at")
-    private LocalDateTime updatedAt;
+    private String updatedAt;
 }

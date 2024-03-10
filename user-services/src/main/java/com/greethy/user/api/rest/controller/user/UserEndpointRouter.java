@@ -27,6 +27,9 @@ public class UserEndpointRouter {
                 .GET("/api/v1/user",
                         queryParam("page", t -> true).and(queryParam("size", t -> true)),
                         userQueriesEndpointHandler::findAllUserWithPageable)
+                .GET("/api/v1/user/{user_id}",
+                        all(),
+                        userQueriesEndpointHandler::findUserById)
                 .GET("/api/v1/user",
                         accept(MediaType.APPLICATION_JSON),
                         userQueriesEndpointHandler::findUserByUsername)

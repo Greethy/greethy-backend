@@ -13,7 +13,7 @@ import java.util.List;
  * This class represent for user, including login information,
  * personal information, body specified, and referenced ids to other documents.
  *
- * @author ThanhKien
+ * @author Kien N.Thanh
  * */
 @Data
 @Document(collection = "users")
@@ -45,7 +45,7 @@ public class User {
 
     private Network network;
 
-    private List<Role> roles;
+    private List<String> roles;
 
     @Field(name = "created_date")
     private LocalDateTime createdAt;

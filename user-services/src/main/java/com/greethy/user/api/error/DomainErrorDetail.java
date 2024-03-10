@@ -1,17 +1,15 @@
 package com.greethy.user.api.error;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.http.HttpStatus;
 
 @Data
 @Builder
-public class DomainError {
+public class DomainErrorDetail {
 
     private String name;
 
-    private HttpStatus status;
+    private Integer status;
 
     private String message;
 

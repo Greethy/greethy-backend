@@ -1,6 +1,6 @@
 package com.greethy.user.api.error.interceptor;
 
-import com.greethy.user.api.error.DomainError;
+import com.greethy.user.api.error.DomainErrorDetail;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import org.axonframework.commandhandling.CommandExecutionException;
 import org.axonframework.commandhandling.CommandMessage;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Nonnull;
 
 @Component
-public class ExceptionWrappingHandlerInterceptor implements MessageHandlerInterceptor<CommandMessage<?>> {
+public class CommandExceptionWrappingInterceptor implements MessageHandlerInterceptor<CommandMessage<?>> {
 
     @Override
     public Object handle(@Nonnull UnitOfWork<? extends CommandMessage<?>> unitOfWork,
@@ -21,25 +21,21 @@ public class ExceptionWrappingHandlerInterceptor implements MessageHandlerInterc
         try {
             return interceptorChain.proceed();
         } catch (Throwable throwable) {
-            throw new CommandExecutionException(
-                    throwable.getMessage(),
-                    throwable,
-                    exceptionDetails(throwable)
-            );
+            throw new CommandExecutionException(throwable.getMessage(), throwable, exceptionDetails(throwable));
         }
     }
 
-    private DomainError exceptionDetails(Throwable throwable) {
+    private DomainErrorDetail exceptionDetails(Throwable throwable) {
         if(throwable instanceof DuplicateUniqueFieldException exception) {
-            return DomainError.builder()
+            return DomainErrorDetail.builder()
                     .name(exception.getClass().getName())
                     .status(exception.getStatus())
                     .message(exception.getMessage())
                     .build();
         }
-        return DomainError.builder()
+        return DomainErrorDetail.builder()
                 .name(throwable.getClass().getName())
-                .status(HttpStatus.BAD_REQUEST)
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .message(throwable.getMessage())
                 .build();
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class UserLookupResponse {
+public class UsersLookupResponse {
 
     private List<UserDto> users;
 

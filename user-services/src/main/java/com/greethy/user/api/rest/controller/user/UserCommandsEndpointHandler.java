@@ -1,7 +1,6 @@
 package com.greethy.user.api.rest.controller.user;
 
 import com.greethy.annotation.reactive.Handler;
-import com.greethy.user.api.error.DomainError;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
 import com.greethy.user.api.rest.dto.response.ErrorResponse;
@@ -26,7 +25,7 @@ import java.util.UUID;
  * registering (or creating), updating, deleting. This controller utilizes Spring WebFlux and Axon Framework to handle
  * reactive command processing.
  *
- * @author KienThanh
+ * @author Kien N.Thanh
  */
 @Handler
 @RequiredArgsConstructor
@@ -34,7 +33,7 @@ public class UserCommandsEndpointHandler {
 
     private final ModelMapper mapper;
 
-    private final ReactorCommandGateway reactorCommandGateway;
+    private final ReactorCommandGateway reactiveCommandGateway;
 
     /**
      * Registers a new user based on the provided registration request. Generates a unique user ID,
@@ -48,7 +47,7 @@ public class UserCommandsEndpointHandler {
         return serverRequest.bodyToMono(RegisterUserRequest.class)
                 .map(request -> mapper.map(request, RegisterUserCommand.class))
                 .doOnNext(command -> command.setUserId(UUID.randomUUID().toString()))
-                .flatMap(command -> reactorCommandGateway.send(command)
+                .flatMap(command -> reactiveCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(Map.of("user_id", it))
@@ -56,13 +55,12 @@ public class UserCommandsEndpointHandler {
                 ).onErrorResume(throwable -> {
                     if (throwable instanceof CommandExecutionException exception) {
                         ErrorResponse response = exception.getDetails()
-                                .map(detail -> {
-                                    var error = (DomainError) detail;
-                                    return mapper.map(error, ErrorResponse.class);
-                                }).orElse(ErrorResponse.builder()
+                                .map(detail -> mapper.map(detail, ErrorResponse.class))
+                                .orElse(ErrorResponse.builder()
                                         .message("Something wrong with Server")
-                                        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                        .build());
+                                        .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                                        .build()
+                                );
                         return ServerResponse.status(response.getStatus())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(response);
@@ -85,7 +83,7 @@ public class UserCommandsEndpointHandler {
         return serverRequest.bodyToMono(UpdateUserRequest.class)
                 .map(request -> mapper.map(request, UpdateUserCommand.class))
                 .doOnNext(command -> command.setUserId(userId))
-                .flatMap(command -> reactorCommandGateway.send(command)
+                .flatMap(command -> reactiveCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.OK)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(Map.of("user_id", it))
@@ -104,7 +102,7 @@ public class UserCommandsEndpointHandler {
     Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
         String userId = serverRequest.pathVariable("user_id");
         return Mono.just(DeleteUserCommand.builder().userId(userId).build())
-                .flatMap(command -> reactorCommandGateway.send(command)
+                .flatMap(command -> reactiveCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.NO_CONTENT)
                                 .body(Mono.just("Delete User successfully"), String.class)
                         )

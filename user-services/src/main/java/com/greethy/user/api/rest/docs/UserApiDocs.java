@@ -1,7 +1,11 @@
 package com.greethy.user.api.rest.docs;
 
+import com.greethy.user.api.rest.dto.UserDto;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
+import com.greethy.user.api.rest.dto.response.ErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -23,33 +27,58 @@ import java.lang.annotation.Target;
                 method = RequestMethod.POST,
                 path = "/api/v1/user",
                 operation = @Operation(
+                        summary = "Register User using Username/Email/Password",
                         description = "Register a new Greethy User using basic authenticating Username/Password with an Email to verify",
                         operationId = "registerUser",
                         tags = "Users",
                         requestBody = @RequestBody(
                                 description = "User basic authenticate information",
                                 required = true,
-                                content = @Content(schema = @Schema(
-                                        implementation = RegisterUserRequest.class,
-                                        requiredProperties = {"username", "email", "password"}
-                                ))
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                        schema = @Schema(
+                                                implementation = RegisterUserRequest.class,
+                                                example = """
+                                                        {
+                                                            "username" : "kienThanh00",
+                                                            "email" : "kien.nt112002@gmail.com",
+                                                            "password" : "kien123"
+                                                        }
+                                                        """,
+                                                requiredProperties = {"username", "email", "password"})
+                                )
                         ),
                         responses = {
                                 @ApiResponse(
                                         responseCode = "201",
                                         description = "A Greethy user has been registered successfully.",
-                                        content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE
+                                        )
+                                ),
                                 @ApiResponse(
                                         responseCode = "400",
-                                        description = "username or email already in used."
+                                        description = "username or email already in used.",
+                                        content = @Content(
+                                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                            schema = @Schema(implementation = ErrorResponse.class)
+                                        )
                                 ),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user."
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                            schema = @Schema(implementation = ErrorResponse.class)
+                                        )
                                 ),
                                 @ApiResponse(
                                         responseCode = "429",
-                                        description = "The Greethy Server exceeded its rate limits."
+                                        description = "The Greethy Server exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
                                 )
                         }
                 )
@@ -58,25 +87,41 @@ import java.lang.annotation.Target;
                 method = RequestMethod.PUT,
                 path = "/api/v1/user/{user_id}",
                 operation = @Operation(
+                        parameters = @Parameter(name = "user_id", required = true),
                         description = "Update user's public profile (Exclude username, password and email)",
                         operationId = "updateUserById",
                         tags = "Users",
                         responses = {
                                 @ApiResponse(
                                         responseCode = "200",
-                                        description = "A updated profile detail of user."
+                                        description = "A updated profile detail of user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE
+                                        )
                                 ),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user."
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
                                 ),
                                 @ApiResponse(
                                         responseCode = "403",
-                                        description = "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here."
+                                        description = "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
                                 ),
                                 @ApiResponse(
                                         responseCode = "429",
-                                        description = "The Greethy Server exceeded its rate limits."
+                                        description = "The Greethy Server exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
                                 )
                         }
                 )
@@ -85,13 +130,26 @@ import java.lang.annotation.Target;
                 method = RequestMethod.GET,
                 path = "/api/v1/user/{user_id}",
                 operation = @Operation(
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "user_id", description = "User Id"),
+                        summary = "Get User's Public Profile By Id",
                         description = "Get public profile information about a Greethy user.",
                         operationId = "GetUserById",
                         tags = "Users",
                         responses = {
-                                @ApiResponse()
+                                @ApiResponse(
+                                        responseCode = "200",
+                                        description = "A updated profile detail of user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = UserDto.class)
+                                        )
+                                )
                         }
                 )
+        ),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/user/"
         )
 })
 public @interface UserApiDocs {

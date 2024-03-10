@@ -1,6 +1,6 @@
 package com.greethy.user.infra.config;
 
-import com.greethy.user.api.error.interceptor.ExceptionWrappingHandlerInterceptor;
+import com.greethy.user.api.error.interceptor.CommandExceptionWrappingInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,8 +14,8 @@ public class AppConfig {
     }
 
     @Bean
-    public ExceptionWrappingHandlerInterceptor exceptionWrappingHandlerInterceptor() {
-        return new ExceptionWrappingHandlerInterceptor();
+    public CommandExceptionWrappingInterceptor commandExceptionWrappingInterceptor() {
+        return new CommandExceptionWrappingInterceptor();
     }
 
 }

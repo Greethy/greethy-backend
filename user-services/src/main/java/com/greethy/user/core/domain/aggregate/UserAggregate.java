@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
  * @author KienThanh
  * */
 @Getter
-@Aggregate
+@Aggregate()
 @NoArgsConstructor
 public class UserAggregate {
 
@@ -61,7 +61,7 @@ public class UserAggregate {
     UserAggregate(RegisterUserCommand command,
                   CheckIfExistsUserPort port) {
         if(port.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
-            throw new DuplicateUniqueFieldException(HttpStatus.BAD_REQUEST, "Username or email already used !");
+            throw new DuplicateUniqueFieldException(HttpStatus.BAD_REQUEST.value(), "Username or email already used !");
         }
         var event = UserRegisteredEvent.builder()
                 .userId(command.getUserId())
