@@ -4,9 +4,7 @@ import com.greethy.annotation.reactive.Handler;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
 import com.greethy.user.api.rest.dto.response.ErrorResponse;
-import com.greethy.user.core.port.in.command.DeleteUserCommand;
-import com.greethy.user.core.port.in.command.RegisterUserCommand;
-import com.greethy.user.core.port.in.command.UpdateUserCommand;
+import com.greethy.user.core.port.in.command.*;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.CommandExecutionException;
 import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway;
@@ -34,6 +32,8 @@ public class UserCommandsEndpointHandler {
     private final ModelMapper mapper;
 
     private final ReactorCommandGateway reactiveCommandGateway;
+
+    private static final String PATH_VARIABLE_NAME = "user_id";
 
     /**
      * Registers a new user based on the provided registration request. Generates a unique user ID,
@@ -79,15 +79,14 @@ public class UserCommandsEndpointHandler {
      * @return A Mono wrapping the ServerResponse indicating the success of user profile update.
      */
     Mono<ServerResponse> updateUser(ServerRequest serverRequest) {
-        String userId = serverRequest.pathVariable("user_id");
-        return serverRequest.bodyToMono(UpdateUserRequest.class)
-                .map(request -> mapper.map(request, UpdateUserCommand.class))
-                .doOnNext(command -> command.setUserId(userId))
-                .flatMap(command -> reactiveCommandGateway.send(command)
+        return Mono.just(serverRequest.pathVariable(PATH_VARIABLE_NAME))
+                .flatMap(userId -> serverRequest.bodyToMono(UpdateUserRequest.class)
+                        .map(request -> mapper.map(request, UpdateUserCommand.class))
+                        .doOnNext(command -> command.setUserId(userId))
+                ).flatMap(command -> reactiveCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.OK)
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(Map.of("user_id", it))
-                        )
+                                .bodyValue(Map.of("user_id", it)))
                 );
     }
 
@@ -100,14 +99,11 @@ public class UserCommandsEndpointHandler {
      * @return A Mono wrapping the ServerResponse indicating the success of user deletion.
      */
     Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
-        String userId = serverRequest.pathVariable("user_id");
-        return Mono.just(DeleteUserCommand.builder().userId(userId).build())
+        return Mono.just(serverRequest.pathVariable(PATH_VARIABLE_NAME))
+                .map(userId -> DeleteUserCommand.builder().userId(userId).build())
                 .flatMap(command -> reactiveCommandGateway.send(command)
-                        .flatMap(it -> ServerResponse.status(HttpStatus.NO_CONTENT)
-                                .body(Mono.just("Delete User successfully"), String.class)
-                        )
+                        .flatMap(it -> ServerResponse.status(HttpStatus.NO_CONTENT).build())
                 );
     }
-
 
 }

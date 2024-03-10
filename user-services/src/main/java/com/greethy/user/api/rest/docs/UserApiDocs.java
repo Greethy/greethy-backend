@@ -3,6 +3,7 @@ package com.greethy.user.api.rest.docs;
 import com.greethy.user.api.rest.dto.UserDto;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.response.ErrorResponse;
+import com.greethy.user.api.rest.dto.response.UsersLookupResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -130,7 +131,7 @@ import java.lang.annotation.Target;
                 method = RequestMethod.GET,
                 path = "/api/v1/user/{user_id}",
                 operation = @Operation(
-                        parameters = @Parameter(in = ParameterIn.PATH, name = "user_id", description = "User Id"),
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "user_id", description = "The user's ID"),
                         summary = "Get User's Public Profile By Id",
                         description = "Get public profile information about a Greethy user.",
                         operationId = "GetUserById",
@@ -143,13 +144,126 @@ import java.lang.annotation.Target;
                                                 mediaType = MediaType.APPLICATION_JSON_VALUE,
                                                 schema = @Schema(implementation = UserDto.class)
                                         )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "401",
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "403",
+                                        description = "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "404",
+                                        description = "The user's id from Path variable cannot found in Greethy Server's databases.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The Greethy Server exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
                                 )
                         }
                 )
         ),
         @RouterOperation(
                 method = RequestMethod.GET,
-                path = "/api/v1/user/"
+                path = "/api/v1/user/",
+                operation = @Operation(
+                        summary = "Get All User's Profile From Databases (FOR TEST ONLY)",
+                        description = "Get all public profile information from Greethy users.",
+                        operationId = "GetAllUser",
+                        tags = "Users",
+                        responses = {
+                                @ApiResponse(
+                                        responseCode = "200",
+                                        description = "The list of all user's profile in databases.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = UsersLookupResponse.class)
+                                        )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "401",
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "403",
+                                        description = "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The Greethy Server exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                )
+                        }
+                )
+        ),
+        @RouterOperation(
+                method = RequestMethod.DELETE,
+                path = "/api/v1/user/{user_id}",
+                operation = @Operation(
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "user_id", description = "The user's ID"),
+                        summary = "Delete User by id",
+                        description = "delete the Greethy user by id permanently (TEST ONLY)",
+                        operationId = "DeleteUserById",
+                        tags = "Users",
+                        responses = {
+                                @ApiResponse(
+                                        responseCode = "204",
+                                        description = "Return nothing"
+                                ),
+                                @ApiResponse(
+                                        responseCode = "401",
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "403",
+                                        description = "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                ),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The Greethy Server exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)
+                                        )
+                                )
+                        }
+                )
         )
 })
 public @interface UserApiDocs {

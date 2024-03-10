@@ -66,8 +66,7 @@ public class UserQueriesEndpointHandler {
     }
 
     public Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
-        return Mono.just(serverRequest)
-                .map(request -> request.pathVariable("user_id"))
+        return Mono.just(serverRequest.pathVariable("user_id"))
                 .map(userId -> FindUserByIdQuery.builder().userId(userId).build())
                 .flatMap(query -> reactiveQueryGateway.query(query, ResponseTypes.instanceOf(UserDto.class))
                         .flatMap(userDto -> ServerResponse.ok()
