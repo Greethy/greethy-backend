@@ -47,12 +47,11 @@ public class UserCommandsEndpointHandler {
         return serverRequest.bodyToMono(RegisterUserRequest.class)
                 .map(request -> mapper.map(request, RegisterUserCommand.class))
                 .doOnNext(command -> command.setUserId(UUID.randomUUID().toString()))
-                .flatMap(command -> reactiveCommandGateway.send(command)
-                        .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(Map.of("user_id", it))
-                        )
-                ).onErrorResume(throwable -> {
+                .flatMap(reactiveCommandGateway::send)
+                .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(Map.of("user_id", it)))
+                .onErrorResume(throwable -> {
                     if (throwable instanceof CommandExecutionException exception) {
                         ErrorResponse response = exception.getDetails()
                                 .map(detail -> mapper.map(detail, ErrorResponse.class))

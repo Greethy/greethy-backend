@@ -1,6 +1,6 @@
 package com.greethy.user.infra.config;
 
-import com.greethy.user.api.error.interceptor.CommandExceptionWrappingInterceptor;
+import com.greethy.user.core.interceptor.CommandExceptionWrappingInterceptor;
 import org.axonframework.commandhandling.CommandBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

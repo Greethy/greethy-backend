@@ -1,6 +1,6 @@
 package com.greethy.user.core.domain.service;
 
-import com.greethy.user.api.error.DomainErrorDetail;
+import com.greethy.core.domain.exception.DomainErrorDetail;
 import com.greethy.user.api.rest.dto.UserDto;
 import com.greethy.user.api.rest.dto.response.UsersLookupResponse;
 import com.greethy.user.core.domain.exception.NotFoundException;

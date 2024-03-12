@@ -1,1 +1,10 @@
-
+spring:
+  application:
+    name: nutrition-services
+  data:
+    mongodb:
+      database: GreethyNutritionDB
+      host: localhost
+      port: 27017
+  config:
+    import: optional:configserver:http://localhost:8888

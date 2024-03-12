@@ -5,7 +5,10 @@ import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;
 
-
+/**
+ *
+ * @author Kien N.Thanh
+ * */
 @Component
 @Documented
 @Target({ElementType.TYPE})

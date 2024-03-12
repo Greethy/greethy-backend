@@ -1,6 +1,8 @@
 package com.greethy.nutrition.core.domain.aggregate;
 
-import com.greethy.nutrition.core.domain.entity.body_specs.Bmi;
+import com.greethy.nutrition.core.domain.entity.specs.Bmi;
+import com.greethy.nutrition.core.domain.entity.specs.Bmr;
+import com.greethy.nutrition.core.domain.entity.specs.Pal;
 import com.greethy.nutrition.core.event.BodySpecsCreatedEvent;
 import com.greethy.nutrition.core.port.in.command.CreateBodySpecsCommand;
 import com.greethy.nutrition.core.port.out.evaluate.FindBmiEvaluatePort;
@@ -28,20 +30,22 @@ public class BodySpecsAggregate {
 
     private Bmi bmi;
 
-    @CommandHandler
-    BodySpecsAggregate(CreateBodySpecsCommand command, FindBmiEvaluatePort findBmiEvaluatePort) {
-        Double bmiIndex = command.getWeight() / (command.getHeight() * command.getHeight());
+    private Pal pal;
 
+    private Bmr bmr;
+
+    @CommandHandler
+    BodySpecsAggregate(CreateBodySpecsCommand command,
+                       FindBmiEvaluatePort findBmiEvaluatePort) {
+        Double bmiIndex = command.getWeight() / (command.getHeight() * command.getHeight());
         Bmi bmi = findBmiEvaluatePort.findAll()
-                .filter(bmiEvaluate -> bmiEvaluate.getRange().from() < bmiIndex
-                                        && bmiEvaluate.getRange().to() > bmiIndex
-                ).map(bmiEvaluate ->
-                        Bmi.builder()
+                .filter(bmiEvaluate -> (bmiEvaluate.getRange().from() < bmiIndex)
+                                        && (bmiEvaluate.getRange().to() > bmiIndex))
+                .map(bmiEvaluate -> Bmi.builder()
                                 .status(bmiEvaluate.getCategory())
                                 .index(bmiIndex)
                                 .build()
-                )
-                .blockFirst();
+                ).blockFirst();
         var event = BodySpecsCreatedEvent.builder()
                 .bodySpecsId(command.getBodySpecsId())
                 .age(command.getAge())

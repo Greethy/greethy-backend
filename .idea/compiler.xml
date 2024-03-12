@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="annotation" />
-        <module name="authorization" />
         <module name="core" />
         <module name="nutrition" />
         <module name="greethy-docker" />
@@ -22,6 +21,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="auth" target="1.5" />
+      <module name="authorization" target="17" />
       <module name="financial" target="1.5" />
       <module name="greethy" target="17" />
       <module name="infrastructure" target="1.5" />

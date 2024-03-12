@@ -1,6 +1,6 @@
 package com.greethy.nutrition.core.event;
 
-import com.greethy.nutrition.core.domain.entity.body_specs.Bmi;
+import com.greethy.nutrition.core.domain.entity.specs.Bmi;
 import lombok.Builder;
 import lombok.Data;
 

@@ -15,4 +15,8 @@ public class BmiEvaluate {
 
     private Range range;
 
+    public BmiEvaluate(String category, Range range) {
+        this.category = category;
+        this.range = range;
+    }
 }
