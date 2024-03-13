@@ -1,7 +1,10 @@
 package com.greethy.nutrition.core.domain.aggregate;
 
+import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
+import com.greethy.nutrition.core.domain.entity.evaluate.BmiEvaluate;
 import com.greethy.nutrition.core.domain.entity.specs.Bmi;
 import com.greethy.nutrition.core.domain.entity.specs.Bmr;
+import com.greethy.nutrition.core.domain.entity.specs.Gender;
 import com.greethy.nutrition.core.domain.entity.specs.Pal;
 import com.greethy.nutrition.core.event.BodySpecsCreatedEvent;
 import com.greethy.nutrition.core.port.in.command.CreateBodySpecsCommand;
@@ -13,6 +16,10 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
+import reactor.core.publisher.Mono;
+
+import java.text.DecimalFormat;
+import java.util.Arrays;
 
 @Getter
 @Aggregate
@@ -28,6 +35,8 @@ public class BodySpecsAggregate {
 
     private Double weight;
 
+    private String gender;
+
     private Bmi bmi;
 
     private Pal pal;
@@ -37,23 +46,36 @@ public class BodySpecsAggregate {
     @CommandHandler
     BodySpecsAggregate(CreateBodySpecsCommand command,
                        FindBmiEvaluatePort findBmiEvaluatePort) {
-        Double bmiIndex = command.getWeight() / (command.getHeight() * command.getHeight());
-        Bmi bmi = findBmiEvaluatePort.findAll()
-                .filter(bmiEvaluate -> (bmiEvaluate.getRange().from() < bmiIndex)
-                                        && (bmiEvaluate.getRange().to() > bmiIndex))
-                .map(bmiEvaluate -> Bmi.builder()
-                                .status(bmiEvaluate.getCategory())
-                                .index(bmiIndex)
-                                .build()
-                ).blockFirst();
-        var event = BodySpecsCreatedEvent.builder()
+        var bmi = new Bmi();
+        Double bmiIndex = (command.getWeight() / (command.getHeight() * command.getHeight()));
+        Mono.just(Double.valueOf(new DecimalFormat("#.#").format(bmiIndex)))
+                .doOnNext(bmi::setIndex)
+                .flatMap(findBmiEvaluatePort::findByIndexInRange)
+                .map(BmiEvaluate::getCategory)
+                .doOnNext(bmi::setStatus)
+                .block();
+
+        var bodySpecsCreatedEvent = BodySpecsCreatedEvent.builder()
                 .bodySpecsId(command.getBodySpecsId())
                 .age(command.getAge())
                 .height(command.getHeight())
                 .weight(command.getWeight())
+                .gender(convertGender(command.getGender()))
                 .bmi(bmi)
                 .build();
-        AggregateLifecycle.apply(event);
+        var userBodySpecsAddedEvent = UserBodySpecsAddedEvent.builder()
+                .userId(command.getUserId())
+                .bodySpecsId(command.getBodySpecsId())
+                .build();
+        AggregateLifecycle.apply(bodySpecsCreatedEvent)
+                .andThenApply(() -> userBodySpecsAddedEvent);
+    }
+
+    private String convertGender(Integer genderValue) {
+        return Arrays.stream(Gender.values())
+                .filter(gender -> gender.getValue().equals(genderValue))
+                .toList()
+                .get(0).getName();
     }
 
     @EventSourcingHandler
@@ -62,6 +84,7 @@ public class BodySpecsAggregate {
         this.age = event.getAge();
         this.height = event.getHeight();
         this.weight = event.getHeight();
+        this.gender = event.getGender();
         this.bmi = event.getBmi();
     }
 

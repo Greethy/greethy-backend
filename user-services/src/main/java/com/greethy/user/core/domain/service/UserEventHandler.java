@@ -1,5 +1,6 @@
 package com.greethy.user.core.domain.service;
 
+import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
 import com.greethy.user.core.domain.entity.Network;
 import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Role;
@@ -84,6 +85,17 @@ public class UserEventHandler {
                 .map(UserDeletedEvent::getUserId)
                 .flatMap(deleteUserPort::deleteById)
                 .subscribe();
+    }
+
+    @EventHandler
+    void on(UserBodySpecsAddedEvent event) {
+        findUserPort.findById(event.getUserId())
+                .doOnNext(user -> {
+                    user.getBodySpecsIds().add(event.getBodySpecsId());
+                    user.setUpdatedAt(LocalDateTime.now());
+                })
+                .flatMap(saveUserPort::save)
+                .subscribe(user -> log.info("user has been created a new BodySpecs {}", event.getBodySpecsId()));
     }
 
 }

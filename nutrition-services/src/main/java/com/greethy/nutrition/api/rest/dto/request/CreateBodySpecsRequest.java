@@ -5,10 +5,12 @@ import lombok.Data;
 @Data
 public class CreateBodySpecsRequest {
 
-    private String age;
+    private Integer age;
 
     private Double height;
 
     private Double weight;
+
+    private Integer gender;
 
 }

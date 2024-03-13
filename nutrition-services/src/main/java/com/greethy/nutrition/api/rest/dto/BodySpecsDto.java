@@ -15,4 +15,6 @@ public class BodySpecsDto {
 
     private Double weight;
 
+    private String gender;
+
 }

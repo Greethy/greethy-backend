@@ -13,7 +13,8 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class BodySpecsEndpointRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> route(BodySpecsCommandsEndpointHandler bodySpecsCommandsEndpointHandler) {
+    public RouterFunction<ServerResponse> route(BodySpecsCommandsEndpointHandler bodySpecsCommandsEndpointHandler,
+                                                BodySpecsQueriesEndpointHandler bodySpecsQueriesEndpointHandler) {
         return RouterFunctions.route()
                 .POST("/api/v1/user/{user_id}/body_specs",
                         accept(MediaType.APPLICATION_JSON),

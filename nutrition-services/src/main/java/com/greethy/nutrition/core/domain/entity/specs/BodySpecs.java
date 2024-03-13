@@ -18,6 +18,8 @@ public class BodySpecs {
 
     private Double weight;
 
+    private String gender;
+
     private Bmi bmi;
 
     private Pal pal;

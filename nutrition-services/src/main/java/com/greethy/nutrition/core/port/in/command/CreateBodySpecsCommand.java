@@ -18,4 +18,6 @@ public class CreateBodySpecsCommand {
 
     private Double weight;
 
+    private Integer gender;
+
 }

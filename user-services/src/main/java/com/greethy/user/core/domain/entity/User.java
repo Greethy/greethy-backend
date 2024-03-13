@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,5 +53,7 @@ public class User {
 
     @Field(name = "updated_date")
     private LocalDateTime updatedAt;
+
+    private List<String> bodySpecsIds = new ArrayList<>();
 
 }

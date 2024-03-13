@@ -1,13 +1,11 @@
 package com.greethy.user.core.domain.aggregate;
 
+import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
 import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Premium;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import com.greethy.user.core.domain.exception.NotFoundException;
-import com.greethy.user.core.event.UserDeletedEvent;
-import com.greethy.user.core.event.UserRegisteredEvent;
-import com.greethy.user.core.event.UserUpdatedEvent;
-import com.greethy.user.core.event.VerificationEmailSentEvent;
+import com.greethy.user.core.event.*;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
@@ -22,6 +20,8 @@ import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -57,6 +57,8 @@ public class UserAggregate {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    private final List<String> bodySpecsIds = new ArrayList<>();
 
     @CommandHandler
     UserAggregate(RegisterUserCommand command,
@@ -113,6 +115,11 @@ public class UserAggregate {
         this.bio = event.getBio();
         this.personalDetail = event.getPersonalDetail();
         this.updatedAt = LocalDateTime.now();
+    }
+
+    @EventSourcingHandler
+    void handle(UserBodySpecsAddedEvent event) {
+        this.bodySpecsIds.add(event.getBodySpecsId());
     }
 
     @CommandHandler

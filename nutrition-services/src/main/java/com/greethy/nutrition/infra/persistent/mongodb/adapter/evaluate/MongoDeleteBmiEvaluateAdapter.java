@@ -1,4 +1,4 @@
-package com.greethy.nutrition.infra.persistent.mongodb.adapter;
+package com.greethy.nutrition.infra.persistent.mongodb.adapter.evaluate;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.nutrition.core.port.out.evaluate.DeleteBmiEvaluatePort;

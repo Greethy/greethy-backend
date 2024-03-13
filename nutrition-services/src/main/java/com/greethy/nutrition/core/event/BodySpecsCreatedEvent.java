@@ -16,6 +16,8 @@ public class BodySpecsCreatedEvent {
 
     private Double weight;
 
+    private String gender;
+
     private Bmi bmi;
 
 }
