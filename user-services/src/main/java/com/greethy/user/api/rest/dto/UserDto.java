@@ -27,6 +27,8 @@ public class UserDto {
     @Schema(description = "Represents whether the user is verified their email by confirmed in their Gmail or not.")
     private Boolean verified;
 
+    private String password;
+
     private String avatar;
 
     @JsonProperty("banner_image")

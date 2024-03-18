@@ -3,18 +3,11 @@ spring:
     name: api-gateway
   config:
     import: optional:configserver:http://localhost:8888
-  cloud:
-    config:
-      profile: dev
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      default-filters:
-        - TokenRelay
-okta:
-  oauth2:
-    issuer: ${OKTA_OAUTH2_ISSUER}
-    client-id: ${OKTA_OAUTH2_CLIENT_ID}
-    client-secret: ${OKTA_OAUTH2_CLIENT_SECRET}
-    audience: ${OKTA_OAUTH2_AUDIENCE}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/greethy
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+google:
+  client-id: 640873912386-f8nn8l0ulerdl2ft0kqomciv2aj2u2f0.apps.googleusercontent.com

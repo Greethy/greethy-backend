@@ -7,10 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Role {
 
-    ROLE_USER("ROLE_USER"),
-    ROLE_EXPERT("ROLE_EXPERT"),
-    ROLE_MERCHANT("ROLE_MERCHANT"),
-    ROLE_ADMIN("ROLE_ADMIN");
+    ROLE_USER("USER"),
+    ROLE_EXPERT("EXPERT"),
+    ROLE_MERCHANT("MERCHANT"),
+    ROLE_ADMIN("ADMIN");
 
     private final String type;
 }

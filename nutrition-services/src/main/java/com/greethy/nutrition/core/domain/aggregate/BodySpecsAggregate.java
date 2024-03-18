@@ -74,8 +74,8 @@ public class BodySpecsAggregate {
     private String convertGender(Integer genderValue) {
         return Arrays.stream(Gender.values())
                 .filter(gender -> gender.getValue().equals(genderValue))
-                .toList()
-                .get(0).getName();
+                .findFirst().orElse(Gender.MALE)
+                .getName();
     }
 
     @EventSourcingHandler

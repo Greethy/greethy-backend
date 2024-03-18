@@ -1,4 +1,4 @@
-package com.greethy.gateway.route;
+package com.greethy.gateway.config.route;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
@@ -24,10 +24,10 @@ public class RouteConfig {
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("user-services-route",
-                        predicate -> predicate
-                                .path("/api/v*/user/**")
-                                .uri("lb://user-services"))
+                .route("user-services-router",
+                        predicate -> predicate.path("/api/v*/user/**").uri("lb://user-services"))
+                .route("nutrition-services-router",
+                        predicate -> predicate.path("/api/v*/**").uri("lb://nutrition-services"))
                 .build();
     }
 

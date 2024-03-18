@@ -13,3 +13,4 @@ springdoc:
     use-root-path: true
   api-docs:
     version: openapi_3_1
+  show-actuator: true

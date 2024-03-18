@@ -5,6 +5,7 @@ import com.greethy.user.api.rest.dto.response.ErrorResponse;
 import com.greethy.user.api.rest.dto.response.UsersLookupResponse;
 import com.greethy.user.core.port.in.query.FindAllUserQuery;
 import com.greethy.user.core.port.in.query.FindUserByIdQuery;
+import com.greethy.user.core.port.in.query.FindUserByUsernameOrEmailQuery;
 import com.greethy.user.core.port.in.query.GetAllUserWithPageableQuery;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
@@ -20,6 +21,13 @@ import reactor.core.publisher.Mono;
 
 import java.util.Optional;
 
+/**
+ * Class {@code UserQueriesEndpointHandler} represents the handler for handling user-related queries in a RESTful API,
+ * it contains methods to handle queries. This handler interacts with the application's business logic through the
+ * Axon Framework's ReactorQueryGateway, which allows for querying data in a reactive manner.
+ *
+ * @author Kien N.Thanh
+ */
 @Component
 @RequiredArgsConstructor
 public class UserQueriesEndpointHandler {
@@ -68,33 +76,47 @@ public class UserQueriesEndpointHandler {
     public Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable("user_id"))
                 .map(userId -> FindUserByIdQuery.builder().userId(userId).build())
-                .flatMap(query -> reactiveQueryGateway.query(query, ResponseTypes.instanceOf(UserDto.class))
-                        .flatMap(userDto -> ServerResponse.ok()
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(userDto)
-                        )
-                ).onErrorResume(throwable -> {
-                    if (throwable instanceof QueryExecutionException exception) {
-                        ErrorResponse response = exception.getDetails()
-                                .map(detail -> mapper.map(detail, ErrorResponse.class))
-                                .orElse(ErrorResponse.builder()
-                                        .message("Something wrong with Server")
-                                        .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                                        .build()
-                                );
-                        return ServerResponse.status(response.getStatus())
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(response);
-                    }
-                    return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                            .build();
-                });
+                .flatMap(query -> reactiveQueryGateway.query(query, ResponseTypes.instanceOf(UserDto.class)))
+                .flatMap(userDto -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(userDto))
+                .onErrorResume(this::handleException);
     }
 
-    public Mono<ServerResponse> findUserByUsername(ServerRequest serverRequest) {
-        String username = serverRequest.queryParam("username")
-                .orElse("");
+    public Mono<ServerResponse> findUserByUsernameOrEmail(ServerRequest serverRequest) {
+        return Mono.just(serverRequest.queryParam("username_or_email")
+                .orElse(""))
+                .map(usernameOrEmail -> FindUserByUsernameOrEmailQuery.builder()
+                        .usernameOrEmail(usernameOrEmail)
+                        .build())
+                .flatMap(query -> reactiveQueryGateway.query(query, ResponseTypes.instanceOf(UserDto.class)))
+                .flatMap(userDto -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(userDto))
+                .onErrorResume(this::handleException);
+    }
+
+    public Mono<ServerResponse> checkIfUserEmailExists(ServerRequest serverRequest) {
+//        return Mono.just(serverRequest.pathVariable("user_id"))
+//                .flatMap();
         return null;
+    }
+
+    private Mono<ServerResponse> handleException(Throwable throwable) {
+        if (throwable instanceof QueryExecutionException exception) {
+            ErrorResponse response = exception.getDetails()
+                    .map(detail -> mapper.map(detail, ErrorResponse.class))
+                    .orElse(ErrorResponse.builder()
+                            .message("Something wrong with Server")
+                            .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                            .build()
+                    );
+            return ServerResponse.status(response.getStatus())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue(response);
+        }
+        return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .build();
     }
 
 }

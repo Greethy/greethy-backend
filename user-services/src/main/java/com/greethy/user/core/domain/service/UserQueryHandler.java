@@ -6,6 +6,7 @@ import com.greethy.user.api.rest.dto.response.UsersLookupResponse;
 import com.greethy.user.core.domain.exception.NotFoundException;
 import com.greethy.user.core.port.in.query.FindAllUserQuery;
 import com.greethy.user.core.port.in.query.FindUserByIdQuery;
+import com.greethy.user.core.port.in.query.FindUserByUsernameOrEmailQuery;
 import com.greethy.user.core.port.in.query.GetAllUserWithPageableQuery;
 import com.greethy.user.core.port.out.FindUserPort;
 import lombok.RequiredArgsConstructor;
@@ -59,10 +60,20 @@ public class UserQueryHandler {
     @QueryHandler
     public UserDto handle(FindUserByIdQuery query) {
         return findUserPort.findById(query.getUserId())
-                .switchIfEmpty(Mono.error(new NotFoundException(NOT_FOUND_STATUS, "Cant not found user with id: " + query.getUserId())))
+                .switchIfEmpty(Mono.error(new NotFoundException(NOT_FOUND_STATUS, "Cannot found user with id: " + query.getUserId())))
                 .map(user -> mapper.map(user, UserDto.class))
                 .block();
     }
+
+    @QueryHandler
+    public UserDto handle(FindUserByUsernameOrEmailQuery query) {
+        return findUserPort.findByUsernameOrEmail(query.getUsernameOrEmail())
+                .switchIfEmpty(Mono.error(new NotFoundException(NOT_FOUND_STATUS, "Cannot found user with: " + query.getUsernameOrEmail())))
+                .map(user -> mapper.map(user, UserDto.class))
+                .block();
+    }
+
+
 
     @ExceptionHandler
     public void handleNotFoundException(NotFoundException exception) {

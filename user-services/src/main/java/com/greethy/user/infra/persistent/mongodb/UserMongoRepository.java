@@ -2,6 +2,7 @@ package com.greethy.user.infra.persistent.mongodb;
 
 import com.greethy.user.core.domain.entity.User;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -22,5 +23,15 @@ public interface UserMongoRepository extends ReactiveMongoRepository<User, Strin
     Mono<Boolean> existsByUsernameOrEmail(String username, String email);
 
     Flux<User> findAllBy(Pageable pageable);
+
+    @Query("""
+        {
+            '$or' : [
+                {'username' : ?0 },
+                {'email' : ?0}
+            ]
+        }
+    """)
+    Mono<User> findByUsernameOrEmail(String usernameOrEmail);
 
 }

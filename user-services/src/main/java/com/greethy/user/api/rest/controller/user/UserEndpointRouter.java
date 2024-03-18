@@ -31,8 +31,8 @@ public class UserEndpointRouter {
                         all(),
                         userQueriesEndpointHandler::findUserById)
                 .GET("/api/v1/user",
-                        accept(MediaType.APPLICATION_JSON),
-                        userQueriesEndpointHandler::findUserByUsername)
+                        queryParam("username_or_email", t -> true),
+                        userQueriesEndpointHandler::findUserByUsernameOrEmail)
                 .PUT("/api/v1/user/{user_id}",
                         accept(MediaType.APPLICATION_JSON),
                         userCommandEndpointHandler::updateUser)
