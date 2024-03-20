@@ -11,3 +11,7 @@ spring:
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 google:
   client-id: 640873912386-f8nn8l0ulerdl2ft0kqomciv2aj2u2f0.apps.googleusercontent.com
+
+app:
+  jwt:
+    secret-key: ecf1222c-88fd-47f3-988f-bdd78bade1ad

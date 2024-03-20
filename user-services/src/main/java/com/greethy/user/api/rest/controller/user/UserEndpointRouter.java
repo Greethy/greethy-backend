@@ -18,27 +18,31 @@ public class UserEndpointRouter {
     public RouterFunction<ServerResponse> route(UserCommandsEndpointHandler userCommandEndpointHandler,
                                                 UserQueriesEndpointHandler userQueriesEndpointHandler) {
         return RouterFunctions.route()
-                .POST("/api/v1/user",
-                        accept(MediaType.APPLICATION_JSON),
-                        userCommandEndpointHandler::registerUser)
-                .GET("/api/v1/user/",
-                        contentType(MediaType.ALL),
-                        request -> userQueriesEndpointHandler.findAllUser())
-                .GET("/api/v1/user",
-                        queryParam("page", t -> true).and(queryParam("size", t -> true)),
-                        userQueriesEndpointHandler::findAllUserWithPageable)
-                .GET("/api/v1/user/{user_id}",
-                        all(),
-                        userQueriesEndpointHandler::findUserById)
-                .GET("/api/v1/user",
-                        queryParam("username_or_email", t -> true),
-                        userQueriesEndpointHandler::findUserByUsernameOrEmail)
-                .PUT("/api/v1/user/{user_id}",
-                        accept(MediaType.APPLICATION_JSON),
-                        userCommandEndpointHandler::updateUser)
-                .DELETE("/api/v1/user/{user_id}",
-                        accept(MediaType.TEXT_PLAIN),
-                        userCommandEndpointHandler::deleteUserPermanently)
+                .path("/api/v1/user", builder -> builder
+                        .POST(accept(MediaType.APPLICATION_JSON),
+                                userCommandEndpointHandler::registerUser)
+                        .GET("/{user_id}",
+                                accept(MediaType.APPLICATION_JSON),
+                                userQueriesEndpointHandler::findUserById)
+                        .GET(queryParam("username_or_email", t -> true),
+                                userQueriesEndpointHandler::findUserByUsernameOrEmail)
+                        .PUT("/{user_id}",
+                                accept(MediaType.APPLICATION_JSON),
+                                userCommandEndpointHandler::updateUser)
+                        .DELETE("/{user_id}",
+                                accept(MediaType.APPLICATION_JSON),
+                                userCommandEndpointHandler::deleteUserPermanently)
+                        .build())
+                .path("/api/v1/users", builder -> builder
+                        .GET(accept(MediaType.APPLICATION_JSON),
+                                request -> userQueriesEndpointHandler.findAllUser())
+                        .GET("/page",queryParam("page", t -> true).and(queryParam("size", t -> true)),
+                                userQueriesEndpointHandler::findAllUserWithPageable)
+                        .build())
+                .path("/api/v1/user-email", builder -> builder
+                        .GET("/exists",
+                                queryParam("email", t -> true),
+                                userQueriesEndpointHandler::checkIfUserEmailExists))
                 .build();
     }
 

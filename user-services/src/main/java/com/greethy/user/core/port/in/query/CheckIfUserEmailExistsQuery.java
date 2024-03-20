@@ -7,8 +7,6 @@ import lombok.Data;
 @Builder
 public class CheckIfUserEmailExistsQuery {
 
-    private String userId;
-
     private String email;
 
 }

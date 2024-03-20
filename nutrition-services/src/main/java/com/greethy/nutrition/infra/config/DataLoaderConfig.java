@@ -1,4 +1,4 @@
-package com.greethy.nutrition;
+package com.greethy.nutrition.infra.config;
 
 import com.greethy.nutrition.core.domain.entity.evaluate.BmiEvaluate;
 import com.greethy.nutrition.core.domain.entity.evaluate.BmrByAge;
@@ -17,7 +17,7 @@ import java.util.Set;
 
 /**
  *
- * The {@code DataInitializer} class is responsible for initializing data upon application startup.
+ * The {@code DataLoaderConfig} class is responsible for initializing data upon application startup.
  * This class listens for the ApplicationReadyEvent and triggers the data initialization process.
  *
  * @author Kien N.Thanh
@@ -25,7 +25,7 @@ import java.util.Set;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class DataInitializer {
+public class DataLoaderConfig {
 
     private final DeleteBmiEvaluatePort deleteBmiEvaluatePort;
 
@@ -41,9 +41,9 @@ public class DataInitializer {
         deleteBmiEvaluatePort.deleteAll()
                 .thenMany(Flux.just(bmiEvaluates()))
                 .flatMap(saveBmiEvaluatePort::saveAll)
+                .doOnNext(bmiEvaluate -> log.info("Load BMI Evaluate data to MongoDB: {}", bmiEvaluate))
                 .thenMany(Flux.just(bmrByAgesTable()))
-                //.flatMap()
-                .subscribe(bmiEvaluate -> log.info("Load BMI Evaluate data to MongoDB: {}", bmiEvaluate));
+                .subscribe(bmrByAges -> log.info("Load BMI Evaluate data to MongoDB: {}", bmrByAges));
     }
 
     /**

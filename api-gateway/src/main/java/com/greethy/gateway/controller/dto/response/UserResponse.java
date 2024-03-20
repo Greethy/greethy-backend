@@ -1,11 +1,11 @@
-package com.greethy.gateway.controller.dto;
+package com.greethy.gateway.controller.dto.response;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class UserDto {
+public class UserResponse {
 
     private String username;
 

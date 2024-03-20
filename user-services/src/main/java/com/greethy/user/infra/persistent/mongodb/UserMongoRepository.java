@@ -34,4 +34,6 @@ public interface UserMongoRepository extends ReactiveMongoRepository<User, Strin
     """)
     Mono<User> findByUsernameOrEmail(String usernameOrEmail);
 
+    Mono<Boolean> existsByEmail(String email);
+
 }

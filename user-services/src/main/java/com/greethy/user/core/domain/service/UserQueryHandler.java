@@ -4,10 +4,8 @@ import com.greethy.core.domain.exception.DomainErrorDetail;
 import com.greethy.user.api.rest.dto.UserDto;
 import com.greethy.user.api.rest.dto.response.UsersLookupResponse;
 import com.greethy.user.core.domain.exception.NotFoundException;
-import com.greethy.user.core.port.in.query.FindAllUserQuery;
-import com.greethy.user.core.port.in.query.FindUserByIdQuery;
-import com.greethy.user.core.port.in.query.FindUserByUsernameOrEmailQuery;
-import com.greethy.user.core.port.in.query.GetAllUserWithPageableQuery;
+import com.greethy.user.core.port.in.query.*;
+import com.greethy.user.core.port.out.CheckIfExistsUserPort;
 import com.greethy.user.core.port.out.FindUserPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,7 +71,11 @@ public class UserQueryHandler {
                 .block();
     }
 
+    @QueryHandler
+    public Boolean handle(CheckIfUserEmailExistsQuery query, CheckIfExistsUserPort port) {
+        return port.existsByEmail(query.getEmail());
 
+    }
 
     @ExceptionHandler
     public void handleNotFoundException(NotFoundException exception) {

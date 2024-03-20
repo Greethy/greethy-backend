@@ -1,4 +1,4 @@
 package com.greethy.gateway.service;
 
-public class AuthService {
+public interface AuthService {
 }

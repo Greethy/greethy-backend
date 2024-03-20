@@ -1,6 +1,6 @@
 package com.greethy.gateway.config.security;
 
-import com.greethy.gateway.controller.dto.UserDto;
+import com.greethy.gateway.controller.dto.response.UserResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -40,21 +40,21 @@ public class SecurityConfig {
     @Bean
     public ReactiveUserDetailsService userDetailsService(WebClient.Builder webClientBuilder) {
         return usernameOrEmail -> webClientBuilder.build()
-                .get().uri(uriBuilder -> uriBuilder.host("localhost").port(8085)
-                        .path("/api/v*/user")
+                .get().uri(uriBuilder -> uriBuilder.host("user-services").port(8085)
+                        .path("/api/v1/user")
                         .queryParam("username_or_email", usernameOrEmail)
                         .build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(UserDto.class)
-                .map(userDto -> User.builder()
-                        .username(userDto.getUsername())
-                        .password(userDto.getPassword())
-                        .roles(userDto.getRoles().toArray(new String[0]))
-                        .accountExpired(!userDto.isVerified())
-                        .credentialsExpired(!userDto.isVerified())
-                        .disabled(!userDto.isVerified())
-                        .accountLocked(!userDto.isVerified())
+                .bodyToMono(UserResponse.class)
+                .map(response -> User.builder()
+                        .username(response.getUsername())
+                        .password(response.getPassword())
+                        .roles(response.getRoles().toArray(new String[0]))
+                        .accountExpired(response.isVerified())
+                        .credentialsExpired(response.isVerified())
+                        .disabled(response.isVerified())
+                        .accountLocked(response.isVerified())
                         .build()
                 );
     }

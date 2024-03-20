@@ -18,6 +18,12 @@ public class MongoCheckIfUserAdapter implements CheckIfExistsUserPort {
     }
 
     @Override
+    public Boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email)
+                .block();
+    }
+
+    @Override
     public Boolean existsByUsernameOrEmail(String username, String email) {
         return userRepository.existsByUsernameOrEmail(username, email)
                 .block();

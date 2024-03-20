@@ -3,10 +3,7 @@ package com.greethy.user.api.rest.controller.user;
 import com.greethy.user.api.rest.dto.UserDto;
 import com.greethy.user.api.rest.dto.response.ErrorResponse;
 import com.greethy.user.api.rest.dto.response.UsersLookupResponse;
-import com.greethy.user.core.port.in.query.FindAllUserQuery;
-import com.greethy.user.core.port.in.query.FindUserByIdQuery;
-import com.greethy.user.core.port.in.query.FindUserByUsernameOrEmailQuery;
-import com.greethy.user.core.port.in.query.GetAllUserWithPageableQuery;
+import com.greethy.user.core.port.in.query.*;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
@@ -55,6 +52,7 @@ public class UserQueriesEndpointHandler {
                 .filter(sizeValue -> !sizeValue.isEmpty())
                 .or(() -> Optional.of(DEFAULT_SIZE_VALUE))
                 .map(Integer::valueOf).get();
+        System.out.println("page: " + page + " size:" + size);
         var query = GetAllUserWithPageableQuery.builder()
                 .page(page).size(size).sort("userId")
                 .build();
@@ -97,9 +95,12 @@ public class UserQueriesEndpointHandler {
     }
 
     public Mono<ServerResponse> checkIfUserEmailExists(ServerRequest serverRequest) {
-//        return Mono.just(serverRequest.pathVariable("user_id"))
-//                .flatMap();
-        return null;
+        return Mono.just(serverRequest.queryParam("email").orElse("asd"))
+                .map(email -> CheckIfUserEmailExistsQuery.builder().email(email).build())
+                .flatMap(query -> reactiveQueryGateway.query(query, ResponseTypes.instanceOf(Boolean.class)))
+                .flatMap(isExisted -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(isExisted));
     }
 
     private Mono<ServerResponse> handleException(Throwable throwable) {
