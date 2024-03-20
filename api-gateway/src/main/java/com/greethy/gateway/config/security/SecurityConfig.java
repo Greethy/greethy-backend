@@ -1,6 +1,6 @@
 package com.greethy.gateway.config.security;
 
-import com.greethy.gateway.controller.dto.response.UserResponse;
+import com.greethy.gateway.api.rest.dto.response.UserResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

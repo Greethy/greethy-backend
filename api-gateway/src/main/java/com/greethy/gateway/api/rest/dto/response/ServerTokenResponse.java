@@ -1,4 +1,4 @@
-package com.greethy.gateway.controller.dto.response;
+package com.greethy.gateway.api.rest.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
