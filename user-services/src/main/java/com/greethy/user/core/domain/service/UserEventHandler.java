@@ -5,10 +5,7 @@ import com.greethy.user.core.domain.entity.Network;
 import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Role;
 import com.greethy.user.core.domain.entity.User;
-import com.greethy.user.core.event.UserDeletedEvent;
-import com.greethy.user.core.event.UserRegisteredEvent;
-import com.greethy.user.core.event.UserUpdatedEvent;
-import com.greethy.user.core.event.VerificationEmailSentEvent;
+import com.greethy.user.core.event.*;
 import com.greethy.user.core.port.out.DeleteUserPort;
 import com.greethy.user.core.port.out.FindUserPort;
 import com.greethy.user.core.port.out.SaveUserPort;
@@ -18,6 +15,7 @@ import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -43,10 +41,16 @@ public class UserEventHandler {
 
     private final DeleteUserPort deleteUserPort;
 
+    private final PasswordEncoder passwordEncoder;
+
     @EventHandler
     public void on(UserRegisteredEvent event) {
         Mono.just(event)
                 .map(userRegisteredEvent -> mapper.map(userRegisteredEvent, User.class))
+                .doOnNext(user -> {
+                    String hashedPassword = passwordEncoder.encode(user.getPassword());
+                    user.setPassword(hashedPassword);
+                })
                 .doOnNext(user -> {
                     user.setPersonalDetail(new PersonalDetail());
                     user.setNetwork(new Network());

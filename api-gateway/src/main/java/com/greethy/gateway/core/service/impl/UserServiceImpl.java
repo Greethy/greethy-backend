@@ -5,24 +5,20 @@ import com.greethy.gateway.api.rest.dto.response.UserRegisteredResponse;
 import com.greethy.gateway.core.service.UserService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final PasswordEncoder encoder;
-
     private final WebClient.Builder loadBalancedWebClientBuilder;
 
     private static final String USER_SERVICES_HOSTNAME = "http://user-services";
 
 
-    public UserServiceImpl(PasswordEncoder encoder,
-                           @Qualifier("loadBalanced-WebClient") WebClient.Builder loadBalancedWebClient) {
-        this.encoder = encoder;
+    public UserServiceImpl(@Qualifier("loadBalanced-WebClient") WebClient.Builder loadBalancedWebClient) {
         this.loadBalancedWebClientBuilder = loadBalancedWebClient;
     }
 
@@ -39,11 +35,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public Mono<UserRegisteredResponse> registerGreethyUser(Mono<RegisterRequest> registerRequest) {
-        return registerRequest.doOnNext(request -> {
-            String encodedPassword = encoder.encode(request.getPassword());
-            request.setPassword(encodedPassword);
-        }).flatMap(request -> loadBalancedWebClientBuilder.build()
+        return registerRequest.flatMap(request -> loadBalancedWebClientBuilder.build()
                 .post()
                 .uri(USER_SERVICES_HOSTNAME,
                         uriBuilder -> uriBuilder.path("/api/v1/user").build())
@@ -51,6 +45,10 @@ public class UserServiceImpl implements UserService {
                 .body(Mono.just(request), RegisterRequest.class)
                 .retrieve()
                 .bodyToMono(UserRegisteredResponse.class)
+                .doOnNext(response -> {
+                    response.setUsername(request.getUsername());
+                    response.setPassword(request.getPassword());
+                })
         );
     }
 

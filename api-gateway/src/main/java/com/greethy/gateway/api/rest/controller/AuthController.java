@@ -3,7 +3,6 @@ package com.greethy.gateway.api.rest.controller;
 import com.greethy.gateway.api.rest.dto.request.AuthRequest;
 import com.greethy.gateway.api.rest.dto.request.RegisterRequest;
 import com.greethy.gateway.api.rest.dto.response.ServerTokenResponse;
-import com.greethy.gateway.api.rest.dto.response.UserRegisteredResponse;
 import com.greethy.gateway.core.exception.UserNotFoundException;
 import com.greethy.gateway.core.service.AuthService;
 import com.greethy.gateway.core.service.UserService;
@@ -57,22 +56,25 @@ public class AuthController {
                 );
     }
 
-//    @PostMapping
-//    public Mono<ResponseEntity<?>> googleRegister(@RequestParam("access_token") String accessToken) {
-//        return authService.getGoogleUserInfo(accessToken)
-//                .publishOn(Schedulers.boundedElastic())
-//                .filter(userInfo -> Boolean.FALSE.equals(userService.checkIfUserEmailExists(userInfo.getEmail()).block()))
-//                .;
-//    }
-
-
-    @GetMapping("/test")
-    Mono<UserRegisteredResponse> registerUser(@RequestBody Mono<RegisterRequest> request) {
-        return userService.registerGreethyUser(request);
+    @PostMapping("/register/greethy")
+    Mono<ResponseEntity<?>> registerGreethyUser(@RequestBody Mono<RegisterRequest> request) {
+        return userService.registerGreethyUser(request)
+                .delayElement(Duration.ofSeconds(3))
+                .map(response -> new UsernamePasswordAuthenticationToken (response.getUsername(), response.getPassword()))
+                .flatMap(authenticationManager::authenticate)
+                .map(tokenProvider::createToken)
+                .map(token -> ResponseEntity.ok()
+                        .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + token))
+                        .body(ServerTokenResponse.builder()
+                                .type("Bearer")
+                                .accessToken(token)
+                                .build()
+                        )
+                );
     }
 
     @PostMapping("/login/greethy")
-    public Mono<ResponseEntity<?>> greethyLogin(@RequestBody Mono<AuthRequest> request) {
+    public Mono<ResponseEntity<?>> loginGreethyUser(@RequestBody Mono<AuthRequest> request) {
         return request.map(login -> new UsernamePasswordAuthenticationToken(login.usernameOrEmail(), login.password()))
                 .flatMap(authenticationManager::authenticate)
                 .map(tokenProvider::createToken)
@@ -80,18 +82,11 @@ public class AuthController {
                 .map(token -> ResponseEntity.ok()
                         .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + token))
                         .body(ServerTokenResponse.builder()
-                                .type("bearer")
+                                .type("Bearer")
                                 .accessToken(token)
                                 .build()
                         )
                 );
     }
-
-//    @PostMapping("/register/greethy")
-//    public Mono<ResponseEntity<?>> greethyRegister(@RequestBody Mono<RegisterRequest> request) {
-//        return userService.registerGreethyUser(request)
-//
-//
-//    }
 
 }

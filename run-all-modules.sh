@@ -8,14 +8,10 @@ cd services-discovery;
 ./mvnw spring-boot:run;
 cd ..;
 
+cd user-services;
+./mvnw spring-boot:run;
+cd ..;
+
 cd api-gateway;
-./mvnw spring-boot:run;
-cd ..;
-
-cd auth-services;
-./mvnw spring-boot:run;
-cd ..;
-
-cd personal-services;
 ./mvnw spring-boot:run;
 cd ..;

@@ -41,7 +41,7 @@ public class SecurityConfig {
     @Bean
     public ReactiveUserDetailsService userDetailsService(@Qualifier("loadBalanced-WebClient") WebClient.Builder webClientBuilder) {
         return usernameOrEmail -> webClientBuilder.build()
-                .get().uri(uriBuilder -> uriBuilder.host("user-services").port(8085)
+                .get().uri("http://user-services" ,uriBuilder -> uriBuilder
                         .path("/api/v1/user")
                         .queryParam("username_or_email", usernameOrEmail)
                         .build())

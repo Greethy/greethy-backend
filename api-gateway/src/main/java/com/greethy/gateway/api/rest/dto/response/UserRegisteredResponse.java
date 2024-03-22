@@ -9,4 +9,8 @@ public class UserRegisteredResponse {
     @JsonProperty("user_id")
     private String userId;
 
+    private String username;
+
+    private String password;
+
 }
