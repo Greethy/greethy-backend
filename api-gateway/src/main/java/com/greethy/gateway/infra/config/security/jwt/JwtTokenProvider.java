@@ -1,4 +1,4 @@
-package com.greethy.gateway.config.security.jwt;
+package com.greethy.gateway.infra.config.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ClaimsBuilder;
@@ -46,6 +46,7 @@ public class JwtTokenProvider {
         Claims claims = claimsBuilder.build();
         return Jwts.builder()
                 .claims(claims)
+                .issuer(jwtProperties.getIss())
                 .issuedAt(new Date())
                 .signWith(secretKey, Jwts.SIG.HS256)
                 .compact();

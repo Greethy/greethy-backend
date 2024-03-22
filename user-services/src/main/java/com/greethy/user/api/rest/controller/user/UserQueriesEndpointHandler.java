@@ -95,7 +95,7 @@ public class UserQueriesEndpointHandler {
     }
 
     public Mono<ServerResponse> checkIfUserEmailExists(ServerRequest serverRequest) {
-        return Mono.just(serverRequest.queryParam("email").orElse("asd"))
+        return Mono.just(serverRequest.queryParam("email").orElse(""))
                 .map(email -> CheckIfUserEmailExistsQuery.builder().email(email).build())
                 .flatMap(query -> reactiveQueryGateway.query(query, ResponseTypes.instanceOf(Boolean.class)))
                 .flatMap(isExisted -> ServerResponse.ok()

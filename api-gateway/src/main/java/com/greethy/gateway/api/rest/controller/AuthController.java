@@ -1,12 +1,13 @@
 package com.greethy.gateway.api.rest.controller;
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.gson.GsonFactory;
 import com.greethy.gateway.api.rest.dto.request.AuthRequest;
+import com.greethy.gateway.api.rest.dto.request.RegisterRequest;
 import com.greethy.gateway.api.rest.dto.response.ServerTokenResponse;
-import com.greethy.gateway.config.security.jwt.JwtTokenProvider;
+import com.greethy.gateway.api.rest.dto.response.UserRegisteredResponse;
+import com.greethy.gateway.core.exception.UserNotFoundException;
+import com.greethy.gateway.core.service.AuthService;
+import com.greethy.gateway.core.service.UserService;
+import com.greethy.gateway.infra.config.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -16,45 +17,58 @@ import org.springframework.security.authentication.ReactiveAuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.util.Collections;
+import java.time.Duration;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/auth")
 public class AuthController {
 
-    @Value("${google.client-id}")
-    private String googleClientId;
+    @Value("${app.password}")
+    private String password;
+
+    private final UserService userService;
+
+    private final AuthService authService;
 
     private final JwtTokenProvider tokenProvider;
 
     private final ReactiveAuthenticationManager authenticationManager;
 
-    @GetMapping("/login/google")
-    public Mono<ServerTokenResponse> googleAuth(@RequestParam(name = "client_id_token") String clientIdToken)
-            throws IOException, GeneralSecurityException {
-        GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), new GsonFactory())
-                .setAudience(Collections.singletonList(googleClientId))
-                .build();
-        GoogleIdToken idToken = verifier.verify(clientIdToken);
+    @PostMapping("/login/google")
+    public Mono<ResponseEntity<?>> googleLogin(@RequestParam("access_token") String accessToken) {
+        return authService.getGoogleUserInfo(accessToken)
+                .publishOn(Schedulers.boundedElastic())
+                .filter(userInfo -> Boolean.TRUE.equals(userService.checkIfUserEmailExists(userInfo.getEmail()).block()))
+                .switchIfEmpty(Mono.error(new UserNotFoundException(HttpStatus.BAD_REQUEST.value(), "Google account is not registered")))
+                .map(userInfo -> new UsernamePasswordAuthenticationToken(userInfo.getEmail(), password))
+                .flatMap(authenticationManager::authenticate)
+                .delayElement(Duration.ofSeconds(3))
+                .map(tokenProvider::createToken)
+                .map(token -> ResponseEntity.ok()
+                        .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + token))
+                        .body(ServerTokenResponse.builder()
+                                .type("bearer")
+                                .accessToken(token)
+                                .build()
+                        )
+                );
+    }
 
-        if (idToken != null) {
-            GoogleIdToken.Payload payload = idToken.getPayload();
-            String userId = payload.getSubject();
-            System.out.println("User ID: " + userId);
-            String email = payload.getEmail();
-            boolean emailVerified = payload.getEmailVerified();
-            System.out.println(email);
-            System.out.println(emailVerified);
+//    @PostMapping
+//    public Mono<ResponseEntity<?>> googleRegister(@RequestParam("access_token") String accessToken) {
+//        return authService.getGoogleUserInfo(accessToken)
+//                .publishOn(Schedulers.boundedElastic())
+//                .filter(userInfo -> Boolean.FALSE.equals(userService.checkIfUserEmailExists(userInfo.getEmail()).block()))
+//                .;
+//    }
 
-        } else {
-            System.out.println("Invalid ID token.");
-        }
 
-        return null;
+    @GetMapping("/test")
+    Mono<UserRegisteredResponse> registerUser(@RequestBody Mono<RegisterRequest> request) {
+        return userService.registerGreethyUser(request);
     }
 
     @PostMapping("/login/greethy")
@@ -62,15 +76,22 @@ public class AuthController {
         return request.map(login -> new UsernamePasswordAuthenticationToken(login.usernameOrEmail(), login.password()))
                 .flatMap(authenticationManager::authenticate)
                 .map(tokenProvider::createToken)
-                .map(token -> {
-                    HttpHeaders httpHeaders = new HttpHeaders();
-                    httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + token);
-                    ServerTokenResponse serverTokenResponse = ServerTokenResponse.builder()
-                            .type("BEARER")
-                            .accessToken(token)
-                            .build();
-                    return new ResponseEntity<>(serverTokenResponse, httpHeaders, HttpStatus.OK);
-                });
+                .delayElement(Duration.ofSeconds(3))
+                .map(token -> ResponseEntity.ok()
+                        .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + token))
+                        .body(ServerTokenResponse.builder()
+                                .type("bearer")
+                                .accessToken(token)
+                                .build()
+                        )
+                );
     }
+
+//    @PostMapping("/register/greethy")
+//    public Mono<ResponseEntity<?>> greethyRegister(@RequestBody Mono<RegisterRequest> request) {
+//        return userService.registerGreethyUser(request)
+//
+//
+//    }
 
 }

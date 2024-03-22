@@ -1,6 +1,7 @@
-package com.greethy.gateway.config.security;
+package com.greethy.gateway.infra.config.security;
 
 import com.greethy.gateway.api.rest.dto.response.UserResponse;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -38,7 +39,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public ReactiveUserDetailsService userDetailsService(WebClient.Builder webClientBuilder) {
+    public ReactiveUserDetailsService userDetailsService(@Qualifier("loadBalanced-WebClient") WebClient.Builder webClientBuilder) {
         return usernameOrEmail -> webClientBuilder.build()
                 .get().uri(uriBuilder -> uriBuilder.host("user-services").port(8085)
                         .path("/api/v1/user")
@@ -68,7 +69,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
     }
 

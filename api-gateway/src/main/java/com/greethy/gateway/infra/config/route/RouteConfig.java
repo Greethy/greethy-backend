@@ -1,4 +1,4 @@
-package com.greethy.gateway.config.route;
+package com.greethy.gateway.infra.config.route;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;

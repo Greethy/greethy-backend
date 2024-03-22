@@ -18,6 +18,14 @@
 		<keycloak.version>24.0.1</keycloak.version>
 	</properties>
 	<dependencies>
+		<!-- GREETHY'S COMMON MODULES -->
+
+		<dependency>
+			<groupId>com.greethy</groupId>
+			<artifactId>core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<!-- MICROSERVICE API GATEWAY, LOAD BALANCER, CIRCUIT BREAKER -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -47,21 +55,15 @@
 		<!--SECURITY-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-oauth2-jose</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client</artifactId>
-			<version>2.4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>io.grpc</groupId>
-			<artifactId>grpc-netty</artifactId>
-			<version>1.62.2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>

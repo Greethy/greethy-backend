@@ -11,6 +11,7 @@ import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorComma
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
@@ -46,7 +47,11 @@ public class UserCommandsEndpointHandler {
     Mono<ServerResponse> registerUser(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(RegisterUserRequest.class)
                 .map(request -> mapper.map(request, RegisterUserCommand.class))
-                .doOnNext(command -> command.setUserId(UUID.randomUUID().toString()))
+                .doOnNext(command -> {
+                    if (!StringUtils.hasText(command.getUserId())){
+                        command.setUserId(UUID.randomUUID().toString());
+                    }
+                })
                 .flatMap(reactiveCommandGateway::send)
                 .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
                         .contentType(MediaType.APPLICATION_JSON)
