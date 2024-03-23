@@ -49,7 +49,7 @@ public class AuthController {
                 .map(token -> ResponseEntity.ok()
                         .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + token))
                         .body(ServerTokenResponse.builder()
-                                .type("bearer")
+                                .type("Bearer")
                                 .accessToken(token)
                                 .build()
                         )

@@ -7,7 +7,6 @@ import reactor.core.publisher.Mono;
 
 public interface UserService {
 
-
     Mono<Boolean> checkIfUserEmailExists(@RequestParam String email);
 
     Mono<UserRegisteredResponse> registerGreethyUser(Mono<RegisterRequest> request);
