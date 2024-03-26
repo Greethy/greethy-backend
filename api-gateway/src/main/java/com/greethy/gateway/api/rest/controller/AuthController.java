@@ -39,6 +39,7 @@ public class AuthController {
     @PostMapping("/login/google")
     public Mono<ResponseEntity<?>> googleLogin(@RequestParam("access_token") String accessToken) {
         return authService.getGoogleUserInfo(accessToken)
+                .delayElement(Duration.ofSeconds(3))
                 .publishOn(Schedulers.boundedElastic())
                 .filter(userInfo -> Boolean.TRUE.equals(userService.checkIfUserEmailExists(userInfo.getEmail()).block()))
                 .switchIfEmpty(Mono.error(new UserNotFoundException(HttpStatus.BAD_REQUEST.value(), "Google account is not registered")))

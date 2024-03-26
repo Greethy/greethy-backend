@@ -25,9 +25,11 @@ public class RouteConfig {
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("user-services-router",
-                        predicate -> predicate.path("/api/v*/user/**").uri("lb://user-services"))
+                        predicate -> predicate.path("/api/v*/user/**", "/api/v*/users").uri("lb://user-services")
+                )
                 .route("nutrition-services-router",
-                        predicate -> predicate.path("/api/v*/**").uri("lb://nutrition-services"))
+                        predicate -> predicate.path("/api/v*/**").uri("lb://nutrition-services")
+                )
                 .build();
     }
 
