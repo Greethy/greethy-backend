@@ -19,6 +19,7 @@ public class BodySpecsEndpointRouter {
                 .POST("/api/v1/user/{user_id}/body_specs",
                         accept(MediaType.APPLICATION_JSON),
                         bodySpecsCommandsEndpointHandler::createUserBodySpecs)
+
                 .build();
     }
 

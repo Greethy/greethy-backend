@@ -20,6 +20,8 @@ public class BodySpecs {
 
     private String gender;
 
+    private Double tdee;
+
     private Bmi bmi;
 
     private Pal pal;

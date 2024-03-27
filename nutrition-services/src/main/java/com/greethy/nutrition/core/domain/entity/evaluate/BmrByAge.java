@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-@Document(collection = "bmr_table")
+@Document(collection = "bmr_by_ages")
 public class BmrByAge {
 
     @Id

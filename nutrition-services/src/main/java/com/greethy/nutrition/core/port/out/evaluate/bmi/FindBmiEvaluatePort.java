@@ -1,4 +1,4 @@
-package com.greethy.nutrition.core.port.out.evaluate;
+package com.greethy.nutrition.core.port.out.evaluate.bmi;
 
 import com.greethy.nutrition.core.domain.entity.evaluate.BmiEvaluate;
 import reactor.core.publisher.Flux;

@@ -20,4 +20,6 @@ public class CreateBodySpecsCommand {
 
     private Integer gender;
 
+    private String activityType;
+
 }

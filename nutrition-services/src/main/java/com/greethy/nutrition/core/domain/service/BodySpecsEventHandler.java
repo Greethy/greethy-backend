@@ -23,6 +23,7 @@ public class BodySpecsEventHandler {
     void on(BodySpecsCreatedEvent event) {
         Mono.just(event)
                 .map(bodySpecsCreatedEvent -> mapper.map(bodySpecsCreatedEvent, BodySpecs.class))
+                //.doOnNext(bodySpecs -> bodySpecs.setCreateAt())
                 .flatMap(saveBodySpecsPort::save)
                 .subscribe(bodySpecs -> log.info("User's bodySpecs created with id {}", bodySpecs.getId()));
     }

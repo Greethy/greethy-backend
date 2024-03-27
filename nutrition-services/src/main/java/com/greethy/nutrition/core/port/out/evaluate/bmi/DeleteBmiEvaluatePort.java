@@ -1,4 +1,4 @@
-package com.greethy.nutrition.core.port.out.evaluate;
+package com.greethy.nutrition.core.port.out.evaluate.bmi;
 
 import reactor.core.publisher.Mono;
 
