@@ -21,15 +21,15 @@ public class UserEndpointRouter {
                 .path("/api/v1/user", builder -> builder
                         .POST(accept(MediaType.APPLICATION_JSON),
                                 userCommandEndpointHandler::registerUser)
-                        .GET("/{user_id}",
+                        .GET("/{user-id}",
                                 accept(MediaType.APPLICATION_JSON),
                                 userQueriesEndpointHandler::findUserById)
-                        .GET(queryParam("username_or_email", t -> true),
+                        .GET(queryParam("username-or-email", t -> true),
                                 userQueriesEndpointHandler::findUserByUsernameOrEmail)
-                        .PUT("/{user_id}",
+                        .PUT("/{user-id}",
                                 accept(MediaType.APPLICATION_JSON),
                                 userCommandEndpointHandler::updateUser)
-                        .DELETE("/{user_id}",
+                        .DELETE("/{user-id}",
                                 accept(MediaType.APPLICATION_JSON),
                                 userCommandEndpointHandler::deleteUserPermanently)
                         .build())

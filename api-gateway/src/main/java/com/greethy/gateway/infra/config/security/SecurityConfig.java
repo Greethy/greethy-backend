@@ -60,7 +60,7 @@ public class SecurityConfig {
         return usernameOrEmail -> webClientBuilder.build()
                 .get().uri("http://user-services", uriBuilder -> uriBuilder
                         .path("/api/v1/user")
-                        .queryParam("username_or_email", usernameOrEmail)
+                        .queryParam("username-or-email", usernameOrEmail)
                         .build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()

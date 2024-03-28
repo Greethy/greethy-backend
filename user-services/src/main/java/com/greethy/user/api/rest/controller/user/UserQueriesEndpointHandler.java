@@ -72,7 +72,7 @@ public class UserQueriesEndpointHandler {
     }
 
     public Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
-        return Mono.just(serverRequest.pathVariable("user_id"))
+        return Mono.just(serverRequest.pathVariable("user-id"))
                 .map(userId -> FindUserByIdQuery.builder().userId(userId).build())
                 .flatMap(query -> reactiveQueryGateway.query(query, ResponseTypes.instanceOf(UserDto.class)))
                 .flatMap(userDto -> ServerResponse.ok()
@@ -82,7 +82,7 @@ public class UserQueriesEndpointHandler {
     }
 
     public Mono<ServerResponse> findUserByUsernameOrEmail(ServerRequest serverRequest) {
-        return Mono.just(serverRequest.queryParam("username_or_email")
+        return Mono.just(serverRequest.queryParam("username-or-email")
                 .orElse(""))
                 .map(usernameOrEmail -> FindUserByUsernameOrEmailQuery.builder()
                         .usernameOrEmail(usernameOrEmail)

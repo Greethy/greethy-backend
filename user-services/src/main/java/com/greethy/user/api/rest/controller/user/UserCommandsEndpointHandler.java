@@ -34,7 +34,7 @@ public class UserCommandsEndpointHandler {
 
     private final ReactorCommandGateway reactiveCommandGateway;
 
-    private static final String PATH_VARIABLE_NAME = "user_id";
+    private static final String PATH_VARIABLE_NAME = "user-id";
 
     /**
      * Registers a new user based on the provided registration request. Generates a unique user ID,
@@ -55,7 +55,7 @@ public class UserCommandsEndpointHandler {
                 .flatMap(reactiveCommandGateway::send)
                 .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .bodyValue(Map.of("user_id", it)))
+                        .bodyValue(Map.of("user-id", it)))
                 .onErrorResume(throwable -> {
                     if (throwable instanceof CommandExecutionException exception) {
                         ErrorResponse response = exception.getDetails()
@@ -90,7 +90,7 @@ public class UserCommandsEndpointHandler {
                 ).flatMap(command -> reactiveCommandGateway.send(command)
                         .flatMap(it -> ServerResponse.status(HttpStatus.OK)
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(Map.of("user_id", it)))
+                                .bodyValue(Map.of("user-id", it)))
                 );
     }
 

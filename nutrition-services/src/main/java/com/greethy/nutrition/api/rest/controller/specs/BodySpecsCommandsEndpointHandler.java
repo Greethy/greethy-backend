@@ -23,7 +23,8 @@ public class BodySpecsCommandsEndpointHandler {
     private final ReactorCommandGateway reactorCommandGateway;
 
     Mono<ServerResponse> createUserBodySpecs(ServerRequest serverRequest) {
-        return Mono.just(serverRequest.pathVariable("user_id"))
+        return Mono.just(serverRequest.pathVariable("user-id"))
+                .doOnNext(System.out::println)
                 .flatMap(userId -> serverRequest.bodyToMono(CreateBodySpecsRequest.class)
                         .map(request -> mapper.map(request, CreateBodySpecsCommand.class))
                         .doOnNext(command -> {
@@ -33,7 +34,7 @@ public class BodySpecsCommandsEndpointHandler {
                 )
                 .flatMap(reactorCommandGateway::send)
                 .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
-                        .bodyValue(Map.of("body_spec_id", it)));
+                        .bodyValue(Map.of("body-spec-id", it)));
     }
 
 }
