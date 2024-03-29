@@ -4,7 +4,6 @@ import com.greethy.gateway.api.filter.JwtTokenFilter;
 import com.greethy.gateway.api.rest.dto.response.UserResponse;
 import com.greethy.gateway.core.exception.InternalServerException;
 import com.greethy.gateway.core.exception.UserNotFoundException;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -56,13 +55,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public ReactiveUserDetailsService userDetailsService(@Qualifier("loadBalanced-WebClient") WebClient.Builder webClientBuilder) {
+    public ReactiveUserDetailsService userDetailsService(WebClient.Builder webClientBuilder) {
         return usernameOrEmail -> webClientBuilder.build()
-                .get().uri("http://user-services", uriBuilder -> uriBuilder
+                .get().uri("http://localhost:8085", uriBuilder -> uriBuilder
                         .path("/api/v1/user")
                         .queryParam("username-or-email", usernameOrEmail)
-                        .build())
-                .accept(MediaType.APPLICATION_JSON)
+                        .build()
+                ).accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
                         clientResponse -> switch (clientResponse.statusCode().value()) {
@@ -93,7 +92,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(10);
+        return new BCryptPasswordEncoder(12);
     }
 
 }

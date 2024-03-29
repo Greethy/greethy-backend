@@ -3,6 +3,7 @@ package com.greethy.gateway.api.rest.controller;
 import com.greethy.gateway.api.rest.dto.request.AuthRequest;
 import com.greethy.gateway.api.rest.dto.request.RegisterRequest;
 import com.greethy.gateway.api.rest.dto.response.ServerTokenResponse;
+import com.greethy.gateway.api.rest.dto.response.UserRegisteredResponse;
 import com.greethy.gateway.core.exception.UserNotFoundException;
 import com.greethy.gateway.core.service.AuthService;
 import com.greethy.gateway.core.service.UserService;
@@ -14,11 +15,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import java.time.Duration;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,7 +42,7 @@ public class AuthController {
     private final ReactiveAuthenticationManager authenticationManager;
 
     @PostMapping("/login/google")
-    public Mono<ResponseEntity<?>> googleLogin(@RequestParam("access_token") String accessToken) {
+    public Mono<ResponseEntity<?>> googleLogin(@RequestParam("access-token") String accessToken) {
         return authService.getGoogleUserInfo(accessToken)
                 .delayElement(Duration.ofSeconds(3))
                 .publishOn(Schedulers.boundedElastic())
@@ -52,42 +57,44 @@ public class AuthController {
                         .body(ServerTokenResponse.builder()
                                 .type("Bearer")
                                 .accessToken(token)
-                                .build()
-                        )
+                                .build())
                 );
     }
+
+//    @PostMapping("/register/google")
+//    public Mono<ResponseEntity<?>> googleRegister(@RequestParam("access-token") String accessToken) {
+//        return authService.getGoogleUserInfo(accessToken)
+//                .publishOn(Schedulers.boundedElastic())
+//                .filter(userInfo -> Boolean.FALSE.equals(userService.checkIfUserEmailExists(userInfo.getEmail()).block()))
+//                .;
+//    }
 
     @PostMapping("/register/greethy")
     Mono<ResponseEntity<?>> registerGreethyUser(@RequestBody Mono<RegisterRequest> request) {
         return userService.registerGreethyUser(request)
-                .delayElement(Duration.ofSeconds(3))
-                .map(response -> new UsernamePasswordAuthenticationToken (response.getUsername(), response.getPassword()))
-                .flatMap(authenticationManager::authenticate)
+                .map(UserRegisteredResponse::getUsername)
                 .map(tokenProvider::createToken)
-                .map(token -> ResponseEntity.ok()
-                        .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + token))
-                        .body(ServerTokenResponse.builder()
-                                .type("Bearer")
-                                .accessToken(token)
-                                .build()
-                        )
+                .flatMap(token -> Mono.just(ResponseEntity.ok()
+                        .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, token))
+                        .body(ServerTokenResponse.builder().type("Bearer").accessToken(token).build()))
                 );
     }
 
     @PostMapping("/login/greethy")
-    public Mono<ResponseEntity<?>> loginGreethyUser(@RequestBody Mono<AuthRequest> request) {
+    Mono<ResponseEntity<?>> loginGreethyUser(@RequestBody Mono<AuthRequest> request) {
         return request.map(login -> new UsernamePasswordAuthenticationToken(login.usernameOrEmail(), login.password()))
                 .flatMap(authenticationManager::authenticate)
                 .map(tokenProvider::createToken)
-                .delayElement(Duration.ofSeconds(3))
                 .map(token -> ResponseEntity.ok()
-                        .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, "Bearer " + token))
-                        .body(ServerTokenResponse.builder()
-                                .type("Bearer")
-                                .accessToken(token)
-                                .build()
-                        )
+                        .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, token))
+                        .body(ServerTokenResponse.builder().type("Bearer").accessToken(token).build())
                 );
+    }
+
+    @GetMapping("/me")
+    Mono<Map<String, Object>> current(@AuthenticationPrincipal Mono<UserDetails> principal) {
+        return principal.map(userDetails -> Map.of("name", userDetails.getUsername()
+        , "roles", AuthorityUtils.authorityListToSet(userDetails.getAuthorities())));
     }
 
 }

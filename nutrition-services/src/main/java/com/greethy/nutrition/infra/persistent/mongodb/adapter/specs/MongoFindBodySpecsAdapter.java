@@ -34,4 +34,9 @@ public class MongoFindBodySpecsAdapter implements FindBodySpecsPort {
     public Flux<BodySpecs> findAllBy(Pageable pageable) {
         return bodySpecsRepository.findAllBy(pageable);
     }
+
+    @Override
+    public Flux<BodySpecs> findAllByIds(Flux<String> ids) {
+        return bodySpecsRepository.findAllById(ids);
+    }
 }

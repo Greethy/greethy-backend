@@ -5,32 +5,28 @@ import com.greethy.gateway.api.rest.dto.response.UserRegisteredResponse;
 import com.greethy.gateway.core.exception.AccountExistedException;
 import com.greethy.gateway.core.exception.InternalServerException;
 import com.greethy.gateway.core.service.UserService;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final WebClient.Builder loadBalancedWebClientBuilder;
+    private final WebClient.Builder webClientBuilder;
 
-    private static final String USER_SERVICES_HOSTNAME = "http://user-services";
+    private static final String USER_SERVICES_HOSTNAME = "http://localhost:8085";
 
-
-    public UserServiceImpl(@Qualifier("loadBalanced-WebClient") WebClient.Builder loadBalancedWebClient) {
-        this.loadBalancedWebClientBuilder = loadBalancedWebClient;
-    }
 
     @Override
     public Mono<Boolean> checkIfUserEmailExists(String email) {
-        return loadBalancedWebClientBuilder.build()
+        return webClientBuilder.build()
                 .get()
-                .uri(USER_SERVICES_HOSTNAME,
-                        uriBuilder -> uriBuilder.path("/api/v1/user-email/exists")
+                .uri(USER_SERVICES_HOSTNAME, uriBuilder -> uriBuilder
+                        .path("/api/v1/user-email/exists")
                         .queryParam("email", email)
                         .build())
                 .retrieve()
@@ -38,9 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public Mono<UserRegisteredResponse> registerGreethyUser(Mono<RegisterRequest> registerRequest) {
-        return registerRequest.flatMap(request -> loadBalancedWebClientBuilder.build()
+        return registerRequest.flatMap(request -> webClientBuilder.build()
                 .post()
                 .uri(USER_SERVICES_HOSTNAME,
                         uriBuilder -> uriBuilder.path("/api/v1/user").build())

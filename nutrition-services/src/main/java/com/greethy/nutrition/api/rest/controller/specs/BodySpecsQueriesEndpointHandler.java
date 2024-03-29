@@ -1,12 +1,10 @@
 package com.greethy.nutrition.api.rest.controller.specs;
 
 import com.greethy.annotation.reactive.Handler;
+import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
 import com.greethy.nutrition.api.rest.dto.response.PageSupport;
-import com.greethy.nutrition.core.port.in.query.CountAllBodySpecsQuery;
-import com.greethy.nutrition.core.port.in.query.FindAllBodySpecsQuery;
-import com.greethy.nutrition.core.port.in.query.FindBodySpecsByIdQuery;
-import com.greethy.nutrition.core.port.in.query.FindBodySpecsByPaginationQuery;
+import com.greethy.nutrition.core.port.in.query.*;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
 import org.springframework.util.StringUtils;
@@ -20,10 +18,6 @@ import java.util.Optional;
 @Handler
 @RequiredArgsConstructor
 public class BodySpecsQueriesEndpointHandler {
-
-    private final String DEFAULT_PAGE_VALUE = "0";
-
-    private final String DEFAULT_SIZE_VALUE = "10";
 
     private final ReactorQueryGateway reactiveQueryGateway;
 
@@ -44,14 +38,8 @@ public class BodySpecsQueriesEndpointHandler {
     }
 
     Mono<ServerResponse> getBodySpecsPagination(ServerRequest serverRequest) {
-        int page = serverRequest.queryParam("page")
-                .filter(StringUtils::hasText)
-                .or(() -> Optional.of(DEFAULT_PAGE_VALUE))
-                .map(Integer::valueOf).get();
-        int size = serverRequest.queryParam("size")
-                .filter(StringUtils::hasText)
-                .or(() -> Optional.of(DEFAULT_SIZE_VALUE))
-                .map(Integer::valueOf).get();
+        int page = getQueryParamValue(serverRequest, "page", "0");
+        int size = getQueryParamValue(serverRequest, "size", "10");
         return Flux.just(FindBodySpecsByPaginationQuery.builder().page(page).size(size).build())
                 .flatMap(query -> reactiveQueryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
@@ -62,8 +50,22 @@ public class BodySpecsQueriesEndpointHandler {
                 ).switchIfEmpty(ServerResponse.noContent().build());
     }
 
+    private int getQueryParamValue(ServerRequest serverRequest, String name, String defaultValue) {
+        return serverRequest.queryParam(name)
+                .filter(StringUtils::hasText)
+                .or(() -> Optional.of(defaultValue))
+                .map(Integer::valueOf).get();
+    }
+
     Mono<ServerResponse> getAllUserBodySpecs(ServerRequest serverRequest) {
-        return null;
+        return Flux.just(serverRequest.pathVariable("user-id"))
+                .map(userId -> FindUserBodySpecsIdsQuery.builder().userId(userId).build())
+                .flatMap(query -> reactiveQueryGateway.streamingQuery(query, String.class))
+                .collectList()
+                .map(bodySpecsIds -> FindAllBodySpecsByIdQuery.builder().bodySpecsIds(bodySpecsIds).build())
+                .flatMapMany(query -> reactiveQueryGateway.streamingQuery(query, BodySpecsResponse.class))
+                .collectList()
+                .flatMap(s -> ServerResponse.ok().bodyValue(s));
     }
 
 }

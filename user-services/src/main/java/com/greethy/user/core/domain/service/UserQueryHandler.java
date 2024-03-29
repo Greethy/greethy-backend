@@ -1,8 +1,10 @@
 package com.greethy.user.core.domain.service;
 
 import com.greethy.core.domain.exception.DomainErrorDetail;
+import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
 import com.greethy.user.api.rest.dto.UserDto;
 import com.greethy.user.api.rest.dto.response.UsersLookupResponse;
+import com.greethy.user.core.domain.entity.User;
 import com.greethy.user.core.domain.exception.NotFoundException;
 import com.greethy.user.core.port.in.query.*;
 import com.greethy.user.core.port.out.CheckIfExistsUserPort;
@@ -17,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -72,9 +75,17 @@ public class UserQueryHandler {
     }
 
     @QueryHandler
-    public Boolean handle(CheckIfUserEmailExistsQuery query, CheckIfExistsUserPort port) {
+    public Boolean handle(CheckIfUserEmailExistsQuery query,
+                          CheckIfExistsUserPort port) {
         return port.existsByEmail(query.getEmail());
 
+    }
+
+    @QueryHandler
+    public Flux<String> handle(FindUserBodySpecsIdsQuery query) {
+        return findUserPort.findById(query.getUserId())
+                .map(User::getBodySpecsIds)
+                .flatMapMany(Flux::fromIterable);
     }
 
     @ExceptionHandler

@@ -9,15 +9,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -39,8 +37,10 @@ public class JwtTokenProvider {
     }
 
     public String createToken(Authentication authentication) {
-        String username = authentication.getName();
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        return createToken(authentication.getName(), authentication.getAuthorities());
+    }
+
+    public String createToken(String username, Collection<? extends GrantedAuthority> authorities) {
         ClaimsBuilder claimsBuilder = Jwts.claims().subject(username);
         if(!authorities.isEmpty()) {
             claimsBuilder.add(AUTHORITIES_KEY, authorities.stream()
@@ -54,6 +54,11 @@ public class JwtTokenProvider {
                 .issuedAt(new Date())
                 .signWith(secretKey, Jwts.SIG.HS256)
                 .compact();
+    }
+
+    public String createToken(String username) {
+        var defaultAuthorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+        return createToken(username, defaultAuthorities);
     }
 
     public Authentication getAuthentication(String token) {

@@ -1,10 +1,7 @@
 package com.greethy.nutrition.core.domain.service;
 
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
-import com.greethy.nutrition.core.port.in.query.CountAllBodySpecsQuery;
-import com.greethy.nutrition.core.port.in.query.FindAllBodySpecsQuery;
-import com.greethy.nutrition.core.port.in.query.FindBodySpecsByIdQuery;
-import com.greethy.nutrition.core.port.in.query.FindBodySpecsByPaginationQuery;
+import com.greethy.nutrition.core.port.in.query.*;
 import com.greethy.nutrition.core.port.out.specs.FindBodySpecsPort;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.queryhandling.QueryHandler;
@@ -46,4 +43,9 @@ public class BodySpecsQueryHandler {
         return findBodySpecsPort.countAll();
     }
 
+    @QueryHandler
+    Flux<BodySpecsResponse> handle(FindAllBodySpecsByIdQuery query) {
+        return findBodySpecsPort.findAllByIds(Flux.fromIterable(query.getBodySpecsIds()))
+                .map(bodySpecs -> mapper.map(bodySpecs, BodySpecsResponse.class));
+    }
 }

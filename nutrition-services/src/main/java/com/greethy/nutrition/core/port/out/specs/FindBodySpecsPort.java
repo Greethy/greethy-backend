@@ -15,4 +15,6 @@ public interface FindBodySpecsPort {
 
     Flux<BodySpecs> findAllBy(Pageable pageable);
 
+    Flux<BodySpecs> findAllByIds(Flux<String> ids);
+
 }
