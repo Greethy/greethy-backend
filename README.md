@@ -128,3 +128,4 @@ mongodb:
   * Password: password
 
 
+### See API documentation at localhost:8085/swagger-ui.html
