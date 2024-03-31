@@ -131,10 +131,9 @@ public class UserAggregate {
         if(!checkIfExistsUserPort.existsById(command.getUserId())) {
             throw new NotFoundException();
         }
-        var event = UserDeletedEvent.builder()
+        AggregateLifecycle.apply(UserDeletedEvent.builder()
                 .userId(command.getUserId())
-                .build();
-        AggregateLifecycle.apply(event);
+                .build());
     }
 
     @EventSourcingHandler

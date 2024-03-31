@@ -25,6 +25,7 @@ public class BodySpecsEndpointRouter {
                                         bodySpecsQueriesEndpointHandler::getBodySpecsPagination)
                                 .GET("", request -> bodySpecsQueriesEndpointHandler.getAllBodySpecs())
                                 .PUT("{body-specs-id}", bodySpecsCommandsEndpointHandler::updateBodySpecs)
+                                .DELETE("{body-specs-id}", bodySpecsCommandsEndpointHandler::deleteBodySpecs)
                         )
                 ).path("/api/v1/user/{user-id}", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routeBuilder -> routeBuilder

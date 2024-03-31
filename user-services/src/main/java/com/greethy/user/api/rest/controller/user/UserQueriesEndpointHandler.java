@@ -1,14 +1,11 @@
 package com.greethy.user.api.rest.controller.user;
 
-import com.greethy.core.api.response.ErrorResponse;
 import com.greethy.core.api.response.PageSupport;
-import com.greethy.core.domain.exception.BaseException;
 import com.greethy.user.api.rest.dto.response.UserResponse;
 import com.greethy.user.core.domain.exception.NotFoundException;
 import com.greethy.user.core.port.in.query.*;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -31,6 +28,8 @@ import java.util.Optional;
 public class UserQueriesEndpointHandler {
 
     private final ReactorQueryGateway reactiveQueryGateway;
+
+    private final UserExceptionHandler exceptionHandler;
 
     /**
      * Retrieves all users from the data source.
@@ -118,7 +117,7 @@ public class UserQueriesEndpointHandler {
                 ).flatMap(userResponse -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(userResponse))
-                .onErrorResume(this::handlingException);
+                .onErrorResume(exceptionHandler::handlingQueryException);
     }
 
     /**
@@ -141,7 +140,7 @@ public class UserQueriesEndpointHandler {
                 ).flatMap(response -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(response))
-                .onErrorResume(this::handlingException);
+                .onErrorResume(exceptionHandler::handlingQueryException);
     }
 
     /**
@@ -162,29 +161,6 @@ public class UserQueriesEndpointHandler {
                 .flatMap(isExisted -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(isExisted));
-    }
-
-    /**
-     * Handles exceptions that occur during request processing.
-     * <p>
-     * This method receives a throwable and checks if it's an instance of {@link BaseException}.
-     * If it is, it generates an HTTP response with the error details specified in the exception.
-     * Otherwise, it returns an HTTP 500 Internal Server Error response.
-     *
-     * @param throwable The throwable representing the exception.
-     * @return A {@link Mono} representing the server response with error details.
-     */
-    private Mono<ServerResponse> handlingException(Throwable throwable) {
-        if (throwable instanceof BaseException exception) {
-            return ServerResponse.status(exception.getStatus())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .bodyValue(ErrorResponse.builder()
-                            .message(exception.getMessage())
-                            .status(exception.getStatus())
-                            .build());
-        }
-        return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .build();
     }
 
 }

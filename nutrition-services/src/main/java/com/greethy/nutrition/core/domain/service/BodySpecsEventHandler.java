@@ -2,6 +2,7 @@ package com.greethy.nutrition.core.domain.service;
 
 import com.greethy.nutrition.core.domain.entity.specs.BodySpecs;
 import com.greethy.nutrition.core.event.BodySpecsCreatedEvent;
+import com.greethy.nutrition.core.event.BodySpecsUpdatedEvent;
 import com.greethy.nutrition.core.port.out.specs.SaveBodySpecsPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,14 @@ public class BodySpecsEventHandler {
                 //.doOnNext(bodySpecs -> bodySpecs.setCreateAt())
                 .flatMap(saveBodySpecsPort::save)
                 .subscribe(bodySpecs -> log.info("User's bodySpecs created with id {}", bodySpecs.getId()));
+    }
+
+    @EventHandler
+    void on(BodySpecsUpdatedEvent event) {
+        Mono.just(event)
+                .map(bodySpecsUpdatedEvent -> mapper.map(bodySpecsUpdatedEvent, BodySpecs.class))
+                .flatMap(saveBodySpecsPort::save)
+                .subscribe();
     }
 
 }
