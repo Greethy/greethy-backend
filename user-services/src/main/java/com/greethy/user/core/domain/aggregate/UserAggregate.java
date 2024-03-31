@@ -5,7 +5,10 @@ import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.Premium;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import com.greethy.user.core.domain.exception.NotFoundException;
-import com.greethy.user.core.event.*;
+import com.greethy.user.core.event.UserDeletedEvent;
+import com.greethy.user.core.event.UserRegisteredEvent;
+import com.greethy.user.core.event.UserUpdatedEvent;
+import com.greethy.user.core.event.VerificationEmailSentEvent;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
@@ -62,7 +65,7 @@ public class UserAggregate {
 
     @CommandHandler
     UserAggregate(RegisterUserCommand command,
-                  CheckIfExistsUserPort port) {
+                  CheckIfExistsUserPort port) throws DuplicateUniqueFieldException {
         if(port.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
             throw new DuplicateUniqueFieldException(HttpStatus.BAD_REQUEST.value(), "Username or email already used !");
         }
@@ -95,7 +98,7 @@ public class UserAggregate {
     void handle(UpdateUserCommand command,
                 CheckIfExistsUserPort checkIfExistsUserPort) {
         if (!checkIfExistsUserPort.existsById(command.getUserId())) {
-            throw new NotFoundException(HttpStatus.NOT_FOUND.value(), "Cant not found user with id: " + command.getUserId());
+            throw new NotFoundException();
         }
         var event = UserUpdatedEvent.builder()
                 .userId(command.getUserId())
@@ -126,7 +129,7 @@ public class UserAggregate {
     void handle(DeleteUserCommand command,
                 CheckIfExistsUserPort checkIfExistsUserPort) {
         if(!checkIfExistsUserPort.existsById(command.getUserId())) {
-            throw new NotFoundException(HttpStatus.NOT_FOUND.value(), "Cant not found user with id: " + command.getUserId());
+            throw new NotFoundException();
         }
         var event = UserDeletedEvent.builder()
                 .userId(command.getUserId())

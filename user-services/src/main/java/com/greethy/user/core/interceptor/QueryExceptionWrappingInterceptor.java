@@ -2,26 +2,26 @@ package com.greethy.user.core.interceptor;
 
 import com.greethy.core.domain.exception.BaseException;
 import com.greethy.core.domain.exception.DomainErrorDetail;
-import org.axonframework.commandhandling.CommandExecutionException;
-import org.axonframework.commandhandling.CommandMessage;
 import org.axonframework.messaging.InterceptorChain;
 import org.axonframework.messaging.MessageHandlerInterceptor;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
+import org.axonframework.queryhandling.QueryExecutionException;
+import org.axonframework.queryhandling.QueryMessage;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Nonnull;
 
-
-public class CommandExceptionWrappingInterceptor implements MessageHandlerInterceptor<CommandMessage<?>> {
+@Component
+public class QueryExceptionWrappingInterceptor implements MessageHandlerInterceptor<QueryMessage<?, ?>> {
 
     @Override
-    public Object handle(@Nonnull UnitOfWork<? extends CommandMessage<?>> unitOfWork,
+    public Object handle(@Nonnull UnitOfWork<? extends QueryMessage<?, ?>> unitOfWork,
                          @Nonnull InterceptorChain interceptorChain) {
         try {
             return interceptorChain.proceed();
-        } catch (Exception exception) {
-            throw new CommandExecutionException(exception.getMessage(), exception,
-                    exceptionDetails(exception), false);
+        } catch (Throwable throwable) {
+            throw new QueryExecutionException(throwable.getMessage(), throwable, exceptionDetails(throwable), false);
         }
     }
 
@@ -39,6 +39,4 @@ public class CommandExceptionWrappingInterceptor implements MessageHandlerInterc
                 .message(throwable.getMessage())
                 .build();
     }
-
-
 }

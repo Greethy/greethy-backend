@@ -3,7 +3,7 @@ package com.greethy.user.api.rest.controller.user;
 import com.greethy.annotation.reactive.Handler;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
-import com.greethy.user.api.rest.dto.response.ErrorResponse;
+import com.greethy.core.api.response.ErrorResponse;
 import com.greethy.user.core.port.in.command.*;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.CommandExecutionException;

@@ -3,7 +3,7 @@ package com.greethy.nutrition.api.rest.controller.specs;
 import com.greethy.annotation.reactive.Handler;
 import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
-import com.greethy.nutrition.api.rest.dto.response.PageSupport;
+import com.greethy.core.api.response.PageSupport;
 import com.greethy.nutrition.core.port.in.query.*;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
@@ -44,10 +44,10 @@ public class BodySpecsQueriesEndpointHandler {
                 .flatMap(query -> reactiveQueryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
                 .zipWith(reactiveQueryGateway.query(new CountAllBodySpecsQuery(), Long.class))
-                .map(response -> new PageSupport<>(response.getT1(), page, size, response.getT2()))
-                .flatMap(response -> ServerResponse.ok()
-                        .bodyValue(response)
-                ).switchIfEmpty(ServerResponse.noContent().build());
+                .map(zippedResponse -> new PageSupport<>(zippedResponse.getT1(), page, size, zippedResponse.getT2()))
+                .flatMap(pageResponse -> pageResponse.content().isEmpty()
+                        ? ServerResponse.noContent().build()
+                        : ServerResponse.ok().bodyValue(pageResponse));
     }
 
     private int getQueryParamValue(ServerRequest serverRequest, String name, String defaultValue) {

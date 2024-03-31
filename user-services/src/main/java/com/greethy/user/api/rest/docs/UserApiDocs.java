@@ -2,8 +2,8 @@ package com.greethy.user.api.rest.docs;
 
 import com.greethy.user.api.rest.dto.UserDto;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
-import com.greethy.user.api.rest.dto.response.ErrorResponse;
-import com.greethy.user.api.rest.dto.response.UsersLookupResponse;
+import com.greethy.core.api.response.ErrorResponse;
+import com.greethy.user.api.rest.dto.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -194,7 +194,7 @@ import java.lang.annotation.Target;
                                         description = "The list of all user's profile in databases.",
                                         content = @Content(
                                                 mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                schema = @Schema(implementation = UsersLookupResponse.class)
+                                                schema = @Schema(implementation = UserResponse.class)
                                         )
                                 ),
                                 @ApiResponse(

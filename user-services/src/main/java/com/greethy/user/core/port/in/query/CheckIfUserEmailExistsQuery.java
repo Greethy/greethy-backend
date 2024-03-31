@@ -1,10 +1,10 @@
 package com.greethy.user.core.port.in.query;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@Data
-@Builder
+@Getter
+@AllArgsConstructor
 public class CheckIfUserEmailExistsQuery {
 
     private String email;

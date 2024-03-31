@@ -11,8 +11,10 @@ public interface FindUserPort {
 
     Flux<User> findAll();
 
-    Flux<User> findAll(Pageable pageable);
+    Flux<User> findAllBy(Pageable pageable);
 
     Mono<User> findByUsernameOrEmail(String usernameOrEmail);
+
+    Mono<Long> countAll();
 
 }

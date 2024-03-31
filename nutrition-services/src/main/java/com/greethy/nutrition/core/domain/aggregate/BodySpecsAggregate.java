@@ -72,7 +72,6 @@ public class BodySpecsAggregate {
                 .then(Mono.just(command.getAge()))
                 .flatMap(findPalEvaluatePort::findByAgeGroup)
                 .doOnNext(palEvaluate -> {
-                    System.out.println(palEvaluate);
                     switch (command.getActivityType()) {
                         case "sedentary" -> pal.setValue(palEvaluate.getSedentary());
                         case "moderately" -> pal.setValue(palEvaluate.getModerately());

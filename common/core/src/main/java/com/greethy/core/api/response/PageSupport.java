@@ -1,4 +1,4 @@
-package com.greethy.nutrition.api.rest.dto.response;
+package com.greethy.core.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -37,4 +37,8 @@ public class BodySpecsCommandsEndpointHandler {
                         .bodyValue(Map.of("body-spec-id", it)));
     }
 
+    Mono<ServerResponse> updateBodySpecs(ServerRequest serverRequest) {
+        return null;
+    }
+
 }

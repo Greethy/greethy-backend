@@ -8,6 +8,8 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
+import java.util.Objects;
+
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
@@ -15,31 +17,26 @@ public class UserEndpointRouter {
 
     @Bean
     @UserApiDocs
-    public RouterFunction<ServerResponse> route(UserCommandsEndpointHandler userCommandEndpointHandler,
+    public RouterFunction<ServerResponse> route(UserCommandsEndpointHandler userCommandsEndpointHandler,
                                                 UserQueriesEndpointHandler userQueriesEndpointHandler) {
         return RouterFunctions.route()
                 .path("/api/v1/user", builder -> builder
-                        .POST(accept(MediaType.APPLICATION_JSON),
-                                userCommandEndpointHandler::registerUser)
-                        .GET("/{user-id}",
-                                accept(MediaType.APPLICATION_JSON),
-                                userQueriesEndpointHandler::findUserById)
-                        .GET(queryParam("username-or-email", t -> true),
-                                userQueriesEndpointHandler::findUserByUsernameOrEmail)
-                        .PUT("/{user-id}",
-                                accept(MediaType.APPLICATION_JSON),
-                                userCommandEndpointHandler::updateUser)
-                        .DELETE("/{user-id}",
-                                accept(MediaType.APPLICATION_JSON),
-                                userCommandEndpointHandler::deleteUserPermanently)
-                        .build())
-                .path("/api/v1/users", builder -> builder
-                        .GET(accept(MediaType.APPLICATION_JSON),
+                        .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
+                                .POST("", userCommandsEndpointHandler::registerUser)
+                                .GET("/{user-id}", userQueriesEndpointHandler::findUserById)
+                                .GET(queryParam("username-or-email", Objects::nonNull),
+                                        userQueriesEndpointHandler::findUserByUsernameOrEmail)
+                                .PUT("/{user-id}", userCommandsEndpointHandler::updateUser)
+                                .DELETE("/{user-id}", userCommandsEndpointHandler::deleteUserPermanently)
+                                .build()
+                        )
+                ).path("/api/v1/users", builder -> builder
+                        .GET("", queryParam("page", Objects::nonNull).or(queryParam("size", Objects::nonNull)),
+                                userQueriesEndpointHandler::findAllUserWithPagination)
+                        .GET("", accept(MediaType.APPLICATION_JSON),
                                 request -> userQueriesEndpointHandler.findAllUser())
-                        .GET("/page",queryParam("page", t -> true).and(queryParam("size", t -> true)),
-                                userQueriesEndpointHandler::findAllUserWithPageable)
-                        .build())
-                .path("/api/v1/user-email", builder -> builder
+                        .build()
+                ).path("/api/v1/user-email", builder -> builder
                         .GET("/exists",
                                 queryParam("email", t -> true),
                                 userQueriesEndpointHandler::checkIfUserEmailExists))

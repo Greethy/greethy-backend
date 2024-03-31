@@ -21,19 +21,17 @@ public class BodySpecsEndpointRouter {
                 .path("/api/v1/body-specs", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
                                 .GET("{body-specs-id}", bodySpecsQueriesEndpointHandler::getBodySpecsById)
-                                .GET("", queryParam("page", Objects::nonNull)
-                                                .or(queryParam("size", Objects::nonNull)),
+                                .GET("", queryParam("page", Objects::nonNull).or(queryParam("size", Objects::nonNull)),
                                         bodySpecsQueriesEndpointHandler::getBodySpecsPagination)
                                 .GET("", request -> bodySpecsQueriesEndpointHandler.getAllBodySpecs())
+                                .PUT("{body-specs-id}", bodySpecsCommandsEndpointHandler::updateBodySpecs)
                         )
-                )
-                .path("/api/v1/user/{user-id}", builder -> builder
+                ).path("/api/v1/user/{user-id}", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routeBuilder -> routeBuilder
                                 .POST("body-specs", bodySpecsCommandsEndpointHandler::createUserBodySpecs)
                                 .GET("body-specs", bodySpecsQueriesEndpointHandler::getAllUserBodySpecs)
                         )
-                )
-                .build();
+                ).build();
     }
 
 }

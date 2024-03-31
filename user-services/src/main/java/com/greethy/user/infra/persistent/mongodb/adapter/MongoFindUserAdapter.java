@@ -26,12 +26,17 @@ public class MongoFindUserAdapter implements FindUserPort {
     }
 
     @Override
-    public Flux<User> findAll(Pageable pageable) {
+    public Flux<User> findAllBy(Pageable pageable) {
         return userMongoRepository.findAllBy(pageable);
     }
 
     @Override
     public Mono<User> findByUsernameOrEmail(String usernameOrEmail) {
         return userMongoRepository.findByUsernameOrEmail(usernameOrEmail);
+    }
+
+    @Override
+    public Mono<Long> countAll() {
+        return userMongoRepository.count();
     }
 }

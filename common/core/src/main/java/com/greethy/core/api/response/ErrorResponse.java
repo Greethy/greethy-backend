@@ -1,4 +1,4 @@
-package com.greethy.user.api.rest.dto.response;
+package com.greethy.core.api.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
