@@ -1,6 +1,6 @@
 package com.greethy.nutrition.api.rest.controller.specs;
 
-import com.greethy.annotation.reactive.Handler;
+import com.greethy.annotation.reactive.EndpointHandler;
 import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
 import com.greethy.core.api.response.PageSupport;
@@ -15,35 +15,35 @@ import reactor.core.publisher.Mono;
 
 import java.util.Optional;
 
-@Handler
+@EndpointHandler
 @RequiredArgsConstructor
 public class BodySpecsQueriesEndpointHandler {
 
-    private final ReactorQueryGateway reactiveQueryGateway;
+    private final ReactorQueryGateway queryGateway;
 
-    Mono<ServerResponse> getAllBodySpecs() {
+    public Mono<ServerResponse> getAllBodySpecs() {
         return Flux.just(new FindAllBodySpecsQuery())
-                .flatMap(query -> reactiveQueryGateway.streamingQuery(query, BodySpecsResponse.class))
+                .flatMap(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
                 .flatMap(bodySpecsDtos -> ServerResponse.ok().bodyValue(bodySpecsDtos));
     }
 
-    Mono<ServerResponse> getBodySpecsById(ServerRequest serverRequest) {
+    public Mono<ServerResponse> getBodySpecsById(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable("body-specs-id"))
                 .map(bodySpecsId -> FindBodySpecsByIdQuery.builder().bodySpecsId(bodySpecsId).build())
-                .flatMap(query -> reactiveQueryGateway.query(query, BodySpecsResponse.class))
+                .flatMap(query -> queryGateway.query(query, BodySpecsResponse.class))
                 .flatMap(response -> ServerResponse.ok()
                         .bodyValue(response)
                 ).switchIfEmpty(ServerResponse.noContent().build());
     }
 
-    Mono<ServerResponse> getBodySpecsPagination(ServerRequest serverRequest) {
+    public Mono<ServerResponse> getBodySpecsPagination(ServerRequest serverRequest) {
         int page = getQueryParamValue(serverRequest, "page", "0");
         int size = getQueryParamValue(serverRequest, "size", "10");
         return Flux.just(FindBodySpecsByPaginationQuery.builder().page(page).size(size).build())
-                .flatMap(query -> reactiveQueryGateway.streamingQuery(query, BodySpecsResponse.class))
+                .flatMap(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
-                .zipWith(reactiveQueryGateway.query(new CountAllBodySpecsQuery(), Long.class))
+                .zipWith(queryGateway.query(new CountAllBodySpecsQuery(), Long.class))
                 .map(zippedResponse -> new PageSupport<>(zippedResponse.getT1(), page, size, zippedResponse.getT2()))
                 .flatMap(pageResponse -> pageResponse.content().isEmpty()
                         ? ServerResponse.noContent().build()
@@ -57,13 +57,13 @@ public class BodySpecsQueriesEndpointHandler {
                 .map(Integer::valueOf).get();
     }
 
-    Mono<ServerResponse> getAllUserBodySpecs(ServerRequest serverRequest) {
+    public Mono<ServerResponse> getAllUserBodySpecs(ServerRequest serverRequest) {
         return Flux.just(serverRequest.pathVariable("user-id"))
                 .map(userId -> FindUserBodySpecsIdsQuery.builder().userId(userId).build())
-                .flatMap(query -> reactiveQueryGateway.streamingQuery(query, String.class))
+                .flatMap(query -> queryGateway.streamingQuery(query, String.class))
                 .collectList()
                 .map(bodySpecsIds -> FindAllBodySpecsByIdQuery.builder().bodySpecsIds(bodySpecsIds).build())
-                .flatMapMany(query -> reactiveQueryGateway.streamingQuery(query, BodySpecsResponse.class))
+                .flatMapMany(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
                 .flatMap(s -> ServerResponse.ok().bodyValue(s));
     }

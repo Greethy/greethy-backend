@@ -16,6 +16,16 @@ public class Ingredient {
 
     private String name;
 
+    private String code;
+
+    private String locale;
+
+    private String category;
+
+    private Integer edible;
+
+    private Integer calories;
+
     @Field(name = "nutrition_per_100g")
     private List<Nutrient> nutrients;
 

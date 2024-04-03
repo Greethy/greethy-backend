@@ -3,7 +3,7 @@ package com.greethy.user.infra.persistent.mongodb.adapter;
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.user.core.port.out.FindUserPort;
 import com.greethy.user.core.domain.entity.User;
-import com.greethy.user.infra.persistent.mongodb.UserMongoRepository;
+import com.greethy.user.infra.persistent.mongodb.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;
@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class MongoFindUserAdapter implements FindUserPort {
 
-    private final UserMongoRepository userMongoRepository;
+    private final UserRepository userMongoRepository;
 
     @Override
     public Mono<User> findById(String id) {

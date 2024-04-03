@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface Handler {
+public @interface EndpointHandler {
 
     /**
      * The value may indicate a suggestion for a logical component name,

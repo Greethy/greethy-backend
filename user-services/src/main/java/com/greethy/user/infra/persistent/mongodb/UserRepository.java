@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * {@code UserMongoRepository} is a Reactive Spring-Data ReactiveMongoRepository interface for
+ * {@code UserRepository} is a Reactive Spring-Data ReactiveMongoRepository interface for
  * managing {@link User} entities in a MongoDB database in a reactive way. extends from
  * {@link org.springframework.data.mongodb.repository.ReactiveMongoRepository}, it's
  * providing default CRUD (Create, Read, Update, Delete) operations for the {@code User} entity.
@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
  * @author KienThanh
  */
 @Repository
-public interface UserMongoRepository extends ReactiveMongoRepository<User, String> {
+public interface UserRepository extends ReactiveMongoRepository<User, String> {
 
     Mono<Boolean> existsByUsernameOrEmail(String username, String email);
 

@@ -54,11 +54,9 @@ public class DataLoaderConfig {
         deleteBmiEvaluatePort.deleteAll()
                 .thenMany(Flux.just(bmiEvaluates()))
                 .flatMap(saveBmiEvaluatePort::saveAll)
-                .doOnNext(bmiEvaluate -> log.info("Load BMI Evaluate data to MongoDB: {}", bmiEvaluate))
                 .then(deleteBmrByAgePort.deleteAll())
                 .thenMany(Flux.just(bmrByAgesTable()))
                 .flatMap(saveBmrByAgePort::saveAll)
-                .doOnNext(bmrByAges -> log.info("Load BMR-by-Age table data to MongoDB: {}", bmrByAges))
                 .then(deletePalEvaluatePort.deleteAll())
                 .thenMany(Flux.just(palEvaluates()))
                 .flatMap(savePalEvaluatePort::saveAll)
@@ -117,5 +115,6 @@ public class DataLoaderConfig {
         palEvaluates.add(new PalEvaluate(new Range(70d, Double.MAX_VALUE), 1.45d, 1.7d, 1.95d));
         return palEvaluates;
     }
+
 
 }

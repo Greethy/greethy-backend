@@ -1,6 +1,6 @@
 package com.greethy.user.api.rest.controller.user;
 
-import com.greethy.annotation.reactive.Handler;
+import com.greethy.annotation.reactive.EndpointHandler;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
@@ -26,7 +26,7 @@ import java.util.UUID;
  *
  * @author Kien N.Thanh
  */
-@Handler
+@EndpointHandler
 @RequiredArgsConstructor
 public class UserCommandsEndpointHandler {
 

@@ -14,6 +14,8 @@ public class Food {
     @Id
     private String id;
 
+    private String name;
+
     @Field(name = "food_type")
     private String foodType;
 
@@ -32,5 +34,7 @@ public class Food {
     private List<Ingredient> ingredients;
 
     private List<Nutrient> nutrients;
+
+    private String locale;
 
 }
