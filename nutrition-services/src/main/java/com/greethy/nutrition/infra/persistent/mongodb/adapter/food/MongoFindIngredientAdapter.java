@@ -13,7 +13,6 @@ public class MongoFindIngredientAdapter implements FindIngredientPort {
 
     private final IngredientRepository repository;
 
-
     @Override
     public Flux<Ingredient> findAll() {
         return repository.findAll();

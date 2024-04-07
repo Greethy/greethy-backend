@@ -14,7 +14,7 @@ public class OpenApiConfig {
     @Bean
     public GroupedOpenApi userOpenApi() {
         var info = new Info()
-                .title("User API Documentation")
+                .title("UserAggregate API Documentation")
                 .version("1.0.0")
                 .description("This is description")
                 .termsOfService("Term of Services");

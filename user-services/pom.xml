@@ -83,6 +83,13 @@
             <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
             <version>${springdoc.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.gorse</groupId>
+            <artifactId>gorse-client</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+
         <!-- TESTING -->
         <dependency>
             <groupId>io.projectreactor</groupId>

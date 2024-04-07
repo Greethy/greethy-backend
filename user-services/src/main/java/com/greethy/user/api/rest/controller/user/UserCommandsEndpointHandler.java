@@ -46,11 +46,11 @@ public class UserCommandsEndpointHandler {
      * @param serverRequest The incoming request containing the registration details.
      * @return A Mono wrapping the ServerResponse indicating the success of user registration.
      */
-    Mono<ServerResponse> registerUser(ServerRequest serverRequest) {
+    public Mono<ServerResponse> registerUser(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(RegisterUserRequest.class)
                 .map(request -> mapper.map(request, RegisterUserCommand.class))
                 .doOnNext(command -> {
-                    if (!StringUtils.hasText(command.getUserId())){
+                    if (!StringUtils.hasText(command.getUserId())) {
                         command.setUserId(UUID.randomUUID().toString());
                     }
                 })
@@ -70,7 +70,7 @@ public class UserCommandsEndpointHandler {
      * @param serverRequest The incoming request containing the updated user details.
      * @return A Mono wrapping the ServerResponse indicating the success of user profile update.
      */
-    Mono<ServerResponse> updateUser(ServerRequest serverRequest) {
+    public Mono<ServerResponse> updateUser(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable(PATH_VARIABLE_NAME))
                 .flatMap(userId -> serverRequest.bodyToMono(UpdateUserRequest.class)
                         .map(request -> mapper.map(request, UpdateUserCommand.class))
@@ -90,7 +90,7 @@ public class UserCommandsEndpointHandler {
      * @param serverRequest The incoming request containing the user ID to be deleted.
      * @return A Mono wrapping the ServerResponse indicating the success of user deletion.
      */
-    Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
+    public Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable(PATH_VARIABLE_NAME))
                 .map(userId -> DeleteUserCommand.builder().userId(userId).build())
                 .flatMap(command -> reactiveCommandGateway.send(command)

@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
  * {@code UserRepository} is a Reactive Spring-Data ReactiveMongoRepository interface for
  * managing {@link User} entities in a MongoDB database in a reactive way. extends from
  * {@link org.springframework.data.mongodb.repository.ReactiveMongoRepository}, it's
- * providing default CRUD (Create, Read, Update, Delete) operations for the {@code User} entity.
+ * providing default CRUD (Create, Read, Update, Delete) operations for the {@code UserAggregate} entity.
  *
  * @see org.springframework.data.mongodb.repository.ReactiveMongoRepository
  * @author KienThanh

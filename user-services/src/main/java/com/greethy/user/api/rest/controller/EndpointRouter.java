@@ -1,5 +1,7 @@
-package com.greethy.user.api.rest.controller.user;
+package com.greethy.user.api.rest.controller;
 
+import com.greethy.user.api.rest.controller.user.UserCommandsEndpointHandler;
+import com.greethy.user.api.rest.controller.user.UserQueriesEndpointHandler;
 import com.greethy.user.api.rest.docs.UserApiDocs;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +15,7 @@ import java.util.Objects;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
-public class UserEndpointRouter {
+public class EndpointRouter {
 
     @Bean
     @UserApiDocs
@@ -31,14 +33,14 @@ public class UserEndpointRouter {
                                 .build()
                         )
                 ).path("/api/v1/users", builder -> builder
-                        .GET("", queryParam("page", Objects::nonNull).or(queryParam("size", Objects::nonNull)),
+                        .GET("", queryParam("page", Objects::nonNull)
+                                        .or(queryParam("size", Objects::nonNull)),
                                 userQueriesEndpointHandler::findAllUserWithPagination)
                         .GET("", accept(MediaType.APPLICATION_JSON),
                                 request -> userQueriesEndpointHandler.findAllUser())
                         .build()
                 ).path("/api/v1/user-email", builder -> builder
-                        .GET("/exists",
-                                queryParam("email", t -> true),
+                        .GET("/exists", queryParam("email", Objects::nonNull),
                                 userQueriesEndpointHandler::checkIfUserEmailExists))
                 .build();
     }

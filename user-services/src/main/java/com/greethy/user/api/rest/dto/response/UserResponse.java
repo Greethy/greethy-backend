@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * Class {@code UserDto} representing a user Data Transfer Object (DTO).
- * This class encapsulates user-related information for RESTful API communication.
  *
  * @author Kien N.Thanh
  */
@@ -56,4 +54,5 @@ public class UserResponse {
     @JsonProperty("body_specs_ids")
     @Schema(description = "List of body-specs id reference to all body specification that user has created")
     private List<String> bodySpecsIds;
+
 }

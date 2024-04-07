@@ -1,8 +1,7 @@
 package com.greethy.user.api.rest.docs;
 
-import com.greethy.user.api.rest.dto.UserDto;
-import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.core.api.response.ErrorResponse;
+import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -28,12 +27,12 @@ import java.lang.annotation.Target;
                 method = RequestMethod.POST,
                 path = "/api/v1/user",
                 operation = @Operation(
-                        summary = "Register User using Username/Email/Password",
-                        description = "Register a new Greethy User using basic authenticating Username/Password with an Email to verify",
+                        summary = "Register UserAggregate using Username/Email/Password",
+                        description = "Register a new Greethy UserAggregate using basic authenticating Username/Password with an Email to verify",
                         operationId = "registerUser",
                         tags = "Users",
                         requestBody = @RequestBody(
-                                description = "User basic authenticate information",
+                                description = "UserAggregate basic authenticate information",
                                 required = true,
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -132,7 +131,7 @@ import java.lang.annotation.Target;
                 path = "/api/v1/user/{user_id}",
                 operation = @Operation(
                         parameters = @Parameter(in = ParameterIn.PATH, name = "user_id", description = "The user's ID"),
-                        summary = "Get User's Public Profile By Id",
+                        summary = "Get UserAggregate's Public Profile By Id",
                         description = "Get public profile information about a Greethy user.",
                         operationId = "GetUserById",
                         tags = "Users",
@@ -142,7 +141,7 @@ import java.lang.annotation.Target;
                                         description = "A updated profile detail of user.",
                                         content = @Content(
                                                 mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                schema = @Schema(implementation = UserDto.class)
+                                                schema = @Schema(implementation = UserResponse.class)
                                         )
                                 ),
                                 @ApiResponse(
@@ -184,7 +183,7 @@ import java.lang.annotation.Target;
                 method = RequestMethod.GET,
                 path = "/api/v1/user/",
                 operation = @Operation(
-                        summary = "Get All User's Profile From Databases (FOR TEST ONLY)",
+                        summary = "Get All UserAggregate's Profile From Databases (FOR TEST ONLY)",
                         description = "Get all public profile information from Greethy users.",
                         operationId = "GetAllUser",
                         tags = "Users",
@@ -229,7 +228,7 @@ import java.lang.annotation.Target;
                 path = "/api/v1/user/{user_id}",
                 operation = @Operation(
                         parameters = @Parameter(in = ParameterIn.PATH, name = "user_id", description = "The user's ID"),
-                        summary = "Delete User by id",
+                        summary = "Delete UserAggregate by id",
                         description = "delete the Greethy user by id permanently (TEST ONLY)",
                         operationId = "DeleteUserById",
                         tags = "Users",

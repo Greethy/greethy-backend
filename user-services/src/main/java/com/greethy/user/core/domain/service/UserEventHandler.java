@@ -1,11 +1,13 @@
 package com.greethy.user.core.domain.service;
 
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
-import com.greethy.user.core.domain.entity.Network;
+import com.greethy.user.core.domain.entity.Networking;
 import com.greethy.user.core.domain.entity.PersonalDetail;
-import com.greethy.user.core.domain.entity.Role;
 import com.greethy.user.core.domain.entity.User;
-import com.greethy.user.core.event.*;
+import com.greethy.user.core.event.UserDeletedEvent;
+import com.greethy.user.core.event.UserRegisteredEvent;
+import com.greethy.user.core.event.UserUpdatedEvent;
+import com.greethy.user.core.event.VerificationEmailSentEvent;
 import com.greethy.user.core.port.out.DeleteUserPort;
 import com.greethy.user.core.port.out.FindUserPort;
 import com.greethy.user.core.port.out.SaveUserPort;
@@ -15,12 +17,10 @@ import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 
 /**
  *
@@ -41,24 +41,17 @@ public class UserEventHandler {
 
     private final DeleteUserPort deleteUserPort;
 
-    private final PasswordEncoder passwordEncoder;
-
     @EventHandler
     public void on(UserRegisteredEvent event) {
         Mono.just(event)
                 .map(userRegisteredEvent -> mapper.map(userRegisteredEvent, User.class))
                 .doOnNext(user -> {
-                    String hashedPassword = passwordEncoder.encode(user.getPassword());
-                    user.setPassword(hashedPassword);
-                })
-                .doOnNext(user -> {
                     user.setPersonalDetail(new PersonalDetail());
-                    user.setNetwork(new Network());
-                    user.setRoles(Collections.singletonList(Role.ROLE_USER.getType()));
+                    user.setNetworking(new Networking());
                 })
                 .doOnNext(user -> user.setCreatedAt(LocalDateTime.now()))
                 .flatMap(saveUserPort::save)
-                .subscribe(user -> log.info("User " + user + " has been created"));
+                .subscribe(user -> log.info("UserAggregate " + user + " has been created"));
     }
 
     @EventHandler
@@ -76,7 +69,7 @@ public class UserEventHandler {
                 })
                 .doOnNext(user -> user.setUpdatedAt(LocalDateTime.now()))
                 .flatMap(saveUserPort::save)
-                .subscribe(user -> log.info("User: " + user + " updated successfully "));
+                .subscribe(user -> log.info("UserAggregate: " + user + " updated successfully "));
     }
 
     @EventHandler

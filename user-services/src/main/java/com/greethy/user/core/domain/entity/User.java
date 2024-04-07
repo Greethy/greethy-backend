@@ -1,13 +1,32 @@
 package com.greethy.user.core.domain.entity;
 
+import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
+import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
+import com.greethy.user.core.domain.exception.NotFoundException;
+import com.greethy.user.core.event.UserDeletedEvent;
+import com.greethy.user.core.event.UserRegisteredEvent;
+import com.greethy.user.core.event.UserUpdatedEvent;
+import com.greethy.user.core.event.VerificationEmailSentEvent;
+import com.greethy.user.core.port.in.command.DeleteUserCommand;
+import com.greethy.user.core.port.in.command.RegisterUserCommand;
+import com.greethy.user.core.port.in.command.UpdateUserCommand;
+import com.greethy.user.core.port.out.CheckIfExistsUserPort;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.modelling.command.AggregateLifecycle;
+import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,12 +34,15 @@ import java.util.List;
  * personal information, body specified, and referenced ids to other documents.
  *
  * @author Kien N.Thanh
- * */
+ */
 @Data
+@Aggregate
+@NoArgsConstructor
 @Document(collection = "users")
 public class User {
 
     @Id
+    @AggregateIdentifier
     private String id;
 
     @Indexed(unique = true)
@@ -29,7 +51,7 @@ public class User {
     @Indexed(unique = true)
     private String email;
 
-    private Boolean verified;
+    private Boolean verified = Boolean.FALSE;
 
     private String password;
 
@@ -40,20 +62,107 @@ public class User {
 
     private String bio;
 
+    @Field(name = "personal_info")
     private PersonalDetail personalDetail;
 
     private Premium premium;
 
-    private Network network;
+    private Networking networking;
 
     private List<String> roles;
 
-    @Field(name = "created_date")
+    @Field(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Field(name = "updated_date")
+    @Field(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @Field(name = "body_specs_ids")
     private List<String> bodySpecsIds = new ArrayList<>();
+
+    @CommandHandler
+    User(RegisterUserCommand command,
+         CheckIfExistsUserPort port,
+         PasswordEncoder encoder) {
+        if (port.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
+            throw new DuplicateUniqueFieldException();
+        }
+        String encodedPassword = encoder.encode(command.getPassword());
+        List<String> roles = Collections.singletonList(Role.ROLE_USER.getType());
+        var event = UserRegisteredEvent.builder()
+                .userId(command.getUserId())
+                .username(command.getUsername())
+                .email(command.getEmail())
+                .password(encodedPassword)
+                .roles(roles)
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .build();
+        AggregateLifecycle.apply(event)
+                .andThenApplyIf(() -> !this.verified, VerificationEmailSentEvent::new);
+    }
+
+    @EventSourcingHandler
+    void on(UserRegisteredEvent event) {
+        this.id = event.getUserId();
+        this.username = event.getUsername();
+        this.email = event.getEmail();
+        this.password = event.getPassword();
+        this.roles = event.getRoles();
+        this.createdAt = event.getCreatedAt();
+        this.updatedAt = event.getUpdatedAt();
+    }
+
+    @EventSourcingHandler
+    void on(VerificationEmailSentEvent event) {
+        this.verified = Boolean.TRUE;
+    }
+
+    @CommandHandler
+    void handle(UpdateUserCommand command,
+                CheckIfExistsUserPort checkIfExistsUserPort) {
+        if (!checkIfExistsUserPort.existsById(command.getUserId())) {
+            throw new NotFoundException();
+        }
+        var event = UserUpdatedEvent.builder()
+                .userId(command.getUserId())
+                .avatar(command.getAvatar())
+                .bannerImage(command.getBannerImage())
+                .bio(command.getBio())
+                .personalDetail(command.getPersonalDetail())
+                .build();
+        AggregateLifecycle.apply(event);
+    }
+
+    @EventSourcingHandler
+    void on(UserUpdatedEvent event) {
+        this.id = event.getUserId();
+        this.avatar = event.getAvatar();
+        this.bannerImage = event.getBannerImage();
+        this.bio = event.getBio();
+        this.personalDetail = event.getPersonalDetail();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @EventSourcingHandler
+    void handle(UserBodySpecsAddedEvent event) {
+        this.bodySpecsIds.add(event.getBodySpecsId());
+    }
+
+    @CommandHandler
+    void handle(DeleteUserCommand command,
+                CheckIfExistsUserPort checkIfExistsUserPort) {
+        if (!checkIfExistsUserPort.existsById(command.getUserId())) {
+            throw new NotFoundException();
+        }
+        AggregateLifecycle.apply(UserDeletedEvent.builder()
+                .userId(command.getUserId())
+                .build());
+    }
+
+    @EventSourcingHandler
+    void on(UserDeletedEvent event) {
+        AggregateLifecycle.markDeleted();
+    }
 
 }

@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.List;
 
 @Data
-public class Network {
+public class Networking {
 
     private List<String> following;
 

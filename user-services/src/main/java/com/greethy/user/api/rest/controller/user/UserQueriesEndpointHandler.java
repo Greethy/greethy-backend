@@ -109,7 +109,7 @@ public class UserQueriesEndpointHandler {
      * @return A {@link Mono} representing the server response. If a user with the specified ID is found, it contains
      *         an HTTP 200 OK response with the user details. If no user is found, it contains an HTTP 404 Not Found response.
      */
-    Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
+    public Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable("user-id"))
                 .map(userId -> FindUserByIdQuery.builder().userId(userId).build())
                 .flatMap(query -> reactiveQueryGateway.query(query, UserResponse.class)
@@ -132,7 +132,7 @@ public class UserQueriesEndpointHandler {
      * @return A {@link Mono} representing the server response. If a user with the specified username or email is found, it contains
      *         an HTTP 200 OK response with the user details. If no user is found, it contains an HTTP 404 Not Found response.
      */
-    Mono<ServerResponse> findUserByUsernameOrEmail(ServerRequest serverRequest) {
+    public Mono<ServerResponse> findUserByUsernameOrEmail(ServerRequest serverRequest) {
         return Mono.just(serverRequest.queryParam("username-or-email").orElse(""))
                 .map(FindUserByUsernameOrEmailQuery::new)
                 .flatMap(query -> reactiveQueryGateway.query(query, UserResponse.class)
@@ -154,7 +154,7 @@ public class UserQueriesEndpointHandler {
      * @param serverRequest The server request containing the query parameter "email".
      * @return A {@link Mono} representing the server response containing an HTTP 200 OK response with the result.
      */
-    Mono<ServerResponse> checkIfUserEmailExists(ServerRequest serverRequest) {
+    public Mono<ServerResponse> checkIfUserEmailExists(ServerRequest serverRequest) {
         return Mono.just(serverRequest.queryParam("email").orElse(""))
                 .map(CheckIfUserEmailExistsQuery::new)
                 .flatMap(query -> reactiveQueryGateway.query(query, Boolean.class))
