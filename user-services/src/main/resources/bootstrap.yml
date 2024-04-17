@@ -14,3 +14,6 @@ springdoc:
   api-docs:
     version: openapi_3_1
   show-actuator: true
+gorse:
+  endpoint: localhost:8088
+  api-key: ""

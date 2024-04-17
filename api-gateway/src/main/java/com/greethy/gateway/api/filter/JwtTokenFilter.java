@@ -22,15 +22,6 @@ public class JwtTokenFilter implements WebFilter {
 
     private final JwtTokenProvider tokenProvider;
 
-    private String resolveToken(ServerHttpRequest request) {
-        return Optional.ofNullable(request.getHeaders()
-                        .getFirst(HttpHeaders.AUTHORIZATION))
-                .filter(StringUtils::hasText)
-                .filter(bearToken -> bearToken.startsWith(SecurityConstants.REQUEST_HEADER_TOKEN_PREFIX))
-                .map(bearerToken -> bearerToken.substring(7))
-                .orElse("");
-    }
-
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         String token = resolveToken(exchange.getRequest());
@@ -42,6 +33,15 @@ public class JwtTokenFilter implements WebFilter {
                     );
         }
         return chain.filter(exchange);
+    }
+
+    private String resolveToken(ServerHttpRequest request) {
+        var requestHeader = request.getHeaders();
+        return Optional.ofNullable(requestHeader.getFirst(HttpHeaders.AUTHORIZATION))
+                .filter(StringUtils::hasText)
+                .filter(bearToken -> bearToken.startsWith(SecurityConstants.REQUEST_HEADER_TOKEN_PREFIX))
+                .map(bearerToken -> bearerToken.substring(7))
+                .orElse("");
     }
 }
 

@@ -19,7 +19,7 @@ cache_store = "redis://localhost:6379/0"
 #   chhttps://user:password@host[:port]/database?param1=value1&...&paramN=valueN
 #   mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
 #   mongodb+srv://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
-data_store = "postgres://gorse:gorse_pass@tcp(localhost:5432)/gorse"
+data_store = "mysql://gorse:gorse_pass@tcp(localhost:3306)/gorse"
 
 # The naming prefix for tables (collections, keys) in databases. The default value is empty.
 table_prefix = ""
@@ -59,10 +59,10 @@ n_jobs = 1
 meta_timeout = "10s"
 
 # Username for the master node dashboard.
-dashboard_user_name = ""
+dashboard_user_name = "admin"
 
 # Password for the master node dashboard.
-dashboard_password = ""
+dashboard_password = "admin"
 
 # Secret key for admin APIs (SSL required).
 admin_api_key = ""

@@ -1,4 +1,4 @@
-package com.greethy.user.api.rest.controller.user;
+package com.greethy.user.api.rest.controller;
 
 import com.greethy.core.api.response.ErrorResponse;
 import com.greethy.core.domain.exception.BaseException;
@@ -13,11 +13,11 @@ import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
-public class UserExceptionHandler {
+public class ExceptionHandler {
 
     private final ModelMapper mapper;
 
-    Mono<ServerResponse> handlingCommandException(Throwable throwable) {
+    public Mono<ServerResponse> handlingCommandException(Throwable throwable) {
         if (throwable instanceof CommandExecutionException exception) {
             ErrorResponse response = exception.getDetails()
                     .map(detail -> mapper.map(detail, ErrorResponse.class))
@@ -44,7 +44,7 @@ public class UserExceptionHandler {
      * @param throwable The throwable representing the exception.
      * @return A {@link Mono} representing the server response with error details.
      */
-    Mono<ServerResponse> handlingQueryException(Throwable throwable) {
+    public Mono<ServerResponse> handlingQueryException(Throwable throwable) {
         if (throwable instanceof BaseException exception) {
             return ServerResponse.status(exception.getStatus())
                     .contentType(MediaType.APPLICATION_JSON)

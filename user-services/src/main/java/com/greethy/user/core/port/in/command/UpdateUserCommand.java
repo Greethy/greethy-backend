@@ -1,6 +1,6 @@
 package com.greethy.user.core.port.in.command;
 
-import com.greethy.user.core.domain.entity.PersonalDetail;
+import com.greethy.user.core.domain.value.PersonalDetail;
 import lombok.*;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 

@@ -1,6 +1,6 @@
-package com.greethy.user.core.event;
+package com.greethy.user.core.domain.event;
 
-import com.greethy.user.core.domain.entity.PersonalDetail;
+import com.greethy.user.core.domain.value.PersonalDetail;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

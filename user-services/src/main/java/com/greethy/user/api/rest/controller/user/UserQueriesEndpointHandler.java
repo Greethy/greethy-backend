@@ -1,6 +1,7 @@
 package com.greethy.user.api.rest.controller.user;
 
 import com.greethy.core.api.response.PageSupport;
+import com.greethy.user.api.rest.controller.ExceptionHandler;
 import com.greethy.user.api.rest.dto.response.UserResponse;
 import com.greethy.user.core.domain.exception.NotFoundException;
 import com.greethy.user.core.port.in.query.*;
@@ -29,7 +30,7 @@ public class UserQueriesEndpointHandler {
 
     private final ReactorQueryGateway reactiveQueryGateway;
 
-    private final UserExceptionHandler exceptionHandler;
+    private final ExceptionHandler exceptionHandler;
 
     /**
      * Retrieves all users from the data source.

@@ -1,9 +1,9 @@
 package com.greethy.user.api.rest.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.greethy.user.api.rest.dto.NetworkDto;
-import com.greethy.user.api.rest.dto.PersonalDetailDto;
-import com.greethy.user.api.rest.dto.PremiumDto;
+import com.greethy.user.core.domain.entity.Networking;
+import com.greethy.user.core.domain.value.PersonalDetail;
+import com.greethy.user.core.domain.value.Premium;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,11 +37,11 @@ public class UserResponse {
     private String bio;
 
     @JsonProperty("personal_info")
-    private PersonalDetailDto personalDetail;
+    private PersonalDetail personalDetail;
 
-    private PremiumDto premium;
+    private Premium premium;
 
-    private NetworkDto network;
+    private Networking networking;
 
     private List<String> roles;
 

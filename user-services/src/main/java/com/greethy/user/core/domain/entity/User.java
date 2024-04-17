@@ -3,10 +3,13 @@ package com.greethy.user.core.domain.entity;
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import com.greethy.user.core.domain.exception.NotFoundException;
-import com.greethy.user.core.event.UserDeletedEvent;
-import com.greethy.user.core.event.UserRegisteredEvent;
-import com.greethy.user.core.event.UserUpdatedEvent;
-import com.greethy.user.core.event.VerificationEmailSentEvent;
+import com.greethy.user.core.domain.event.UserDeletedEvent;
+import com.greethy.user.core.domain.event.UserRegisteredEvent;
+import com.greethy.user.core.domain.event.UserUpdatedEvent;
+import com.greethy.user.core.domain.event.VerificationEmailSentEvent;
+import com.greethy.user.core.domain.value.PersonalDetail;
+import com.greethy.user.core.domain.value.Premium;
+import com.greethy.user.core.domain.value.Role;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
@@ -81,9 +84,9 @@ public class User {
     private List<String> bodySpecsIds = new ArrayList<>();
 
     @CommandHandler
-    User(RegisterUserCommand command,
-         CheckIfExistsUserPort port,
-         PasswordEncoder encoder) {
+    public User(RegisterUserCommand command,
+                CheckIfExistsUserPort port,
+                PasswordEncoder encoder) {
         if (port.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
             throw new DuplicateUniqueFieldException();
         }
@@ -95,8 +98,9 @@ public class User {
                 .email(command.getEmail())
                 .password(encodedPassword)
                 .roles(roles)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
+                .personalDetail(new PersonalDetail())
+                .networking(new Networking())
+                .createdAt(LocalDateTime.now()).updatedAt(LocalDateTime.now())
                 .build();
         AggregateLifecycle.apply(event)
                 .andThenApplyIf(() -> !this.verified, VerificationEmailSentEvent::new);
@@ -109,6 +113,8 @@ public class User {
         this.email = event.getEmail();
         this.password = event.getPassword();
         this.roles = event.getRoles();
+        this.personalDetail = event.getPersonalDetail();
+        this.networking = event.getNetworking();
         this.createdAt = event.getCreatedAt();
         this.updatedAt = event.getUpdatedAt();
     }

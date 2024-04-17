@@ -15,15 +15,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import java.time.Duration;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -89,12 +85,6 @@ public class AuthController {
                         .headers(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, token))
                         .body(ServerTokenResponse.builder().type("Bearer").accessToken(token).build())
                 );
-    }
-
-    @GetMapping("/me")
-    Mono<Map<String, Object>> current(@AuthenticationPrincipal Mono<UserDetails> principal) {
-        return principal.map(userDetails -> Map.of("name", userDetails.getUsername()
-        , "roles", AuthorityUtils.authorityListToSet(userDetails.getAuthorities())));
     }
 
 }

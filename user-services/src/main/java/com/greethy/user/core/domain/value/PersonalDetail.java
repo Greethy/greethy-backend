@@ -1,4 +1,4 @@
-package com.greethy.user.core.domain.entity;
+package com.greethy.user.core.domain.value;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Field;

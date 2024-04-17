@@ -1,16 +1,15 @@
 package com.greethy.user.core.domain.service;
 
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
-import com.greethy.user.core.domain.entity.Networking;
-import com.greethy.user.core.domain.entity.PersonalDetail;
 import com.greethy.user.core.domain.entity.User;
-import com.greethy.user.core.event.UserDeletedEvent;
-import com.greethy.user.core.event.UserRegisteredEvent;
-import com.greethy.user.core.event.UserUpdatedEvent;
-import com.greethy.user.core.event.VerificationEmailSentEvent;
+import com.greethy.user.core.domain.event.UserDeletedEvent;
+import com.greethy.user.core.domain.event.UserRegisteredEvent;
+import com.greethy.user.core.domain.event.UserUpdatedEvent;
+import com.greethy.user.core.domain.event.VerificationEmailSentEvent;
 import com.greethy.user.core.port.out.DeleteUserPort;
 import com.greethy.user.core.port.out.FindUserPort;
 import com.greethy.user.core.port.out.SaveUserPort;
+import io.gorse.gorse4j.Gorse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
@@ -41,17 +40,14 @@ public class UserEventHandler {
 
     private final DeleteUserPort deleteUserPort;
 
+    private final Gorse gorse;
+
     @EventHandler
     public void on(UserRegisteredEvent event) {
         Mono.just(event)
                 .map(userRegisteredEvent -> mapper.map(userRegisteredEvent, User.class))
-                .doOnNext(user -> {
-                    user.setPersonalDetail(new PersonalDetail());
-                    user.setNetworking(new Networking());
-                })
-                .doOnNext(user -> user.setCreatedAt(LocalDateTime.now()))
                 .flatMap(saveUserPort::save)
-                .subscribe(user -> log.info("UserAggregate " + user + " has been created"));
+                .subscribe(user -> log.info("User " + user + " has been created"));
     }
 
     @EventHandler

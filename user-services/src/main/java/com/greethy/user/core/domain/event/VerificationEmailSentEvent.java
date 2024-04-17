@@ -1,4 +1,4 @@
-package com.greethy.user.core.event;
+package com.greethy.user.core.domain.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

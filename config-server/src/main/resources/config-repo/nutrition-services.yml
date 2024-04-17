@@ -2,7 +2,7 @@ spring:
   application:
     name: nutrition-services
 server:
-  port: 8087
+  port: 8092
 
 eureka:
   server:

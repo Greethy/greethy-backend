@@ -1,6 +1,7 @@
 package com.greethy.user.api.rest.controller.user;
 
 import com.greethy.annotation.reactive.EndpointHandler;
+import com.greethy.user.api.rest.controller.ExceptionHandler;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
@@ -32,7 +33,7 @@ public class UserCommandsEndpointHandler {
 
     private final ModelMapper mapper;
 
-    private final UserExceptionHandler exceptionHandler;
+    private final ExceptionHandler exceptionHandler;
 
     private final ReactorCommandGateway reactiveCommandGateway;
 

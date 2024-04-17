@@ -1,6 +1,7 @@
 package com.greethy.gateway.core.service.impl;
 
 import com.greethy.gateway.api.rest.dto.request.RegisterRequest;
+import com.greethy.gateway.api.rest.dto.response.CurrentUserResponse;
 import com.greethy.gateway.api.rest.dto.response.UserRegisteredResponse;
 import com.greethy.gateway.core.exception.AccountExistedException;
 import com.greethy.gateway.core.exception.InternalServerException;
@@ -28,8 +29,8 @@ public class UserServiceImpl implements UserService {
                 .uri(USER_SERVICES_HOSTNAME, uriBuilder -> uriBuilder
                         .path("/api/v1/user-email/exists")
                         .queryParam("email", email)
-                        .build())
-                .retrieve()
+                        .build()
+                ).retrieve()
                 .bodyToMono(Boolean.class);
     }
 
@@ -54,6 +55,18 @@ public class UserServiceImpl implements UserService {
                     response.setPassword(request.getPassword());
                 })
         );
+    }
+
+    @Override
+    public Mono<CurrentUserResponse> getCurrentUser(String username) {
+        return webClientBuilder.build()
+                .get()
+                .uri(USER_SERVICES_HOSTNAME, uriBuilder -> uriBuilder
+                        .path("/api/v1/user")
+                        .queryParam("username-or-email", username)
+                        .build())
+                .retrieve()
+                .bodyToMono(CurrentUserResponse.class);
     }
 
 }
