@@ -1,7 +1,7 @@
 package com.greethy.nutrition.infra.persistent.mongodb.adapter.evaluate.bmi;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
-import com.greethy.nutrition.core.domain.entity.evaluate.BmiEvaluate;
+import com.greethy.nutrition.core.domain.value.BmiEvaluate;
 import com.greethy.nutrition.core.port.out.evaluate.bmi.SaveBmiEvaluatePort;
 import com.greethy.nutrition.infra.persistent.mongodb.BmiEvaluateRepository;
 import lombok.RequiredArgsConstructor;

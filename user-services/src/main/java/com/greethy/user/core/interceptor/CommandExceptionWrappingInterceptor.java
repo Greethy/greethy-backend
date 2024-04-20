@@ -8,10 +8,11 @@ import org.axonframework.messaging.InterceptorChain;
 import org.axonframework.messaging.MessageHandlerInterceptor;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Nonnull;
 
-
+@Component
 public class CommandExceptionWrappingInterceptor implements MessageHandlerInterceptor<CommandMessage<?>> {
 
     @Override

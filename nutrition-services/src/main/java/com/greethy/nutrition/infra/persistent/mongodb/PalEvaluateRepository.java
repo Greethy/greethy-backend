@@ -1,6 +1,6 @@
 package com.greethy.nutrition.infra.persistent.mongodb;
 
-import com.greethy.nutrition.core.domain.entity.evaluate.PalEvaluate;
+import com.greethy.nutrition.core.domain.value.PalEvaluate;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;

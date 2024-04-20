@@ -1,6 +1,6 @@
 package com.greethy.nutrition.core.port.out.evaluate.bmr;
 
-import com.greethy.nutrition.core.domain.entity.evaluate.BmrByAge;
+import com.greethy.nutrition.core.domain.value.BmrByAge;
 import reactor.core.publisher.Mono;
 
 public interface FindBmrByAgePort {

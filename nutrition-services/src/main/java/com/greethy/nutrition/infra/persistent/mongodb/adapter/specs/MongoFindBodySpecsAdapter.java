@@ -1,7 +1,7 @@
 package com.greethy.nutrition.infra.persistent.mongodb.adapter.specs;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
-import com.greethy.nutrition.core.domain.entity.specs.BodySpecs;
+import com.greethy.nutrition.core.domain.entity.BodySpecs;
 import com.greethy.nutrition.core.port.out.specs.FindBodySpecsPort;
 import com.greethy.nutrition.infra.persistent.mongodb.BodySpecsRepository;
 import lombok.RequiredArgsConstructor;

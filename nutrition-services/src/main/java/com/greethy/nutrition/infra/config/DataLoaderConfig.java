@@ -1,9 +1,9 @@
 package com.greethy.nutrition.infra.config;
 
-import com.greethy.nutrition.core.domain.entity.evaluate.BmiEvaluate;
-import com.greethy.nutrition.core.domain.entity.evaluate.BmrByAge;
-import com.greethy.nutrition.core.domain.entity.evaluate.PalEvaluate;
-import com.greethy.nutrition.core.domain.entity.evaluate.Range;
+import com.greethy.nutrition.core.domain.value.BmiEvaluate;
+import com.greethy.nutrition.core.domain.value.BmrByAge;
+import com.greethy.nutrition.core.domain.value.PalEvaluate;
+import com.greethy.nutrition.core.domain.value.Range;
 import com.greethy.nutrition.core.port.out.evaluate.bmi.DeleteBmiEvaluatePort;
 import com.greethy.nutrition.core.port.out.evaluate.bmi.SaveBmiEvaluatePort;
 import com.greethy.nutrition.core.port.out.evaluate.bmr.DeleteBmrByAgePort;

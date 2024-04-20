@@ -1,6 +1,6 @@
 package com.greethy.nutrition.infra.persistent.mongodb;
 
-import com.greethy.nutrition.core.domain.entity.specs.BodySpecs;
+import com.greethy.nutrition.core.domain.entity.BodySpecs;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;

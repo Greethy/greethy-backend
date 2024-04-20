@@ -1,7 +1,7 @@
 package com.greethy.nutrition.infra.persistent.mongodb.adapter.evaluate.pal;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
-import com.greethy.nutrition.core.domain.entity.evaluate.PalEvaluate;
+import com.greethy.nutrition.core.domain.value.PalEvaluate;
 import com.greethy.nutrition.core.port.out.evaluate.pal.SavePalEvaluatePort;
 import com.greethy.nutrition.infra.persistent.mongodb.PalEvaluateRepository;
 import lombok.RequiredArgsConstructor;

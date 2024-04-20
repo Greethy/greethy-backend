@@ -1,7 +1,7 @@
 package com.greethy.nutrition.infra.persistent.mongodb.adapter.evaluate.bmr;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
-import com.greethy.nutrition.core.domain.entity.evaluate.BmrByAge;
+import com.greethy.nutrition.core.domain.value.BmrByAge;
 import com.greethy.nutrition.core.port.out.evaluate.bmr.SaveBmrByAgePort;
 import com.greethy.nutrition.infra.persistent.mongodb.BmrByAgeRepository;
 import lombok.RequiredArgsConstructor;

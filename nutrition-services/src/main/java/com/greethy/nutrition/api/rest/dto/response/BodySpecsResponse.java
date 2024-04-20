@@ -1,8 +1,8 @@
 package com.greethy.nutrition.api.rest.dto.response;
 
-import com.greethy.nutrition.core.domain.entity.specs.Bmi;
-import com.greethy.nutrition.core.domain.entity.specs.Bmr;
-import com.greethy.nutrition.core.domain.entity.specs.Pal;
+import com.greethy.nutrition.core.domain.value.Bmi;
+import com.greethy.nutrition.core.domain.value.Bmr;
+import com.greethy.nutrition.core.domain.value.Pal;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

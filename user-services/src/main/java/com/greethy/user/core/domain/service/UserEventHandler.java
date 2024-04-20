@@ -6,10 +6,9 @@ import com.greethy.user.core.domain.event.UserDeletedEvent;
 import com.greethy.user.core.domain.event.UserRegisteredEvent;
 import com.greethy.user.core.domain.event.UserUpdatedEvent;
 import com.greethy.user.core.domain.event.VerificationEmailSentEvent;
-import com.greethy.user.core.port.out.DeleteUserPort;
-import com.greethy.user.core.port.out.FindUserPort;
-import com.greethy.user.core.port.out.SaveUserPort;
-import io.gorse.gorse4j.Gorse;
+import com.greethy.user.core.port.out.user.DeleteUserPort;
+import com.greethy.user.core.port.out.user.FindUserPort;
+import com.greethy.user.core.port.out.user.SaveUserPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
@@ -33,20 +32,21 @@ public class UserEventHandler {
 
     private final ModelMapper mapper;
 
-    @Qualifier("mongodb-create-adapter")
+    @Qualifier("mongodb-save-adapter")
     private final SaveUserPort saveUserPort;
 
     private final FindUserPort findUserPort;
 
     private final DeleteUserPort deleteUserPort;
 
-    private final Gorse gorse;
-
     @EventHandler
-    public void on(UserRegisteredEvent event) {
+    public void on(UserRegisteredEvent event,
+                   @Qualifier("mongodb-save-adapter") SaveUserPort mongoSaveUser,
+                   @Qualifier("gorse-save-adapter") SaveUserPort gorseSaveUser) {
         Mono.just(event)
                 .map(userRegisteredEvent -> mapper.map(userRegisteredEvent, User.class))
-                .flatMap(saveUserPort::save)
+                .flatMap(mongoSaveUser::save)
+                .flatMap(gorseSaveUser::save)
                 .subscribe(user -> log.info("User " + user + " has been created"));
     }
 

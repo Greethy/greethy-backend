@@ -1,8 +1,8 @@
 package com.greethy.nutrition.core.domain.service;
 
-import com.greethy.nutrition.core.domain.entity.evaluate.BmiEvaluate;
-import com.greethy.nutrition.core.domain.entity.evaluate.BmrByAge;
-import com.greethy.nutrition.core.domain.entity.specs.FitnessIndexes;
+import com.greethy.nutrition.core.domain.value.BmiEvaluate;
+import com.greethy.nutrition.core.domain.value.BmrByAge;
+import com.greethy.nutrition.core.domain.value.FitnessIndexes;
 import com.greethy.nutrition.core.port.out.evaluate.bmi.FindBmiEvaluatePort;
 import com.greethy.nutrition.core.port.out.evaluate.bmr.FindBmrByAgePort;
 import com.greethy.nutrition.core.port.out.evaluate.pal.FindPalEvaluatePort;

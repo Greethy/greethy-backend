@@ -1,29 +1,28 @@
 package com.greethy.user.core.domain.entity;
 
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
+import com.greethy.user.core.domain.event.*;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import com.greethy.user.core.domain.exception.NotFoundException;
-import com.greethy.user.core.domain.event.UserDeletedEvent;
-import com.greethy.user.core.domain.event.UserRegisteredEvent;
-import com.greethy.user.core.domain.event.UserUpdatedEvent;
-import com.greethy.user.core.domain.event.VerificationEmailSentEvent;
 import com.greethy.user.core.domain.value.PersonalDetail;
 import com.greethy.user.core.domain.value.Premium;
 import com.greethy.user.core.domain.value.Role;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
-import com.greethy.user.core.port.out.CheckIfExistsUserPort;
+import com.greethy.user.core.port.out.user.CheckIfExistsUserPort;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
+import org.axonframework.modelling.command.AggregateMember;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -31,6 +30,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * This class represent for user, including login information,
@@ -70,9 +70,13 @@ public class User {
 
     private Premium premium;
 
+    @AggregateMember
+    @DocumentReference
     private Networking networking;
 
     private List<String> roles;
+
+    private List<String> labels;
 
     @Field(name = "created_at")
     private LocalDateTime createdAt;
@@ -84,25 +88,28 @@ public class User {
     private List<String> bodySpecsIds = new ArrayList<>();
 
     @CommandHandler
-    public User(RegisterUserCommand command,
-                CheckIfExistsUserPort port,
-                PasswordEncoder encoder) {
+    public User(RegisterUserCommand command, CheckIfExistsUserPort port, PasswordEncoder encoder) {
         if (port.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
             throw new DuplicateUniqueFieldException();
         }
-        String encodedPassword = encoder.encode(command.getPassword());
-        List<String> roles = Collections.singletonList(Role.ROLE_USER.getType());
-        var event = UserRegisteredEvent.builder()
-                .userId(command.getUserId())
-                .username(command.getUsername())
-                .email(command.getEmail())
-                .password(encodedPassword)
-                .roles(roles)
-                .personalDetail(new PersonalDetail())
-                .networking(new Networking())
-                .createdAt(LocalDateTime.now()).updatedAt(LocalDateTime.now())
-                .build();
-        AggregateLifecycle.apply(event)
+
+        var encodedPassword = encoder.encode(command.getPassword());
+        var roles = Collections.singletonList(Role.ROLE_USER.getType());
+        var networking = new Networking(UUID.randomUUID().toString());
+
+        AggregateLifecycle.apply(UserRegisteredEvent.builder()
+                        .userId(command.getUserId())
+                        .username(command.getUsername())
+                        .email(command.getEmail())
+                        .password(encodedPassword)
+                        .roles(roles)
+                        .personalDetail(new PersonalDetail())
+                        .networking(networking)
+                        .createdAt(LocalDateTime.now()).updatedAt(LocalDateTime.now())
+                        .build())
+                .andThenApply(() -> NetworkingCreatedEvent.builder()
+                        .networking(networking)
+                        .build())
                 .andThenApplyIf(() -> !this.verified, VerificationEmailSentEvent::new);
     }
 
@@ -130,14 +137,15 @@ public class User {
         if (!checkIfExistsUserPort.existsById(command.getUserId())) {
             throw new NotFoundException();
         }
-        var event = UserUpdatedEvent.builder()
+
+        AggregateLifecycle.apply(UserUpdatedEvent.builder()
                 .userId(command.getUserId())
                 .avatar(command.getAvatar())
                 .bannerImage(command.getBannerImage())
                 .bio(command.getBio())
                 .personalDetail(command.getPersonalDetail())
-                .build();
-        AggregateLifecycle.apply(event);
+                .build()
+        );
     }
 
     @EventSourcingHandler

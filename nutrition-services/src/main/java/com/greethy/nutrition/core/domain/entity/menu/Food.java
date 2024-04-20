@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -17,12 +18,13 @@ public class Food {
     private String name;
 
     @Field(name = "food_type")
-    private String foodType;
+    private List<String> foodTypes;
 
+    @Field(name = "image_url")
     private String imageUrl;
 
-    @Field(name = "cooking_video")
-    private String cookingVideo;
+    @Field(name = "video_url")
+    private String videoUrl;
 
     @Field(name = "total_calories")
     private Integer totalCalories;
@@ -31,10 +33,13 @@ public class Food {
 
     private String tips;
 
+    private String locale;
+
+    @Field(name = "created_at")
+    private LocalDateTime createdAt;
+
     private List<Ingredient> ingredients;
 
     private List<Nutrient> nutrients;
-
-    private String locale;
 
 }

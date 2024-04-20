@@ -1,6 +1,6 @@
 package com.greethy.nutrition.core.port.out.specs;
 
-import com.greethy.nutrition.core.domain.entity.specs.BodySpecs;
+import com.greethy.nutrition.core.domain.entity.BodySpecs;
 import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
