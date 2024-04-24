@@ -1,7 +1,7 @@
 package com.greethy.nutrition.api.rest.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.greethy.nutrition.core.domain.entity.Nutrient;
+import com.greethy.nutrition.core.domain.value.Nutrient;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

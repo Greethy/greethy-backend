@@ -1,7 +1,7 @@
 package com.greethy.user.infra.repository.mongodb.adapter;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
-import com.greethy.user.core.port.out.user.DeleteUserPort;
+import com.greethy.user.core.port.out.write.DeleteUserPort;
 import com.greethy.user.infra.repository.mongodb.UserRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;

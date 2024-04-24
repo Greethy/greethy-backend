@@ -1,12 +1,13 @@
 package com.greethy.nutrition.core.domain.entity;
 
+import com.greethy.nutrition.core.domain.value.Nutrient;
 import com.greethy.nutrition.core.domain.value.Owner;
 import com.greethy.nutrition.core.event.FoodCreatedEvent;
 import com.greethy.nutrition.core.event.IngredientsAddedToFoodEvent;
 import com.greethy.nutrition.core.port.in.command.AddIngredientsToFoodCommand;
 import com.greethy.nutrition.core.port.in.command.CreateFoodCommand;
-import com.greethy.nutrition.core.port.out.food.FindIngredientPort;
-import com.greethy.nutrition.core.port.out.user.GetUserPort;
+import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
+import com.greethy.nutrition.core.port.out.read.GetUserPort;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;

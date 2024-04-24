@@ -1,8 +1,8 @@
 package com.greethy.nutrition.infra.repository.mongodb.adapter;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
-import com.greethy.nutrition.core.domain.value.Ingredient;
-import com.greethy.nutrition.core.port.out.food.FindIngredientPort;
+import com.greethy.nutrition.core.domain.entity.Ingredient;
+import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
 import com.greethy.nutrition.infra.repository.mongodb.IngredientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

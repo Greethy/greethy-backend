@@ -5,7 +5,7 @@ import com.greethy.nutrition.core.port.in.query.CountAllIngredientQuery;
 import com.greethy.nutrition.core.port.in.query.FindAllComponentsQuery;
 import com.greethy.nutrition.core.port.in.query.FindComponentsWithPaginationQuery;
 import com.greethy.nutrition.core.port.in.query.FindIngredientByIdQuery;
-import com.greethy.nutrition.core.port.out.food.FindIngredientPort;
+import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.queryhandling.QueryHandler;

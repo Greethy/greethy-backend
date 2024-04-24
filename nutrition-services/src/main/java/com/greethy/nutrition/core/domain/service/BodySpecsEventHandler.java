@@ -3,7 +3,7 @@ package com.greethy.nutrition.core.domain.service;
 import com.greethy.nutrition.core.domain.entity.BodySpecs;
 import com.greethy.nutrition.core.event.BodySpecsCreatedEvent;
 import com.greethy.nutrition.core.event.BodySpecsUpdatedEvent;
-import com.greethy.nutrition.core.port.out.specs.SaveBodySpecsPort;
+import com.greethy.nutrition.core.port.out.write.SaveBodySpecsPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;

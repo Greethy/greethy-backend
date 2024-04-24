@@ -2,7 +2,7 @@ package com.greethy.nutrition.core.domain.service;
 
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
 import com.greethy.nutrition.core.port.in.query.*;
-import com.greethy.nutrition.core.port.out.specs.FindBodySpecsPort;
+import com.greethy.nutrition.core.port.out.read.FindBodySpecsPort;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.queryhandling.QueryHandler;
 import org.modelmapper.ModelMapper;

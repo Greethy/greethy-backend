@@ -10,7 +10,7 @@ import com.greethy.user.core.event.*;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
-import com.greethy.user.core.port.out.user.CheckIfExistsUserPort;
+import com.greethy.user.core.port.out.read.CheckIfExistsUserPort;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;

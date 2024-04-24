@@ -1,10 +1,10 @@
 package com.greethy.nutrition.api.rest.controller;
 
-import com.greethy.nutrition.api.rest.controller.food.FoodCommandEndpointHandler;
-import com.greethy.nutrition.api.rest.controller.food.FoodQueriesEndpointHandler;
-import com.greethy.nutrition.api.rest.controller.food.IngredientQueriesHandler;
-import com.greethy.nutrition.api.rest.controller.specs.BodySpecsCommandsEndpointHandler;
-import com.greethy.nutrition.api.rest.controller.specs.BodySpecsQueriesEndpointHandler;
+import com.greethy.nutrition.api.rest.controller.handler.FoodCommandEndpointHandler;
+import com.greethy.nutrition.api.rest.controller.handler.FoodQueriesEndpointHandler;
+import com.greethy.nutrition.api.rest.controller.handler.IngredientQueriesHandler;
+import com.greethy.nutrition.api.rest.controller.handler.BodySpecsCommandsEndpointHandler;
+import com.greethy.nutrition.api.rest.controller.handler.BodySpecsQueriesEndpointHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

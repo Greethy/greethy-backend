@@ -2,7 +2,7 @@ package com.greethy.nutrition.infra.repository.mongodb.adapter;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.nutrition.core.domain.entity.BodySpecs;
-import com.greethy.nutrition.core.port.out.specs.FindBodySpecsPort;
+import com.greethy.nutrition.core.port.out.read.FindBodySpecsPort;
 import com.greethy.nutrition.infra.repository.mongodb.BodySpecsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

@@ -2,7 +2,7 @@ package com.greethy.nutrition.infra.microservice.gorse;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.nutrition.core.domain.entity.Food;
-import com.greethy.nutrition.core.port.out.food.SaveFoodPort;
+import com.greethy.nutrition.core.port.out.write.SaveFoodPort;
 import reactor.core.publisher.Mono;
 
 @InfrastructureAdapter("gorse-save-adapter")

@@ -2,7 +2,7 @@ package com.greethy.nutrition.infra.microservice.user;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.nutrition.core.domain.value.Owner;
-import com.greethy.nutrition.core.port.out.user.GetUserPort;
+import com.greethy.nutrition.core.port.out.read.GetUserPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;

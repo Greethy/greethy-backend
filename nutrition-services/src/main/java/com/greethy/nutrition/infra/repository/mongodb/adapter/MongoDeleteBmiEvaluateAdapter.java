@@ -1,7 +1,7 @@
 package com.greethy.nutrition.infra.repository.mongodb.adapter;
 
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
-import com.greethy.nutrition.core.port.out.evaluate.bmi.DeleteBmiEvaluatePort;
+import com.greethy.nutrition.core.port.out.write.DeleteBmiEvaluatePort;
 import com.greethy.nutrition.infra.repository.mongodb.BmiEvaluateRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
