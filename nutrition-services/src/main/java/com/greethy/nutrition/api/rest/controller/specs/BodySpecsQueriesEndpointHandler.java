@@ -1,19 +1,19 @@
 package com.greethy.nutrition.api.rest.controller.specs;
 
 import com.greethy.annotation.reactive.EndpointHandler;
-import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
-import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
 import com.greethy.core.api.response.PageSupport;
+import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
+import com.greethy.core.util.ServerRequestUtil;
+import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
 import com.greethy.nutrition.core.port.in.query.*;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
-import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Optional;
+import java.util.Objects;
 
 @EndpointHandler
 @RequiredArgsConstructor
@@ -25,37 +25,39 @@ public class BodySpecsQueriesEndpointHandler {
         return Flux.just(new FindAllBodySpecsQuery())
                 .flatMap(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
-                .flatMap(bodySpecsDtos -> ServerResponse.ok().bodyValue(bodySpecsDtos));
+                .flatMap(bodySpecsResponse -> bodySpecsResponse.isEmpty()
+                        ? ServerResponse.noContent().build()
+                        : ServerResponse.ok().bodyValue(bodySpecsResponse)
+                );
     }
 
     public Mono<ServerResponse> getBodySpecsById(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable("body-specs-id"))
-                .map(bodySpecsId -> FindBodySpecsByIdQuery.builder().bodySpecsId(bodySpecsId).build())
+                .map(bodySpecsId -> FindBodySpecsByIdQuery.builder()
+                        .bodySpecsId(bodySpecsId)
+                        .build())
                 .flatMap(query -> queryGateway.query(query, BodySpecsResponse.class))
-                .flatMap(response -> ServerResponse.ok()
-                        .bodyValue(response)
-                ).switchIfEmpty(ServerResponse.noContent().build());
+                .flatMap(response -> Objects.isNull(response)
+                        ? ServerResponse.noContent().build()
+                        : ServerResponse.ok().bodyValue(response)
+                );
     }
 
     public Mono<ServerResponse> getBodySpecsPagination(ServerRequest serverRequest) {
-        int page = getQueryParamValue(serverRequest, "page", "0");
-        int size = getQueryParamValue(serverRequest, "size", "10");
-        return Flux.just(FindBodySpecsByPaginationQuery.builder().page(page).size(size).build())
+        int offset = ServerRequestUtil.getQueryParamIntValue(serverRequest, "offset", "0");
+        int limit = ServerRequestUtil.getQueryParamIntValue(serverRequest, "limit", "10");
+        return Flux.just(FindBodySpecsByPaginationQuery.builder()
+                        .offset(offset).limit(limit)
+                        .build())
                 .flatMap(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
                 .zipWith(queryGateway.query(new CountAllBodySpecsQuery(), Long.class))
-                .map(zippedResponse -> new PageSupport<>(zippedResponse.getT1(), page, size, zippedResponse.getT2()))
+                .map(zippedResponse -> new PageSupport<>(zippedResponse.getT1(), offset, limit, zippedResponse.getT2()))
                 .flatMap(pageResponse -> pageResponse.content().isEmpty()
                         ? ServerResponse.noContent().build()
                         : ServerResponse.ok().bodyValue(pageResponse));
     }
 
-    private int getQueryParamValue(ServerRequest serverRequest, String name, String defaultValue) {
-        return serverRequest.queryParam(name)
-                .filter(StringUtils::hasText)
-                .or(() -> Optional.of(defaultValue))
-                .map(Integer::valueOf).get();
-    }
 
     public Mono<ServerResponse> getAllUserBodySpecs(ServerRequest serverRequest) {
         return Flux.just(serverRequest.pathVariable("user-id"))
@@ -65,7 +67,7 @@ public class BodySpecsQueriesEndpointHandler {
                 .map(bodySpecsIds -> FindAllBodySpecsByIdQuery.builder().bodySpecsIds(bodySpecsIds).build())
                 .flatMapMany(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
-                .flatMap(s -> ServerResponse.ok().bodyValue(s));
+                .flatMap(responses -> ServerResponse.ok().bodyValue(responses));
     }
 
 }

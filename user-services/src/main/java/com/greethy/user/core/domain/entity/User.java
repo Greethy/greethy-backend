@@ -1,12 +1,12 @@
 package com.greethy.user.core.domain.entity;
 
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
-import com.greethy.user.core.domain.event.*;
 import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import com.greethy.user.core.domain.exception.NotFoundException;
 import com.greethy.user.core.domain.value.PersonalDetail;
 import com.greethy.user.core.domain.value.Premium;
 import com.greethy.user.core.domain.value.Role;
+import com.greethy.user.core.event.*;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;

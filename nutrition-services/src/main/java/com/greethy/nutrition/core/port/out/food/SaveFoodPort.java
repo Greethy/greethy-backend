@@ -1,10 +1,10 @@
 package com.greethy.nutrition.core.port.out.food;
 
-import com.greethy.nutrition.core.domain.entity.menu.Food;
-import reactor.core.publisher.Flux;
+import com.greethy.nutrition.core.domain.entity.Food;
+import reactor.core.publisher.Mono;
 
 public interface SaveFoodPort {
 
-    Flux<Food> saveAll(Iterable<Food> foods);
+    Mono<Food> save(Food food);
 
 }

@@ -32,7 +32,7 @@ public class UserQueryHandler {
 
     @QueryHandler
     Flux<UserResponse> handle(GetAllUserWithPageableQuery query) {
-        return Flux.just(PageRequest.of(query.getPage(), query.getSize()))
+        return Flux.just(PageRequest.of(query.getOffset(), query.getLimit()))
                 .flatMap(findUserPort::findAllBy)
                 .map(user -> mapper.map(user, UserResponse.class));
     }

@@ -33,7 +33,7 @@ public class BodySpecsQueryHandler {
 
     @QueryHandler
     Flux<BodySpecsResponse> handle(FindBodySpecsByPaginationQuery query) {
-        return Flux.just(PageRequest.of(query.getPage(), query.getSize()))
+        return Flux.just(PageRequest.of(query.getOffset(), query.getLimit()))
                 .flatMap(findBodySpecsPort::findAllBy)
                 .map(bodySpecs -> mapper.map(bodySpecs, BodySpecsResponse.class));
     }

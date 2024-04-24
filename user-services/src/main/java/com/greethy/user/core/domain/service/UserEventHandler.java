@@ -2,10 +2,10 @@ package com.greethy.user.core.domain.service;
 
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
 import com.greethy.user.core.domain.entity.User;
-import com.greethy.user.core.domain.event.UserDeletedEvent;
-import com.greethy.user.core.domain.event.UserRegisteredEvent;
-import com.greethy.user.core.domain.event.UserUpdatedEvent;
-import com.greethy.user.core.domain.event.VerificationEmailSentEvent;
+import com.greethy.user.core.event.UserDeletedEvent;
+import com.greethy.user.core.event.UserRegisteredEvent;
+import com.greethy.user.core.event.UserUpdatedEvent;
+import com.greethy.user.core.event.VerificationEmailSentEvent;
 import com.greethy.user.core.port.out.user.DeleteUserPort;
 import com.greethy.user.core.port.out.user.FindUserPort;
 import com.greethy.user.core.port.out.user.SaveUserPort;

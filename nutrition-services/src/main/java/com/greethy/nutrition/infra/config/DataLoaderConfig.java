@@ -60,8 +60,9 @@ public class DataLoaderConfig {
                 .then(deletePalEvaluatePort.deleteAll())
                 .thenMany(Flux.just(palEvaluates()))
                 .flatMap(savePalEvaluatePort::saveAll)
-                .subscribe(palEvaluate -> log.info("Load PAL Evaluate data to MongoDB: {}", palEvaluate));
+                .subscribe();
     }
+
 
     /**
      * Creates a set of BMI evaluations with predefined ranges.

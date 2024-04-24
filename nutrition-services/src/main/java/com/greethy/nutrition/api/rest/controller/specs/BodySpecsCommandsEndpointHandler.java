@@ -46,8 +46,8 @@ public class BodySpecsCommandsEndpointHandler {
                         .doOnNext(command -> {
                             command.setBodySpecsId(UUID.randomUUID().toString());
                             command.setUserId(userId);
-                        })
-                ).flatMap(commandGateway::send)
+                        }))
+                .flatMap(commandGateway::send)
                 .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
                         .bodyValue(Map.of("body-spec-id", it))
                 );

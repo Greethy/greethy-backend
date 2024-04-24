@@ -7,8 +7,8 @@ import lombok.Data;
 @Builder
 public class FindBodySpecsByPaginationQuery {
 
-    private int page;
+    private int offset;
 
-    private int size;
+    private int limit;
 
 }

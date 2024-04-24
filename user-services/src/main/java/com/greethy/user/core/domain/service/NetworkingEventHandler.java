@@ -1,6 +1,6 @@
 package com.greethy.user.core.domain.service;
 
-import com.greethy.user.core.domain.event.NetworkingCreatedEvent;
+import com.greethy.user.core.event.NetworkingCreatedEvent;
 import com.greethy.user.core.port.out.networking.SaveNetworkingPort;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.eventhandling.EventHandler;

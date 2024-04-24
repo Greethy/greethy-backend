@@ -1,8 +1,8 @@
 package com.greethy.user.api.rest.controller;
 
-import com.greethy.user.api.rest.controller.user.UserCommandsEndpointHandler;
-import com.greethy.user.api.rest.controller.user.UserQueriesEndpointHandler;
-import com.greethy.user.api.rest.docs.UserApiDocs;
+import com.greethy.user.api.rest.controller.handler.UserCommandsEndpointHandler;
+import com.greethy.user.api.rest.controller.handler.UserQueriesEndpointHandler;
+import com.greethy.user.api.rest.document.UserApiDocument;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -18,7 +18,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class EndpointRouter {
 
     @Bean
-    @UserApiDocs
+    @UserApiDocument
     public RouterFunction<ServerResponse> route(UserCommandsEndpointHandler userCommandsEndpointHandler,
                                                 UserQueriesEndpointHandler userQueriesEndpointHandler) {
         return RouterFunctions.route()

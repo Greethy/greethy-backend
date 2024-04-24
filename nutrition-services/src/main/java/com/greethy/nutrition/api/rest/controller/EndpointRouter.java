@@ -2,8 +2,10 @@ package com.greethy.nutrition.api.rest.controller;
 
 import com.greethy.nutrition.api.rest.controller.food.FoodCommandEndpointHandler;
 import com.greethy.nutrition.api.rest.controller.food.FoodQueriesEndpointHandler;
+import com.greethy.nutrition.api.rest.controller.food.IngredientQueriesHandler;
 import com.greethy.nutrition.api.rest.controller.specs.BodySpecsCommandsEndpointHandler;
 import com.greethy.nutrition.api.rest.controller.specs.BodySpecsQueriesEndpointHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -16,33 +18,49 @@ import java.util.Objects;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
+@RequiredArgsConstructor
 public class EndpointRouter {
 
+    private final BodySpecsCommandsEndpointHandler bodySpecsCommandsHandler;
+
+    private final BodySpecsQueriesEndpointHandler bodySpecsQueriesEndpointHandler;
+
+    private final FoodCommandEndpointHandler foodCommandEndpointHandler;
+
+    private final FoodQueriesEndpointHandler foodQueriesEndpointHandler;
+
+    private final IngredientQueriesHandler ingredientQueriesHandler;
+
     @Bean
-    public RouterFunction<ServerResponse> route(BodySpecsCommandsEndpointHandler bodySpecsCommandsHandler,
-                                                BodySpecsQueriesEndpointHandler bodySpecsQueriesEndpointHandler,
-                                                FoodCommandEndpointHandler foodCommandEndpointHandler,
-                                                FoodQueriesEndpointHandler foodQueriesEndpointHandler) {
+    public RouterFunction<ServerResponse> route() {
         return RouterFunctions.route()
                 .path("/api/v1/body-specs", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
                                 .GET("{body-specs-id}", bodySpecsQueriesEndpointHandler::getBodySpecsById)
-                                .GET("", queryParam("page", Objects::nonNull).or(queryParam("size", Objects::nonNull)),
+                                .GET(queryParam("offset", Objects::nonNull).or(queryParam("limit", Objects::nonNull)),
                                         bodySpecsQueriesEndpointHandler::getBodySpecsPagination)
                                 .GET("", request -> bodySpecsQueriesEndpointHandler.getAllBodySpecs())
                                 .PUT("{body-specs-id}", bodySpecsCommandsHandler::updateBodySpecs)
                                 .DELETE("{body-specs-id}", bodySpecsCommandsHandler::deleteBodySpecs)
-                        )
-                ).path("/api/v1/user/{user-id}", builder -> builder
+                        ))
+                .path("/api/v1/users/{user-id}", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routeBuilder -> routeBuilder
                                 .POST("body-specs", bodySpecsCommandsHandler::createUserBodySpecs)
+                                .POST("food", foodCommandEndpointHandler::createFood)
                                 .GET("body-specs", bodySpecsQueriesEndpointHandler::getAllUserBodySpecs)
-                        )
-                ).path("/api/v1/ingredients", builder -> builder
+                        ))
+                .path("/api/v1/foods", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
-                                .PUT("{ingredient-id}", foodCommandEndpointHandler::updateIngredientById)
-                                .GET("", request -> foodQueriesEndpointHandler.getAllIngredients())))
-
+                                .GET("", foodQueriesEndpointHandler::getFoodWithPagination)
+                                .PUT("{food-id}/ingredients", foodCommandEndpointHandler::addIngredientsToFood)
+                        ))
+                .path("/api/v1/ingredients", builder -> builder
+                        .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
+                                .GET("{ingredient-id}", ingredientQueriesHandler::getIngredientById)
+                                .GET(queryParam("offset", Objects::nonNull).or(queryParam("limit", Objects::nonNull)),
+                                        ingredientQueriesHandler::getIngredientsWithPagination)
+                                .GET("", request -> ingredientQueriesHandler.getAllIngredients())
+                        ))
                 .build();
     }
 
