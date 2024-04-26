@@ -4,11 +4,14 @@ import com.greethy.annotation.reactive.EndpointHandler;
 import com.greethy.user.api.rest.controller.ExceptionHandler;
 import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
 import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
+import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
+import com.greethy.user.core.port.in.query.CheckIfUsernameOrEmailExistsQuery;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway;
+import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -35,6 +38,8 @@ public class UserCommandsEndpointHandler {
 
     private final ExceptionHandler exceptionHandler;
 
+    private final ReactorQueryGateway reactorQueryGateway;
+
     private final ReactorCommandGateway reactiveCommandGateway;
 
     private static final String PATH_VARIABLE_NAME = "user-id";
@@ -49,6 +54,15 @@ public class UserCommandsEndpointHandler {
      */
     public Mono<ServerResponse> registerUser(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(RegisterUserRequest.class)
+                .map(request -> CheckIfUsernameOrEmailExistsQuery.builder()
+                        .email(request.getEmail())
+                        .username(request.getUsername())
+                        .build())
+                .flatMap(query -> reactorQueryGateway.query(query, Boolean.class))
+                .flatMap(isExisted -> {
+                    if (isExisted) return Mono.error(DuplicateUniqueFieldException::new);
+                    return serverRequest.bodyToMono(RegisterUserRequest.class);
+                })
                 .map(request -> mapper.map(request, RegisterUserCommand.class))
                 .doOnNext(command -> {
                     if (!StringUtils.hasText(command.getUserId())) {
@@ -59,7 +73,7 @@ public class UserCommandsEndpointHandler {
                 .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(Map.of("user-id", it))
-                ).onErrorResume(exceptionHandler::handlingCommandException);
+                ).onErrorResume(exceptionHandler::handlingException);
     }
 
 

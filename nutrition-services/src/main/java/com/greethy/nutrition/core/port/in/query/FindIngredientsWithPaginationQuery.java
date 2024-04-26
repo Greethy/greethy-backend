@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class FindComponentsWithPaginationQuery {
+public class FindIngredientsWithPaginationQuery {
 
     private int offset;
 

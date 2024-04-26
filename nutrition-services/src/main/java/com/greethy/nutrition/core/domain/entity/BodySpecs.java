@@ -1,6 +1,7 @@
 package com.greethy.nutrition.core.domain.entity;
 
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
+import com.greethy.core.domain.event.UserBodySpecsDeletedEvent;
 import com.greethy.nutrition.core.domain.service.BodySpecsCalculator;
 import com.greethy.nutrition.core.domain.value.Bmi;
 import com.greethy.nutrition.core.domain.value.Bmr;
@@ -19,6 +20,7 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -27,9 +29,9 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 @Data
-@Document(collection = "body_specs")
 @Aggregate
 @NoArgsConstructor
+@Document(collection = "body_specs")
 public class BodySpecs {
 
     @Id
@@ -51,6 +53,8 @@ public class BodySpecs {
     private Pal pal;
 
     private Bmr bmr;
+
+    private String goal;
 
     @Field(name = "created_at")
     private LocalDate createAt;
@@ -126,11 +130,10 @@ public class BodySpecs {
     }
 
     @CommandHandler
-    void handle(DeleteBodySpecsCommand command) {
-        AggregateLifecycle.apply(BodySpecsDeletedEvent.builder()
-                .bodySpecsId(command.getBodySpecsId())
-                .build()
-        );
+    void handle(DeleteBodySpecsCommand command, ModelMapper mapper) {
+        var event = mapper.map(command, BodySpecsDeletedEvent.class);
+        AggregateLifecycle.apply(event)
+                .andThenApply(() -> mapper.map(event, UserBodySpecsDeletedEvent.class));
     }
 
     @EventSourcingHandler

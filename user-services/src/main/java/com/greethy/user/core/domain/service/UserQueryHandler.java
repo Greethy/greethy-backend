@@ -4,7 +4,7 @@ import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
 import com.greethy.user.api.rest.dto.response.UserResponse;
 import com.greethy.user.core.domain.entity.User;
 import com.greethy.user.core.port.in.query.*;
-import com.greethy.user.core.port.out.read.CheckIfExistsUserPort;
+import com.greethy.user.core.port.out.read.CheckIfUserExistsPort;
 import com.greethy.user.core.port.out.read.FindUserPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -58,8 +58,18 @@ public class UserQueryHandler {
 
     @QueryHandler
     public Boolean handle(CheckIfUserEmailExistsQuery query,
-                          CheckIfExistsUserPort port) {
-        return port.existsByEmail(query.getEmail());
+                          CheckIfUserExistsPort checkIfPort) {
+        return checkIfPort.existsByEmail(query.getEmail());
+    }
+
+    @QueryHandler
+    public Mono<Boolean> handle(CheckIfUserExistsQuery query, CheckIfUserExistsPort checkIfPort) {
+        return checkIfPort.existsById(query.getUserId());
+    }
+
+    @QueryHandler
+    public Mono<Boolean> handle(CheckIfUsernameOrEmailExistsQuery query, CheckIfUserExistsPort checkIfPort) {
+        return checkIfPort.existsByUsernameOrEmail(query.getUsername(), query.getEmail());
     }
 
     @QueryHandler

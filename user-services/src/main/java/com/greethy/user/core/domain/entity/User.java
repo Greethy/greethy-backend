@@ -1,8 +1,6 @@
 package com.greethy.user.core.domain.entity;
 
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
-import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
-import com.greethy.user.core.domain.exception.NotFoundException;
 import com.greethy.user.core.domain.value.PersonalDetail;
 import com.greethy.user.core.domain.value.Premium;
 import com.greethy.user.core.domain.value.Role;
@@ -10,7 +8,6 @@ import com.greethy.user.core.event.*;
 import com.greethy.user.core.port.in.command.DeleteUserCommand;
 import com.greethy.user.core.port.in.command.RegisterUserCommand;
 import com.greethy.user.core.port.in.command.UpdateUserCommand;
-import com.greethy.user.core.port.out.read.CheckIfExistsUserPort;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
@@ -88,10 +85,7 @@ public class User {
     private List<String> bodySpecsIds = new ArrayList<>();
 
     @CommandHandler
-    public User(RegisterUserCommand command, CheckIfExistsUserPort port, PasswordEncoder encoder) {
-        if (port.existsByUsernameOrEmail(command.getUsername(), command.getEmail())) {
-            throw new DuplicateUniqueFieldException();
-        }
+    public User(RegisterUserCommand command, PasswordEncoder encoder) {
 
         var encodedPassword = encoder.encode(command.getPassword());
         var roles = Collections.singletonList(Role.ROLE_USER.getType());
@@ -105,7 +99,8 @@ public class User {
                         .roles(roles)
                         .personalDetail(new PersonalDetail())
                         .networking(networking)
-                        .createdAt(LocalDateTime.now()).updatedAt(LocalDateTime.now())
+                        .createdAt(LocalDateTime.now())
+                        .updatedAt(LocalDateTime.now())
                         .build())
                 .andThenApply(() -> NetworkingCreatedEvent.builder()
                         .networking(networking)
@@ -126,18 +121,8 @@ public class User {
         this.updatedAt = event.getUpdatedAt();
     }
 
-    @EventSourcingHandler
-    void on(VerificationEmailSentEvent event) {
-        this.verified = Boolean.TRUE;
-    }
-
     @CommandHandler
-    void handle(UpdateUserCommand command,
-                CheckIfExistsUserPort checkIfExistsUserPort) {
-        if (!checkIfExistsUserPort.existsById(command.getUserId())) {
-            throw new NotFoundException();
-        }
-
+    void handle(UpdateUserCommand command) {
         AggregateLifecycle.apply(UserUpdatedEvent.builder()
                 .userId(command.getUserId())
                 .avatar(command.getAvatar())
@@ -164,14 +149,14 @@ public class User {
     }
 
     @CommandHandler
-    void handle(DeleteUserCommand command,
-                CheckIfExistsUserPort checkIfExistsUserPort) {
-        if (!checkIfExistsUserPort.existsById(command.getUserId())) {
-            throw new NotFoundException();
-        }
+    void handle(DeleteUserCommand command) {
         AggregateLifecycle.apply(UserDeletedEvent.builder()
-                .userId(command.getUserId())
-                .build());
+                        .userId(command.getUserId())
+                        .build())
+                .andThenApply(() -> NetworkingDeletedEvent.builder()
+                        .networkingId(this.networking.getId())
+                        .build()
+                );
     }
 
     @EventSourcingHandler

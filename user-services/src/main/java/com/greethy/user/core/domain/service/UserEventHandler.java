@@ -1,6 +1,7 @@
 package com.greethy.user.core.domain.service;
 
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
+import com.greethy.core.domain.event.UserBodySpecsDeletedEvent;
 import com.greethy.user.core.domain.entity.User;
 import com.greethy.user.core.event.UserDeletedEvent;
 import com.greethy.user.core.event.UserRegisteredEvent;
@@ -21,9 +22,8 @@ import reactor.core.publisher.Mono;
 import java.time.LocalDateTime;
 
 /**
- *
  * @author Kien N.Thanh
- * */
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -36,8 +36,6 @@ public class UserEventHandler {
     private final SaveUserPort saveUserPort;
 
     private final FindUserPort findUserPort;
-
-    private final DeleteUserPort deleteUserPort;
 
     @EventHandler
     public void on(UserRegisteredEvent event,
@@ -69,10 +67,14 @@ public class UserEventHandler {
     }
 
     @EventHandler
-    public void on(UserDeletedEvent event) {
+    public void on(UserDeletedEvent event,
+                   @Qualifier("mongodb-delete-adapter") DeleteUserPort mongoDeletePort,
+                   @Qualifier("mongodb-delete-adapter") DeleteUserPort gorseDeletePort) {
         Mono.just(event)
                 .map(UserDeletedEvent::getUserId)
-                .flatMap(deleteUserPort::deleteById)
+                .flatMap(mongoDeletePort::deleteById)
+                .then(Mono.just(event.getUserId()))
+                .flatMap(gorseDeletePort::deleteById)
                 .subscribe();
     }
 
@@ -85,6 +87,15 @@ public class UserEventHandler {
                 })
                 .flatMap(saveUserPort::save)
                 .subscribe(user -> log.info("user has been created a new BodySpecs {}", event.getBodySpecsId()));
+    }
+
+    @EventHandler
+    void on(UserBodySpecsDeletedEvent event,
+            @Qualifier("mongodb-save-adapter") SaveUserPort mongoSavePort) {
+        findUserPort.findById(event.getUserId())
+                .doOnNext(user -> user.getBodySpecsIds().remove(event.getBodySpecsId()))
+                .flatMap(mongoSavePort::save)
+                .subscribe(user -> log.info("user {} delete BodySpecs {}", event.getUserId(), event.getBodySpecsId()));
     }
 
 }

@@ -27,7 +27,7 @@ public class BodySpecsCommandsEndpointHandler {
 
     /**
      * Creates Body Specifications for a user.
-     *<p>
+     * <p>
      * This method extracts the user ID from the path variable of the provided {@code serverRequest}.
      * It then reads the request body to obtain the body specifications to create.
      * Next, it maps the request body to a {@link CreateBodySpecsCommand} object using a mapper.
@@ -37,7 +37,7 @@ public class BodySpecsCommandsEndpointHandler {
      *
      * @param serverRequest The server request containing the path variable "user-id" and the body specifications to create.
      * @return A {@link Mono} representing the server response. If the body specifications are created successfully,
-     *         it contains an HTTP 201 Created response with the ID of the created body specifications.
+     * it contains an HTTP 201 Created response with the ID of the created body specifications.
      */
     public Mono<ServerResponse> createUserBodySpecs(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable("user-id"))
@@ -65,8 +65,10 @@ public class BodySpecsCommandsEndpointHandler {
     }
 
     public Mono<ServerResponse> deleteBodySpecs(ServerRequest serverRequest) {
-        return Mono.just(serverRequest.pathVariable("body-specs-id"))
-                .map(DeleteBodySpecsCommand::new)
+        return Mono.just(DeleteBodySpecsCommand.builder()
+                        .bodySpecsId(serverRequest.pathVariable("body-specs-id"))
+                        .userId(serverRequest.pathVariable("user-id"))
+                        .build())
                 .flatMap(commandGateway::send)
                 .flatMap(it -> ServerResponse.noContent().build());
     }

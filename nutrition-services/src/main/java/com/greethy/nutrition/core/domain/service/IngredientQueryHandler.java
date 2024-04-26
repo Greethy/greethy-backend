@@ -2,8 +2,8 @@ package com.greethy.nutrition.core.domain.service;
 
 import com.greethy.nutrition.api.rest.dto.response.IngredientResponse;
 import com.greethy.nutrition.core.port.in.query.CountAllIngredientQuery;
-import com.greethy.nutrition.core.port.in.query.FindAllComponentsQuery;
-import com.greethy.nutrition.core.port.in.query.FindComponentsWithPaginationQuery;
+import com.greethy.nutrition.core.port.in.query.FindAllIngredientsQuery;
+import com.greethy.nutrition.core.port.in.query.FindIngredientsWithPaginationQuery;
 import com.greethy.nutrition.core.port.in.query.FindIngredientByIdQuery;
 import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
 import lombok.RequiredArgsConstructor;
@@ -31,13 +31,13 @@ public class IngredientQueryHandler {
     }
 
     @QueryHandler
-    Flux<IngredientResponse> handle(FindAllComponentsQuery query) {
+    Flux<IngredientResponse> handle(FindAllIngredientsQuery query) {
         return findIngredientPort.findAll()
                 .map(ingredient -> mapper.map(ingredient, IngredientResponse.class));
     }
 
     @QueryHandler
-    Flux<IngredientResponse> handle(FindComponentsWithPaginationQuery query) {
+    Flux<IngredientResponse> handle(FindIngredientsWithPaginationQuery query) {
         return Flux.just(PageRequest.of(query.getOffset(), query.getLimit()))
                 .flatMap(findIngredientPort::findByPagination)
                 .map(ingredient -> mapper.map(ingredient, IngredientResponse.class));

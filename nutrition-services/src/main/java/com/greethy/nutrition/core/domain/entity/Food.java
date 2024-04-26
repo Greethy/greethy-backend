@@ -19,6 +19,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -36,6 +37,12 @@ public class Food {
     private String id;
 
     private String name;
+
+    @Field(name = "food_types")
+    private List<String> foodTypes;
+
+    @Field("have_for")
+    private String haveFor;
 
     private String description;
 
@@ -98,7 +105,8 @@ public class Food {
     @CommandHandler
     void handle(AddIngredientsToFoodCommand command, FindIngredientPort ingredientPort) {
         var foodIngredients = command.getFoodIngredients().stream()
-                .peek(foodIngredient -> ingredientPort.findById(foodIngredient.getIngredientId())
+                .peek(foodIngredient -> Mono.just(foodIngredient.getIngredientId())
+                        .flatMap(ingredientPort::findById)
                         .doOnNext(ingredient -> {
                             Double rate = foodIngredient.getValue() / 100;
                             foodIngredient.setName(ingredient.getName());
@@ -110,7 +118,6 @@ public class Food {
                 .parallel()
                 .map(FoodIngredient::getCalories)
                 .reduce(0.0d, Double::sum);
-        foodIngredients.forEach(System.out::println);
         AggregateLifecycle.apply(IngredientsAddedToFoodEvent.builder()
                 .totalCalories(totalCalories)
                 .foodId(command.getFoodId())

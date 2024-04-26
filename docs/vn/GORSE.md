@@ -11,8 +11,9 @@ user và các dữ liệu tương tác được đưa vào Gorse, hệ thống s
 - **RESTful API**: Cung cấp các api cho việc CRUD dữ liệu và các request đề xuất.
 - **Đánh giá trực tuyến** (Online Evaluation): Phân tích hiệu năng đề xuất trực tuyến từ các Feedback được cung cấp.
 - **Bảng điều khiển** (Dashboard): Cung cấp GUI cho việc quản lý dữ liệu, giám sát hệ thống và kiểm tra trạng thái các cụm.
-<img src="../assets/gorse_recommender_system_workflow.png" alt=""/>
-
+<div style="text-align: center">
+    <img src="../assets/gorse_recommender_system_workflow.png" alt="" style="width: 650px"/>
+</div>
 ## Các đối tượng dữ liệu (Data Objects)
 
 ### User

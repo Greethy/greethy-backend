@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
-@InfrastructureAdapter("mongodb-adapter")
+@InfrastructureAdapter("mongodb-delete-adapter")
 public class MongoDeleteUserAdapter implements DeleteUserPort {
 
     private final UserRepository userRepository;

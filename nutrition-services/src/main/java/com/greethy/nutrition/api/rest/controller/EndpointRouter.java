@@ -41,13 +41,13 @@ public class EndpointRouter {
                                         bodySpecsQueriesEndpointHandler::getBodySpecsPagination)
                                 .GET("", request -> bodySpecsQueriesEndpointHandler.getAllBodySpecs())
                                 .PUT("{body-specs-id}", bodySpecsCommandsHandler::updateBodySpecs)
-                                .DELETE("{body-specs-id}", bodySpecsCommandsHandler::deleteBodySpecs)
                         ))
                 .path("/api/v1/users/{user-id}", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routeBuilder -> routeBuilder
-                                .POST("body-specs", bodySpecsCommandsHandler::createUserBodySpecs)
                                 .POST("food", foodCommandEndpointHandler::createFood)
+                                .POST("body-specs", bodySpecsCommandsHandler::createUserBodySpecs)
                                 .GET("body-specs", bodySpecsQueriesEndpointHandler::getAllUserBodySpecs)
+                                .DELETE("body-specs/{body-specs-id}", bodySpecsCommandsHandler::deleteBodySpecs)
                         ))
                 .path("/api/v1/foods", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder

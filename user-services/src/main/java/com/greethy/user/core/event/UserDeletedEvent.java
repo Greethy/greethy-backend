@@ -11,4 +11,6 @@ public class UserDeletedEvent {
 
     private String userId;
 
+    private String networkingId;
+
 }

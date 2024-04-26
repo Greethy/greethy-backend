@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class FindUserByIdQuery {
+public class CheckIfUserExistsQuery {
 
     private String userId;
 

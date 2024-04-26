@@ -2,7 +2,9 @@ package com.greethy.nutrition.core.domain.service;
 
 import com.greethy.nutrition.core.domain.entity.BodySpecs;
 import com.greethy.nutrition.core.event.BodySpecsCreatedEvent;
+import com.greethy.nutrition.core.event.BodySpecsDeletedEvent;
 import com.greethy.nutrition.core.event.BodySpecsUpdatedEvent;
+import com.greethy.nutrition.core.port.out.write.DeleteBodySpecsPort;
 import com.greethy.nutrition.core.port.out.write.SaveBodySpecsPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +35,14 @@ public class BodySpecsEventHandler {
         Mono.just(event)
                 .map(bodySpecsUpdatedEvent -> mapper.map(bodySpecsUpdatedEvent, BodySpecs.class))
                 .flatMap(saveBodySpecsPort::save)
+                .subscribe(bodySpecs -> log.info("bodySpecs {} updated!", bodySpecs.getId()));
+    }
+
+    @EventHandler
+    void on(BodySpecsDeletedEvent event, DeleteBodySpecsPort deletePort) {
+        Mono.just(event)
+                .map(BodySpecsDeletedEvent::getBodySpecsId)
+                .flatMap(deletePort::deleteById)
                 .subscribe();
     }
 

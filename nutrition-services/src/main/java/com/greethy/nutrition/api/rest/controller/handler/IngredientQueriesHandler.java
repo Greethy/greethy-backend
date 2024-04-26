@@ -5,8 +5,8 @@ import com.greethy.core.api.response.PageSupport;
 import com.greethy.core.util.ServerRequestUtil;
 import com.greethy.nutrition.api.rest.dto.response.IngredientResponse;
 import com.greethy.nutrition.core.port.in.query.CountAllIngredientQuery;
-import com.greethy.nutrition.core.port.in.query.FindAllComponentsQuery;
-import com.greethy.nutrition.core.port.in.query.FindComponentsWithPaginationQuery;
+import com.greethy.nutrition.core.port.in.query.FindAllIngredientsQuery;
+import com.greethy.nutrition.core.port.in.query.FindIngredientsWithPaginationQuery;
 import com.greethy.nutrition.core.port.in.query.FindIngredientByIdQuery;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
@@ -33,7 +33,7 @@ public class IngredientQueriesHandler {
     }
 
     public Mono<ServerResponse> getAllIngredients() {
-        return Flux.just(new FindAllComponentsQuery())
+        return Flux.just(new FindAllIngredientsQuery())
                 .flatMap(query -> queryGateway.streamingQuery(query, IngredientResponse.class))
                 .collectList()
                 .flatMap(ingredientsResponse -> ingredientsResponse.isEmpty()
@@ -45,7 +45,7 @@ public class IngredientQueriesHandler {
     public Mono<ServerResponse> getIngredientsWithPagination(ServerRequest serverRequest) {
         int offset = ServerRequestUtil.getQueryParamIntValue(serverRequest, "offset", "0");
         int limit = ServerRequestUtil.getQueryParamIntValue(serverRequest, "limit", "10");
-        return Flux.just(FindComponentsWithPaginationQuery.builder()
+        return Flux.just(FindIngredientsWithPaginationQuery.builder()
                         .limit(limit).offset(offset)
                         .build())
                 .flatMap(query -> queryGateway.streamingQuery(query, IngredientResponse.class))

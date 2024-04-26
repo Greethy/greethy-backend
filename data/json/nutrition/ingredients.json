@@ -8386,6 +8386,81 @@
       }
     ]
   },
+  {
+    "name": "Hành lá (hành hoa)",
+    "code": "04038",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 80,
+    "calories": 26,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 92.5,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 1.3,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 5.2,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 0.9,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 80,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 41.0,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 1.0,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.44,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 16,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 123,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 23,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 60,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 114,
+        "unit": "µg"
+      }
+    ]
+  },
 
 
   {

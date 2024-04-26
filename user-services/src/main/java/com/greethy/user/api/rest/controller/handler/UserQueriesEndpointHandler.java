@@ -26,7 +26,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class UserQueriesEndpointHandler {
 
-    private final ReactorQueryGateway reactiveQueryGateway;
+    private final ReactorQueryGateway queryGateway;
 
     private final ExceptionHandler exceptionHandler;
 
@@ -43,7 +43,7 @@ public class UserQueriesEndpointHandler {
      */
     public Mono<ServerResponse> findAllUser() {
         return Flux.just(new FindAllUserQuery())
-                .flatMap(query -> reactiveQueryGateway.streamingQuery(query, UserResponse.class))
+                .flatMap(query -> queryGateway.streamingQuery(query, UserResponse.class))
                 .collectList()
                 .flatMap(usersResponse -> usersResponse.isEmpty()
                         ? ServerResponse.noContent().build()
@@ -65,41 +65,29 @@ public class UserQueriesEndpointHandler {
         int offset = ServerRequestUtil.getQueryParamIntValue(serverRequest, "offset", "0");
         int limit = ServerRequestUtil.getQueryParamIntValue(serverRequest, "limit", "10");
         return Flux.just(GetAllUserWithPageableQuery.builder().offset(offset).limit(limit).build())
-                .flatMap(query -> reactiveQueryGateway.streamingQuery(query, UserResponse.class))
+                .flatMap(query -> queryGateway.streamingQuery(query, UserResponse.class))
                 .collectList()
-                .zipWith(reactiveQueryGateway.query(new CountAllUserQuery(), Long.class))
+                .zipWith(queryGateway.query(new CountAllUserQuery(), Long.class))
                 .map(zippedResponse -> new PageSupport<>(zippedResponse.getT1(), offset, limit, zippedResponse.getT2()))
                 .flatMap(pageResponse -> pageResponse.content().isEmpty()
                         ? ServerResponse.noContent().build()
                         : ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(pageResponse));
     }
 
-    /**
-     * Retrieves a user by its ID from the data source.
-     * <p>
-     * This method extracts the user ID from the path variable of the provided {@code serverRequest}.
-     * It constructs a query to find a user by the extracted ID, then executes the query using a reactive query gateway.
-     * If no user is found with the specified ID, it returns an HTTP 404 Not Found response.
-     * If an error occurs during the execution, it handles the exception and generates an appropriate response.
-     *
-     * @param serverRequest The server request containing the path variable with the user ID.
-     * @return A {@link Mono} representing the server response. If a user with the specified ID is found, it contains
-     *         an HTTP 200 OK response with the user details. If no user is found, it contains an HTTP 404 Not Found response.
-     */
     public Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable("user-id"))
-                .map(userId -> FindUserByIdQuery.builder().userId(userId).build())
-                .flatMap(query -> reactiveQueryGateway.query(query, UserResponse.class)
-                        .switchIfEmpty(Mono.error(NotFoundException::new))
-                ).flatMap(userResponse -> ServerResponse.ok()
+                .map(FindUserByIdQuery::new)
+                .flatMap(query -> queryGateway.query(query, UserResponse.class)
+                        .switchIfEmpty(Mono.error(NotFoundException::new)))
+                .flatMap(userResponse -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(userResponse))
-                .onErrorResume(exceptionHandler::handlingQueryException);
+                .onErrorResume(exceptionHandler::handlingException);
     }
 
     /**
      * Retrieves a user by its username or email from the data source.
-     *<p>
+     * <p>
      * This method extracts the username or email from the query parameter "username-or-email" of the provided {@code serverRequest}.
      * It constructs a query to find a user by the extracted username or email, then executes the query using a reactive query gateway.
      * If no user is found with the specified username or email, it returns an HTTP 404 Not Found response.
@@ -107,17 +95,17 @@ public class UserQueriesEndpointHandler {
      *
      * @param serverRequest The server request containing the query parameter "username-or-email".
      * @return A {@link Mono} representing the server response. If a user with the specified username or email is found, it contains
-     *         an HTTP 200 OK response with the user details. If no user is found, it contains an HTTP 404 Not Found response.
+     * an HTTP 200 OK response with the user details. If no user is found, it contains an HTTP 404 Not Found response.
      */
     public Mono<ServerResponse> findUserByUsernameOrEmail(ServerRequest serverRequest) {
         return Mono.just(serverRequest.queryParam("username-or-email").orElse(""))
                 .map(FindUserByUsernameOrEmailQuery::new)
-                .flatMap(query -> reactiveQueryGateway.query(query, UserResponse.class)
+                .flatMap(query -> queryGateway.query(query, UserResponse.class)
                         .switchIfEmpty(Mono.error(NotFoundException::new))
                 ).flatMap(response -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(response))
-                .onErrorResume(exceptionHandler::handlingQueryException);
+                .onErrorResume(exceptionHandler::handlingException);
     }
 
     /**
@@ -134,7 +122,7 @@ public class UserQueriesEndpointHandler {
     public Mono<ServerResponse> checkIfUserEmailExists(ServerRequest serverRequest) {
         return Mono.just(serverRequest.queryParam("email").orElse(""))
                 .map(CheckIfUserEmailExistsQuery::new)
-                .flatMap(query -> reactiveQueryGateway.query(query, Boolean.class))
+                .flatMap(query -> queryGateway.query(query, Boolean.class))
                 .flatMap(isExisted -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(isExisted));
