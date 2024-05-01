@@ -1,5 +1,3 @@
 package com.greethy.user.core.port.in.query;
 
-
-public class CountAllUserQuery {
-}
+public class CountAllUserQuery {}

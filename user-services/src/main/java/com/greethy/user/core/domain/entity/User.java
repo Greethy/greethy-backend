@@ -1,15 +1,11 @@
 package com.greethy.user.core.domain.entity;
 
-import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
-import com.greethy.user.core.domain.value.PersonalDetail;
-import com.greethy.user.core.domain.value.Premium;
-import com.greethy.user.core.domain.value.Role;
-import com.greethy.user.core.event.*;
-import com.greethy.user.core.port.in.command.DeleteUserCommand;
-import com.greethy.user.core.port.in.command.RegisterUserCommand;
-import com.greethy.user.core.port.in.command.UpdateUserCommand;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -23,11 +19,17 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
+import com.greethy.user.core.domain.value.PersonalDetail;
+import com.greethy.user.core.domain.value.Premium;
+import com.greethy.user.core.domain.value.Role;
+import com.greethy.user.core.event.*;
+import com.greethy.user.core.port.in.command.DeleteUserCommand;
+import com.greethy.user.core.port.in.command.RegisterUserCommand;
+import com.greethy.user.core.port.in.command.UpdateUserCommand;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * This class represent for user, including login information,
@@ -86,11 +88,9 @@ public class User {
 
     @CommandHandler
     public User(RegisterUserCommand command, PasswordEncoder encoder) {
-
         var encodedPassword = encoder.encode(command.getPassword());
         var roles = Collections.singletonList(Role.ROLE_USER.getType());
         var networking = new Networking(UUID.randomUUID().toString());
-
         AggregateLifecycle.apply(UserRegisteredEvent.builder()
                         .userId(command.getUserId())
                         .username(command.getUsername())
@@ -102,9 +102,8 @@ public class User {
                         .createdAt(LocalDateTime.now())
                         .updatedAt(LocalDateTime.now())
                         .build())
-                .andThenApply(() -> NetworkingCreatedEvent.builder()
-                        .networking(networking)
-                        .build())
+                .andThenApply(() ->
+                        NetworkingCreatedEvent.builder().networking(networking).build())
                 .andThenApplyIf(() -> !this.verified, VerificationEmailSentEvent::new);
     }
 
@@ -129,8 +128,7 @@ public class User {
                 .bannerImage(command.getBannerImage())
                 .bio(command.getBio())
                 .personalDetail(command.getPersonalDetail())
-                .build()
-        );
+                .build());
     }
 
     @EventSourcingHandler
@@ -150,18 +148,15 @@ public class User {
 
     @CommandHandler
     void handle(DeleteUserCommand command) {
-        AggregateLifecycle.apply(UserDeletedEvent.builder()
-                        .userId(command.getUserId())
-                        .build())
+        AggregateLifecycle.apply(
+                        UserDeletedEvent.builder().userId(command.getUserId()).build())
                 .andThenApply(() -> NetworkingDeletedEvent.builder()
                         .networkingId(this.networking.getId())
-                        .build()
-                );
+                        .build());
     }
 
     @EventSourcingHandler
     void on(UserDeletedEvent event) {
         AggregateLifecycle.markDeleted();
     }
-
 }

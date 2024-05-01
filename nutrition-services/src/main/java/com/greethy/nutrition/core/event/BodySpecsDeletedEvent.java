@@ -8,5 +8,4 @@ public class BodySpecsDeletedEvent {
     private String bodySpecsId;
 
     private String userId;
-
 }

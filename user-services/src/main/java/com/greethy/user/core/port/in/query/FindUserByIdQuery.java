@@ -8,5 +8,4 @@ import lombok.Getter;
 public class FindUserByIdQuery {
 
     private String userId;
-
 }

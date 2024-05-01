@@ -1,9 +1,10 @@
 package com.greethy.user.core.domain.value;
 
-import lombok.Data;
+import java.time.LocalDateTime;
+
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.time.LocalDateTime;
+import lombok.Data;
 
 @Data
 public class Premium {
@@ -15,5 +16,4 @@ public class Premium {
 
     @Field(name = "end_time")
     private LocalDateTime endTime;
-
 }

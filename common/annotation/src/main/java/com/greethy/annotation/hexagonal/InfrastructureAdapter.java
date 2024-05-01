@@ -1,9 +1,9 @@
 package com.greethy.annotation.hexagonal;
 
+import java.lang.annotation.*;
+
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
-
-import java.lang.annotation.*;
 
 /**
  *
@@ -22,5 +22,4 @@ public @interface InfrastructureAdapter {
      */
     @AliasFor(annotation = Component.class)
     String value() default "";
-
 }

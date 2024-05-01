@@ -10,5 +10,4 @@ public class FindIngredientsWithPaginationQuery {
     private int offset;
 
     private int limit;
-
 }

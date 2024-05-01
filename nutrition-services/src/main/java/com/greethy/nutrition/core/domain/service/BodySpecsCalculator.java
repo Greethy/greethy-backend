@@ -1,16 +1,18 @@
 package com.greethy.nutrition.core.domain.service;
 
+import java.text.DecimalFormat;
+
+import org.springframework.stereotype.Component;
+
 import com.greethy.nutrition.core.domain.value.BmiEvaluate;
 import com.greethy.nutrition.core.domain.value.BmrByAge;
 import com.greethy.nutrition.core.domain.value.FitnessIndexes;
 import com.greethy.nutrition.core.port.out.read.FindBmiEvaluatePort;
 import com.greethy.nutrition.core.port.out.read.FindBmrByAgePort;
 import com.greethy.nutrition.core.port.out.read.FindPalEvaluatePort;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
-import java.text.DecimalFormat;
+import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
@@ -54,5 +56,4 @@ public class BodySpecsCalculator {
                 .block();
         return fitnessIndexes;
     }
-
 }

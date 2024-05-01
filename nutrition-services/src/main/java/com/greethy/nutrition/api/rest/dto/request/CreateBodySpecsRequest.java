@@ -1,6 +1,7 @@
 package com.greethy.nutrition.api.rest.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -17,4 +18,5 @@ public class CreateBodySpecsRequest {
     @JsonProperty("activity_type")
     private String activityType;
 
+    private String goal;
 }

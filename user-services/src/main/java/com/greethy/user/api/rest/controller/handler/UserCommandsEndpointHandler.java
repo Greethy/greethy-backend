@@ -1,15 +1,8 @@
 package com.greethy.user.api.rest.controller.handler;
 
-import com.greethy.annotation.reactive.EndpointHandler;
-import com.greethy.user.api.rest.controller.ExceptionHandler;
-import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
-import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
-import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
-import com.greethy.user.core.port.in.command.DeleteUserCommand;
-import com.greethy.user.core.port.in.command.RegisterUserCommand;
-import com.greethy.user.core.port.in.command.UpdateUserCommand;
-import com.greethy.user.core.port.in.query.CheckIfUsernameOrEmailExistsQuery;
-import lombok.RequiredArgsConstructor;
+import java.util.Map;
+import java.util.UUID;
+
 import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
 import org.modelmapper.ModelMapper;
@@ -18,10 +11,19 @@ import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Mono;
 
-import java.util.Map;
-import java.util.UUID;
+import com.greethy.annotation.reactive.EndpointHandler;
+import com.greethy.core.api.handler.ExceptionHandler;
+import com.greethy.user.api.rest.dto.request.RegisterUserRequest;
+import com.greethy.user.api.rest.dto.request.UpdateUserRequest;
+import com.greethy.user.core.domain.exception.DuplicateUniqueFieldException;
+import com.greethy.user.core.port.in.command.DeleteUserCommand;
+import com.greethy.user.core.port.in.command.RegisterUserCommand;
+import com.greethy.user.core.port.in.command.UpdateUserCommand;
+import com.greethy.user.core.port.in.query.CheckIfUsernameOrEmailExistsQuery;
+
+import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Mono;
 
 /**
  * {@code UserCommandsEndpointHandler} is a REST controller responsible for handling user-related commands such as
@@ -36,46 +38,37 @@ public class UserCommandsEndpointHandler {
 
     private final ModelMapper mapper;
 
+    private final ReactorQueryGateway queryGateway;
+
+    private final ReactorCommandGateway commandGateway;
+
     private final ExceptionHandler exceptionHandler;
-
-    private final ReactorQueryGateway reactorQueryGateway;
-
-    private final ReactorCommandGateway reactiveCommandGateway;
 
     private static final String PATH_VARIABLE_NAME = "user-id";
 
-    /**
-     * Registers a new user based on the provided registration request. Generates a unique user ID,
-     * maps the registration request to a RegisterUserCommand, and sends the command to the CommandGateway
-     * for processing.
-     *
-     * @param serverRequest The incoming request containing the registration details.
-     * @return A Mono wrapping the ServerResponse indicating the success of user registration.
-     */
     public Mono<ServerResponse> registerUser(ServerRequest serverRequest) {
-        return serverRequest.bodyToMono(RegisterUserRequest.class)
-                .map(request -> CheckIfUsernameOrEmailExistsQuery.builder()
-                        .email(request.getEmail())
-                        .username(request.getUsername())
-                        .build())
-                .flatMap(query -> reactorQueryGateway.query(query, Boolean.class))
-                .flatMap(isExisted -> {
-                    if (isExisted) return Mono.error(DuplicateUniqueFieldException::new);
-                    return serverRequest.bodyToMono(RegisterUserRequest.class);
-                })
+        return serverRequest
+                .bodyToMono(RegisterUserRequest.class)
+                .flatMap(request -> Mono.just(CheckIfUsernameOrEmailExistsQuery.builder()
+                                .username(request.getUsername())
+                                .email(request.getEmail())
+                                .build())
+                        .flatMap(query -> queryGateway.query(query, Boolean.class))
+                        .filter(isExisted -> isExisted.equals(false))
+                        .switchIfEmpty(Mono.error(DuplicateUniqueFieldException::new))
+                        .then(Mono.just(request)))
                 .map(request -> mapper.map(request, RegisterUserCommand.class))
                 .doOnNext(command -> {
                     if (!StringUtils.hasText(command.getUserId())) {
                         command.setUserId(UUID.randomUUID().toString());
                     }
                 })
-                .flatMap(reactiveCommandGateway::send)
+                .flatMap(commandGateway::send)
                 .flatMap(it -> ServerResponse.status(HttpStatus.CREATED)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .bodyValue(Map.of("user-id", it))
-                ).onErrorResume(exceptionHandler::handlingException);
+                        .bodyValue(Map.of("user-id", it)))
+                .onErrorResume(exceptionHandler::handlingException);
     }
-
 
     /**
      * Updates the profile of an existing user based on the provided update request. Extracts the
@@ -87,14 +80,13 @@ public class UserCommandsEndpointHandler {
      */
     public Mono<ServerResponse> updateUser(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable(PATH_VARIABLE_NAME))
-                .flatMap(userId -> serverRequest.bodyToMono(UpdateUserRequest.class)
+                .flatMap(userId -> serverRequest
+                        .bodyToMono(UpdateUserRequest.class)
                         .map(request -> mapper.map(request, UpdateUserCommand.class))
-                        .doOnNext(command -> command.setUserId(userId))
-                ).flatMap(command -> reactiveCommandGateway.send(command)
-                        .flatMap(it -> ServerResponse.status(HttpStatus.OK)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(Map.of("user-id", it)))
-                );
+                        .doOnNext(command -> command.setUserId(userId)))
+                .flatMap(command -> commandGateway.send(command).flatMap(it -> ServerResponse.status(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(Map.of("user-id", it))));
     }
 
     /**
@@ -108,9 +100,8 @@ public class UserCommandsEndpointHandler {
     public Mono<ServerResponse> deleteUserPermanently(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable(PATH_VARIABLE_NAME))
                 .map(userId -> DeleteUserCommand.builder().userId(userId).build())
-                .flatMap(command -> reactiveCommandGateway.send(command)
-                        .flatMap(it -> ServerResponse.status(HttpStatus.NO_CONTENT).build())
-                );
+                .flatMap(command -> commandGateway.send(command).flatMap(it -> ServerResponse.status(
+                                HttpStatus.NO_CONTENT)
+                        .build()));
     }
-
 }

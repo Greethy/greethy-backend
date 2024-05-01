@@ -1,15 +1,15 @@
 package com.greethy.mapper;
 
+import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.AbstractProvider;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
 
 /**
  * Mapping configuration class for application settings.
@@ -52,13 +52,11 @@ public class MapperConfig {
                 return LocalDate.parse(source, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
         });
-        mapper.getTypeMap(String.class, LocalDate.class)
-                .setProvider(new AbstractProvider<>() {
-                    @Override
-                    protected LocalDate get() {
-                        return LocalDate.now();
-                    }
-                });
+        mapper.getTypeMap(String.class, LocalDate.class).setProvider(new AbstractProvider<>() {
+            @Override
+            protected LocalDate get() {
+                return LocalDate.now();
+            }
+        });
     }
-
 }

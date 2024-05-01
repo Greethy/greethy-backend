@@ -7,7 +7,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class AnnotationApplicationTests {
 
     @Test
-    void contextLoads() {
-    }
-
+    void contextLoads() {}
 }

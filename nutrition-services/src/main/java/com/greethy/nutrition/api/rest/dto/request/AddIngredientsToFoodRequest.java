@@ -1,10 +1,11 @@
 package com.greethy.nutrition.api.rest.dto.request;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 import lombok.ToString;
-
-import java.util.List;
 
 @Data
 public class AddIngredientsToFoodRequest {
@@ -24,5 +25,4 @@ public class AddIngredientsToFoodRequest {
 
         private String prepare;
     }
-
 }

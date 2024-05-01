@@ -15,5 +15,4 @@ public class Pal {
     private String ActivityType;
 
     private Double value;
-
 }

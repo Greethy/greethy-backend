@@ -10,5 +10,4 @@ public class GetAllUserWithPageableQuery {
     private int offset;
 
     private int limit;
-
 }

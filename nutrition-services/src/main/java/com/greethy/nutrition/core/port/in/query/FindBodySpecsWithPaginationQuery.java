@@ -5,10 +5,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class FindBodySpecsByPaginationQuery {
+public class FindBodySpecsWithPaginationQuery {
 
     private int offset;
 
     private int limit;
-
 }

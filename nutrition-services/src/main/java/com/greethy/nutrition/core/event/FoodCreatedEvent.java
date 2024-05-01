@@ -1,10 +1,11 @@
 package com.greethy.nutrition.core.event;
 
+import java.time.LocalDateTime;
+
 import com.greethy.nutrition.core.domain.value.Owner;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor

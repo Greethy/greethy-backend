@@ -1,14 +1,16 @@
 package com.greethy.user.infra.microservice.gorse;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.client.WebClient;
+
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.user.core.domain.entity.User;
 import com.greethy.user.core.domain.value.GorseUser;
 import com.greethy.user.core.domain.value.RowAffected;
 import com.greethy.user.core.port.out.write.SaveUserPort;
+
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.http.MediaType;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
@@ -23,7 +25,9 @@ public class GorseSaveUserAdapter implements SaveUserPort {
 
     @Override
     public Mono<User> save(User user) {
-        return webClientBuilder.baseUrl(GORSE_MASTER_HOSTNAME).build()
+        return webClientBuilder
+                .baseUrl(GORSE_MASTER_HOSTNAME)
+                .build()
                 .post()
                 .uri("/api/user")
                 .header("X-API-Key", "")

@@ -3,6 +3,7 @@ package com.greethy.user.infra.repository.mongodb.adapter;
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.user.core.port.out.read.CheckIfUserExistsPort;
 import com.greethy.user.infra.repository.mongodb.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -19,8 +20,7 @@ public class MongoCheckIfUserExistsAdapter implements CheckIfUserExistsPort {
 
     @Override
     public Boolean existsByEmail(String email) {
-        return userRepository.existsByEmail(email)
-                .block();
+        return userRepository.existsByEmail(email).block();
     }
 
     @Override

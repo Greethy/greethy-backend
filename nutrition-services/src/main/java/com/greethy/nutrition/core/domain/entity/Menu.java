@@ -1,11 +1,12 @@
 package com.greethy.nutrition.core.domain.entity;
 
-import lombok.Data;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.List;
+import lombok.Data;
 
 @Data
 @Document(collection = "menus")
@@ -20,5 +21,4 @@ public class Menu {
     private Integer totalCalories;
 
     private List<Meal> meals;
-
 }

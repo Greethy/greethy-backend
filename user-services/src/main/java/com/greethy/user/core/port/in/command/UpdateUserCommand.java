@@ -1,8 +1,10 @@
 package com.greethy.user.core.port.in.command;
 
-import com.greethy.user.core.domain.value.PersonalDetail;
-import lombok.*;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
+
+import com.greethy.user.core.domain.value.PersonalDetail;
+
+import lombok.*;
 
 @Data
 @Builder
@@ -20,5 +22,4 @@ public class UpdateUserCommand {
     private String bio;
 
     private PersonalDetail personalDetail;
-
 }

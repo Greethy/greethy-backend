@@ -1,6 +1,7 @@
 package com.greethy.nutrition.api.rest.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -21,6 +22,4 @@ public class CreateFoodRequest {
 
     @JsonProperty("video_url")
     private String videoUrl;
-
-
 }

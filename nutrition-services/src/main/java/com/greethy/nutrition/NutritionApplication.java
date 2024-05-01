@@ -1,9 +1,10 @@
 package com.greethy.nutrition;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * The main class to start the Nutrition Application. This class initializes and runs the
@@ -13,11 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 @RequiredArgsConstructor
-@SpringBootApplication(scanBasePackages = {
-        "com.greethy.nutrition",
-        "com.greethy.core",
-        "com.greethy.mapper"
-})
+@SpringBootApplication(scanBasePackages = {"com.greethy.nutrition", "com.greethy.core", "com.greethy.mapper"})
 public class NutritionApplication {
 
     /**
@@ -27,5 +24,4 @@ public class NutritionApplication {
     public static void main(String[] args) {
         SpringApplication.run(NutritionApplication.class, args);
     }
-
 }

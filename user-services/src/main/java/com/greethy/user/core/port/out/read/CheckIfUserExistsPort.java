@@ -9,5 +9,4 @@ public interface CheckIfUserExistsPort {
     Boolean existsByEmail(String email);
 
     Mono<Boolean> existsByUsernameOrEmail(String username, String email);
-
 }

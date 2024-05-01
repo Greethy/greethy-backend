@@ -10,5 +10,4 @@ public class CheckIfUsernameOrEmailExistsQuery {
     private String username;
 
     private String email;
-
 }

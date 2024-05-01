@@ -3,6 +3,7 @@ package com.greethy.nutrition.api.rest.dto.response;
 import com.greethy.nutrition.core.domain.value.Bmi;
 import com.greethy.nutrition.core.domain.value.Bmr;
 import com.greethy.nutrition.core.domain.value.Pal;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,5 +26,4 @@ public class BodySpecsResponse {
     private Pal pal;
 
     private Double tdee;
-
 }

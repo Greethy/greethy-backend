@@ -15,5 +15,4 @@ public class Bmr {
     private Double bmrPerKg;
 
     private Double bmrPerDay; // = bmrPerKg x Kg (of user)
-
 }

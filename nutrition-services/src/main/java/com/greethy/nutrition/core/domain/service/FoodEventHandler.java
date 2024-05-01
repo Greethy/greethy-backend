@@ -1,16 +1,18 @@
 package com.greethy.nutrition.core.domain.service;
 
+import org.axonframework.eventhandling.EventHandler;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
 import com.greethy.nutrition.core.domain.entity.Food;
 import com.greethy.nutrition.core.event.FoodCreatedEvent;
 import com.greethy.nutrition.core.event.IngredientsAddedToFoodEvent;
 import com.greethy.nutrition.core.port.out.read.FindFoodPort;
 import com.greethy.nutrition.core.port.out.write.SaveFoodPort;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.axonframework.eventhandling.EventHandler;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -29,7 +31,9 @@ public class FoodEventHandler {
     }
 
     @EventHandler
-    void on(IngredientsAddedToFoodEvent event, FindFoodPort findPort,
+    void on(
+            IngredientsAddedToFoodEvent event,
+            FindFoodPort findPort,
             @Qualifier("mongodb-save-adapter") SaveFoodPort savePort) {
         findPort.findById(event.getFoodId())
                 .doOnNext(food -> {
@@ -41,5 +45,4 @@ public class FoodEventHandler {
                 .flatMap(savePort::save)
                 .subscribe();
     }
-
 }

@@ -1,9 +1,10 @@
 package com.greethy.user.core.domain.value;
 
-import lombok.*;
+import java.time.LocalDate;
+
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.time.LocalDate;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -20,5 +21,4 @@ public class PersonalDetail {
     private String website;
 
     private Integer gender;
-
 }

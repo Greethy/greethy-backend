@@ -3,6 +3,7 @@ package com.greethy.nutrition.core.event;
 import com.greethy.nutrition.core.domain.value.Bmi;
 import com.greethy.nutrition.core.domain.value.Bmr;
 import com.greethy.nutrition.core.domain.value.Pal;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -27,5 +28,4 @@ public class BodySpecsUpdatedEvent {
     private Pal pal;
 
     private Double tdee;
-
 }

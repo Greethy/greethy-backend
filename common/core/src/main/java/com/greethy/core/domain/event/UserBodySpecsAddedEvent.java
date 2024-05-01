@@ -11,4 +11,5 @@ public class UserBodySpecsAddedEvent {
 
     private String bodySpecsId;
 
+    private String goal;
 }

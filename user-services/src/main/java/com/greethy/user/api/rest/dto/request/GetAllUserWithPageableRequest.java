@@ -12,5 +12,4 @@ public class GetAllUserWithPageableRequest {
     private int size = 10;
 
     private String sort = "userId";
-
 }

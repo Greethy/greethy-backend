@@ -1,8 +1,7 @@
 package com.greethy.gateway.api.filter;
 
-import com.greethy.gateway.infra.config.security.constant.SecurityConstants;
-import com.greethy.gateway.infra.config.security.jwt.JwtTokenProvider;
-import lombok.RequiredArgsConstructor;
+import java.util.Optional;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
@@ -11,10 +10,13 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
+
+import com.greethy.gateway.infra.config.security.constant.SecurityConstants;
+import com.greethy.gateway.infra.config.security.jwt.JwtTokenProvider;
+
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
-
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -25,12 +27,11 @@ public class JwtTokenFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         String token = resolveToken(exchange.getRequest());
-        if(StringUtils.hasText(token)) {
+        if (StringUtils.hasText(token)) {
             return Mono.fromCallable(() -> tokenProvider.getAuthentication(token))
                     .subscribeOn(Schedulers.boundedElastic())
                     .flatMap(authentication -> chain.filter(exchange)
-                            .contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication))
-                    );
+                            .contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication)));
         }
         return chain.filter(exchange);
     }
@@ -44,4 +45,3 @@ public class JwtTokenFilter implements WebFilter {
                 .orElse("");
     }
 }
-

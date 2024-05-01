@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorResponse{
+public class ErrorResponse {
 
     @Schema(description = "The HTTP status code, Range 400-599.")
     private Integer status;

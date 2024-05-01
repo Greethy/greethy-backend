@@ -1,6 +1,7 @@
 package com.greethy.gateway.api.rest.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -12,5 +13,4 @@ public class UserRegisteredResponse {
     private String username;
 
     private String password;
-
 }

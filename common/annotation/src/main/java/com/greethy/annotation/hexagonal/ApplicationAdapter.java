@@ -1,9 +1,9 @@
 package com.greethy.annotation.hexagonal;
 
+import java.lang.annotation.*;
+
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
-
-import java.lang.annotation.*;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
@@ -18,5 +18,4 @@ public @interface ApplicationAdapter {
      */
     @AliasFor(annotation = Component.class)
     String value() default "";
-
 }

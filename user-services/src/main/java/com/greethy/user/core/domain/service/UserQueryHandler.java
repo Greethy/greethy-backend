@@ -1,17 +1,20 @@
 package com.greethy.user.core.domain.service;
 
+import org.axonframework.queryhandling.QueryHandler;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
+import com.greethy.core.domain.query.CheckIfUserExistsQuery;
 import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
 import com.greethy.user.api.rest.dto.response.UserResponse;
 import com.greethy.user.core.domain.entity.User;
 import com.greethy.user.core.port.in.query.*;
 import com.greethy.user.core.port.out.read.CheckIfUserExistsPort;
 import com.greethy.user.core.port.out.read.FindUserPort;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.axonframework.queryhandling.QueryHandler;
-import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -26,8 +29,7 @@ public class UserQueryHandler {
 
     @QueryHandler
     Flux<UserResponse> handle(FindAllUserQuery query) {
-        return findUserPort.findAll()
-                .map(user -> mapper.map(user, UserResponse.class));
+        return findUserPort.findAll().map(user -> mapper.map(user, UserResponse.class));
     }
 
     @QueryHandler
@@ -57,8 +59,7 @@ public class UserQueryHandler {
     }
 
     @QueryHandler
-    public Boolean handle(CheckIfUserEmailExistsQuery query,
-                          CheckIfUserExistsPort checkIfPort) {
+    public Boolean handle(CheckIfUserEmailExistsQuery query, CheckIfUserExistsPort checkIfPort) {
         return checkIfPort.existsByEmail(query.getEmail());
     }
 
@@ -74,9 +75,9 @@ public class UserQueryHandler {
 
     @QueryHandler
     public Flux<String> handle(FindUserBodySpecsIdsQuery query) {
-        return findUserPort.findById(query.getUserId())
+        return findUserPort
+                .findById(query.getUserId())
                 .map(User::getBodySpecsIds)
                 .flatMapMany(Flux::fromIterable);
     }
-
 }

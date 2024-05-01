@@ -19,5 +19,4 @@ public class Bmi {
     private Double index;
 
     private String status;
-
 }

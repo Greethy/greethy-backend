@@ -1,13 +1,14 @@
 package com.greethy.user.core.event;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import com.greethy.user.core.domain.entity.Networking;
 import com.greethy.user.core.domain.value.PersonalDetail;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Builder
@@ -31,7 +32,4 @@ public class UserRegisteredEvent {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
-
-
-
 }

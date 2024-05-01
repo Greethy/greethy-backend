@@ -1,8 +1,8 @@
 package com.greethy.nutrition.core.domain.entity;
 
-import lombok.Data;
-
 import java.util.List;
+
+import lombok.Data;
 
 @Data
 public class Meal {
@@ -12,5 +12,4 @@ public class Meal {
     private List<String> foodIds;
 
     private Integer calories;
-
 }

@@ -1,8 +1,8 @@
 package com.greethy.core.api.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record PageSupport<T>(List<T> content, int pageNumber, int size, long total) {
 
@@ -20,6 +20,4 @@ public record PageSupport<T>(List<T> content, int pageNumber, int size, long tot
     public boolean last() {
         return (long) (pageNumber + 1) * size >= total;
     }
-
-
 }

@@ -1,7 +1,8 @@
 package com.greethy.nutrition.core.domain.value;
 
-import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import lombok.Data;
 
 @Data
 public class Owner {
@@ -14,5 +15,4 @@ public class Owner {
     private String username;
 
     private String href;
-
 }

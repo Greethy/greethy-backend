@@ -1,24 +1,26 @@
 package com.greethy.nutrition.infra.config;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+
 import com.greethy.nutrition.core.domain.value.BmiEvaluate;
 import com.greethy.nutrition.core.domain.value.BmrByAge;
 import com.greethy.nutrition.core.domain.value.PalEvaluate;
 import com.greethy.nutrition.core.domain.value.Range;
 import com.greethy.nutrition.core.port.out.write.DeleteBmiEvaluatePort;
-import com.greethy.nutrition.core.port.out.write.SaveBmiEvaluatePort;
 import com.greethy.nutrition.core.port.out.write.DeleteBmrByAgePort;
-import com.greethy.nutrition.core.port.out.write.SaveBmrByAgePort;
 import com.greethy.nutrition.core.port.out.write.DeletePalEvaluatePort;
+import com.greethy.nutrition.core.port.out.write.SaveBmiEvaluatePort;
+import com.greethy.nutrition.core.port.out.write.SaveBmrByAgePort;
 import com.greethy.nutrition.core.port.out.write.SavePalEvaluatePort;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  *
@@ -51,7 +53,8 @@ public class DataLoaderConfig {
     @EventListener(value = ApplicationReadyEvent.class)
     void init() {
         log.info("Start data initialization....");
-        deleteBmiEvaluatePort.deleteAll()
+        deleteBmiEvaluatePort
+                .deleteAll()
                 .thenMany(Flux.just(bmiEvaluates()))
                 .flatMap(saveBmiEvaluatePort::saveAll)
                 .then(deleteBmrByAgePort.deleteAll())
@@ -62,7 +65,6 @@ public class DataLoaderConfig {
                 .flatMap(savePalEvaluatePort::saveAll)
                 .subscribe();
     }
-
 
     /**
      * Creates a set of BMI evaluations with predefined ranges.
@@ -102,7 +104,7 @@ public class DataLoaderConfig {
 
     private Set<PalEvaluate> palEvaluates() {
         Set<PalEvaluate> palEvaluates = new HashSet<>();
-        palEvaluates.add(new PalEvaluate(new Range(0d, 0d), 0d,0d,0d));
+        palEvaluates.add(new PalEvaluate(new Range(0d, 0d), 0d, 0d, 0d));
         palEvaluates.add(new PalEvaluate(new Range(1d, 2d), 1.35d, 1.35d, 1.35d));
         palEvaluates.add(new PalEvaluate(new Range(3d, 5d), 1.45d, 1.45d, 1.45d));
         palEvaluates.add(new PalEvaluate(new Range(6d, 7d), 1.35d, 1.55d, 1.74d));
@@ -116,6 +118,4 @@ public class DataLoaderConfig {
         palEvaluates.add(new PalEvaluate(new Range(70d, Double.MAX_VALUE), 1.45d, 1.7d, 1.95d));
         return palEvaluates;
     }
-
-
 }

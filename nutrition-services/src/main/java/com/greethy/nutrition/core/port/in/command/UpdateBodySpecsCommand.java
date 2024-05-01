@@ -1,8 +1,9 @@
 package com.greethy.nutrition.core.port.in.command;
 
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @NoArgsConstructor
@@ -20,5 +21,4 @@ public class UpdateBodySpecsCommand {
     private Integer gender;
 
     private String activityType;
-
 }

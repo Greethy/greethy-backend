@@ -3,6 +3,7 @@ package com.greethy.nutrition.infra.repository.mongodb.adapter;
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.nutrition.core.port.out.write.DeletePalEvaluatePort;
 import com.greethy.nutrition.infra.repository.mongodb.PalEvaluateRepository;
+
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -16,5 +17,4 @@ public class MongoDeletePalEvaluateAdapter implements DeletePalEvaluatePort {
     public Mono<Void> deleteAll() {
         return repository.deleteAll();
     }
-
 }

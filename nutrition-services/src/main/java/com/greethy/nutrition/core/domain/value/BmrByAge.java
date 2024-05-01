@@ -1,9 +1,10 @@
 package com.greethy.nutrition.core.domain.value;
 
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import lombok.Data;
 
 @Data
 @Document(collection = "bmr_by_ages")

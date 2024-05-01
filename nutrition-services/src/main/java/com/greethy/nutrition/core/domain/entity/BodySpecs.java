@@ -1,5 +1,18 @@
 package com.greethy.nutrition.core.domain.entity;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.modelling.command.AggregateLifecycle;
+import org.axonframework.spring.stereotype.Aggregate;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
 import com.greethy.core.domain.event.UserBodySpecsDeletedEvent;
 import com.greethy.nutrition.core.domain.service.BodySpecsCalculator;
@@ -13,20 +26,9 @@ import com.greethy.nutrition.core.event.BodySpecsUpdatedEvent;
 import com.greethy.nutrition.core.port.in.command.CreateBodySpecsCommand;
 import com.greethy.nutrition.core.port.in.command.DeleteBodySpecsCommand;
 import com.greethy.nutrition.core.port.in.command.UpdateBodySpecsCommand;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.eventsourcing.EventSourcingHandler;
-import org.axonframework.modelling.command.AggregateIdentifier;
-import org.axonframework.modelling.command.AggregateLifecycle;
-import org.axonframework.spring.stereotype.Aggregate;
-import org.modelmapper.ModelMapper;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-
-import java.time.LocalDate;
-import java.util.Arrays;
 
 @Data
 @Aggregate
@@ -60,24 +62,21 @@ public class BodySpecs {
     private LocalDate createAt;
 
     @CommandHandler
-    BodySpecs(CreateBodySpecsCommand command,
-              BodySpecsCalculator calculator) {
-        var indexes = calculator.calculate(command.getHeight(), command.getWeight(),
-                command.getAge(), command.getActivityType());
-        AggregateLifecycle.apply(BodySpecsCreatedEvent.builder()
-                        .bodySpecsId(command.getBodySpecsId())
-                        .age(command.getAge())
-                        .height(command.getHeight())
-                        .weight(command.getWeight())
-                        .gender(convertGender(command.getGender()))
-                        .bmi(indexes.getBmi()).bmr(indexes.getBmr()).pal(indexes.getPal())
-                        .tdee(indexes.getBmr().getBmrPerDay() * indexes.getPal().getValue())
-                        .build())
-                .andThenApply(() -> UserBodySpecsAddedEvent.builder()
-                        .userId(command.getUserId())
-                        .bodySpecsId(command.getBodySpecsId())
-                        .build()
-                );
+    BodySpecs(CreateBodySpecsCommand command, BodySpecsCalculator calculator, ModelMapper mapper) {
+        var indexes = calculator.calculate(
+                command.getHeight(), command.getWeight(), command.getAge(), command.getActivityType());
+        var event = mapper.map(command, BodySpecsCreatedEvent.class);
+        event.setGender(convertGender(command.getGender()));
+        event.setBmi(indexes.getBmi());
+        event.setBmr(indexes.getBmr());
+        event.setPal(indexes.getPal());
+        event.setTdee(indexes.getBmr().getBmrPerDay() * indexes.getPal().getValue());
+
+        AggregateLifecycle.apply(event).andThenApply(() -> UserBodySpecsAddedEvent.builder()
+                .userId(command.getUserId())
+                .bodySpecsId(command.getBodySpecsId())
+                .goal(command.getGoal())
+                .build());
     }
 
     private String convertGender(Integer genderValue) {
@@ -99,22 +98,20 @@ public class BodySpecs {
         this.bmr = event.getBmr();
         this.pal = event.getPal();
         this.tdee = event.getTdee();
+        this.goal = event.getGoal();
     }
 
     @CommandHandler
-    void handle(UpdateBodySpecsCommand command, BodySpecsCalculator calculator) {
-        var indexes = calculator.calculate(command.getHeight(), command.getWeight(),
-                command.getAge(), command.getActivityType());
-        AggregateLifecycle.apply(BodySpecsUpdatedEvent.builder()
-                .bodySpecsId(command.getBodySpecsId())
-                .age(command.getAge())
-                .height(command.getHeight())
-                .weight(command.getWeight())
-                .gender(convertGender(command.getGender()))
-                .bmi(indexes.getBmi()).bmr(indexes.getBmr()).pal(indexes.getPal())
-                .tdee(indexes.getBmr().getBmrPerDay() * indexes.getPal().getValue())
-                .build()
-        );
+    void handle(UpdateBodySpecsCommand command, BodySpecsCalculator calculator, ModelMapper mapper) {
+        var indexes = calculator.calculate(
+                command.getHeight(), command.getWeight(), command.getAge(), command.getActivityType());
+        var event = mapper.map(command, BodySpecsCreatedEvent.class);
+        event.setGender(convertGender(command.getGender()));
+        event.setBmi(indexes.getBmi());
+        event.setBmr(indexes.getBmr());
+        event.setPal(indexes.getPal());
+        event.setTdee(indexes.getBmr().getBmrPerDay() * indexes.getPal().getValue());
+        AggregateLifecycle.apply(event);
     }
 
     @EventSourcingHandler
@@ -132,13 +129,11 @@ public class BodySpecs {
     @CommandHandler
     void handle(DeleteBodySpecsCommand command, ModelMapper mapper) {
         var event = mapper.map(command, BodySpecsDeletedEvent.class);
-        AggregateLifecycle.apply(event)
-                .andThenApply(() -> mapper.map(event, UserBodySpecsDeletedEvent.class));
+        AggregateLifecycle.apply(event).andThenApply(() -> mapper.map(event, UserBodySpecsDeletedEvent.class));
     }
 
     @EventSourcingHandler
     void on(BodySpecsDeletedEvent event) {
         AggregateLifecycle.markDeleted();
     }
-
 }

@@ -1,10 +1,11 @@
 package com.greethy.nutrition.core.domain.value;
 
-import lombok.Data;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import lombok.Data;
+import lombok.ToString;
 
 @Data
 @ToString
@@ -22,5 +23,4 @@ public class PalEvaluate {
     private final Double moderately;
 
     private final Double vigorous;
-
 }

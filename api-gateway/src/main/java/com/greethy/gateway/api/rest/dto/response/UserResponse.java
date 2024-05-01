@@ -1,8 +1,8 @@
 package com.greethy.gateway.api.rest.dto.response;
 
-import lombok.Data;
-
 import java.util.List;
+
+import lombok.Data;
 
 @Data
 public class UserResponse {
@@ -14,5 +14,4 @@ public class UserResponse {
     private boolean verified;
 
     private List<String> roles;
-
 }

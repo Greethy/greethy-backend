@@ -1,9 +1,9 @@
 package com.greethy.core.util;
 
+import java.util.Optional;
+
 import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.server.ServerRequest;
-
-import java.util.Optional;
 
 public class ServerRequestUtil {
 
@@ -19,14 +19,12 @@ public class ServerRequestUtil {
      * @param defaultValue  The default value to return if the query parameter is not present or empty.
      * @return The integer value of the query parameter if present and not empty, or the default value otherwise.
      */
-    public static Integer getQueryParamIntValue(ServerRequest serverRequest,
-                                                String name,
-                                                String defaultValue) {
-        return serverRequest.queryParam(name)
+    public static Integer getQueryParamIntValue(ServerRequest serverRequest, String name, String defaultValue) {
+        return serverRequest
+                .queryParam(name)
                 .filter(StringUtils::hasText)
                 .or(() -> Optional.of(defaultValue))
                 .map(Integer::valueOf)
                 .get();
     }
-
 }

@@ -9,5 +9,4 @@ public class MapperApplication {
     public static void main(String... args) {
         SpringApplication.run(MapperApplication.class, args);
     }
-
 }

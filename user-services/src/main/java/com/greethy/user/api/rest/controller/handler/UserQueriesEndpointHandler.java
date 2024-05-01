@@ -1,17 +1,19 @@
 package com.greethy.user.api.rest.controller.handler;
 
-import com.greethy.core.api.response.PageSupport;
-import com.greethy.core.util.ServerRequestUtil;
-import com.greethy.user.api.rest.controller.ExceptionHandler;
-import com.greethy.user.api.rest.dto.response.UserResponse;
-import com.greethy.user.core.domain.exception.NotFoundException;
-import com.greethy.user.core.port.in.query.*;
-import lombok.RequiredArgsConstructor;
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.greethy.core.api.handler.ExceptionHandler;
+import com.greethy.core.api.response.PageSupport;
+import com.greethy.core.util.ServerRequestUtil;
+import com.greethy.user.api.rest.dto.response.UserResponse;
+import com.greethy.user.core.domain.exception.NotFoundException;
+import com.greethy.user.core.port.in.query.*;
+
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -64,21 +66,26 @@ public class UserQueriesEndpointHandler {
     public Mono<ServerResponse> findAllUserWithPagination(ServerRequest serverRequest) {
         int offset = ServerRequestUtil.getQueryParamIntValue(serverRequest, "offset", "0");
         int limit = ServerRequestUtil.getQueryParamIntValue(serverRequest, "limit", "10");
-        return Flux.just(GetAllUserWithPageableQuery.builder().offset(offset).limit(limit).build())
+        return Flux.just(GetAllUserWithPageableQuery.builder()
+                        .offset(offset)
+                        .limit(limit)
+                        .build())
                 .flatMap(query -> queryGateway.streamingQuery(query, UserResponse.class))
                 .collectList()
                 .zipWith(queryGateway.query(new CountAllUserQuery(), Long.class))
                 .map(zippedResponse -> new PageSupport<>(zippedResponse.getT1(), offset, limit, zippedResponse.getT2()))
                 .flatMap(pageResponse -> pageResponse.content().isEmpty()
                         ? ServerResponse.noContent().build()
-                        : ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(pageResponse));
+                        : ServerResponse.ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .bodyValue(pageResponse));
     }
 
     public Mono<ServerResponse> findUserById(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable("user-id"))
                 .map(FindUserByIdQuery::new)
-                .flatMap(query -> queryGateway.query(query, UserResponse.class)
-                        .switchIfEmpty(Mono.error(NotFoundException::new)))
+                .flatMap(query ->
+                        queryGateway.query(query, UserResponse.class).switchIfEmpty(Mono.error(NotFoundException::new)))
                 .flatMap(userResponse -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(userResponse))
@@ -100,9 +107,9 @@ public class UserQueriesEndpointHandler {
     public Mono<ServerResponse> findUserByUsernameOrEmail(ServerRequest serverRequest) {
         return Mono.just(serverRequest.queryParam("username-or-email").orElse(""))
                 .map(FindUserByUsernameOrEmailQuery::new)
-                .flatMap(query -> queryGateway.query(query, UserResponse.class)
-                        .switchIfEmpty(Mono.error(NotFoundException::new))
-                ).flatMap(response -> ServerResponse.ok()
+                .flatMap(query ->
+                        queryGateway.query(query, UserResponse.class).switchIfEmpty(Mono.error(NotFoundException::new)))
+                .flatMap(response -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(response))
                 .onErrorResume(exceptionHandler::handlingException);
@@ -127,5 +134,4 @@ public class UserQueriesEndpointHandler {
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(isExisted));
     }
-
 }

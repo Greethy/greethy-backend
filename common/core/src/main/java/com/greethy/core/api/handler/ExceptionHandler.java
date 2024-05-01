@@ -1,11 +1,13 @@
-package com.greethy.user.api.rest.controller;
+package com.greethy.core.api.handler;
 
-import com.greethy.core.api.response.ErrorResponse;
-import com.greethy.core.domain.exception.BaseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.greethy.core.api.response.ErrorResponse;
+import com.greethy.core.domain.exception.BaseException;
+
 import reactor.core.publisher.Mono;
 
 @Component
@@ -30,8 +32,6 @@ public class ExceptionHandler {
                             .status(exception.getStatus())
                             .build());
         }
-        return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .build();
+        return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR).bodyValue(throwable.getMessage());
     }
-
 }

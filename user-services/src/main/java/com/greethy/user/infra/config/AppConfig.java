@@ -1,11 +1,12 @@
 package com.greethy.user.infra.config;
 
-import com.greethy.user.core.interceptor.CommandExceptionWrappingInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import com.greethy.user.core.interceptor.CommandExceptionWrappingInterceptor;
 
 @Configuration
 public class AppConfig {
@@ -24,5 +25,4 @@ public class AppConfig {
     public WebClient.Builder webClientBuilder() {
         return WebClient.builder();
     }
-
 }

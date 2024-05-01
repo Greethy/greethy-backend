@@ -2,6 +2,7 @@ package com.greethy.user.api.rest.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.greethy.user.core.domain.value.PersonalDetail;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,5 +19,4 @@ public class UpdateUserRequest {
 
     @JsonProperty("personal_info")
     private PersonalDetail personalDetail;
-
 }

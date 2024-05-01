@@ -14,5 +14,4 @@ public class DomainErrorDetail {
     private Integer status;
 
     private String message;
-
 }

@@ -1,14 +1,15 @@
 package com.greethy.user.api.rest.dto.response;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.greethy.user.core.domain.entity.Networking;
 import com.greethy.user.core.domain.value.PersonalDetail;
 import com.greethy.user.core.domain.value.Premium;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  *
@@ -18,7 +19,9 @@ import java.util.List;
 @NoArgsConstructor
 public class UserResponse {
 
-    @Schema(description = "The name displayed on the user's profile, as entered by the user when creating their account. Important!")
+    @Schema(
+            description =
+                    "The name displayed on the user's profile, as entered by the user when creating their account. Important!")
     private String username;
 
     @Schema(description = "The user's email address, as entered by the user when creating their account. Important!")
@@ -54,5 +57,4 @@ public class UserResponse {
     @JsonProperty("body_specs_ids")
     @Schema(description = "List of body-specs id reference to all body specification that user has created")
     private List<String> bodySpecsIds;
-
 }

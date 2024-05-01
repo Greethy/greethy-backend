@@ -1,15 +1,10 @@
 package com.greethy.nutrition.core.domain.entity;
 
-import com.greethy.nutrition.core.domain.value.Nutrient;
-import com.greethy.nutrition.core.domain.value.Owner;
-import com.greethy.nutrition.core.event.FoodCreatedEvent;
-import com.greethy.nutrition.core.event.IngredientsAddedToFoodEvent;
-import com.greethy.nutrition.core.port.in.command.AddIngredientsToFoodCommand;
-import com.greethy.nutrition.core.port.in.command.CreateFoodCommand;
-import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
-import com.greethy.nutrition.core.port.out.read.GetUserPort;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -19,12 +14,19 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-import reactor.core.publisher.Mono;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.greethy.nutrition.core.domain.value.Nutrient;
+import com.greethy.nutrition.core.domain.value.Owner;
+import com.greethy.nutrition.core.event.FoodCreatedEvent;
+import com.greethy.nutrition.core.event.IngredientsAddedToFoodEvent;
+import com.greethy.nutrition.core.port.in.command.AddIngredientsToFoodCommand;
+import com.greethy.nutrition.core.port.in.command.CreateFoodCommand;
+import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
+import com.greethy.nutrition.core.port.out.read.GetUserPort;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import reactor.core.publisher.Mono;
 
 @Data
 @Aggregate
@@ -122,8 +124,7 @@ public class Food {
                 .totalCalories(totalCalories)
                 .foodId(command.getFoodId())
                 .foodIngredients(foodIngredients)
-                .build()
-        );
+                .build());
     }
 
     @EventSourcingHandler
@@ -132,5 +133,4 @@ public class Food {
         this.totalCalories += event.getTotalCalories();
         this.updatedAt = event.getUpdatedAt();
     }
-
 }

@@ -18,5 +18,4 @@ public class FoodIngredient {
     private String prepare;
 
     private Double calories;
-
 }

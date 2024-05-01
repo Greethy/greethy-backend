@@ -4,6 +4,7 @@ import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.nutrition.core.domain.entity.BodySpecs;
 import com.greethy.nutrition.core.port.out.write.SaveBodySpecsPort;
 import com.greethy.nutrition.infra.repository.mongodb.BodySpecsRepository;
+
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -12,7 +13,6 @@ import reactor.core.publisher.Mono;
 public class MongoSaveBodySpecsAdapter implements SaveBodySpecsPort {
 
     private final BodySpecsRepository bodySpecsRepository;
-
 
     @Override
     public Mono<BodySpecs> save(BodySpecs bodySpecs) {

@@ -1,6 +1,7 @@
 package com.greethy.gateway.core.exception;
 
 import com.greethy.core.domain.exception.BaseException;
+
 import lombok.Getter;
 
 @Getter

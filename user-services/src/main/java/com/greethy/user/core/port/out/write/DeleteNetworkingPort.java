@@ -5,5 +5,4 @@ import reactor.core.publisher.Mono;
 public interface DeleteNetworkingPort {
 
     Mono<Void> deleteById(String id);
-
 }

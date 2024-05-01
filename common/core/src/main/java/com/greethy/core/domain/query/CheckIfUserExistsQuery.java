@@ -1,4 +1,4 @@
-package com.greethy.user.core.port.in.query;
+package com.greethy.core.domain.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,5 +8,4 @@ import lombok.Getter;
 public class CheckIfUserExistsQuery {
 
     private String userId;
-
 }

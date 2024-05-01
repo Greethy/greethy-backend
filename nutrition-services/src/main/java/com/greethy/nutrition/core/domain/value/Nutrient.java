@@ -10,5 +10,4 @@ public class Nutrient {
     private Double value;
 
     private String unit;
-
 }

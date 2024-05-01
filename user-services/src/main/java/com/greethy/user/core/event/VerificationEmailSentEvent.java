@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-
 /**
  *
  *
@@ -13,5 +12,4 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class VerificationEmailSentEvent {
-}
+public class VerificationEmailSentEvent {}

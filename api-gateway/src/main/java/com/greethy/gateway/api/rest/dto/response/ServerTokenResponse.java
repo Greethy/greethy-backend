@@ -1,6 +1,7 @@
 package com.greethy.gateway.api.rest.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,5 +13,4 @@ public class ServerTokenResponse {
 
     @JsonProperty("access_token")
     private String accessToken;
-
 }

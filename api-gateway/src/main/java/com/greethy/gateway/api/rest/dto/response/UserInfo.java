@@ -1,6 +1,7 @@
 package com.greethy.gateway.api.rest.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -23,5 +24,4 @@ public class UserInfo {
 
     @JsonProperty("email_verified")
     private boolean verified;
-
 }

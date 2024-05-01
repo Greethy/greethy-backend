@@ -1,7 +1,8 @@
 package com.greethy.nutrition.core.port.in.command;
 
-import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
+
+import lombok.Data;
 
 @Data
 public class CreateFoodCommand {
@@ -24,6 +25,4 @@ public class CreateFoodCommand {
     private String imageUrl;
 
     private String videoUrl;
-
-
 }

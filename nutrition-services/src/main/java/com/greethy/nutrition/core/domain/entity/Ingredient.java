@@ -1,12 +1,14 @@
 package com.greethy.nutrition.core.domain.entity;
 
-import com.greethy.nutrition.core.domain.value.Nutrient;
-import lombok.Data;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.List;
+import com.greethy.nutrition.core.domain.value.Nutrient;
+
+import lombok.Data;
 
 @Data
 @Document(collection = "ingredients")
@@ -29,5 +31,4 @@ public class Ingredient {
 
     @Field(name = "nutrition_per_100g")
     private List<Nutrient> nutrients;
-
 }

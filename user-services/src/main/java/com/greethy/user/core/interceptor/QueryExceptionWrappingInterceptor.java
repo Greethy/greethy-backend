@@ -1,7 +1,7 @@
 package com.greethy.user.core.interceptor;
 
-import com.greethy.core.domain.exception.BaseException;
-import com.greethy.core.domain.exception.DomainErrorDetail;
+import javax.annotation.Nonnull;
+
 import org.axonframework.messaging.InterceptorChain;
 import org.axonframework.messaging.MessageHandlerInterceptor;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
@@ -10,14 +10,15 @@ import org.axonframework.queryhandling.QueryMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Nonnull;
+import com.greethy.core.domain.exception.BaseException;
+import com.greethy.core.domain.exception.DomainErrorDetail;
 
 @Component
 public class QueryExceptionWrappingInterceptor implements MessageHandlerInterceptor<QueryMessage<?, ?>> {
 
     @Override
-    public Object handle(@Nonnull UnitOfWork<? extends QueryMessage<?, ?>> unitOfWork,
-                         @Nonnull InterceptorChain interceptorChain) {
+    public Object handle(
+            @Nonnull UnitOfWork<? extends QueryMessage<?, ?>> unitOfWork, @Nonnull InterceptorChain interceptorChain) {
         try {
             return interceptorChain.proceed();
         } catch (Throwable throwable) {

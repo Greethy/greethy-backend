@@ -1,11 +1,13 @@
 package com.greethy.nutrition.infra.repository.mongodb.adapter;
 
+import org.springframework.data.domain.Pageable;
+
 import com.greethy.annotation.hexagonal.InfrastructureAdapter;
 import com.greethy.nutrition.core.domain.entity.Ingredient;
 import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
 import com.greethy.nutrition.infra.repository.mongodb.IngredientRepository;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -34,5 +36,4 @@ public class MongoFindIngredientAdapter implements FindIngredientPort {
     public Flux<Ingredient> findByPagination(Pageable pageable) {
         return repository.findAllBy(pageable);
     }
-
 }

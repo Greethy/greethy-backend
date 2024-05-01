@@ -1,12 +1,13 @@
 package com.greethy.nutrition.api.rest.dto.response;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import com.greethy.nutrition.core.domain.value.Nutrient;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -26,5 +27,4 @@ public class IngredientResponse {
 
     @JsonProperty("nutrition_per_100g")
     private List<Nutrient> nutrients;
-
 }

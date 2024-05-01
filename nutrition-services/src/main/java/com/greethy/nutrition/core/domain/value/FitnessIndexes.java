@@ -18,5 +18,4 @@ public class FitnessIndexes {
         this.bmr = new Bmr();
         this.pal = new Pal();
     }
-
 }
