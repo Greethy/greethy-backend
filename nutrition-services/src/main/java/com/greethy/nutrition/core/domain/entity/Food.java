@@ -80,7 +80,8 @@ public class Food {
     @CommandHandler
     Food(CreateFoodCommand command, ModelMapper mapper, GetUserPort userPort) {
         var foodCreatedEvent = userPort.getById(command.getUserId())
-                .map(owner -> {
+                .map(user -> {
+                    var owner = mapper.map(user, Owner.class);
                     var event = mapper.map(command, FoodCreatedEvent.class);
                     event.setOwner(owner);
                     event.setCreatedAt(LocalDateTime.now());

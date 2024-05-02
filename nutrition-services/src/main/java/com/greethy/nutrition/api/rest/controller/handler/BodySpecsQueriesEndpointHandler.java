@@ -10,6 +10,7 @@ import com.greethy.annotation.reactive.EndpointHandler;
 import com.greethy.core.api.handler.ExceptionHandler;
 import com.greethy.core.api.response.PageSupport;
 import com.greethy.core.domain.query.CheckIfUserExistsQuery;
+import com.greethy.core.domain.query.FindUserBodySpecsIdsPaginationQuery;
 import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
 import com.greethy.core.util.ServerRequestUtil;
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
@@ -51,6 +52,7 @@ public class BodySpecsQueriesEndpointHandler {
     public Mono<ServerResponse> getBodySpecsPagination(ServerRequest serverRequest) {
         int offset = ServerRequestUtil.getQueryParamIntValue(serverRequest, "offset", "0");
         int limit = ServerRequestUtil.getQueryParamIntValue(serverRequest, "limit", "10");
+
         return Flux.just(FindBodySpecsWithPaginationQuery.builder()
                         .offset(offset)
                         .limit(limit)
@@ -65,7 +67,15 @@ public class BodySpecsQueriesEndpointHandler {
     }
 
     public Mono<ServerResponse> getAllUserBodySpecs(ServerRequest serverRequest) {
-        return Flux.just(serverRequest.pathVariable("user-id"))
+        String userId = serverRequest.pathVariable("user-id");
+
+        return Flux.just(userId)
+                .map(CheckIfUserExistsQuery::new)
+                .flatMap(query -> queryGateway
+                        .query(query, Boolean.class)
+                        .filter(Boolean::booleanValue)
+                        .switchIfEmpty(Mono.error(NotFoundException::new)))
+                .thenMany(Flux.just(userId))
                 .map(FindUserBodySpecsIdsQuery::new)
                 .flatMap(query -> queryGateway.streamingQuery(query, String.class))
                 .collectList()
@@ -74,32 +84,34 @@ public class BodySpecsQueriesEndpointHandler {
                         .build())
                 .flatMapMany(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
                 .collectList()
-                .flatMap(responses -> ServerResponse.ok().bodyValue(responses));
+                .flatMap(responses -> ServerResponse.ok().bodyValue(responses))
+                .onErrorResume(exceptionHandler::handlingException);
     }
 
-    public Mono<ServerResponse> getUserBodySpecsPagination(ServerRequest serverRequest) {
+    public Mono<ServerResponse> getUserBodySpecsWithPagination(ServerRequest serverRequest) {
         int offset = ServerRequestUtil.getQueryParamIntValue(serverRequest, "offset", "0");
         int limit = ServerRequestUtil.getQueryParamIntValue(serverRequest, "limit", "10");
         String userId = serverRequest.pathVariable("user-id");
 
-        return Mono.just(userId)
+        return Flux.just(userId)
                 .map(CheckIfUserExistsQuery::new)
                 .flatMap(query -> queryGateway
                         .query(query, Boolean.class)
                         .filter(Boolean::booleanValue)
                         .switchIfEmpty(Mono.error(NotFoundException::new)))
-                .thenMany(Flux.just(FindUserBodySpecsWithPaginationQuery.builder()
+                .thenMany(Flux.just(FindUserBodySpecsIdsPaginationQuery.builder()
                         .userId(userId)
-                        .limit(limit)
                         .offset(offset)
+                        .limit(limit)
                         .build()))
-                .flatMap(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
+                .flatMap(query -> queryGateway.streamingQuery(query, String.class))
                 .collectList()
-                .zipWith(queryGateway.query(new CountAllBodySpecsQuery(), Long.class))
-                .map(zippedResponse -> new PageSupport<>(zippedResponse.getT1(), offset, limit, zippedResponse.getT2()))
-                .flatMap(pageResponse -> pageResponse.content().isEmpty()
-                        ? ServerResponse.noContent().build()
-                        : ServerResponse.ok().bodyValue(pageResponse))
+                .map(bodySpecsIds -> FindAllBodySpecsByIdQuery.builder()
+                        .bodySpecsIds(bodySpecsIds)
+                        .build())
+                .flatMapMany(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
+                .collectList()
+                .flatMap(responses -> ServerResponse.ok().bodyValue(responses))
                 .onErrorResume(exceptionHandler::handlingException);
     }
 }

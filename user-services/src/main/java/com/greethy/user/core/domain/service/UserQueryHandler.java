@@ -1,5 +1,6 @@
 package com.greethy.user.core.domain.service;
 
+import com.greethy.core.domain.query.FindUserBodySpecsIdsPaginationQuery;
 import org.axonframework.queryhandling.QueryHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -78,6 +81,19 @@ public class UserQueryHandler {
         return findUserPort
                 .findById(query.getUserId())
                 .map(User::getBodySpecsIds)
+                .flatMapMany(Flux::fromIterable);
+    }
+
+    @QueryHandler
+    public Flux<String> handle(FindUserBodySpecsIdsPaginationQuery query) {
+        return findUserPort.findById(query.getUserId())
+                .doOnNext(user -> System.out.println(user.getBodySpecsIds()))
+                .map(user -> user.getBodySpecsIds().stream()
+                        .peek(System.out::println)
+                        .skip(query.getOffset())
+                        .limit(query.getLimit())
+                        .collect(Collectors.toList()))
+                .doOnNext(System.out::println)
                 .flatMapMany(Flux::fromIterable);
     }
 }

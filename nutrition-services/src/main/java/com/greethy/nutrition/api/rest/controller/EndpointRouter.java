@@ -1,6 +1,7 @@
 package com.greethy.nutrition.api.rest.controller;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.*;
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+import static org.springframework.web.reactive.function.server.RequestPredicates.queryParam;
 
 import java.util.Objects;
 
@@ -11,12 +12,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.greethy.nutrition.api.rest.controller.handler.BodySpecsCommandsEndpointHandler;
-import com.greethy.nutrition.api.rest.controller.handler.BodySpecsQueriesEndpointHandler;
-import com.greethy.nutrition.api.rest.controller.handler.FoodCommandEndpointHandler;
-import com.greethy.nutrition.api.rest.controller.handler.FoodQueriesEndpointHandler;
-import com.greethy.nutrition.api.rest.controller.handler.IngredientQueriesHandler;
-import com.greethy.nutrition.api.rest.docs.BodySpecsApiDocument;
+import com.greethy.nutrition.api.rest.controller.handler.*;
 
 import lombok.RequiredArgsConstructor;
 
@@ -35,7 +31,7 @@ public class EndpointRouter {
     private final IngredientQueriesHandler ingredientQueriesHandler;
 
     @Bean
-    @BodySpecsApiDocument
+    @NutritionOpenApi
     public RouterFunction<ServerResponse> route() {
         return RouterFunctions.route()
                 .path(
@@ -46,7 +42,7 @@ public class EndpointRouter {
                                         "body-specs",
                                         queryParam("offset", Objects::nonNull)
                                                 .or(queryParam("limit", Objects::nonNull)),
-                                        bodySpecsQueriesEndpointHandler::getUserBodySpecsPagination)
+                                        bodySpecsQueriesEndpointHandler::getUserBodySpecsWithPagination)
                                 .GET("body-specs", bodySpecsQueriesEndpointHandler::getAllUserBodySpecs)
                                 .POST("food", foodCommandEndpointHandler::createFood)
                                 .DELETE("body-specs/{body-specs-id}", bodySpecsCommandsHandler::deleteBodySpecs)))

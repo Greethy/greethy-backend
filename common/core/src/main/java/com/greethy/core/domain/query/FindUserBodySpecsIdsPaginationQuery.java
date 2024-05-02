@@ -1,17 +1,20 @@
-package com.greethy.nutrition.core.port.in.query;
+package com.greethy.core.domain.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @Builder
 @AllArgsConstructor
-public class FindUserBodySpecsWithPaginationQuery {
+@ToString
+public class FindUserBodySpecsIdsPaginationQuery {
 
     private String userId;
 
     private int offset;
 
     private int limit;
+
 }
