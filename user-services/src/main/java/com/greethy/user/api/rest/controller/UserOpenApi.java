@@ -1,4 +1,4 @@
-package com.greethy.user.api.rest.document;
+package com.greethy.user.api.rest.controller;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -254,4 +254,4 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
                                                         schema = @Schema(implementation = ErrorResponse.class)))
                             }))
 })
-public @interface UserApiDocument {}
+public @interface UserOpenApi {}

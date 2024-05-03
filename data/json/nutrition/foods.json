@@ -1,6 +1,8 @@
 [
   {
     "name" : "Thịt kho trứng",
+    "group" : "High Protein",
+    "meal" : "",
     "description" : "",
     "image_url" : "",
     "video_url" : "",

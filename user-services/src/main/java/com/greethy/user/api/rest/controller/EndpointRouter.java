@@ -13,13 +13,12 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 import com.greethy.user.api.rest.controller.handler.UserCommandsEndpointHandler;
 import com.greethy.user.api.rest.controller.handler.UserQueriesEndpointHandler;
-import com.greethy.user.api.rest.document.UserApiDocument;
 
 @Configuration
 public class EndpointRouter {
 
     @Bean
-    @UserApiDocument
+    @UserOpenApi
     public RouterFunction<ServerResponse> route(
             UserCommandsEndpointHandler userCommandsEndpointHandler,
             UserQueriesEndpointHandler userQueriesEndpointHandler) {

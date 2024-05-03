@@ -50,12 +50,13 @@ public class EndpointRouter {
                         "/api/v1/body-specs",
                         builder -> builder.nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
                                 .GET("{body-specs-id}", bodySpecsQueriesEndpointHandler::getBodySpecsById)
+                                .PUT("{body-specs-id}", bodySpecsCommandsHandler::updateBodySpecs)
                                 .GET(
                                         queryParam("offset", Objects::nonNull)
                                                 .or(queryParam("limit", Objects::nonNull)),
                                         bodySpecsQueriesEndpointHandler::getBodySpecsPagination)
                                 .GET("", request -> bodySpecsQueriesEndpointHandler.getAllBodySpecs())
-                                .PUT("{body-specs-id}", bodySpecsCommandsHandler::updateBodySpecs)))
+                        ))
                 .path(
                         "/api/v1/foods",
                         builder -> builder.nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder

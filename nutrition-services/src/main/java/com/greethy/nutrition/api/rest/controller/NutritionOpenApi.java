@@ -239,8 +239,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
                     @Operation(
                             operationId = "deleteUserBodySpecs",
                             parameters = {
-                                @Parameter(in = ParameterIn.HEADER, name = "user-id", required = true),
-                                @Parameter(in = ParameterIn.HEADER, name = "body-specs-id", required = true)
+                                @Parameter(in = ParameterIn.PATH, name = "user-id", required = true),
+                                @Parameter(in = ParameterIn.PATH, name = "body-specs-id", required = true)
                             },
                             description = "Users delete their BodySpecs",
                             tags = "BodySpecs",
@@ -321,5 +321,63 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
                                                         mediaType = MediaType.APPLICATION_JSON_VALUE,
                                                         schema = @Schema(implementation = ErrorResponse.class)))
                             })),
+		@RouterOperation(
+				method = RequestMethod.PUT,
+				path = "/api/v1/body-specs/{body-specs-id}",
+				operation =
+				@Operation(
+						operationId = "updateBodySpecsById",
+						parameters = @Parameter(in = ParameterIn.PATH, name = "body-specs-id", required = true),
+						description = "Update Body-Specs by its ID.",
+						summary = "Update Body-Specs by its ID.",
+						tags = "BodySpecs",
+						responses = {
+								@ApiResponse(
+										responseCode = "200",
+										description = "A Updated Body Specs.",
+										content =
+										@Content(
+												mediaType = MediaType.APPLICATION_JSON_VALUE,
+												schema =
+												@Schema(
+														implementation = BodySpecsResponse.class,
+														example =
+																"""
+                                                        {
+                                                            "age": 20,
+                                                            "height": 1.8,
+                                                            "weight": 72.0,
+                                                            "gender": "male",
+                                                            "bmi": {
+                                                                "index": 22.2,
+                                                                "status": "Normal"
+                                                            },
+                                                            "bmr": {
+                                                                "bmrPerKg": 24.0,
+                                                                "bmrPerDay": 1728.0
+                                                            },
+                                                            "pal": {
+                                                                "value": 2.0,
+                                                                "activityType": "vigorous"
+                                                            },
+                                                            "tdee": 3456.0
+                                                        }
+                                                        """))),
+								@ApiResponse(
+										responseCode = "401",
+										description =
+												"Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+										content =
+										@Content(
+												mediaType = MediaType.APPLICATION_JSON_VALUE,
+												schema = @Schema(implementation = ErrorResponse.class))),
+								@ApiResponse(
+										responseCode = "429",
+										description = "The Greethy Server exceeded its rate limits.",
+										content =
+										@Content(
+												mediaType = MediaType.APPLICATION_JSON_VALUE,
+												schema = @Schema(implementation = ErrorResponse.class)))
+						}))
 })
 public @interface NutritionOpenApi {}
