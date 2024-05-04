@@ -1,8 +1,7 @@
 [
-
   {
     "name": "Gạo nếp cái",
-    "code": "01001",
+    "id": "01001",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -72,7 +71,7 @@
   },
   {
     "name": "Gạo nếp",
-    "code": "01002",
+    "id": "01002",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -147,7 +146,7 @@
   },
   {
     "name": "Gạo tẻ giã",
-    "code": "01003",
+    "id": "01003",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -217,7 +216,7 @@
   },
   {
     "name": "Gạo tẻ máy",
-    "code": "01004",
+    "id": "01004",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -292,7 +291,7 @@
   },
   {
     "name": "Gạo lứt",
-    "code": "01005",
+    "id": "01005",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -367,7 +366,7 @@
   },
   {
     "name": "Kê",
-    "code": "01006",
+    "id": "01006",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 98,
@@ -457,7 +456,7 @@
   },
   {
     "name": "Ngô bắp tươi",
-    "code": "01007",
+    "id": "01007",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 55,
@@ -547,7 +546,7 @@
   },
   {
     "name": "Ngô vàng hạt khô",
-    "code": "01008",
+    "id": "01008",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 98,
@@ -637,7 +636,7 @@
   },
   {
     "name": "Bánh bao",
-    "code": "01009",
+    "id": "01009",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -692,7 +691,7 @@
   },
   {
     "name": "Bánh đa nem",
-    "code": "01010",
+    "id": "01010",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -742,7 +741,7 @@
   },
   {
     "name": "Bánh đúc",
-    "code": "01011",
+    "id": "01011",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -792,7 +791,7 @@
   },
   {
     "name": "Bánh mỳ",
-    "code": "01012",
+    "id": "01012",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -842,7 +841,7 @@
   },
   {
     "name": "Bánh phở",
-    "code": "01013",
+    "id": "01013",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -892,7 +891,7 @@
   },
   {
     "name": "Bánh quẩy",
-    "code": "01014",
+    "id": "01014",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -947,7 +946,7 @@
   },
   {
     "name": "Bỏng ngô",
-    "code": "01015",
+    "id": "01015",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -1012,7 +1011,7 @@
   },
   {
     "name": "Bột gạo nếp",
-    "code": "01016",
+    "id": "01016",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -1082,7 +1081,7 @@
   },
   {
     "name": "Bột gạo tẻ",
-    "code": "01017",
+    "id": "01017",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -1157,7 +1156,7 @@
   },
   {
     "name": "Bột mì",
-    "code": "01018",
+    "id": "01018",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -1242,7 +1241,7 @@
   },
   {
     "name": "Bột ngô vàng",
-    "code": "01019",
+    "id": "01019",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -1332,7 +1331,7 @@
   },
   {
     "name": "Bún",
-    "code": "01020",
+    "id": "01020",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -1377,7 +1376,7 @@
   },
   {
     "name": "Cốm",
-    "code": "01021",
+    "id": "01021",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -1432,7 +1431,7 @@
   },
   {
     "name": "Mỳ sợi",
-    "code": "01022",
+    "id": "01022",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 100,
@@ -1482,7 +1481,7 @@
   },
   {
     "name": "Ngô nếp luộc",
-    "code": "01023",
+    "id": "01023",
     "locale": "vn",
     "category": "Ngũ cốc",
     "edible": 50,
@@ -1530,11 +1529,9 @@
       }
     ]
   },
-
-
   {
     "name": "Củ ấu",
-    "code": "02001",
+    "id": "02001",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 50,
@@ -1589,7 +1586,7 @@
   },
   {
     "name": "Củ cái",
-    "code": "02002",
+    "id": "02002",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 85,
@@ -1684,7 +1681,7 @@
   },
   {
     "name": "Củ dong",
-    "code": "02003",
+    "id": "02003",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 96,
@@ -1739,7 +1736,7 @@
   },
   {
     "name": "Củ sắn",
-    "code": "02004",
+    "id": "02004",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 75,
@@ -1829,7 +1826,7 @@
   },
   {
     "name": "Củ sắn dây",
-    "code": "02005",
+    "id": "02005",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 90,
@@ -1879,7 +1876,7 @@
   },
   {
     "name": "Củ súng khô",
-    "code": "02006",
+    "id": "02006",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -1929,7 +1926,7 @@
   },
   {
     "name": "Củ từ",
-    "code": "02007",
+    "id": "02007",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 94,
@@ -1994,7 +1991,7 @@
   },
   {
     "name": "Khoai lang",
-    "code": "02008",
+    "id": "02008",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 83,
@@ -2089,7 +2086,7 @@
   },
   {
     "name": "Khoai lang nghệ",
-    "code": "02009",
+    "id": "02009",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 87,
@@ -2164,7 +2161,7 @@
   },
   {
     "name": "Khoai môn",
-    "code": "02010",
+    "id": "02010",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 86,
@@ -2219,7 +2216,7 @@
   },
   {
     "name": "Khoai nước",
-    "code": "02011",
+    "id": "02011",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 86,
@@ -2274,7 +2271,7 @@
   },
   {
     "name": "Khoai riềng",
-    "code": "02012",
+    "id": "02012",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 81,
@@ -2319,7 +2316,7 @@
   },
   {
     "name": "Khoai sọ",
-    "code": "02013",
+    "id": "02013",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 82,
@@ -2409,7 +2406,7 @@
   },
   {
     "name": "Khoai tây",
-    "code": "02014",
+    "id": "02014",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 87,
@@ -2499,7 +2496,7 @@
   },
   {
     "name": "Miến dong",
-    "code": "02015",
+    "id": "02015",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -2549,7 +2546,7 @@
   },
   {
     "name": "Bột dong lọc",
-    "code": "02016",
+    "id": "02016",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -2594,7 +2591,7 @@
   },
   {
     "name": "Bột khoai lang",
-    "code": "02017",
+    "id": "02017",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -2644,7 +2641,7 @@
   },
   {
     "name": "Bột khoai riềng",
-    "code": "02018",
+    "id": "02018",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -2684,7 +2681,7 @@
   },
   {
     "name": "Bột khoai tây",
-    "code": "02019",
+    "id": "02019",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -2744,7 +2741,7 @@
   },
   {
     "name": "Bột sắn",
-    "code": "02020",
+    "id": "02020",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -2789,7 +2786,7 @@
   },
   {
     "name": "Bột sắn dây",
-    "code": "02021",
+    "id": "02021",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -2834,7 +2831,7 @@
   },
   {
     "name": "Khoai lang khô",
-    "code": "02022",
+    "id": "02022",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 95,
@@ -2924,7 +2921,7 @@
   },
   {
     "name": "Khoai tây khô",
-    "code": "02023",
+    "id": "02023",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -3014,7 +3011,7 @@
   },
   {
     "name": "Khoai tây lát chiên",
-    "code": "02024",
+    "id": "02024",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -3074,7 +3071,7 @@
   },
   {
     "name": "Sắn khô",
-    "code": "02025",
+    "id": "02025",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 95,
@@ -3124,7 +3121,7 @@
   },
   {
     "name": "Trân châu sắn",
-    "code": "02026",
+    "id": "02026",
     "locale": "vn",
     "category": "Khoai củ",
     "edible": 100,
@@ -3167,11 +3164,9 @@
       }
     ]
   },
-
-
   {
     "name": "Cùi dừa già",
-    "code": "03001",
+    "id": "03001",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 80,
@@ -3261,7 +3256,7 @@
   },
   {
     "name": "Cùi dừa non",
-    "code": "03002",
+    "id": "03002",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -3331,7 +3326,7 @@
   },
   {
     "name": "Đậu cô ve (hạt)",
-    "code": "03003",
+    "id": "03003",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 90,
@@ -3376,7 +3371,7 @@
   },
   {
     "name": "Đậu đen (hạt)",
-    "code": "03004",
+    "id": "03004",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 98,
@@ -3451,7 +3446,7 @@
   },
   {
     "name": "Đậu đũa (hạt)",
-    "code": "03005",
+    "id": "03005",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 90,
@@ -3526,7 +3521,7 @@
   },
   {
     "name": "Đậu Hà Lan (hạt)",
-    "code": "03006",
+    "id": "03006",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -3616,7 +3611,7 @@
   },
   {
     "name": "Đậu tương (đậu nành)",
-    "code": "03007",
+    "id": "03007",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 98,
@@ -3711,7 +3706,7 @@
   },
   {
     "name": "Đậu trắng hạt (đậu tây)",
-    "code": "03008",
+    "id": "03008",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 98,
@@ -3786,7 +3781,7 @@
   },
   {
     "name": "Đậu trứng cuốc",
-    "code": "03009",
+    "id": "03009",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 98,
@@ -3821,7 +3816,7 @@
   },
   {
     "name": "Đậu xanh",
-    "code": "03010",
+    "id": "03010",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 98,
@@ -3916,7 +3911,7 @@
   },
   {
     "name": "Hạt dẻ to",
-    "code": "03011",
+    "id": "03011",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 70,
@@ -3981,7 +3976,7 @@
   },
   {
     "name": "Hạt dẻ tươi",
-    "code": "03012",
+    "id": "03012",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 82,
@@ -4056,7 +4051,7 @@
   },
   {
     "name": "Hạt dẻ khô",
-    "code": "03013",
+    "id": "03013",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 80,
@@ -4131,7 +4126,7 @@
   },
   {
     "name": "Hạt đen",
-    "code": "03014",
+    "id": "03014",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 50,
@@ -4176,7 +4171,7 @@
   },
   {
     "name": "Hạt điều",
-    "code": "03015",
+    "id": "03015",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -4266,7 +4261,7 @@
   },
   {
     "name": "Hạt mít",
-    "code": "03016",
+    "id": "03016",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 85,
@@ -4311,7 +4306,7 @@
   },
   {
     "name": "Hạt lạc",
-    "code": "03017",
+    "id": "03017",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 98,
@@ -4396,7 +4391,7 @@
   },
   {
     "name": "Quả cọ tươi",
-    "code": "03018",
+    "id": "03018",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 60,
@@ -4486,7 +4481,7 @@
   },
   {
     "name": "Quả đại hái tươi",
-    "code": "03019",
+    "id": "03019",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 10,
@@ -4526,7 +4521,7 @@
   },
   {
     "name": "Vừng (đen, trắng)",
-    "code": "03020",
+    "id": "03020",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 95,
@@ -4611,7 +4606,7 @@
   },
   {
     "name": "Bột đậu tương",
-    "code": "03021",
+    "id": "03021",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -4701,7 +4696,7 @@
   },
   {
     "name": "Bột đậu tương rang chín",
-    "code": "03022",
+    "id": "03022",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -4751,7 +4746,7 @@
   },
   {
     "name": "Bột đậu xanh",
-    "code": "03023",
+    "id": "03023",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -4841,7 +4836,7 @@
   },
   {
     "name": "Bột lạc",
-    "code": "03024",
+    "id": "03024",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -4926,7 +4921,7 @@
   },
   {
     "name": "Đậu phụ",
-    "code": "03025",
+    "id": "03025",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -5006,7 +5001,7 @@
   },
   {
     "name": "Đậu phụ chúc",
-    "code": "03026",
+    "id": "03026",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -5056,7 +5051,7 @@
   },
   {
     "name": "Đậu phụ nướng",
-    "code": "03027",
+    "id": "03027",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -5106,7 +5101,7 @@
   },
   {
     "name": "Hạt bí đỏ rang",
-    "code": "03028",
+    "id": "03028",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 81,
@@ -5171,7 +5166,7 @@
   },
   {
     "name": "Hạt dưa đỏ rang",
-    "code": "03029",
+    "id": "03029",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 78,
@@ -5226,7 +5221,7 @@
   },
   {
     "name": "Hạt điều khô chiên dầu",
-    "code": "03030",
+    "id": "03030",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -5276,7 +5271,7 @@
   },
   {
     "name": "Sữa bột đậu nành",
-    "code": "03031",
+    "id": "03031",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -5326,7 +5321,7 @@
   },
   {
     "name": "Sữa đậu nành (100g đậu/lít)",
-    "code": "03032",
+    "id": "03032",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -5416,7 +5411,7 @@
   },
   {
     "name": "Tào phớ",
-    "code": "03033",
+    "id": "03033",
     "locale": "vn",
     "category": "Hạt, quả giàu đạm và béo",
     "edible": 100,
@@ -5479,11 +5474,9 @@
       }
     ]
   },
-
-
   {
     "name": "Bầu",
-    "code": "04001",
+    "id": "04001",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 84,
@@ -5568,7 +5561,7 @@
   },
   {
     "name": "Bí đao (bí xanh)",
-    "code": "04002",
+    "id": "04002",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 73,
@@ -5633,7 +5626,7 @@
   },
   {
     "name": "Bí ngô",
-    "code": "04003",
+    "id": "04003",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 86,
@@ -5728,7 +5721,7 @@
   },
   {
     "name": "Cà bát",
-    "code": "04004",
+    "id": "04004",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 95,
@@ -5823,7 +5816,7 @@
   },
   {
     "name": "Cà chua",
-    "code": "04005",
+    "id": "04005",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 95,
@@ -5918,7 +5911,7 @@
   },
   {
     "name": "Cà pháo",
-    "code": "04006",
+    "id": "04006",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 90,
@@ -5993,7 +5986,7 @@
   },
   {
     "name": "Cà rốt",
-    "code": "04007",
+    "id": "04007",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 85,
@@ -6083,7 +6076,7 @@
   },
   {
     "name": "Cà rốt",
-    "code": "04008",
+    "id": "04008",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -6133,7 +6126,7 @@
   },
   {
     "name": "Cà tím",
-    "code": "04009",
+    "id": "04009",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 95,
@@ -6188,7 +6181,7 @@
   },
   {
     "name": "Cải bắp",
-    "code": "04010",
+    "id": "04010",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 90,
@@ -6283,7 +6276,7 @@
   },
   {
     "name": "Cải bắp đỏ",
-    "code": "04011",
+    "id": "04011",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 78,
@@ -6378,7 +6371,7 @@
   },
   {
     "name": "Cải bắp khô",
-    "code": "04012",
+    "id": "04012",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -6433,7 +6426,7 @@
   },
   {
     "name": "Cải cúc",
-    "code": "04013",
+    "id": "04013",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 75,
@@ -6513,7 +6506,7 @@
   },
   {
     "name": "Cải soong",
-    "code": "04014",
+    "id": "04014",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 70,
@@ -6608,7 +6601,7 @@
   },
   {
     "name": "Cải thìa (cải trắng)",
-    "code": "04015",
+    "id": "04015",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 75,
@@ -6703,7 +6696,7 @@
   },
   {
     "name": "Cải xanh",
-    "code": "04016",
+    "id": "04016",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 76,
@@ -6798,7 +6791,7 @@
   },
   {
     "name": "Cần ta",
-    "code": "04017",
+    "id": "04017",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 80,
@@ -6853,7 +6846,7 @@
   },
   {
     "name": "Cần tây",
-    "code": "04018",
+    "id": "04018",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 84,
@@ -6948,7 +6941,7 @@
   },
   {
     "name": "Chuối xanh",
-    "code": "04019",
+    "id": "04019",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 68,
@@ -7043,7 +7036,7 @@
   },
   {
     "name": "Củ cải đỏ",
-    "code": "04020",
+    "id": "04020",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 80,
@@ -7098,7 +7091,7 @@
   },
   {
     "name": "Củ cải trắng",
-    "code": "04021",
+    "id": "04021",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 85,
@@ -7183,7 +7176,7 @@
   },
   {
     "name": "Củ cải trắng khô",
-    "code": "04022",
+    "id": "04022",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -7258,7 +7251,7 @@
   },
   {
     "name": "Củ đậu",
-    "code": "04023",
+    "id": "04023",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 85,
@@ -7303,7 +7296,7 @@
   },
   {
     "name": "Củ niễng",
-    "code": "04024",
+    "id": "04024",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 87,
@@ -7353,7 +7346,7 @@
   },
   {
     "name": "Dọc củ cải (non)",
-    "code": "04025",
+    "id": "04025",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 96,
@@ -7403,7 +7396,7 @@
   },
   {
     "name": "Dọc mùng",
-    "code": "04026",
+    "id": "04026",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 80,
@@ -7433,7 +7426,7 @@
   },
   {
     "name": "Dưa chuột",
-    "code": "04027",
+    "id": "04027",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 95,
@@ -7528,7 +7521,7 @@
   },
   {
     "name": "Dưa gang",
-    "code": "04028",
+    "id": "04028",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 95,
@@ -7603,7 +7596,7 @@
   },
   {
     "name": "Đậu cô ve",
-    "code": "04029",
+    "id": "04029",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 90,
@@ -7678,7 +7671,7 @@
   },
   {
     "name": "Đậu đũa",
-    "code": "04030",
+    "id": "04030",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 90,
@@ -7763,7 +7756,7 @@
   },
   {
     "name": "Đậu Hà Lan",
-    "code": "04031",
+    "id": "04031",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 90,
@@ -7848,7 +7841,7 @@
   },
   {
     "name": "Đậu rồng (quả non)",
-    "code": "04032",
+    "id": "04032",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 95,
@@ -7908,7 +7901,7 @@
   },
   {
     "name": "Đu đủ xanh",
-    "code": "04033",
+    "id": "04033",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 75,
@@ -7978,7 +7971,7 @@
   },
   {
     "name": "Gấc",
-    "code": "04034",
+    "id": "04034",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 75,
@@ -8038,7 +8031,7 @@
   },
   {
     "name": "Giá đậu tương",
-    "code": "04035",
+    "id": "04035",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -8123,7 +8116,7 @@
   },
   {
     "name": "Giá đậu xanh",
-    "code": "04036",
+    "id": "04036",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 95,
@@ -8218,7 +8211,7 @@
   },
   {
     "name": "Hành củ tươi",
-    "code": "04037",
+    "id": "04037",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 76,
@@ -8313,7 +8306,7 @@
   },
   {
     "name": "Hành lá (hành hoa)",
-    "code": "04038",
+    "id": "04038",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 80,
@@ -8388,7 +8381,7 @@
   },
   {
     "name": "Hành tây",
-    "code": "04039",
+    "id": "04039",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 83,
@@ -8478,7 +8471,7 @@
   },
   {
     "name": "Hạt sen tươi",
-    "code": "04040",
+    "id": "04040",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 61,
@@ -8563,7 +8556,7 @@
   },
   {
     "name": "Hạt sen khô",
-    "code": "04041",
+    "id": "04041",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -8638,7 +8631,7 @@
   },
   {
     "name": "Hẹ lá",
-    "code": "04042",
+    "id": "04042",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 87,
@@ -8718,7 +8711,7 @@
   },
   {
     "name": "Hoa chuối",
-    "code": "04043",
+    "id": "04043",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 71,
@@ -8773,7 +8766,7 @@
   },
   {
     "name": "Hoa lý",
-    "code": "04044",
+    "id": "04044",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 97,
@@ -8828,7 +8821,7 @@
   },
   {
     "name": "Khế",
-    "code": "04045",
+    "id": "04045",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 87,
@@ -8918,7 +8911,7 @@
   },
   {
     "name": "Lá lốt",
-    "code": "04046",
+    "id": "04046",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -8988,7 +8981,7 @@
   },
   {
     "name": "Lá me",
-    "code": "04047",
+    "id": "04047",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -9018,7 +9011,7 @@
   },
   {
     "name": "Lá mơ lông",
-    "code": "04048",
+    "id": "04048",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -9068,7 +9061,7 @@
   },
   {
     "name": "Lá sắn tươi",
-    "code": "04049",
+    "id": "04049",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -9123,7 +9116,7 @@
   },
   {
     "name": "Măng chua",
-    "code": "04050",
+    "id": "04050",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 76,
@@ -9198,7 +9191,7 @@
   },
   {
     "name": "Măng khô",
-    "code": "04051",
+    "id": "04051",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -9258,7 +9251,7 @@
   },
   {
     "name": "Măng tây",
-    "code": "04052",
+    "id": "04052",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 50,
@@ -9353,7 +9346,7 @@
   },
   {
     "name": "Măng tre",
-    "code": "04053",
+    "id": "04053",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 50,
@@ -9443,7 +9436,7 @@
   },
   {
     "name": "Mướp",
-    "code": "04054",
+    "id": "04054",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 88,
@@ -9528,7 +9521,7 @@
   },
   {
     "name": "Mướp đắng",
-    "code": "04055",
+    "id": "04055",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 80,
@@ -9608,7 +9601,7 @@
   },
   {
     "name": "Mướp Nhật Bản",
-    "code": "04056",
+    "id": "04056",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 90,
@@ -9653,7 +9646,7 @@
   },
   {
     "name": "Ngải cứu",
-    "code": "04057",
+    "id": "04057",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 69,
@@ -9713,7 +9706,7 @@
   },
   {
     "name": "Ngô bào tử",
-    "code": "04058",
+    "id": "04058",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 100,
@@ -9768,7 +9761,7 @@
   },
   {
     "name": "Ngó sen",
-    "code": "04059",
+    "id": "04059",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 89,
@@ -9853,7 +9846,7 @@
   },
   {
     "name": "Nụ mướp",
-    "code": "04060",
+    "id": "04060",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 82,
@@ -9898,7 +9891,7 @@
   },
   {
     "name": "Ớt đỏ to",
-    "code": "04061",
+    "id": "04061",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 82,
@@ -9993,7 +9986,7 @@
   },
   {
     "name": "Ớt vàng to",
-    "code": "04062",
+    "id": "04062",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 90,
@@ -10073,7 +10066,7 @@
   },
   {
     "name": "Ớt xanh to",
-    "code": "04063",
+    "id": "04063",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 90,
@@ -10153,7 +10146,7 @@
   },
   {
     "name": "Quả dọc",
-    "code": "04064",
+    "id": "04064",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 64,
@@ -10188,7 +10181,7 @@
   },
   {
     "name": "Quả me chua",
-    "code": "04065",
+    "id": "04065",
     "locale": "vn",
     "category": "Rau, củ, quả tươi",
     "edible": 85,
@@ -10241,2274 +10234,42 @@
       }
     ]
   },
-
-
   {
-    "name": "Bưởi",
-    "code": "05001",
+    "name": "Rau bí",
+    "id": "04066",
     "locale": "vn",
-    "category": "Quả chín",
-    "edible": 65,
-    "calories": 33,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 91.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 8.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.7,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 23,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 18,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.5,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.16,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 159,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 6,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 95,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.04,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Cam",
-    "code": "05002",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 75,
-    "calories": 43,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 88.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.06,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 9.74,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.4,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 34,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 23,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.22,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 108,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 40,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.06,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 8,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.18,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Chanh",
-    "code": "05003",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 75,
-    "calories": 29,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 92.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.14,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 5.96,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.3,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 40,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 22,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.6,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 145,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 77,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.109,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Chôm Chôm",
-    "code": "05004",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 47,
-    "calories": 77,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 80.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.5,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 17.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.3,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 28,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 15,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.5,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 94,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 69,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 25,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Chuối khô",
-    "code": "05005",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 100,
-    "calories": 301,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 22.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 5.0,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 70.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.3,
-        "unit": "g"
-      }
-    ]
-  },
-  {
-    "name": "Chuối tây",
-    "code": "05006",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 76,
-    "calories": 66,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 83.2,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.3,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 15.0,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 25,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.5,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.32,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 17,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 286,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 27,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 6,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.367,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 3,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 0.5,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Chuối tiêu",
-    "code": "05007",
-    "locale": "vn",
-    "category": "Quả chín",
+    "category": "Rau, củ, quả tươi",
     "edible": 70,
-    "calories": 100,
+    "calories": 26,
     "nutrition_per_100g": [
       {
         "name": "Nước",
-        "value": 74.4,
+        "value": 93.2,
         "unit": "g"
       },
       {
         "name": "Chất đạm",
-        "value": 1.5,
+        "value": 2.7,
         "unit": "g"
       },
       {
         "name": "Chất béo",
-        "value": 0.2,
+        "value": 0.28,
         "unit": "g"
       },
       {
         "name": "Tinh bột",
-        "value": 23.0,
+        "value": 3.12,
         "unit": "g"
       },
       {
         "name": "Chất xơ",
-        "value": 0.8,
+        "value": 1.7,
         "unit": "g"
       },
       {
         "name": "Canxi",
-        "value": 8,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 28,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.6,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.37,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 19,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 329,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 41,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 6,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 4,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dâu gia",
-    "code": "05008",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 44,
-    "calories": 27,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 92.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 6.2,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 20,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.5,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 2,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Dâu tây",
-    "code": "05009",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 85,
-    "calories": 59,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 84.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 12.1,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 4.0,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 22,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 23,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.7,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 37,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 292,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 17,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 60,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 3,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Dưa bở",
-    "code": "05010",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 90,
-    "calories": 21,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 94.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 4.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.7,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 36,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 36,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.17,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 201,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 9,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 9,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.025,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 17,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.77,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 2.2,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dưa hấu",
-    "code": "05011",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 52,
-    "calories": 18,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 95.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.2,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 2.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 8,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 13,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 1.0,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.11,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 5,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 187,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 15,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 7,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.045,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 37,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.05,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 0.1,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dưa hồng",
-    "code": "05012",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 84,
-    "calories": 19,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 95.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.1,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 4.1,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 27,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.09,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 18,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 228,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 7,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.088,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 3,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.02,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 2.9,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dưa lê",
-    "code": "05013",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 82,
-    "calories": 20,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 93.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 4.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 11,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 21,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.6,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Dứa ta",
-    "code": "05014",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 60,
-    "calories": 32,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 91.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.8,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 7.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.8,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 15,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 17,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.5,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.25,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 24,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 157,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 22,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 24,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 3,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dứa tây",
-    "code": "05015",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 60,
-    "calories": 40,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 89.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.07,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 9.23,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 32,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 11,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 1,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 115,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 26,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.11,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 3,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.02,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 0.7,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Đào",
-    "code": "05016",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 88,
-    "calories": 37,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 90.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 7.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.5,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 20,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 34,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.45,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.17,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 190,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 9,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.025,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 16,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.73,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 2.6,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Đu đủ chín",
-    "code": "05017",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 88,
-    "calories": 38,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 90.1,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.11,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 8.19,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 40,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 32,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 2.6,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 221,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 8,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 54,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.019,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 56,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.73,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 2.6,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Gioi",
-    "code": "05018",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 81,
-    "calories": 27,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 93.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 6.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 6,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.5,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.06,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 123,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 5,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 30,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Hồng bì",
-    "code": "05019",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 54,
-    "calories": 44,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 88.2,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.4,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 9.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.4,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 48,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 9,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 24,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Hồng đỏ",
-    "code": "05020",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 88,
-    "calories": 38,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 90.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.1,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 8.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.5,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 19,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.2,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 214,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 9,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 16,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 81,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.73,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 2.6,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Hồng ngâm",
-    "code": "05021",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 87,
-    "calories": 48,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 87.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.9,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 11.1,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.5,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 19,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.2,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.22,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 217,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 16,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 135,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Hồng xiêm",
-    "code": "05022",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 90,
-    "calories": 58,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 85.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.7,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 12.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.5,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 52,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 24,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 2.3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 193,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 8,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.037,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Lê",
-    "code": "05023",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 88,
-    "calories": 48,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 87.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 10.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 19,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 16,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 2.3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.13,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 5,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 88,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 7,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.028,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 3,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.12,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 4.5,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Lựu",
-    "code": "05024",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 15,
-    "calories": 79,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 79.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.15,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 18.85,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.5,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 13,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 23,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.7,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.12,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 259,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 6,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.105,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 5,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.6,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 4.6,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Mãng cầu xiêm",
-    "code": "05025",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 79,
-    "calories": 58,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 84.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.8,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 12.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.9,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 38,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 14,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.7,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 382,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 18,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 19.2,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.221,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Mắc coọc",
-    "code": "05026",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 86,
-    "calories": 24,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 93.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 5.7,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 32,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 7,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.6,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 2,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Mận tím",
-    "code": "05027",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 85,
-    "calories": 23,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 94.1,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 4.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.7,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 28,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 20,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 157,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 7,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.029,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 139,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.26,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 6.4,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Mít dai",
-    "code": "05028",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 45,
-    "calories": 54,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 85.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.91,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 12.41,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.2,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 21,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 28,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.67,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 368,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 37,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 5,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.108,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 15,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Mít khô",
-    "code": "05029",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 100,
-    "calories": 286,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 26.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 2.9,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 68.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.5,
-        "unit": "g"
-      }
-    ]
-  },
-  {
-    "name": "Mít mật",
-    "code": "05030",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 45,
-    "calories": 67,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 82.2,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.5,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 15.2,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.2,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 21,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 28,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 5,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 7,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Mơ",
-    "code": "05031",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 86,
-    "calories": 50,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 87.1,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.27,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 11.03,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.8,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 28,
+        "value": 100,
         "unit": "mg"
       },
       {
@@ -12523,67 +10284,57 @@
       },
       {
         "name": "Kẽm",
-        "value": 0.2,
+        "value": 0.45,
         "unit": "mg"
       },
       {
         "name": "Natri",
-        "value": 1,
+        "value": 17,
         "unit": "mg"
       },
       {
         "name": "Kali",
-        "value": 259,
+        "value": 390,
         "unit": "mg"
       },
       {
         "name": "Magiê",
-        "value": 10,
+        "value": 18,
         "unit": "mg"
       },
       {
         "name": "Vitamin C",
-        "value": 7,
+        "value": 11,
         "unit": "mg"
       },
       {
         "name": "Vitamin B6",
-        "value": 0.054,
+        "value": 0.207,
         "unit": "mg"
       },
       {
         "name": "Vitamin A",
-        "value": 213,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.89,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 3.3,
+        "value": 162,
         "unit": "µg"
       }
     ]
   },
   {
-    "name": "Mơ khô",
-    "code": "05032",
+    "name": "Rau câu khô",
+    "id": "04067",
     "locale": "vn",
-    "category": "Quả chín",
+    "category": "Rau, củ, quả tươi",
     "edible": 100,
-    "calories": 290,
+    "calories": 281,
     "nutrition_per_100g": [
       {
         "name": "Nước",
-        "value": 25.9,
+        "value": 20.0,
         "unit": "g"
       },
       {
         "name": "Chất đạm",
-        "value": 3.0,
+        "value": 11.2,
         "unit": "g"
       },
       {
@@ -12593,527 +10344,162 @@
       },
       {
         "name": "Tinh bột",
-        "value": 66.9,
+        "value": 56.6,
         "unit": "g"
       },
       {
         "name": "Chất xơ",
-        "value": 4.1,
+        "value": 20.8,
         "unit": "g"
       },
       {
         "name": "Canxi",
-        "value": 62,
+        "value": 378,
         "unit": "mg"
       },
       {
         "name": "Phốt pho",
-        "value": 106,
+        "value": 124,
         "unit": "mg"
       },
       {
         "name": "Sắt",
-        "value": 4.5,
+        "value": 8.8,
         "unit": "mg"
       },
       {
         "name": "Kẽm",
-        "value": 0.39,
+        "value": 5.8,
         "unit": "mg"
       },
       {
         "name": "Natri",
-        "value": 10,
+        "value": 102,
         "unit": "mg"
       },
       {
         "name": "Kali",
-        "value": 1162,
+        "value": 1125,
         "unit": "mg"
       },
       {
         "name": "Magiê",
-        "value": 32,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 5,
+        "value": 770,
         "unit": "mg"
       },
       {
         "name": "Vitamin B6",
-        "value": 0.143,
+        "value": 0.303,
         "unit": "mg"
       },
       {
-        "name": "Vitamin A",
-        "value": 180,
-        "unit": "µg"
-      },
-      {
         "name": "Vitamin E",
-        "value":4.33,
+        "value": 5.0,
         "unit": "mg"
       },
       {
         "name": "Vitamin K",
-        "value": 3.1,
+        "value": 24.4,
         "unit": "µg"
       }
     ]
   },
   {
-    "name": "Muỗm,quéo",
-    "code": "05033",
+    "name": "Rau câu tươi",
+    "id": "04068",
     "locale": "vn",
-    "category": "Quả chín",
-    "edible": 80,
-    "calories": 69,
+    "category": "Rau, củ, quả tươi",
+    "edible": 96,
+    "calories": 45,
     "nutrition_per_100g": [
       {
         "name": "Nước",
-        "value": 82.9,
+        "value": 86.2,
         "unit": "g"
       },
       {
         "name": "Chất đạm",
-        "value": 0.6,
+        "value": 1.9,
         "unit": "g"
       },
       {
         "name": "Chất béo",
-        "value": 0.4,
+        "value": 0.1,
         "unit": "g"
       },
       {
         "name": "Tinh bột",
-        "value": 15.7,
+        "value": 9.1,
         "unit": "g"
       },
       {
         "name": "Chất xơ",
-        "value": 0.4,
+        "value": 5.0,
         "unit": "g"
       },
       {
         "name": "Canxi",
-        "value": 4,
+        "value": 270,
         "unit": "mg"
       },
       {
         "name": "Phốt pho",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.2,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 60,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 159,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Na",
-    "code": "05034",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 50,
-    "calories": 69,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 82.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.2,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 15.1,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.8,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 35,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 45,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.6,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.21,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 22,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 260,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 21,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 36,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.2,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Nhãn",
-    "code": "05035",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 55,
-    "calories": 52,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 86.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 12,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.0,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 21,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.29,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 26,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 257,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 58,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Nhãn khô",
-    "code": "05036",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 100,
-    "calories": 292,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 25.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 4.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 67.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.7,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 32,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 117,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 4.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 46,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
         "value": 34,
         "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Nho ngọt",
-    "code": "05037",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 90,
-    "calories": 71,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 82.1,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.11,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 16.99,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 17,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 22,
-        "unit": "mg"
       },
       {
         "name": "Sắt",
-        "value": 0.6,
+        "value": 0.9,
         "unit": "mg"
       },
       {
         "name": "Kẽm",
-        "value": 0.07,
+        "value": 0.58,
         "unit": "mg"
       },
       {
         "name": "Natri",
-        "value": 2,
+        "value": 9,
         "unit": "mg"
       },
       {
         "name": "Kali",
-        "value": 191,
+        "value": 226,
         "unit": "mg"
       },
       {
         "name": "Magiê",
-        "value": 7,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 3,
+        "value": 67,
         "unit": "mg"
       },
       {
         "name": "Vitamin B6",
-        "value": 0.086,
+        "value": 0.032,
         "unit": "mg"
       },
       {
-        "name": "Vitamin A",
-        "value": 3,
-        "unit": "µg"
-      },
-      {
         "name": "Vitamin E",
-        "value": 0.19,
+        "value": 0.87,
         "unit": "mg"
       },
       {
         "name": "Vitamin K",
-        "value": 14.6,
+        "value": 2.3,
         "unit": "µg"
       }
     ]
   },
   {
-    "name": "Nho ta",
-    "code": "05038",
+    "name": "Rau diếp",
+    "id": "04069",
     "locale": "vn",
-    "category": "Quả chín",
-    "edible": 87,
-    "calories": 24,
+    "category": "Rau, củ, quả tươi",
+    "edible": 90,
+    "calories": 15,
     "nutrition_per_100g": [
       {
         "name": "Nước",
-        "value": 93.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 5.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.4,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 40,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 21,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 1.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.17,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 11,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 120,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 15,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 45,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 1,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Nhót",
-    "code": "05039",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 76,
-    "calories": 22,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 94.0,
+        "value": 95.7,
         "unit": "g"
       },
       {
@@ -13122,203 +10508,13 @@
         "unit": "g"
       },
       {
-        "name": "Tinh bột",
-        "value": 4.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.3,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 27,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 30,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.2,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Ổi",
-    "code": "05040",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 95,
-    "calories": 61,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 85.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
         "name": "Chất béo",
-        "value": 0.76,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 12.94,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 6.0,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 16,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 1.3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 2.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 291,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 22,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 62,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
         "value": 0.11,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 31,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.73,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 2.6,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Quả bơ vỏ tím",
-    "code": "05041",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 74,
-    "calories": 76,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 88.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 6.2,
         "unit": "g"
       },
       {
         "name": "Tinh bột",
-        "value": 3.2,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 49,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 69,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 1.4,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Quả bơ vỏ xanh",
-    "code": "05042",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 72,
-    "calories": 103,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 85.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 9.4,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 2.8,
+        "value": 2.39,
         "unit": "g"
       },
       {
@@ -13328,928 +10524,37 @@
       },
       {
         "name": "Canxi",
-        "value": 60,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 85,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 1.6,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 2,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 351,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 24,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 17.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.078,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 7,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 2.66,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Quả cóc",
-    "code": "05043",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 75,
-    "calories": 62,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 83.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.8,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 13.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
         "value": 38,
         "unit": "mg"
       },
       {
         "name": "Phốt pho",
-        "value": 24,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 1.6,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Quả thanh long",
-    "code": "05044",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 100,
-    "calories": 47,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 87.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.3,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 10.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.8,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 11,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 11,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.6,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 9.6,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Quả trứng gà",
-    "code": "05045",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 75,
-    "calories": 106,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 73.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 4.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 21.3,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 101,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 270,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Quất chín cả vỏ",
-    "code": "05046",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 96,
-    "calories": 42,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 89.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 9.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 4.1,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 124,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 42,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.3,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 43,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Quít",
-    "code": "05047",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 74,
-    "calories": 42,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 89.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.9,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 9.2,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 35,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 17,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.2,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 111,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 55,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.078,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 25,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.2,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Sầu riêng",
-    "code": "05048",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 25,
-    "calories": 138,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 66.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 2.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 1.6,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 28.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.4,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 20,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 63,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.9,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.28,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 1,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 601,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 33,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
         "value": 37,
         "unit": "mg"
       },
       {
-        "name": "Vitamin B6",
-        "value": 0.316,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 25,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.2,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Sấu chín",
-    "code": "05049",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 76,
-    "calories": 49,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 87.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.3,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 10.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.7,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 100,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 44,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 3,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-  "name": "Táo ta",
-  "code": "05050",
-  "locale": "vn",
-  "category": "Quả chín",
-  "edible": 86,
-  "calories": 40,
-  "nutrition_per_100g": [
-    {
-      "name": "Nước",
-      "value": 89.5,
-      "unit": "g"
-    },
-    {
-      "name": "Chất đạm",
-      "value": 0.8,
-      "unit": "g"
-    },
-    {
-      "name": "Tinh bột",
-      "value": 9.2,
-      "unit": "g"
-    },
-    {
-      "name": "Chất xơ",
-      "value": 0.7,
-      "unit": "g"
-    },
-    {
-      "name": "Canxi",
-      "value": 44,
-      "unit": "mg"
-    },
-    {
-      "name": "Phốt pho",
-      "value": 25,
-      "unit": "mg"
-    },
-    {
-      "name": "Sắt",
-      "value": 0.2,
-      "unit": "mg"
-    },
-    {
-      "name": "Kẽm",
-      "value": 0.05,
-      "unit": "mg"
-    },
-    {
-      "name": "Natri",
-      "value": 3,
-      "unit": "mg"
-    },
-    {
-      "name": "Kali",
-      "value": 250,
-      "unit": "mg"
-    },
-    {
-      "name": "Magiê",
-      "value": 10,
-      "unit": "mg"
-    },
-    {
-      "name": "Vitamin C",
-      "value": 24,
-      "unit": "mg"
-    },
-    {
-      "name": "Vitamin B6",
-      "value": 0.081,
-      "unit": "mg"
-    }
-  ]
-},
-  {
-    "name": "Táo tây",
-    "code": "05051",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 88,
-    "calories": 50,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 87.2,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.09,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 11.71,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 19,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 13,
-        "unit": "mg"
-      },
-      {
         "name": "Sắt",
-        "value": 2.5,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.2,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 15,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 102,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 7,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.041,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 3,
-        "unit": "µg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.18,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 2.2,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Vải",
-    "code": "05052",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 52,
-    "calories": 49,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 87.8,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.35,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 10.75,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
         "value": 1.1,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 6,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 34,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.5,
         "unit": "mg"
       },
       {
         "name": "Kẽm",
-        "value": 0.07,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 1,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 171,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 36,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.1,
-        "unit": "mg"
-      },
-
-      {
-        "name": "Vitamin E",
-        "value": 0.07,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 0.4,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Vải khô",
-    "code": "05053",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 56,
-    "calories": 264,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 34.9,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 3.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 1.9,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 58.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 1.0,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 25,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 58,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 4.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.28,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 3,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 1110,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 42,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 183,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.09,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.31,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 1.6,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Vú sữa",
-    "code": "05054",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 78,
-    "calories": 51,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 86.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 1.0,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 11.7,
-        "unit": "g"
-      },
-      {
-        "name": "Chất xơ",
-        "value": 2.3,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 68,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 32,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
         "value": 0.4,
         "unit": "mg"
       },
       {
-        "name": "Vitamin C",
-        "value": 5,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Xoài chín",
-    "code": "05055",
-    "locale": "vn",
-    "category": "Quả chín",
-    "edible": 80,
-    "calories": 69,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 82.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.6,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 0.3,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 15.9,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 10,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 13,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.56,
-        "unit": "mg"
-      },
-      {
         "name": "Natri",
-        "value": 2,
+        "value": 14,
         "unit": "mg"
       },
       {
         "name": "Kali",
-        "value": 114,
+        "value": 254,
         "unit": "mg"
       },
       {
         "name": "Magiê",
-        "value": 9,
+        "value": 18,
         "unit": "mg"
       },
       {
@@ -14259,42 +10564,412 @@
       },
       {
         "name": "Vitamin B6",
-        "value": 0.134,
+        "value": 0.09,
         "unit": "mg"
       },
       {
         "name": "Vitamin A",
-        "value": 38,
-        "unit": "mg"
+        "value": 370,
+        "unit": "µg"
       },
       {
         "name": "Vitamin E",
-        "value": 1.12,
+        "value": 0.29,
         "unit": "mg"
       },
       {
         "name": "Vitamin K",
-        "value": 4.2,
+        "value": 173.6,
         "unit": "µg"
       }
     ]
   },
   {
-    "name": "Quả kiwi",
-    "code": "05056",
+    "name": "Rau đay",
+    "id": "04070",
     "locale": "vn",
-    "category": "Quả chín",
-    "edible": 86,
-    "calories": 68,
+    "category": "Rau, củ, quả tươi",
+    "edible": 90,
+    "calories": 31,
     "nutrition_per_100g": [
       {
         "name": "Nước",
-        "value": 83.1,
+        "value": 91.4,
         "unit": "g"
       },
       {
         "name": "Chất đạm",
-        "value": 1.14,
+        "value": 2.8,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.18,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 4.52,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 182,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 57,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 7.7,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.79,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 16,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 417,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 79,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 77,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.6,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 380,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau diếp cá",
+    "id": "04071",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 30,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 91.5,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.9,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 4.5,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.8,
+        "unit": "g"
+      },
+      {
+        "name": "Natri",
+        "value": 72,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 461,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 81,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 68,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 52,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau ghiền cơm",
+    "id": "04072",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 27,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 92.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 3.4,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.31,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 2.69,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.6,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 341,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 76,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 4.1,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.9,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 20,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 611,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 55,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 0.36,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.192,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 442,
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 1140.0,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau ghiền đỏ",
+    "id": "04073",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 62,
+    "calories": 47,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 86.2,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 3.3,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.31,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 7.79,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.6,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 288,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 123,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 5.4,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.5,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 56,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 476,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 164,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 89,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 340,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau ghiền trắng",
+    "id": "04074",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 86,
+    "calories": 48,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 86.7,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 3.2,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.4,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 7.8,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 288,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 80,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 6.1,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 27,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 238,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau húng",
+    "id": "04075",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 80,
+    "calories": 34,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 91.4,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.2,
         "unit": "g"
       },
       {
@@ -14304,7 +10979,1307 @@
       },
       {
         "name": "Tinh bột",
-        "value": 14.66,
+        "value": 5.08,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 3.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 202,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 83,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 4.8,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.91,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 91,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 148,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 73,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 27,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.129,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 264,
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 414.8,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau khoai lang",
+    "id": "04076",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 95,
+    "calories": 28,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 91.9,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.6,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.21,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 3.99,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.4,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 48,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 54,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 2.7,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.29,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 19,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 498,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 60,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 11,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.19,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 153,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau kinh giới",
+    "id": "04077",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 84,
+    "calories": 36,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 90.3,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.7,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 6.4,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 3.6,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 246,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 15,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 1.0,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.52,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 2,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 211,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 89,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 110,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 363,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau má rừng",
+    "id": "04078",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 31,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 91.1,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 3.1,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 4.6,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 172,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 24,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 0.2,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 20,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 22,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau má, má mơ",
+    "id": "04079",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 38,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 88.2,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 3.2,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 6.3,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 4.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 229,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 2,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 3.1,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 37,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 108,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau mồng tơi",
+    "id": "04080",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 83,
+    "calories": 24,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 93.2,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.0,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 3.9,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 176,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 34,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 1.6,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.54,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 38,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 391,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 94,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 72,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 160,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau mùi",
+    "id": "04081",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 85,
+    "calories": 24,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 93.3,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.6,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.33,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 2.17,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.8,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 160,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 133,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 4.5,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.5,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 46,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 521,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 26,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 140,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.149,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 337,
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin E",
+        "value": 2.5,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 310.0,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau mùi tàu",
+    "id": "04082",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 80,
+    "calories": 30,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 92.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.1,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.55,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 4.25,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.6,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 20,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 30,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 2.9,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.41,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 39,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 237,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 35,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 177,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.09,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 420,
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin E",
+        "value": 0.75,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 1640.0,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau muống",
+    "id": "04083",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 85,
+    "calories": 28,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 92.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 3.2,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.24,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 3.26,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.0,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 100,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 37,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 1.4,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.35,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 37,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 311,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 15,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 20,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.195,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 142,
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin E",
+        "value": 2.03,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 482.9,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau muống khô",
+    "id": "04084",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 293,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 14.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 34.2,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 1.8,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 35.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 12.0,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 880,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 300,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 15.2,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 10,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 1083,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau ngố",
+    "id": "04085",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 71,
+    "calories": 24,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 93.3,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 1.5,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 4.4,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 2.1,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 84,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 18,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 2.2,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 1.48,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 5,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 222,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 78,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 194,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau ngót",
+    "id": "04086",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 77,
+    "calories": 45,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 86.4,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 5.3,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 5.9,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 169,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 65,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 2.7,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.94,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 25,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 457,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 123,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 53,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 591,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau ngót khô",
+    "id": "04087",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 299,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 14.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 32.2,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 2.6,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 36.8,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 15.0,
+        "unit": "g"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 130,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau răm",
+    "id": "04088",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 75,
+    "calories": 45,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 86.7,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 4.7,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 6.6,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 3.8,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 316,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 55,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 2.2,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 1.05,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 5,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 216,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 28,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 57,
+        "unit": "mg"
+      }
+    ]
+  },
+  {
+    "name": "Rau rút",
+    "id": "04089",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 45,
+    "calories": 35,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 90.4,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 5.1,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 3.7,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.9,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 180,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 59,
+        "unit": "mg"
+      }
+    ]
+  },
+  {
+    "name": "Rau sà lách",
+    "id": "04090",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 90,
+    "calories": 18,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 95.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 1.5,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.27,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 2.43,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 0.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 77,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 34,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 0.9,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.4,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 59,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 333,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 18,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 15,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 88,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau sam",
+    "id": "04091",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 20,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 93.6,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 1.4,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 3.7,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 0.7,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 85,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 56,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 1.5,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 26,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 13,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau sắng",
+    "id": "04092",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 60,
+    "calories": 62,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 82.4,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 6.5,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 8.9,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 3.4,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 110,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 80,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 114,
+        "unit": "mg"
+      }
+    ]
+  },
+  {
+    "name": "Rau tàu bay",
+    "id": "04093",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 24,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 93.1,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 3.5,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.6,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 81,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 25,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 10,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 142,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Rau thơm",
+    "id": "04094",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 75,
+    "calories": 30,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 91.7,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.0,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 5.4,
         "unit": "g"
       },
       {
@@ -14314,22 +12289,627 @@
       },
       {
         "name": "Canxi",
-        "value": 34,
+        "value": 170,
         "unit": "mg"
       },
       {
         "name": "Phốt pho",
-        "value": 34,
+        "value": 49,
         "unit": "mg"
       },
       {
         "name": "Sắt",
-        "value": 0.31,
+        "value": 3.8,
         "unit": "mg"
       },
       {
         "name": "Kẽm",
-        "value": 0.14,
+        "value": 0.56,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 6,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 217,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 41,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 297,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Sấu xanh",
+    "id": "04095",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 65,
+    "calories": 19,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 94.7,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 1.8,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 3.0,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 135,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 6,
+        "unit": "mg"
+      }
+    ]
+  },
+  {
+    "name": "Su hào",
+    "id": "04096",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 78,
+    "calories": 44,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 88.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.8,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.07,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 7.93,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.7,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 46,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 50,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 0.6,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.45,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 53,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 321,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 19,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 33,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.15,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 2,
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin E",
+        "value": 0.48,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 0.1,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Su hào khô",
+    "id": "04097",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 100,
+    "calories": 311,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 15.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 20.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 1.4,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 54.6,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 9,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 3,
+        "unit": "mg"
+      }
+    ]
+  },
+  {
+    "name": "Su su",
+    "id": "04098",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 80,
+    "calories": 23,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 94.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 0.8,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.1,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 4.6,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.0,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 17,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 14,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 0.4,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.74,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 2,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 125,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 12,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 4,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.076,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin E",
+        "value": 0.12,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 4.6,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Súp lơ trắng",
+    "id": "04099",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 60,
+    "calories": 34,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 90.09,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.15,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 5.65,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 0.9,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 26,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 51,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 1.4,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.2,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 20,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 349,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 22,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 34,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.222,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 1,
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin E",
+        "value": 0.08,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 16.0,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Súp lơ xanh",
+    "id": "04100",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 61,
+    "calories": 39,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 89.8,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.95,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.3,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 6.08,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 3.2,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 33,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 62,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 0.73,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.64,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 23,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 300,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 20,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 88.1,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.222,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 8,
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin E",
+        "value": 0.04,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin K",
+        "value": 20.2,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Thìa là",
+    "id": "04101",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 75,
+    "calories": 47,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 88.3,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.6,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 0.96,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 6.94,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 5.0,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 200,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 12,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 1.2,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.5,
+        "unit": "mg"
+      },
+      {
+        "name": "Natri",
+        "value": 48,
+        "unit": "mg"
+      },
+      {
+        "name": "Kali",
+        "value": 361,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 55,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 63,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 0.185,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 238,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Tía tô",
+    "id": "04102",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 80,
+    "calories": 40,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 89.1,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.9,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 3.6,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.0,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 190,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 18,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 3.2,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.86,
         "unit": "mg"
       },
       {
@@ -14339,564 +12919,219 @@
       },
       {
         "name": "Kali",
-        "value": 312,
+        "value": 284,
         "unit": "mg"
       },
       {
         "name": "Magiê",
-        "value": 17,
+        "value": 112,
         "unit": "mg"
       },
       {
         "name": "Vitamin C",
-        "value": 92.7,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.063,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 4,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 1.46,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 40.3,
-        "unit": "µg"
-      }
-    ]
-  },
-
-
-  {
-    "name": "Bơ",
-    "code": "06001",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 756,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 15.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 83.5,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Kẽm",
-        "value": 0.09,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 11,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 24,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 2,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.003,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin A",
-        "value": 613,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 2.32,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 7.0,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu thảo mộc",
-    "code": "06002",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 897,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 0.3,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 99.7,
-        "unit": "g"
-      }
-    ]
-  },
-  {
-    "name": "Mỡ lợn muối",
-    "code": "06003",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 827,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 3.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 2.0,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 91.0,
-        "unit": "g"
-      }
-    ]
-  },
-  {
-    "name": "Mỡ lợn nước",
-    "code": "06004",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 896,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 0.4,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 99.6,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 2,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
-        "value": 12,
-        "unit": "mg"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.3,
-        "unit": "mg"
-      }
-    ]
-  },
-  {
-    "name": "Bơ thực vật",
-    "code": "06005",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 729,
-    "nutrition_per_100g": [
-      {
-        "name": "Nước",
-        "value": 18.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất đạm",
-        "value": 0.5,
-        "unit": "g"
-      },
-      {
-        "name": "Chất béo",
-        "value": 80.7,
-        "unit": "g"
-      },
-      {
-        "name": "Tinh bột",
-        "value": 0.1,
-        "unit": "g"
-      },
-      {
-        "name": "Canxi",
-        "value": 17,
-        "unit": "mg"
-      },
-      {
-        "name": "Phốt pho",
         "value": 13,
         "unit": "mg"
       },
       {
-        "name": "Kẽm",
-        "value": 0.02,
-        "unit": "mg"
-      },
-      {
-        "name": "Natri",
-        "value": 2,
-        "unit": "mg"
-      },
-      {
-        "name": "Kali",
-        "value": 25,
-        "unit": "mg"
-      },
-      {
-        "name": "Magiê",
-        "value": 2,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin C",
-        "value": 0.1,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B6",
-        "value": 0.005,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin B12",
-        "value": 0.006,
-        "unit": "µg"
-      },
-      {
         "name": "Vitamin A",
-        "value": 819,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 12.8,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 93.0,
+        "value": 460,
         "unit": "µg"
       }
     ]
   },
   {
-    "name": "Dầu bông",
-    "code": "06006",
+    "name": "Tỏi ta",
+    "id": "04103",
     "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
+    "category": "Rau, củ, quả tươi",
+    "edible": 80,
+    "calories": 126,
     "nutrition_per_100g": [
       {
-        "name": "Chất béo",
-        "value": 100.0,
+        "name": "Nước",
+        "value": 67.7,
         "unit": "g"
       },
       {
-        "name": "Vitamin E",
-        "value": 35.3,
-        "unit": "mg"
+        "name": "Chất đạm",
+        "value": 6.0,
+        "unit": "g"
       },
-      {
-        "name": "Vitamin K",
-        "value": 24.7,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu cám gạo",
-    "code": "06007",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
-    "nutrition_per_100g": [
       {
         "name": "Chất béo",
-        "value": 100.0,
+        "value": 0.35,
         "unit": "g"
       },
       {
-        "name": "Sắt",
-        "value": 0.07,
+        "name": "Tinh bột",
+        "value": 24.65,
         "unit": "g"
       },
       {
-        "name": "Vitamin E",
-        "value": 32.3,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 24.7,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu cọ",
-    "code": "06008",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
-    "nutrition_per_100g": [
-      {
-        "name": "Chất béo",
-        "value": 100.0,
-        "unit": "g"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 15.94,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 8.0,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu dừa",
-    "code": "06009",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
-    "nutrition_per_100g": [
-      {
-        "name": "Chất béo",
-        "value": 100.0,
-        "unit": "g"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.04,
-        "unit": "g"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 0.09,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 0.5,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu đậu tương",
-    "code": "06010",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
-    "nutrition_per_100g": [
-      {
-        "name": "Chất béo",
-        "value": 100.0,
-        "unit": "g"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.02,
-        "unit": "g"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 9.21,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 197.6,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu lạc",
-    "code": "06011",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
-    "nutrition_per_100g": [
-      {
-        "name": "Chất béo",
-        "value": 100.0,
-        "unit": "g"
-      },
-      {
-        "name": "Sắt",
-        "value": 0.03,
-        "unit": "g"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 15.69,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 0.7,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu mè",
-    "code": "06012",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
-    "nutrition_per_100g": [
-      {
-        "name": "Chất béo",
-        "value": 100.0,
-        "unit": "g"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 1.4,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 13.6,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu ngô",
-    "code": "06013",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
-    "nutrition_per_100g": [
-      {
-        "name": "Chất béo",
-        "value": 100.0,
-        "unit": "g"
-      },
-      {
-        "name": "Vitamin E",
-        "value": 14.3,
-        "unit": "mg"
-      },
-      {
-        "name": "Vitamin K",
-        "value": 1.9,
-        "unit": "µg"
-      }
-    ]
-  },
-  {
-    "name": "Dầu oliu",
-    "code": "06014",
-    "locale": "vn",
-    "category": "Dầu, mỡ, bơ",
-    "edible": 100,
-    "calories": 900,
-    "nutrition_per_100g": [
-      {
-        "name": "Chất béo",
-        "value": 100.0,
+        "name": "Chất xơ",
+        "value": 1.5,
         "unit": "g"
       },
       {
         "name": "Canxi",
-        "value": 1,
+        "value": 24,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 181,
         "unit": "mg"
       },
       {
         "name": "Sắt",
-        "value": 0.56,
-        "unit": "g"
+        "value": 1.5,
+        "unit": "mg"
+      },
+      {
+        "name": "Kẽm",
+        "value": 0.9,
+        "unit": "mg"
       },
       {
         "name": "Natri",
-        "value": 2,
+        "value": 18,
         "unit": "mg"
       },
       {
         "name": "Kali",
-        "value": 1,
+        "value": 373,
+        "unit": "mg"
+      },
+      {
+        "name": "Magiê",
+        "value": 8,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 10,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin B6",
+        "value": 1.235,
         "unit": "mg"
       },
       {
         "name": "Vitamin E",
-        "value": 14.35,
+        "value": 0.01,
         "unit": "mg"
       },
       {
         "name": "Vitamin K",
-        "value": 60.2,
+        "value": 1.4,
         "unit": "µg"
       }
     ]
+  },
+  {
+    "name": "Tỏi tây (cả lá)",
+    "id": "04104",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 80,
+    "calories": 35,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 90.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 1.4,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 7.4,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 1.5,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 80,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 58,
+        "unit": "mg"
+      },
+      {
+        "name": "Sắt",
+        "value": 2.0,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 20,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin A",
+        "value": 1,
+        "unit": "µg"
+      }
+    ]
+  },
+  {
+    "name": "Trám đen chín",
+    "id": "04105",
+    "locale": "vn",
+    "category": "Rau, củ, quả tươi",
+    "edible": 50,
+    "calories": 134,
+    "nutrition_per_100g": [
+      {
+        "name": "Nước",
+        "value": 77.0,
+        "unit": "g"
+      },
+      {
+        "name": "Chất đạm",
+        "value": 2.5,
+        "unit": "g"
+      },
+      {
+        "name": "Chất béo",
+        "value": 10.0,
+        "unit": "g"
+      },
+      {
+        "name": "Tinh bột",
+        "value": 8.5,
+        "unit": "g"
+      },
+      {
+        "name": "Chất xơ",
+        "value": 4.9,
+        "unit": "g"
+      },
+      {
+        "name": "Canxi",
+        "value": 140,
+        "unit": "mg"
+      },
+      {
+        "name": "Phốt pho",
+        "value": 30,
+        "unit": "mg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": 14,
+        "unit": "mg"
+      }
+    ]
   }
-
-
-
 ]
