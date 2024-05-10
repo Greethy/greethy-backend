@@ -40,11 +40,12 @@ public class Food {
 
     private String name;
 
-    @Field(name = "food_types")
-    private List<String> foodTypes;
+    @Field(name = "related_ids")
+    private List<String> relatedIds;
 
-    @Field("have_for")
-    private String haveFor;
+    private String group;
+
+    private String meal;
 
     private String description;
 
@@ -96,6 +97,8 @@ public class Food {
         this.id = event.getFoodId();
         this.name = event.getName();
         this.description = event.getDescription();
+        this.meal = event.getMeal();
+        this.group = event.getGroup();
         this.imageUrl = event.getImageUrl();
         this.videoUrl = event.getVideoUrl();
         this.recipe = event.getRecipe();

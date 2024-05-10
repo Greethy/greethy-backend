@@ -1,0 +1,262 @@
+[
+  {
+    "name": "a",
+    "group": "High Protein",
+    "meal": "breakfast",
+    "total_calories": 149.2,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "b",
+    "group": "Carbohydrate",
+    "meal": "breakfast",
+    "total_calories": 250,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "c",
+    "group": "Vegetable",
+    "meal": "breakfast",
+    "total_calories": 54,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "d",
+    "group": "Fruit",
+    "meal": "breakfast",
+    "total_calories": 150,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "e",
+    "group": "High Protein",
+    "meal": "lunch",
+    "total_calories": 350,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "f",
+    "group": "Vegetable",
+    "meal": "dinner",
+    "total_calories": 100,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "g",
+    "group": "High Protein",
+    "meal": "breakfast",
+    "total_calories": 500,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "h",
+    "group": "High Protein",
+    "meal": "dinner",
+    "total_calories": 340,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "i",
+    "group": "Fruit",
+    "meal": "lunch",
+    "total_calories": 200,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "k",
+    "group": "Carbohydrate",
+    "meal": "breakfast",
+    "total_calories": 600,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "l",
+    "group": "Carbohydrate",
+    "meal": "dinner",
+    "total_calories": 340,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "m",
+    "group": "Vegetable",
+    "meal": "lunch",
+    "total_calories": 149.2,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "n",
+    "group": "Carbohydrate",
+    "meal": "breakfast",
+    "total_calories": 200,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "o",
+    "group": "High Protein",
+    "meal": "breakfast",
+    "total_calories": 300,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "u",
+    "group": "Fruit",
+    "meal": "breakfast",
+    "total_calories": 400,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "q",
+    "group": "High Protein",
+    "meal": "lunch",
+    "total_calories": 230,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "w",
+    "group": "Vegetable",
+    "meal": "dinner",
+    "total_calories": 100,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "p",
+    "group": "Fruit",
+    "meal": "dinner",
+    "total_calories": 150,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "y",
+    "group": "High Protein",
+    "meal": "lunch",
+    "total_calories": 500,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  },
+  {
+    "name": "x",
+    "group": "Carbohydrate",
+    "meal": "breakfast",
+    "total_calories": 230,
+    "labels": [
+      "breakfast",
+      "pork",
+      "noodle",
+      "soup",
+      ""
+    ]
+  }
+]

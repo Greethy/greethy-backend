@@ -1,5 +1,6 @@
 package com.greethy.nutrition.core.domain.entity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -15,10 +16,19 @@ public class Menu {
     @Id
     private String id;
 
-    private String menuType;
+    private List<String> labels;
+
+    private List<String> types;
+
+    private List<Food> breakfast;
+
+    private List<Food> lunch;
+
+    private List<Food> dinner;
 
     @Field(name = "total_calories")
     private Integer totalCalories;
 
-    private List<Meal> meals;
+    @Field(name = "created_at")
+    private LocalDateTime createdAt;
 }

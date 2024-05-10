@@ -4,13 +4,12 @@ import java.text.DecimalFormat;
 
 import org.springframework.stereotype.Component;
 
-import com.greethy.nutrition.core.domain.value.BmiEvaluate;
-import com.greethy.nutrition.core.domain.value.BmrByAge;
-import com.greethy.nutrition.core.domain.value.FitnessIndexes;
+import com.greethy.nutrition.core.domain.value.*;
 import com.greethy.nutrition.core.port.out.read.FindBmiEvaluatePort;
 import com.greethy.nutrition.core.port.out.read.FindBmrByAgePort;
 import com.greethy.nutrition.core.port.out.read.FindPalEvaluatePort;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -55,5 +54,21 @@ public class BodySpecsCalculator {
                 })
                 .block();
         return fitnessIndexes;
+    }
+
+    @Data
+    public static class FitnessIndexes {
+
+        private Bmi bmi;
+
+        private Bmr bmr;
+
+        private Pal pal;
+
+        public FitnessIndexes() {
+            this.bmi = new Bmi();
+            this.bmr = new Bmr();
+            this.pal = new Pal();
+        }
     }
 }

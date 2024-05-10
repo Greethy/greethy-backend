@@ -15,6 +15,10 @@ public class FoodCreatedEvent {
 
     private String name;
 
+    private String group;
+
+    private String meal;
+
     private String description;
 
     private String recipe;

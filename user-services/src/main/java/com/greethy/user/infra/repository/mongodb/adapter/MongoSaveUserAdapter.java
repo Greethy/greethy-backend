@@ -8,6 +8,7 @@ import com.greethy.user.infra.repository.mongodb.UserRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
+
 @RequiredArgsConstructor
 @InfrastructureAdapter("mongodb-save-adapter")
 public class MongoSaveUserAdapter implements SaveUserPort {
