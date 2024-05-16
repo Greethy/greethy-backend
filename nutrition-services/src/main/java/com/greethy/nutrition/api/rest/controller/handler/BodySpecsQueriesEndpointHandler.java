@@ -29,15 +29,6 @@ public class BodySpecsQueriesEndpointHandler {
 
     private final ExceptionHandler exceptionHandler;
 
-    public Mono<ServerResponse> getAllBodySpecs() {
-        return Flux.just(new FindAllBodySpecsQuery())
-                .flatMap(query -> queryGateway.streamingQuery(query, BodySpecsResponse.class))
-                .collectList()
-                .flatMap(bodySpecsResponse -> bodySpecsResponse.isEmpty()
-                        ? ServerResponse.noContent().build()
-                        : ServerResponse.ok().bodyValue(bodySpecsResponse));
-    }
-
     public Mono<ServerResponse> getBodySpecsById(ServerRequest serverRequest) {
         return Mono.just(serverRequest.pathVariable("body-specs-id"))
                 .map(bodySpecsId -> FindBodySpecsByIdQuery.builder()
@@ -68,7 +59,6 @@ public class BodySpecsQueriesEndpointHandler {
 
     public Mono<ServerResponse> getAllUserBodySpecs(ServerRequest serverRequest) {
         String userId = serverRequest.pathVariable("user-id");
-
         return Flux.just(userId)
                 .map(CheckIfUserExistsQuery::new)
                 .flatMap(query -> queryGateway

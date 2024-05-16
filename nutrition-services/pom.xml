@@ -46,6 +46,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
         <!-- MICROSERVICES PATTERN-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -126,15 +130,7 @@
                 <configuration>
                     <java>
                         <removeUnusedImports/>
-                        <toggleOffOn/>
                         <trimTrailingWhitespace/>
-                        <endWithNewline/>
-                        <formatAnnotations />
-                        <indent>
-                            <tabs>true</tabs>
-                            <spacesPerTab>4</spacesPerTab>
-                        </indent>
-                        <palantirJavaFormat/>
                         <importOrder>
                             <!-- Specify either order or file, but not both -->
                             <order>java,jakarta,org,com,com.greethy,</order>

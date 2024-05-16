@@ -1,9 +1,6 @@
 package com.greethy.nutrition.core.event;
 
-import java.time.LocalDateTime;
-
 import com.greethy.nutrition.core.domain.value.Owner;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -30,8 +27,6 @@ public class FoodCreatedEvent {
     private String imageUrl;
 
     private String videoUrl;
-
-    private LocalDateTime createdAt;
 
     private Owner owner;
 }

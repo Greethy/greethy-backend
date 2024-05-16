@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 public class Pal {
 
-    private String ActivityType;
+    private String activityLevel;
 
     private Double value;
 }

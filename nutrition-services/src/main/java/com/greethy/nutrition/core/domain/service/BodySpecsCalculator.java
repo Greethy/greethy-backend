@@ -2,6 +2,7 @@ package com.greethy.nutrition.core.domain.service;
 
 import java.text.DecimalFormat;
 
+import com.greethy.nutrition.core.domain.value.enums.ActivityLevel;
 import org.springframework.stereotype.Component;
 
 import com.greethy.nutrition.core.domain.value.*;
@@ -23,7 +24,7 @@ public class BodySpecsCalculator {
 
     private final FindPalEvaluatePort findPalEvaluatePort;
 
-    public FitnessIndexes calculate(double height, double weight, int age, String activityLevel) {
+    public FitnessIndexes calculate(double height, double weight, int age, ActivityLevel activityLevel) {
         var fitnessIndexes = new FitnessIndexes();
         var bmi = fitnessIndexes.getBmi();
         var bmr = fitnessIndexes.getBmr();
@@ -45,14 +46,15 @@ public class BodySpecsCalculator {
                 .flatMap(findPalEvaluatePort::findByAgeGroup)
                 .doOnNext(palEvaluate -> {
                     switch (activityLevel) {
-                        case "sedentary" -> pal.setValue(palEvaluate.getSedentary());
-                        case "moderately" -> pal.setValue(palEvaluate.getModerately());
-                        case "vigorous" -> pal.setValue(palEvaluate.getVigorous());
+                        case SEDENTARY -> pal.setValue(palEvaluate.getSedentary());
+                        case MODERATELY -> pal.setValue(palEvaluate.getModerately());
+                        case VIGOROUS -> pal.setValue(palEvaluate.getVigorous());
                         default -> pal.setValue(1.6d);
                     }
-                    pal.setActivityType(activityLevel);
+                    pal.setActivityLevel(activityLevel.getName());
                 })
                 .block();
+
         return fitnessIndexes;
     }
 

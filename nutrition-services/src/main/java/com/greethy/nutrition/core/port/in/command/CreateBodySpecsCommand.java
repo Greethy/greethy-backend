@@ -1,5 +1,7 @@
 package com.greethy.nutrition.core.port.in.command;
 
+import com.greethy.nutrition.core.domain.value.enums.ActivityLevel;
+import com.greethy.nutrition.core.domain.value.enums.Gender;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import lombok.Data;
@@ -18,9 +20,9 @@ public class CreateBodySpecsCommand {
 
     private Double weight;
 
-    private Integer gender;
+    private Gender gender;
 
-    private String activityType;
+    private ActivityLevel activityLevel;
 
     private String goal;
 }

@@ -1,7 +1,5 @@
 package com.greethy.nutrition.api.rest.dto.response;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import com.greethy.nutrition.core.domain.value.Nutrient;
@@ -26,5 +24,5 @@ public class IngredientResponse {
     private Integer calories;
 
     @JsonProperty("nutrition_per_100g")
-    private List<Nutrient> nutrients;
+    private Nutrient nutrient;
 }

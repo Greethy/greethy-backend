@@ -5,9 +5,23 @@ import lombok.Data;
 @Data
 public class Nutrient {
 
-    private String name;
+    private Mass protein;
 
-    private Double value;
+    private Mass carbohydrate;
 
-    private String unit;
+    private Mass lipid;
+
+    private Mass fiber;
+
+    private Mass iron;
+
+    private Mass sodium;
+
+    @Data
+    public static class Mass {
+
+        private Double value;
+
+        private String unit;
+    }
 }

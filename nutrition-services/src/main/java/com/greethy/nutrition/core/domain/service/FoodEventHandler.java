@@ -31,8 +31,7 @@ public class FoodEventHandler {
     }
 
     @EventHandler
-    void on(
-            IngredientsAddedToFoodEvent event,
+    void on(IngredientsAddedToFoodEvent event,
             FindFoodPort findPort,
             @Qualifier("mongodb-save-adapter") SaveFoodPort savePort) {
         findPort.findById(event.getFoodId())
@@ -40,7 +39,6 @@ public class FoodEventHandler {
                     var totalCalories = food.getTotalCalories() + event.getTotalCalories();
                     food.setTotalCalories(totalCalories);
                     food.getIngredients().addAll(event.getFoodIngredients());
-                    food.setUpdatedAt(event.getUpdatedAt());
                 })
                 .flatMap(savePort::save)
                 .subscribe();

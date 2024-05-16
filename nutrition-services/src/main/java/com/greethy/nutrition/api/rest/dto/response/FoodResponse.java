@@ -55,5 +55,5 @@ public class FoodResponse {
 
     private List<FoodIngredient> ingredients;
 
-    private List<Nutrient> nutrients;
+    private Nutrient nutrient;
 }

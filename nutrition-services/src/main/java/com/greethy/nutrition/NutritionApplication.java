@@ -14,7 +14,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RequiredArgsConstructor
-@SpringBootApplication(scanBasePackages = {"com.greethy.nutrition", "com.greethy.core", "com.greethy.mapper"})
+@SpringBootApplication(scanBasePackages = {
+        "com.greethy.nutrition",
+        "com.greethy.core",
+        "com.greethy.mapper"
+})
 public class NutritionApplication {
 
     /**
@@ -24,4 +28,5 @@ public class NutritionApplication {
     public static void main(String[] args) {
         SpringApplication.run(NutritionApplication.class, args);
     }
+
 }

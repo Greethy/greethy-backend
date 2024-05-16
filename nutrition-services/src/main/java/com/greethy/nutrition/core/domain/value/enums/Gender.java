@@ -1,4 +1,4 @@
-package com.greethy.nutrition.core.domain.value;
+package com.greethy.nutrition.core.domain.value.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,10 +6,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Gender {
-    FEMALE("female", 0),
-    MALE("male", 1);
+    FEMALE("female"),
+    MALE("male");
 
     private final String name;
 
-    private final Integer value;
 }

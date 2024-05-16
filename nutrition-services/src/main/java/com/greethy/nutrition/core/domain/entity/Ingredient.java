@@ -1,10 +1,9 @@
 package com.greethy.nutrition.core.domain.entity;
 
-import java.util.List;
-
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import com.greethy.nutrition.core.domain.value.Nutrient;
 
@@ -14,12 +13,10 @@ import lombok.Data;
 @Document(collection = "ingredients")
 public class Ingredient {
 
-    @Id
+    @MongoId(FieldType.STRING)
     private String id;
 
     private String name;
-
-    private String code;
 
     private String locale;
 
@@ -30,5 +27,5 @@ public class Ingredient {
     private Integer calories;
 
     @Field(name = "nutrition_per_100g")
-    private List<Nutrient> nutrients;
+    private Nutrient nutrient;
 }

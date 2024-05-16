@@ -1,20 +1,6 @@
 package com.greethy.nutrition.core.domain.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.eventsourcing.EventSourcingHandler;
-import org.axonframework.modelling.command.AggregateIdentifier;
-import org.axonframework.modelling.command.AggregateLifecycle;
-import org.axonframework.spring.stereotype.Aggregate;
-import org.modelmapper.ModelMapper;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-
+import com.greethy.core.domain.entity.BaseEntity;
 import com.greethy.nutrition.core.domain.value.Nutrient;
 import com.greethy.nutrition.core.domain.value.Owner;
 import com.greethy.nutrition.core.event.FoodCreatedEvent;
@@ -23,16 +9,37 @@ import com.greethy.nutrition.core.port.in.command.AddIngredientsToFoodCommand;
 import com.greethy.nutrition.core.port.in.command.CreateFoodCommand;
 import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
 import com.greethy.nutrition.core.port.out.read.GetUserPort;
-
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.modelling.command.AggregateLifecycle;
+import org.axonframework.spring.stereotype.Aggregate;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.redis.core.RedisHash;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Data
+@ToString
 @Aggregate
 @NoArgsConstructor
+@RedisHash("foods")
 @Document(collection = "foods")
-public class Food {
+@EqualsAndHashCode(callSuper = true)
+public class Food extends BaseEntity {
 
     @Id
     @AggregateIdentifier
@@ -40,11 +47,13 @@ public class Food {
 
     private String name;
 
-    @Field(name = "related_ids")
-    private List<String> relatedIds;
-
+    @Indexed
     private String group;
 
+    @Field(name = "related_ids")
+    private RelatedIds relatedIds = new RelatedIds();
+
+    @Indexed
     private String meal;
 
     private String description;
@@ -68,15 +77,9 @@ public class Food {
 
     private Owner owner;
 
-    @Field(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @Field(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private Nutrient nutrient;
 
     private List<FoodIngredient> ingredients = new ArrayList<>();
-
-    private List<Nutrient> nutrients;
 
     @CommandHandler
     Food(CreateFoodCommand command, ModelMapper mapper, GetUserPort userPort) {
@@ -85,7 +88,6 @@ public class Food {
                     var owner = mapper.map(user, Owner.class);
                     var event = mapper.map(command, FoodCreatedEvent.class);
                     event.setOwner(owner);
-                    event.setCreatedAt(LocalDateTime.now());
                     return event;
                 })
                 .block();
@@ -94,6 +96,7 @@ public class Food {
 
     @EventSourcingHandler
     void on(FoodCreatedEvent event) {
+        var present = new Date();
         this.id = event.getFoodId();
         this.name = event.getName();
         this.description = event.getDescription();
@@ -104,8 +107,9 @@ public class Food {
         this.recipe = event.getRecipe();
         this.tips = event.getTips();
         this.open = event.getOpen();
-        this.createdAt = event.getCreatedAt();
         this.owner = event.getOwner();
+        super.createdAt = present;
+        super.updatedAt = present;
     }
 
     @CommandHandler
@@ -135,6 +139,26 @@ public class Food {
     void on(IngredientsAddedToFoodEvent event) {
         this.ingredients.addAll(event.getFoodIngredients());
         this.totalCalories += event.getTotalCalories();
-        this.updatedAt = event.getUpdatedAt();
+        super.updatedAt = new Date();
     }
+
+    @Data
+    public static class RelatedIds{
+
+        @Field(name = "cereal_ids")
+        private Set<String> cerealIds;
+
+        @Field(name = "vegetable_ids")
+        private Set<String> vegetableIds;
+
+        @Field(name = "protein_ids")
+        private Set<String> proteinIds;
+
+        @Field(name = "soup_ids")
+        private Set<String> soupIds;
+
+        @Field(name = "desert_ids")
+        private Set<String> desertIds;
+    }
+
 }

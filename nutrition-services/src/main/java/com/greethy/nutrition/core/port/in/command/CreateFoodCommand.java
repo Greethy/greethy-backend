@@ -1,6 +1,9 @@
 package com.greethy.nutrition.core.port.in.command;
 
+import com.greethy.nutrition.core.domain.value.enums.Group;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
+
+import com.greethy.nutrition.core.domain.value.enums.Meal;
 
 import lombok.Data;
 
@@ -14,9 +17,9 @@ public class CreateFoodCommand {
 
     private String name;
 
-    private String group;
+    private Group group;
 
-    private String meal;
+    private Meal meal;
 
     private String description;
 

@@ -29,350 +29,290 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.TYPE})
 @RouterOperations({
-    @RouterOperation(
-            method = RequestMethod.POST,
-            path = "/api/v1/users/{user-id}/body-specs",
-            operation =
-                    @Operation(
-                            operationId = "createUserBodySpecs",
-                            parameters = @Parameter(in = ParameterIn.PATH, name = "user-id", required = true),
-                            summary = "Create a new Personal Body Specification.",
-                            description =
-                                    "Create a Body Specification of user by using its age, weight, height, gender, level of activity and goal.",
-                            tags = "BodySpecs",
-                            requestBody =
-                                    @RequestBody(
-                                            description = "A Example of Person's Body Specs.",
-                                            required = true,
-                                            content =
-                                                    @Content(
-                                                            mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                            schema =
-                                                                    @Schema(
-                                                                            implementation =
-                                                                                    CreateBodySpecsRequest.class,
-                                                                            example =
-                                                                                    """
-																		{
-																			"age" : 22,
-																			"height" : 1.8,
-																			"weight" : 72,
-																			"gender" : 1,
-																			"activity_type" : "vigorous",
-																			"goal" : "Gain Muscle"
-																		}
-																""",
-                                                                            requiredProperties = {
-                                                                                "age",
-                                                                                "height",
-                                                                                "weight",
-                                                                                "gender",
-                                                                                "activity_type",
-                                                                                "goal"
-                                                                            }))),
-                            responses = {
+        @RouterOperation(
+                method = RequestMethod.POST,
+                path = "/api/v1/users/{user-id}/body-specs",
+                operation = @Operation(
+                        operationId = "createUserBodySpecs",
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "user-id", required = true),
+                        summary = "Create a new Personal Body Specification.",
+                        description = "Create a Body Specification of user by using its age, weight, height, gender, level of activity and goal.",
+                        tags = "BodySpecs",
+                        requestBody = @RequestBody(
+                                description = "A Example of Person's Body Specs.",
+                                required = true,
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                        schema = @Schema(
+                                                implementation = CreateBodySpecsRequest.class,
+                                                requiredProperties = {"age", "height", "weight", "gender", "activity_type", "goal"})
+                                )
+                        ),
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "201",
                                         description = "A User's Body Specs has been created successfully.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema =
-                                                                @Schema(
-                                                                        implementation = BodySpecsCreatedResponse.class,
-                                                                        example =
-                                                                                """
-																		{
-																			user_id: string
-																		}
-																		"""))),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = BodySpecsCreatedResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description =
-                                                "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            })),
-    @RouterOperation(
-            method = RequestMethod.GET,
-            path = "/api/v1/users/{user-id}/body-specs",
-            operation =
-                    @Operation(
-                            operationId = "getAllUserBodySpecs",
-                            parameters = @Parameter(in = ParameterIn.PATH, name = "user-id", required = true),
-                            summary = "Get all Personal Body Specification.",
-                            description = "Get all Body Specification of user",
-                            tags = "BodySpecs",
-                            responses = {
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                )
+                        })
+        ),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/users/{user-id}/body-specs",
+                operation = @Operation(
+                        operationId = "getAllUserBodySpecs",
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "user-id", required = true),
+                        summary = "Get all Personal Body Specification.",
+                        description = "Get all Body Specification of user",
+                        tags = "BodySpecs",
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "200",
                                         description = "All User's Body Specs.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema =
-                                                                @Schema(
-                                                                        example =
-                                                                                """
-														[
-															{
-																"age": 22,
-																"height": 1.8,
-																"weight": 72,
-																"gender": "male",
-																"bmi": {
-																"index": 22.2,
-																"status": "Normal"
-																},
-																"bmr": {
-																	"bmrPerKg": 24,
-																	"bmrPerDay": 1728
-																},
-																"pal": {
-																	"value": 2,
-																	"activityType": "vigorous"
-																},
-																"tdee": 3456
-															}
-														]
-														"""))),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(
+                                                        example = """
+                                                                     [
+                                                                        {
+                                                                        	"age": 22,
+                                                                        	"height": 1.8,
+                                                                        	"weight": 72,
+                                                                        	"gender": "male",
+                                                                        	"bmi": {
+                                                                        	    "index": 22.2,
+                                                                        		"status": "Normal"
+                                                                        	},
+                                                                        	"bmr": {
+                                                                        		"bmrPerKg": 24,
+                                                                        		"bmrPerDay": 1728
+                                                                        	},
+                                                                        	"pal": {
+                                                                        		"value": 2,
+                                                                        		"activityType": "vigorous"
+                                                                        	},
+                                                                        	"tdee": 3456
+                                                                        }
+                                                                     ]
+                                                                   """))
+                                ),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description =
-                                                "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            })),
-    @RouterOperation(
-            method = RequestMethod.POST,
-            path = "/api/v1/users/{user-id}/food",
-            operation =
-                    @Operation(
-                            operationId = "createFood",
-                            parameters = @Parameter(in = ParameterIn.PATH, name = "user-id", required = true),
-                            description = "User create new their own food",
-                            tags = "Foods",
-                            requestBody =
-                                    @RequestBody(
-                                            description = "A Example of Food.",
-                                            required = true,
-                                            content =
-                                                    @Content(
-                                                            mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                            schema =
-                                                                    @Schema(
-                                                                            implementation = CreateFoodRequest.class,
-                                                                            example =
-                                                                                    """
-																		{
-																			"name" : "Bò Hầm rau củ",
-																			"recipe" : "Bước 1: chuẩn bị nguyên liệu\\\\n Bước 2: Bắc bếp\\\\n Bước 3: Thưởng thức món ăn",
-																			"tips" : "Để lửa nhỏ 150 độ C trong khoảng thời gian 1 tiếng để thịt bò được nhừ",
-																			"description" : "Bò là một trong những thực phẩm giúp ta bổ sung nhiều chất sắt. Thịt bò rất tốt đối với những người thiếu máu, đặc biệt là các chị em khi đến ngày dâu hay những người đang trong quá trình giảm cân. Tuần này, Greethy giới thiệu với bạn món tủ của Greethy - bò hầm rau củ",
-																			"image_url" : "https://www.facebook.com/photo?fbid=122147869472086639&set=pcb.122147870048086639",
-																			"video-url" : "https://www.youtube.com/watch?v=m2c8L6rDLWg&list=RDGMEMQ1dJ7wXfLlqCjwV0xfSNbA&index=5",
-																			"open" : true
-																		}
-																""",
-                                                                            requiredProperties = {
-                                                                                "name",
-                                                                                "recipe",
-                                                                                "tips",
-                                                                                "description",
-                                                                                "image_url",
-                                                                                "video-url",
-                                                                                "open"
-                                                                            }))),
-                            responses = {
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                )
+                        })
+        ),
+        @RouterOperation(
+                method = RequestMethod.POST,
+                path = "/api/v1/users/{user-id}/food",
+                operation =
+                @Operation(
+                        operationId = "createFood",
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "user-id", required = true),
+                        description = "User create new their own food",
+                        tags = "Foods",
+                        requestBody = @RequestBody(
+                                description = "A Example of Food.",
+                                required = true,
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                        schema = @Schema(
+                                                implementation = CreateFoodRequest.class,
+                                                requiredProperties = {"name", "recipe", "tips",
+                                                        "description", "image_url", "video-url", "open"}))
+                        ),
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "201",
                                         description = "Created new Food with empty Ingredients.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema =
-                                                                @Schema(
-                                                                        implementation = FoodCreatedResponse.class,
-                                                                        example =
-                                                                                """
-																		{
-																			"food_id": "7950450f-6186-43c0-9695-99a2fb8b8a02"
-																		}
-																		"""))),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = FoodCreatedResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description =
-                                                "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            })),
-    @RouterOperation(
-            method = RequestMethod.DELETE,
-            path = "/api/v1/users/{user-id}/body-specs/{body-specs-id}",
-            operation =
-                    @Operation(
-                            operationId = "deleteUserBodySpecs",
-                            parameters = {
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                )
+                        })
+        ),
+        @RouterOperation(
+                method = RequestMethod.DELETE,
+                path = "/api/v1/users/{user-id}/body-specs/{body-specs-id}",
+                operation = @Operation(
+                        operationId = "deleteUserBodySpecs",
+                        parameters = {
                                 @Parameter(in = ParameterIn.PATH, name = "user-id", required = true),
                                 @Parameter(in = ParameterIn.PATH, name = "body-specs-id", required = true)
-                            },
-                            description = "Users delete their BodySpecs",
-                            tags = "BodySpecs",
-                            responses = {
+                        },
+                        description = "Users delete their BodySpecs",
+                        tags = "BodySpecs",
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "200",
                                         description = "User's BodySpecs was deleted successfully"),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description =
-                                                "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            })),
-    @RouterOperation(
-            method = RequestMethod.GET,
-            path = "/api/v1/body-specs/{body-specs-id}",
-            operation =
-                    @Operation(
-                            operationId = "getBodySpecsById",
-                            parameters = @Parameter(in = ParameterIn.PATH, name = "body-specs-id", required = true),
-                            description = "Get Body-Specs by its ID.",
-                            tags = "BodySpecs",
-                            responses = {
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                )
+                        })
+        ),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/body-specs/{body-specs-id}",
+                operation =
+                @Operation(
+                        operationId = "getBodySpecsById",
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "body-specs-id", required = true),
+                        description = "Get Body-Specs by its ID.",
+                        tags = "BodySpecs",
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "200",
                                         description = "A Body Specs.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = BodySpecsResponse.class))),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = BodySpecsResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "401",
                                         description =
                                                 "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            })),
-    @RouterOperation(
-            method = RequestMethod.PUT,
-            path = "/api/v1/body-specs/{body-specs-id}",
-            operation =
-                    @Operation(
-                            operationId = "updateBodySpecsById",
-                            parameters = @Parameter(in = ParameterIn.PATH, name = "body-specs-id", required = true),
-                            description = "Update Body-Specs by its ID.",
-                            summary = "Update Body-Specs by its ID.",
-                            tags = "BodySpecs",
-                            responses = {
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                )
+                        })
+        ),
+        @RouterOperation(
+                method = RequestMethod.PUT,
+                path = "/api/v1/body-specs/{body-specs-id}",
+                operation =
+                @Operation(
+                        operationId = "updateBodySpecsById",
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "body-specs-id", required = true),
+                        description = "Update Body-Specs by its ID.",
+                        summary = "Update Body-Specs by its ID.",
+                        tags = "BodySpecs",
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "200",
                                         description = "A Updated Body Specs.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = BodySpecsResponse.class))),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = BodySpecsResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description =
-                                                "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            })),
-    @RouterOperation(
-            method = RequestMethod.GET,
-            path = "/api/v1/foods/{food-id}",
-            operation =
-                    @Operation(
-                            operationId = "getFoodById",
-                            parameters = @Parameter(in = ParameterIn.PATH, name = "food-id", required = true),
-                            description = "Get Food by its ID.",
-                            summary = "Get Food by its ID.",
-                            tags = "Foods",
-                            responses = {
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                )
+                        })
+        ),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/foods/{food-id}",
+                operation =
+                @Operation(
+                        operationId = "getFoodById",
+                        parameters = @Parameter(in = ParameterIn.PATH, name = "food-id", required = true),
+                        description = "Get Food by its ID.",
+                        summary = "Get Food by its ID.",
+                        tags = "Foods",
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "200",
                                         description = "A Food's Information.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = FoodResponse.class))),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = FoodResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "401",
                                         description =
                                                 "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
                                         content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
                                         content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            })),
-    @RouterOperation(
-            method = RequestMethod.GET,
-            path = "/api/v1/foods",
-            operation =
-                    @Operation(
-                            operationId = "getFoodWithPagination",
-                            parameters = {
+                                        @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                )
+                        })
+        ),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/foods",
+                operation =
+                @Operation(
+                        operationId = "getFoodWithPagination",
+                        parameters = {
                                 @Parameter(
                                         in = ParameterIn.QUERY,
                                         name = "offset",
@@ -385,34 +325,36 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
                                         required = true,
                                         description =
                                                 "The maximum number of items to return. Default: 20, minimum:1, maximum: 50")
-                            },
-                            description = "Get all Foods",
-                            summary = "Get Food by with Pagination.",
-                            tags = "Foods",
-                            responses = {
+                        },
+                        description = "Get all Foods",
+                        summary = "Get Food by with Pagination.",
+                        tags = "Foods",
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "200",
                                         description = "A Food's Information.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = FoodResponse.class))),
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = FoodResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description =
-                                                "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
                                         content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
                                         content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            })),
+                                        @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                )
+                        })
+        ),
         @RouterOperation(
                 method = RequestMethod.GET,
                 path = "/api/v1/ingredients/{ingredient-id}",
@@ -424,7 +366,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
                                         in = ParameterIn.PATH,
                                         name = "ingredient-id",
                                         required = true,
-                                        description = "The id of the ingredient.")
+                                        description = "The id of the ingredient."
+                                )
                         },
                         description = "Get Ingredient by its ID",
                         summary = "Get Ingredient by its ID.",
@@ -433,69 +376,73 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
                                 @ApiResponse(
                                         responseCode = "200",
                                         description = "A Ingredient's Information.",
-                                        content =
-                                        @Content(
+                                        content = @Content(
                                                 mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                schema = @Schema(implementation = FoodResponse.class))),
+                                                schema = @Schema(implementation = FoodResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description =
-                                                "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
-                                        content =
-                                        @Content(
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
                                                 mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                schema = @Schema(implementation = ErrorResponse.class))),
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
-                                        content =
-                                        @Content(
+                                        content = @Content(
                                                 mediaType = MediaType.APPLICATION_JSON_VALUE,
                                                 schema = @Schema(implementation = ErrorResponse.class)))
-                        })),
-    @RouterOperation(
-            method = RequestMethod.GET,
-            path = "/api/v1/ingredients",
-            operation =
-                    @Operation(
-                            operationId = "getIngredientWithPagination",
-                            parameters = {
+                        })
+        ),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/ingredients",
+                operation = @Operation(
+                        operationId = "getIngredientWithPagination",
+                        parameters = {
                                 @Parameter(
                                         in = ParameterIn.QUERY,
                                         name = "offset",
                                         required = true,
-                                        description =
-                                                "The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items."),
+                                        description = "The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items."
+                                ),
                                 @Parameter(
                                         in = ParameterIn.QUERY,
                                         name = "limit",
                                         required = true,
-                                        description =
-                                                "The maximum number of items to return. Default: 20, minimum:1, maximum: 50")
-                            },
-                            description = "Get Ingredients",
-                            summary = "Get Ingredients.",
-                            tags = "Ingredients",
-                            responses = {
+                                        description = "The maximum number of items to return. Default: 20, minimum:1, maximum: 50"
+                                )
+                        },
+                        description = "Get Ingredients",
+                        summary = "Get Ingredients.",
+                        tags = "Ingredients",
+                        responses = {
                                 @ApiResponse(
                                         responseCode = "200",
                                         description = "A Ingredient's Information.",
                                         content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
                                 @ApiResponse(
                                         responseCode = "401",
-                                        description =
-                                                "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class))),
+                                        description = "Bad or expired token. This can happen if the user revoked a token or the access token has expired. You should re-authenticate the user.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The Greethy Server exceeded its rate limits.",
-                                        content =
-                                                @Content(
-                                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                        schema = @Schema(implementation = ErrorResponse.class)))
-                            }))
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)))
+                        })),
+        @RouterOperation(
+                method = RequestMethod.POST,
+                path = "/api/v1/menus/default",
+                operation = @Operation(
+                        operationId = "createNewDefaultMenu"
+
+                )
+        )
 })
-public @interface NutritionOpenApi {}
+public @interface NutritionOpenApi {
+}

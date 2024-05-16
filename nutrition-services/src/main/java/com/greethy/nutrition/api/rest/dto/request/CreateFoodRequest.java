@@ -2,6 +2,8 @@ package com.greethy.nutrition.api.rest.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.greethy.nutrition.core.domain.value.enums.Meal;
+
 import lombok.Data;
 
 @Data
@@ -10,6 +12,8 @@ public class CreateFoodRequest {
     private String name;
 
     private String description;
+
+    private Meal meal;
 
     private String recipe;
 

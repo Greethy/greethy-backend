@@ -1,7 +1,8 @@
 package com.greethy.nutrition.core.domain.value;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import lombok.Data;
 import lombok.ToString;
@@ -11,7 +12,7 @@ import lombok.ToString;
 @Document(collection = "bmi_evaluates")
 public class BmiEvaluate {
 
-    @Id
+    @MongoId(FieldType.STRING)
     private String id;
 
     private final String category;

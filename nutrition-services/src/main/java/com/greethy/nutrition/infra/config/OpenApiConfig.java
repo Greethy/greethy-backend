@@ -19,8 +19,9 @@ public class OpenApiConfig {
                 .version("1.0.0")
                 .description("This is description")
                 .termsOfService("Term of Services");
-        var localServer =
-                new Server().description("Local Development Environment").url("http://localhost:8092");
+        var localServer = new Server()
+                .description("Local Development Environment")
+                .url("http://localhost:8092");
         return GroupedOpenApi.builder()
                 .group("nutrition")
                 .addOpenApiCustomizer(openApi -> openApi.info(info).servers(List.of(localServer)))
