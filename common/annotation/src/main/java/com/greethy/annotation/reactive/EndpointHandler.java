@@ -5,10 +5,10 @@ import java.lang.annotation.*;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
 
+@Component
+@Documented
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Component
 public @interface EndpointHandler {
 
     /**

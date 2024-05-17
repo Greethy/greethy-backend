@@ -1,5 +1,6 @@
 package com.greethy.nutrition.core.domain.service;
 
+import com.greethy.nutrition.core.port.out.BodySpecsPort;
 import org.axonframework.queryhandling.QueryHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -7,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
 import com.greethy.nutrition.core.port.in.query.*;
-import com.greethy.nutrition.core.port.out.read.FindBodySpecsPort;
 
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
@@ -19,16 +19,17 @@ public class BodySpecsQueryHandler {
 
     private final ModelMapper mapper;
 
-    private final FindBodySpecsPort findBodySpecsPort;
+    private final BodySpecsPort port;
 
     @QueryHandler
     Flux<BodySpecsResponse> handle(FindAllBodySpecsQuery query) {
-        return findBodySpecsPort.findAll().map(bodySpecs -> mapper.map(bodySpecs, BodySpecsResponse.class));
+        return port.findAll()
+                .map(bodySpecs -> mapper.map(bodySpecs, BodySpecsResponse.class));
     }
 
     @QueryHandler
     Mono<BodySpecsResponse> handle(FindBodySpecsByIdQuery query) {
-        return findBodySpecsPort
+        return port
                 .findById(query.getBodySpecsId())
                 .map(bodySpecs -> mapper.map(bodySpecs, BodySpecsResponse.class));
     }
@@ -36,18 +37,18 @@ public class BodySpecsQueryHandler {
     @QueryHandler
     Flux<BodySpecsResponse> handle(FindBodySpecsWithPaginationQuery query) {
         return Flux.just(PageRequest.of(query.getOffset(), query.getLimit()))
-                .flatMap(findBodySpecsPort::findAllBy)
+                .flatMap(port::findAllBy)
                 .map(bodySpecs -> mapper.map(bodySpecs, BodySpecsResponse.class));
     }
 
     @QueryHandler
     Mono<Long> handle(CountAllBodySpecsQuery query) {
-        return findBodySpecsPort.countAll();
+        return port.countAll();
     }
 
     @QueryHandler
     Flux<BodySpecsResponse> handle(FindAllBodySpecsByIdQuery query) {
-        return findBodySpecsPort
+        return port
                 .findAllByIds(Flux.fromIterable(query.getBodySpecsIds()))
                 .map(bodySpecs -> mapper.map(bodySpecs, BodySpecsResponse.class));
     }

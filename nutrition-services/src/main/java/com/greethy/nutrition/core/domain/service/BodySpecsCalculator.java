@@ -1,28 +1,26 @@
 package com.greethy.nutrition.core.domain.service;
 
-import java.text.DecimalFormat;
-
-import com.greethy.nutrition.core.domain.value.enums.ActivityLevel;
-import org.springframework.stereotype.Component;
-
 import com.greethy.nutrition.core.domain.value.*;
-import com.greethy.nutrition.core.port.out.read.FindBmiEvaluatePort;
-import com.greethy.nutrition.core.port.out.read.FindBmrByAgePort;
-import com.greethy.nutrition.core.port.out.read.FindPalEvaluatePort;
-
+import com.greethy.nutrition.core.domain.value.enums.ActivityLevel;
+import com.greethy.nutrition.core.port.out.BmiEvaluatePort;
+import com.greethy.nutrition.core.port.out.BmrByAgePort;
+import com.greethy.nutrition.core.port.out.PalEvaluatePort;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
+
+import java.text.DecimalFormat;
 
 @Component
 @RequiredArgsConstructor
 public class BodySpecsCalculator {
 
-    private final FindBmiEvaluatePort findBmiEvaluatePort;
+    private final BmiEvaluatePort bmiEvaluatePort;
 
-    private final FindBmrByAgePort findBmrByAgePort;
+    private final BmrByAgePort bmrByAgePort;
 
-    private final FindPalEvaluatePort findPalEvaluatePort;
+    private final PalEvaluatePort palEvaluatePort;
 
     public FitnessIndexes calculate(double height, double weight, int age, ActivityLevel activityLevel) {
         var fitnessIndexes = new FitnessIndexes();
@@ -32,18 +30,18 @@ public class BodySpecsCalculator {
         var bmiIndex = (weight / (height * height));
         Mono.just(Double.valueOf(new DecimalFormat("#.#").format(bmiIndex)))
                 .doOnNext(bmi::setIndex)
-                .flatMap(findBmiEvaluatePort::findByIndexInRange)
+                .flatMap(bmiEvaluatePort::findByIndexInRange)
                 .map(BmiEvaluate::getCategory)
                 .doOnNext(bmi::setStatus)
                 .then(Mono.just(age))
-                .flatMap(findBmrByAgePort::findByAgeGroup)
+                .flatMap(bmrByAgePort::findByAgeGroup)
                 .map(BmrByAge::getBmrPerKg)
                 .doOnNext(bmrByAge -> {
                     bmr.setBmrPerKg(bmrByAge);
                     bmr.setBmrPerDay(bmr.getBmrPerKg() * weight);
                 })
                 .then(Mono.just(age))
-                .flatMap(findPalEvaluatePort::findByAgeGroup)
+                .flatMap(palEvaluatePort::findByAgeGroup)
                 .doOnNext(palEvaluate -> {
                     switch (activityLevel) {
                         case SEDENTARY -> pal.setValue(palEvaluate.getSedentary());

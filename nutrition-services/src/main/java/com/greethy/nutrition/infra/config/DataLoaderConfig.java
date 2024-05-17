@@ -1,5 +1,23 @@
 package com.greethy.nutrition.infra.config;
 
+import com.greethy.nutrition.core.domain.entity.Food;
+import com.greethy.nutrition.core.domain.value.BmiEvaluate;
+import com.greethy.nutrition.core.domain.value.BmrByAge;
+import com.greethy.nutrition.core.domain.value.PalEvaluate;
+import com.greethy.nutrition.core.domain.value.Range;
+import com.greethy.nutrition.core.domain.value.enums.Meal;
+import com.greethy.nutrition.core.port.out.BmiEvaluatePort;
+import com.greethy.nutrition.core.port.out.BmrByAgePort;
+import com.greethy.nutrition.core.port.out.FoodPort;
+import com.greethy.nutrition.core.port.out.PalEvaluatePort;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -9,23 +27,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.greethy.nutrition.core.domain.entity.Food;
-import com.greethy.nutrition.core.domain.value.enums.Meal;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
-
-import com.greethy.nutrition.core.domain.value.BmiEvaluate;
-import com.greethy.nutrition.core.domain.value.BmrByAge;
-import com.greethy.nutrition.core.domain.value.PalEvaluate;
-import com.greethy.nutrition.core.domain.value.Range;
-import com.greethy.nutrition.core.port.out.write.*;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-
 /**
  * The {@code DataLoaderConfig} class is responsible for initializing data upon application startup.
  * This class listens for the ApplicationReadyEvent and triggers the data initialization process.
@@ -34,43 +35,45 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public class DataLoaderConfig {
 
-    private final SaveFoodPort saveFoodPort;
+    private final FoodPort foodPort;
 
-    private final DeleteFoodPort deleteFoodPort;
+    private final BmrByAgePort bmrByAgePort;
 
-    private final SaveBmiEvaluatePort saveBmiEvaluatePort;
+    private final PalEvaluatePort palEvaluatePort;
 
-    private final DeleteBmiEvaluatePort deleteBmiEvaluatePort;
+    private final BmiEvaluatePort bmiEvaluatePort;
 
-    private final SaveBmrByAgePort saveBmrByAgePort;
+    public DataLoaderConfig(@Qualifier("mongoFoodAdapter") FoodPort foodPort,
+                            BmrByAgePort bmrByAgePort,
+                            BmiEvaluatePort bmiEvaluatePort,
+                            PalEvaluatePort palEvaluatePort) {
+        this.foodPort = foodPort;
+        this.bmrByAgePort = bmrByAgePort;
+        this.bmiEvaluatePort = bmiEvaluatePort;
+        this.palEvaluatePort = palEvaluatePort;
+    }
 
-    private final DeleteBmrByAgePort deleteBmrByAgePort;
-
-    private final SavePalEvaluatePort savePalEvaluatePort;
-
-    private final DeletePalEvaluatePort deletePalEvaluatePort;
 
     @EventListener(value = ApplicationReadyEvent.class)
     void init() {
         log.info("Start data initialization....");
 
-        deleteFoodPort.deleteAll()
+        foodPort.deleteAll()
                 .thenMany(Flux.fromIterable(foods()))
-                .flatMap(saveFoodPort::save)
-                .subscribe(System.out::println);
+                .flatMap(foodPort::save)
+                .subscribe();
 
-        Mono.from(deleteBmiEvaluatePort.deleteAll())
+        Mono.from(bmiEvaluatePort.deleteAll())
                 .thenMany(Flux.just(bmiEvaluates()))
-                .flatMap(saveBmiEvaluatePort::saveAll)
-                .then(deleteBmrByAgePort.deleteAll())
+                .flatMap(bmiEvaluatePort::saveAll)
+                .then(bmrByAgePort.deleteAll())
                 .thenMany(Flux.just(bmrByAgesTable()))
-                .flatMap(saveBmrByAgePort::saveAll)
-                .then(deletePalEvaluatePort.deleteAll())
+                .flatMap(bmrByAgePort::saveAll)
+                .then(palEvaluatePort.deleteAll())
                 .thenMany(Flux.just(palEvaluates()))
-                .flatMap(savePalEvaluatePort::saveAll)
+                .flatMap(palEvaluatePort::saveAll)
                 .subscribe();
     }
 

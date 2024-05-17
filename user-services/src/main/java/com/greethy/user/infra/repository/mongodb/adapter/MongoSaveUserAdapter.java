@@ -1,6 +1,6 @@
 package com.greethy.user.infra.repository.mongodb.adapter;
 
-import com.greethy.annotation.hexagonal.InfrastructureAdapter;
+import com.greethy.annotation.hexagonal.DrivenAdapter;
 import com.greethy.user.core.domain.entity.User;
 import com.greethy.user.core.port.out.write.SaveUserPort;
 import com.greethy.user.infra.repository.mongodb.UserRepository;
@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 
 @RequiredArgsConstructor
-@InfrastructureAdapter("mongodb-save-adapter")
+@DrivenAdapter("mongodb-save-adapter")
 public class MongoSaveUserAdapter implements SaveUserPort {
 
     private final UserRepository userRepository;

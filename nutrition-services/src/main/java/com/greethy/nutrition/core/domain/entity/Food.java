@@ -7,8 +7,8 @@ import com.greethy.nutrition.core.event.FoodCreatedEvent;
 import com.greethy.nutrition.core.event.IngredientsAddedToFoodEvent;
 import com.greethy.nutrition.core.port.in.command.AddIngredientsToFoodCommand;
 import com.greethy.nutrition.core.port.in.command.CreateFoodCommand;
-import com.greethy.nutrition.core.port.out.read.FindIngredientPort;
-import com.greethy.nutrition.core.port.out.read.GetUserPort;
+import com.greethy.nutrition.core.port.out.IngredientPort;
+import com.greethy.nutrition.core.port.out.UserPort;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.data.redis.core.RedisHash;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
@@ -36,7 +35,6 @@ import java.util.stream.Collectors;
 @ToString
 @Aggregate
 @NoArgsConstructor
-@RedisHash("foods")
 @Document(collection = "foods")
 @EqualsAndHashCode(callSuper = true)
 public class Food extends BaseEntity {
@@ -82,7 +80,7 @@ public class Food extends BaseEntity {
     private List<FoodIngredient> ingredients = new ArrayList<>();
 
     @CommandHandler
-    Food(CreateFoodCommand command, ModelMapper mapper, GetUserPort userPort) {
+    Food(CreateFoodCommand command, ModelMapper mapper, UserPort userPort) {
         var foodCreatedEvent = userPort.getById(command.getUserId())
                 .map(user -> {
                     var owner = mapper.map(user, Owner.class);
@@ -113,7 +111,7 @@ public class Food extends BaseEntity {
     }
 
     @CommandHandler
-    void handle(AddIngredientsToFoodCommand command, FindIngredientPort ingredientPort) {
+    void handle(AddIngredientsToFoodCommand command, IngredientPort ingredientPort) {
         var foodIngredients = command.getFoodIngredients().stream()
                 .peek(foodIngredient -> Mono.just(foodIngredient.getIngredientId())
                         .flatMap(ingredientPort::findById)
