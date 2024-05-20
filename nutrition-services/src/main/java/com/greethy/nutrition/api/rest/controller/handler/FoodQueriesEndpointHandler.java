@@ -1,6 +1,7 @@
 package com.greethy.nutrition.api.rest.controller.handler;
 
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
+import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
@@ -35,6 +36,17 @@ public class FoodQueriesEndpointHandler {
                 .flatMap(query -> queryGateway.query(query, FoodResponse.class))
                 .flatMap(response -> ServerResponse.ok().bodyValue(response))
                 .onErrorResume(exceptionHandler::handlingException);
+    }
+
+    public Mono<ServerResponse> getAllFood() {
+        return Flux.just(new FindAllFoodQuery())
+                .flatMap(query -> queryGateway.streamingQuery(query, FoodResponse.class))
+                .collectList()
+                .flatMap(foodResponses -> foodResponses.isEmpty()
+                        ? ServerResponse.noContent().build()
+                        : ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(foodResponses));
     }
 
     public Mono<ServerResponse> getFoodWithPagination(ServerRequest serverRequest) {

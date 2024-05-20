@@ -1,6 +1,7 @@
 package com.greethy.nutrition.core.event;
 
 import com.greethy.nutrition.core.domain.value.Owner;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

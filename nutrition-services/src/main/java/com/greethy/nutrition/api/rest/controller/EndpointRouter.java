@@ -48,6 +48,7 @@ public class EndpointRouter {
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
                                 .POST("/default", menuCommandsHandler::createDefaultMenu))
                 ).path("/api/v1/foods", builder -> builder
+                        .GET("all", request -> foodQueriesEndpointHandler.getAllFood())
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
                                 .GET("{food-id}", foodQueriesEndpointHandler::getFoodById)
                                 .GET("", foodQueriesEndpointHandler::getFoodWithPagination)

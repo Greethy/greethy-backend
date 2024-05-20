@@ -1,5 +1,17 @@
 package com.greethy.nutrition.core.domain.entity;
 
+import java.util.Date;
+import java.util.Objects;
+
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.modelling.command.AggregateLifecycle;
+import org.axonframework.spring.stereotype.Aggregate;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.greethy.core.domain.entity.BaseEntity;
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
 import com.greethy.core.domain.event.UserBodySpecsDeletedEvent;
@@ -13,19 +25,9 @@ import com.greethy.nutrition.core.event.BodySpecsUpdatedEvent;
 import com.greethy.nutrition.core.port.in.command.CreateBodySpecsCommand;
 import com.greethy.nutrition.core.port.in.command.DeleteBodySpecsCommand;
 import com.greethy.nutrition.core.port.in.command.UpdateBodySpecsCommand;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.eventsourcing.EventSourcingHandler;
-import org.axonframework.modelling.command.AggregateIdentifier;
-import org.axonframework.modelling.command.AggregateLifecycle;
-import org.axonframework.spring.stereotype.Aggregate;
-import org.modelmapper.ModelMapper;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Date;
-import java.util.Objects;
 
 
 @Data

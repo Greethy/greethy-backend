@@ -1,15 +1,14 @@
 package com.greethy.nutrition.infra.config;
 
 import com.greethy.nutrition.core.domain.entity.Food;
+import com.greethy.nutrition.core.domain.entity.RelatedGroup;
 import com.greethy.nutrition.core.domain.value.BmiEvaluate;
 import com.greethy.nutrition.core.domain.value.BmrByAge;
 import com.greethy.nutrition.core.domain.value.PalEvaluate;
 import com.greethy.nutrition.core.domain.value.Range;
+import com.greethy.nutrition.core.domain.value.enums.Group;
 import com.greethy.nutrition.core.domain.value.enums.Meal;
-import com.greethy.nutrition.core.port.out.BmiEvaluatePort;
-import com.greethy.nutrition.core.port.out.BmrByAgePort;
-import com.greethy.nutrition.core.port.out.FoodPort;
-import com.greethy.nutrition.core.port.out.PalEvaluatePort;
+import com.greethy.nutrition.core.port.out.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -17,15 +16,12 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * The {@code DataLoaderConfig} class is responsible for initializing data upon application startup.
@@ -37,7 +33,9 @@ import java.util.stream.Stream;
 @Component
 public class DataLoaderConfig {
 
-    private final FoodPort foodPort;
+    private final FoodPort mongoFoodPort;
+
+    private final FoodPort redisFoodPort;
 
     private final BmrByAgePort bmrByAgePort;
 
@@ -45,14 +43,18 @@ public class DataLoaderConfig {
 
     private final BmiEvaluatePort bmiEvaluatePort;
 
-    public DataLoaderConfig(@Qualifier("mongoFoodAdapter") FoodPort foodPort,
-                            BmrByAgePort bmrByAgePort,
-                            BmiEvaluatePort bmiEvaluatePort,
-                            PalEvaluatePort palEvaluatePort) {
-        this.foodPort = foodPort;
+    private final RelatedGroupPort relatedGroupPort;
+
+    public DataLoaderConfig(@Qualifier("mongoFoodAdapter") FoodPort mongoFoodPort,
+                            @Qualifier("redisFoodAdapter") FoodPort redisFoodPort,
+                            BmrByAgePort bmrByAgePort, BmiEvaluatePort bmiEvaluatePort,
+                            PalEvaluatePort palEvaluatePort, RelatedGroupPort relatedGroupPort) {
+        this.mongoFoodPort = mongoFoodPort;
+        this.redisFoodPort = redisFoodPort;
         this.bmrByAgePort = bmrByAgePort;
         this.bmiEvaluatePort = bmiEvaluatePort;
         this.palEvaluatePort = palEvaluatePort;
+        this.relatedGroupPort = relatedGroupPort;
     }
 
 
@@ -60,9 +62,15 @@ public class DataLoaderConfig {
     void init() {
         log.info("Start data initialization....");
 
-        foodPort.deleteAll()
-                .thenMany(Flux.fromIterable(foods()))
-                .flatMap(foodPort::save)
+        mongoFoodPort.deleteAll()
+                .then(redisFoodPort.deleteAll())
+                .thenMany(Flux.zip(
+                                mongoFoodPort.saveAll(foods()),
+                                redisFoodPort.saveAll(foods())
+                        ).map(Tuple2::getT1)
+                )
+                .thenMany(Flux.fromIterable(relatedGroups()))
+                .flatMap(relatedGroupPort::save)
                 .subscribe();
 
         Mono.from(bmiEvaluatePort.deleteAll())
@@ -77,94 +85,45 @@ public class DataLoaderConfig {
                 .subscribe();
     }
 
-    private List<Food> foods() {
-        var breakfastFoods = IntStream.iterate(0, i -> i + 1)
+    private Set<Food> foods() {
+        return IntStream.iterate(0, i -> i + 1)
                 .limit(1000).boxed()
-                .map(Object::toString)
+                .map(Objects::toString)
                 .map(foodId -> {
                     var food = new Food();
                     food.setId(foodId);
                     food.setMeal(Meal.BREAKFAST.getName());
-                    food.setTotalCalories(new Random().nextDouble(50, 400));
-                    if (Integer.parseInt(foodId) >= 0 && Integer.parseInt(foodId) < 200) {
-                        food.setGroup("cereal");
-                        food.getRelatedIds().setSoupIds(generateRandomIds(200, 400));
-                        food.getRelatedIds().setProteinIds(generateRandomIds(400, 600));
-                        food.getRelatedIds().setVegetableIds(generateRandomIds(600, 800));
-                        food.getRelatedIds().setDesertIds(generateRandomIds(800, 1000));
-                    } else if (Integer.parseInt(foodId) >= 200 && Integer.parseInt(foodId) < 400) {
-                        food.setGroup("soup");
-                        food.getRelatedIds().setCerealIds(generateRandomIds(0, 200));
-                        food.getRelatedIds().setProteinIds(generateRandomIds(400, 600));
-                        food.getRelatedIds().setVegetableIds(generateRandomIds(600, 800));
-                        food.getRelatedIds().setDesertIds(generateRandomIds(800, 1000));
-                    } else if (Integer.parseInt(foodId) >= 400 && Integer.parseInt(foodId) < 600) {
-                        food.setGroup("protein");
-                        food.getRelatedIds().setCerealIds(generateRandomIds(0, 200));
-                        food.getRelatedIds().setSoupIds(generateRandomIds(200, 400));
-                        food.getRelatedIds().setVegetableIds(generateRandomIds(600, 800));
-                        food.getRelatedIds().setDesertIds(generateRandomIds(800, 1000));
-                    } else if (Integer.parseInt(foodId) >= 600 && Integer.parseInt(foodId) < 800) {
-                        food.setGroup("vegetable");
-                        food.getRelatedIds().setCerealIds(generateRandomIds(0, 200));
-                        food.getRelatedIds().setProteinIds(generateRandomIds(400, 600));
-                        food.getRelatedIds().setSoupIds(generateRandomIds(200, 400));
-                        food.getRelatedIds().setDesertIds(generateRandomIds(800, 1000));
-                    } else if (Integer.parseInt(foodId) >= 800 && Integer.parseInt(foodId) < 1000) {
-                        food.setGroup("desert");
-                        food.getRelatedIds().setCerealIds(generateRandomIds(0, 200));
-                        food.getRelatedIds().setProteinIds(generateRandomIds(400, 600));
-                        food.getRelatedIds().setSoupIds(generateRandomIds(200, 400));
-                        food.getRelatedIds().setVegetableIds(generateRandomIds(600, 800));
-                    }
-                    return food;
-                })
-                .toList();
+                    food.setTotalCalories((double) new Random().nextInt(50, 500));
 
-        var lunchFoods = IntStream.iterate(1000, i -> i + 1)
-                .limit(1000)
-                .boxed()
-                .map(Object::toString)
-                .map(foodId -> {
-                    var food = new Food();
-                    food.setId(foodId);
-                    food.setMeal(Meal.LUNCH.getName());
-                    food.setTotalCalories(new Random().nextDouble(300, 700));
-                    if (Integer.parseInt(foodId) >= 1000 && Integer.parseInt(foodId) < 1200) {
-                        food.setGroup("cereal");
-                        food.getRelatedIds().setSoupIds(generateRandomIds(1200, 1400));
-                        food.getRelatedIds().setProteinIds(generateRandomIds(1400, 1600));
-                        food.getRelatedIds().setVegetableIds(generateRandomIds(1600, 1800));
-                        food.getRelatedIds().setDesertIds(generateRandomIds(1800, 2000));
-                    } else if (Integer.parseInt(foodId) >= 1200 && Integer.parseInt(foodId) < 1400) {
-                        food.setGroup("soup");
-                        food.getRelatedIds().setCerealIds(generateRandomIds(1000, 1200));
-                        food.getRelatedIds().setProteinIds(generateRandomIds(1400, 1600));
-                        food.getRelatedIds().setVegetableIds(generateRandomIds(1600, 1800));
-                        food.getRelatedIds().setDesertIds(generateRandomIds(1800, 2000));
-                    } else if (Integer.parseInt(foodId) >= 1400 && Integer.parseInt(foodId) < 1600) {
-                        food.setGroup("protein");
-                        food.getRelatedIds().setCerealIds(generateRandomIds(0, 200));
-                        food.getRelatedIds().setSoupIds(generateRandomIds(200, 400));
-                        food.getRelatedIds().setVegetableIds(generateRandomIds(600, 800));
-                        food.getRelatedIds().setDesertIds(generateRandomIds(800, 1000));
-                    } else if (Integer.parseInt(foodId) >= 1600 && Integer.parseInt(foodId) < 1800) {
-                        food.setGroup("vegetable");
-                        food.getRelatedIds().setCerealIds(generateRandomIds(1000, 1200));
-                        food.getRelatedIds().setProteinIds(generateRandomIds(1400, 1600));
-                        food.getRelatedIds().setSoupIds(generateRandomIds(1200, 1400));
-                        food.getRelatedIds().setDesertIds(generateRandomIds(1800, 2000));
-                    } else if (Integer.parseInt(foodId) >= 1800 && Integer.parseInt(foodId) < 2000) {
-                        food.setGroup("desert");
-                        food.getRelatedIds().setCerealIds(generateRandomIds(1000, 1200));
-                        food.getRelatedIds().setProteinIds(generateRandomIds(1400, 1600));
-                        food.getRelatedIds().setSoupIds(generateRandomIds(1200, 1400));
-                        food.getRelatedIds().setVegetableIds(generateRandomIds(1600, 1800));
+                    if (Integer.parseInt(foodId) >= 0 && Integer.parseInt(foodId) < 200) {
+                        food.setGroup(Group.CEREAL.getName());
+                    } else if (Integer.parseInt(foodId) >= 200 && Integer.parseInt(foodId) < 400) {
+                        food.setGroup(Group.SOUP.getName());
+                    } else if (Integer.parseInt(foodId) >= 400 && Integer.parseInt(foodId) < 600) {
+                        food.setGroup(Group.PROTEIN.getName());
+                    } else if (Integer.parseInt(foodId) >= 600 && Integer.parseInt(foodId) < 800) {
+                        food.setGroup(Group.VEGETABLE.getName());
+                    } else {
+                        food.setGroup(Group.DESERT.getName());
                     }
                     return food;
-                }).toList();
-        return Stream.concat(breakfastFoods.stream(), lunchFoods.stream())
-                .collect(Collectors.toList());
+                }).collect(Collectors.toSet());
+    }
+
+    private Set<RelatedGroup> relatedGroups() {
+        return IntStream.iterate(0, i -> i + 1)
+                .limit(10).boxed()
+                .map(i -> {
+                    var relatedGroup = new RelatedGroup();
+                    relatedGroup.setId(UUID.randomUUID().toString());
+                    relatedGroup.setName("Test group");
+                    relatedGroup.setCerealIds(generateRandomIds(0, 200));
+                    relatedGroup.setSoupIds(generateRandomIds(200, 400));
+                    relatedGroup.setProteinIds(generateRandomIds(400, 600));
+                    relatedGroup.setVegetableIds(generateRandomIds(600, 800));
+                    relatedGroup.setDesertIds(generateRandomIds(800, 1000));
+                    return relatedGroup;
+                }).collect(Collectors.toSet());
     }
 
     private Set<String> generateRandomIds(int start, int end) {

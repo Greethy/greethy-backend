@@ -1,8 +1,9 @@
 package com.greethy.nutrition.core.port.in.command;
 
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
+
 import com.greethy.nutrition.core.domain.value.enums.ActivityLevel;
 import com.greethy.nutrition.core.domain.value.enums.Gender;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

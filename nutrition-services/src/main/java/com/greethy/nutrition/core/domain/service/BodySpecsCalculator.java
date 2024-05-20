@@ -1,16 +1,18 @@
 package com.greethy.nutrition.core.domain.service;
 
+import java.text.DecimalFormat;
+
+import org.springframework.stereotype.Component;
+
 import com.greethy.nutrition.core.domain.value.*;
 import com.greethy.nutrition.core.domain.value.enums.ActivityLevel;
 import com.greethy.nutrition.core.port.out.BmiEvaluatePort;
 import com.greethy.nutrition.core.port.out.BmrByAgePort;
 import com.greethy.nutrition.core.port.out.PalEvaluatePort;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-
-import java.text.DecimalFormat;
 
 @Component
 @RequiredArgsConstructor

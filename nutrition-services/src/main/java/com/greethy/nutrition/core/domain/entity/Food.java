@@ -28,7 +28,6 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
@@ -47,9 +46,6 @@ public class Food extends BaseEntity {
 
     @Indexed
     private String group;
-
-    @Field(name = "related_ids")
-    private RelatedIds relatedIds = new RelatedIds();
 
     @Indexed
     private String meal;
@@ -138,25 +134,6 @@ public class Food extends BaseEntity {
         this.ingredients.addAll(event.getFoodIngredients());
         this.totalCalories += event.getTotalCalories();
         super.updatedAt = new Date();
-    }
-
-    @Data
-    public static class RelatedIds{
-
-        @Field(name = "cereal_ids")
-        private Set<String> cerealIds;
-
-        @Field(name = "vegetable_ids")
-        private Set<String> vegetableIds;
-
-        @Field(name = "protein_ids")
-        private Set<String> proteinIds;
-
-        @Field(name = "soup_ids")
-        private Set<String> soupIds;
-
-        @Field(name = "desert_ids")
-        private Set<String> desertIds;
     }
 
 }

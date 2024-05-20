@@ -1,11 +1,13 @@
 package com.greethy.nutrition.infra.repository.mongodb.adapter;
 
+import org.springframework.data.domain.Pageable;
+
 import com.greethy.annotation.hexagonal.DrivenAdapter;
 import com.greethy.nutrition.core.domain.entity.Food;
 import com.greethy.nutrition.core.port.out.FoodPort;
 import com.greethy.nutrition.infra.repository.mongodb.FoodRepository;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -38,6 +40,16 @@ public class MongoFoodAdapter implements FoodPort {
     @Override
     public Mono<Food> findById(String id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public Flux<Food> saveAll(Iterable<Food> foods) {
+        return repository.saveAll(foods);
+    }
+
+    @Override
+    public Flux<Food> findAll() {
+        return repository.findAll();
     }
 
     @Override

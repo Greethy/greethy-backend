@@ -1,6 +1,5 @@
 package com.greethy.nutrition.core.domain.service;
 
-import com.greethy.nutrition.core.port.out.BodySpecsPort;
 import org.axonframework.queryhandling.QueryHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -8,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
 import com.greethy.nutrition.core.port.in.query.*;
+import com.greethy.nutrition.core.port.out.BodySpecsPort;
 
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;

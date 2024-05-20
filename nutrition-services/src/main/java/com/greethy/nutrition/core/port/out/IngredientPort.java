@@ -1,7 +1,9 @@
 package com.greethy.nutrition.core.port.out;
 
-import com.greethy.nutrition.core.domain.entity.Ingredient;
 import org.springframework.data.domain.Pageable;
+
+import com.greethy.nutrition.core.domain.entity.Ingredient;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

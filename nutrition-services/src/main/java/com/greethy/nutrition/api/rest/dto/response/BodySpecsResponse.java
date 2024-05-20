@@ -1,15 +1,16 @@
 package com.greethy.nutrition.api.rest.dto.response;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import com.greethy.nutrition.core.domain.value.Bmi;
 import com.greethy.nutrition.core.domain.value.Bmr;
 import com.greethy.nutrition.core.domain.value.Pal;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
