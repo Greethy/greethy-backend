@@ -9,4 +9,8 @@ public class CreateMenuCommand {
     @TargetAggregateIdentifier
     private String menuId;
 
+    private String userId;
+
+    private String name;
+
 }

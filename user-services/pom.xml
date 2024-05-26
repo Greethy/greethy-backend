@@ -11,8 +11,8 @@
     <artifactId>user</artifactId>
     <version>${parent.version}</version>
     <name>user-services</name>
+
     <properties>
-        <java.version>17</java.version>
         <axon.version>4.9.2</axon.version>
         <springdoc.version>2.3.0</springdoc.version>
         <spring-cloud.version>2023.0.0</spring-cloud.version>

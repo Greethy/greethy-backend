@@ -1,99 +1,88 @@
 package com.greethy.user.core.domain.service;
 
-import com.greethy.core.domain.query.FindUserBodySpecsIdsPaginationQuery;
-import org.axonframework.queryhandling.QueryHandler;
-import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
-
 import com.greethy.core.domain.query.CheckIfUserExistsQuery;
 import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
 import com.greethy.user.api.rest.dto.response.UserResponse;
 import com.greethy.user.core.domain.entity.User;
 import com.greethy.user.core.port.in.query.*;
-import com.greethy.user.core.port.out.read.CheckIfUserExistsPort;
-import com.greethy.user.core.port.out.read.FindUserPort;
-
-import lombok.RequiredArgsConstructor;
+import com.greethy.user.core.port.out.UserPort;
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.queryhandling.QueryHandler;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.stream.Collectors;
-
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class UserQueryHandler {
 
     private final ModelMapper mapper;
 
-    private final FindUserPort findUserPort;
+
+    private final UserPort userPort;
+
+    public UserQueryHandler(ModelMapper mapper,
+                            @Qualifier("mongoUserAdapter") UserPort userPort) {
+        this.mapper = mapper;
+        this.userPort = userPort;
+    }
 
     @QueryHandler
     Flux<UserResponse> handle(FindAllUserQuery query) {
-        return findUserPort.findAll().map(user -> mapper.map(user, UserResponse.class));
+        return userPort.findAll().map(user -> mapper.map(user, UserResponse.class));
     }
 
     @QueryHandler
     Flux<UserResponse> handle(GetAllUserWithPageableQuery query) {
-        return Flux.just(PageRequest.of(query.getOffset(), query.getLimit()))
-                .flatMap(findUserPort::findAllBy)
+        var pageable = PageRequest.of(query.getOffset(), query.getLimit());
+        return Flux.just(pageable)
+                .flatMap(userPort::findAllBy)
                 .map(user -> mapper.map(user, UserResponse.class));
     }
 
     @QueryHandler
     Mono<Long> handle(CountAllUserQuery query) {
-        return findUserPort.countAll();
+        return userPort.countAll();
     }
 
     @QueryHandler
     Mono<UserResponse> handle(FindUserByIdQuery query) {
         return Mono.just(query.getUserId())
-                .flatMap(findUserPort::findById)
+                .flatMap(userPort::findById)
                 .map(user -> mapper.map(user, UserResponse.class));
     }
 
     @QueryHandler
     Mono<UserResponse> handle(FindUserByUsernameOrEmailQuery query) {
         return Mono.just(query.getUsernameOrEmail())
-                .flatMap(findUserPort::findByUsernameOrEmail)
+                .flatMap(userPort::findByUsernameOrEmail)
                 .map(user -> mapper.map(user, UserResponse.class));
     }
 
     @QueryHandler
-    public Boolean handle(CheckIfUserEmailExistsQuery query, CheckIfUserExistsPort checkIfPort) {
-        return checkIfPort.existsByEmail(query.getEmail());
+    public Boolean handle(CheckIfUserEmailExistsQuery query) {
+        return userPort.existsByEmail(query.getEmail());
     }
 
     @QueryHandler
-    public Mono<Boolean> handle(CheckIfUserExistsQuery query, CheckIfUserExistsPort checkIfPort) {
-        return checkIfPort.existsById(query.getUserId());
+    public Mono<Boolean> handle(CheckIfUserExistsQuery query) {
+        return userPort.existsById(query.getUserId());
     }
 
     @QueryHandler
-    public Mono<Boolean> handle(CheckIfUsernameOrEmailExistsQuery query, CheckIfUserExistsPort checkIfPort) {
-        return checkIfPort.existsByUsernameOrEmail(query.getUsername(), query.getEmail());
+    public Mono<Boolean> handle(CheckIfUsernameOrEmailExistsQuery query) {
+        return userPort.existsByUsernameOrEmail(query.getUsername(), query.getEmail());
     }
 
     @QueryHandler
     public Flux<String> handle(FindUserBodySpecsIdsQuery query) {
-        return findUserPort
-                .findById(query.getUserId())
+        String userId = query.getUserId();
+        return userPort.findById(userId)
                 .map(User::getBodySpecsIds)
                 .flatMapMany(Flux::fromIterable);
     }
 
-    @QueryHandler
-    public Flux<String> handle(FindUserBodySpecsIdsPaginationQuery query) {
-        return findUserPort.findById(query.getUserId())
-                .doOnNext(user -> System.out.println(user.getBodySpecsIds()))
-                .map(user -> user.getBodySpecsIds().stream()
-                        .peek(System.out::println)
-                        .skip(query.getOffset())
-                        .limit(query.getLimit())
-                        .collect(Collectors.toList()))
-                .doOnNext(System.out::println)
-                .flatMapMany(Flux::fromIterable);
-    }
 }

@@ -22,7 +22,46 @@ services:
     environment:
       - AXONIQ_AXONSERVER_DEVMODE_ENABLED=true
 
-  #DATABASE_MONGODB
+
+# MESSAGE BROKER
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - '22181:2181'
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    hostname: kafka
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - '29092:29092'
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    hostname: kafka-ui
+    container_name: kafka-ui
+    depends_on:
+     - kafka
+    ports:
+      - '8090:8080'
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+
+  # DATABASE
   mongodb:
     image: mongo:latest
     container_name: greethy-mongodb
@@ -33,21 +72,6 @@ services:
     environment:
       MONGODB_INITDB_ROOT_USERNAME: root
       MONGODB_INITDB_ROOT_PASSWORD: 123456
-
-  #DATABASE_POSTGRE
-#  postgres:
-#    image: postgres
-#    container_name: postgres
-#    environment:
-#      POSTGRES_DB: gorse
-#      POSTGRES_USER: gorse
-#      POSTGRES_PASSWORD: gorse_pass
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data
-#    ports:
-#      - "5432:5432"
-
-  #DATABASE_MYSQL
   mysql:
     image: mysql/mysql-server
     restart: unless-stopped
@@ -60,17 +84,15 @@ services:
       MYSQL_PASSWORD: gorse_pass
     volumes:
       - mysql_data:/var/lib/mysql
-
-  #DATABASE_REDIS
   redis:
     image: redis
     restart: unless-stopped
     ports:
       - "6379:6379"
 
+  # RECOMMENDER SYSTEM
   worker:
     image: zhenghaoz/gorse-worker
-    restart: unless-stopped
     ports:
       - "8089:8089"
     command: >
@@ -83,10 +105,8 @@ services:
       - worker_data:/var/lib/gorse
     depends_on:
       - master
-
   server:
     image: zhenghaoz/gorse-server
-    restart: unless-stopped
     ports:
       - "8087:8087"
     command: >
@@ -99,10 +119,8 @@ services:
       - server_data:/var/lib/gorse
     depends_on:
       - master
-
   master:
     image: zhenghaoz/gorse-master
-    restart: unless-stopped
     ports:
       - "8086:8086"
       - "8088:8088"

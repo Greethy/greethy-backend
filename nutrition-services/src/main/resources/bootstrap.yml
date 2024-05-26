@@ -1,3 +1,5 @@
+server:
+  port: 8092
 spring:
   application:
     name: nutrition-services
@@ -10,6 +12,29 @@ spring:
       database: GreethyNutritionDB
       host: localhost
       port: 27017
+#  config:
+#    import: optional:configserver:http://localhost:8888
+app:
+  api:
+    prefix: /api/v1
+  microservice:
+    user-services:
+      url: http://localhost:8085
+      api-path: ${app.api.prefix}/users
+eureka:
+  server:
+    host: localhost:8761
+  client:
+    service-url:
+      defaultZone: http://${eureka.server.host}/eureka
+    register-with-eureka: true
+    fetch-registry: false
 
-  config:
-    import: optional:configserver:http://localhost:8888
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  info:
+    env:
+      enabled: true

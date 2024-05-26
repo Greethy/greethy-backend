@@ -437,7 +437,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
                         })),
         @RouterOperation(
                 method = RequestMethod.POST,
-                path = "/api/v1/menus/default",
+                path = "/api/v1/menus/",
                 operation = @Operation(
                         operationId = "createNewDefaultMenu"
 

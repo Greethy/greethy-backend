@@ -8,7 +8,9 @@ import com.greethy.nutrition.core.domain.value.PalEvaluate;
 import com.greethy.nutrition.core.domain.value.Range;
 import com.greethy.nutrition.core.domain.value.enums.Group;
 import com.greethy.nutrition.core.domain.value.enums.Meal;
+import com.greethy.nutrition.core.domain.value.enums.NutritionType;
 import com.greethy.nutrition.core.port.out.*;
+import com.greethy.nutrition.infra.util.RandomUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -69,6 +71,7 @@ public class DataLoaderConfig {
                                 redisFoodPort.saveAll(foods())
                         ).map(Tuple2::getT1)
                 )
+                .then(relatedGroupPort.deleteAll())
                 .thenMany(Flux.fromIterable(relatedGroups()))
                 .flatMap(relatedGroupPort::save)
                 .subscribe();
@@ -112,11 +115,15 @@ public class DataLoaderConfig {
 
     private Set<RelatedGroup> relatedGroups() {
         return IntStream.iterate(0, i -> i + 1)
-                .limit(10).boxed()
+                .limit(1000).boxed()
                 .map(i -> {
                     var relatedGroup = new RelatedGroup();
+                    var nutritionType = RandomUtils.randomizeElement(Arrays.asList(NutritionType.values()));
+                    var meal = RandomUtils.randomizeElement(Arrays.asList(Meal.values()));
                     relatedGroup.setId(UUID.randomUUID().toString());
                     relatedGroup.setName("Test group");
+                    relatedGroup.setMeal(meal.getName());
+                    relatedGroup.setNutritionType(nutritionType.getName());
                     relatedGroup.setCerealIds(generateRandomIds(0, 200));
                     relatedGroup.setSoupIds(generateRandomIds(200, 400));
                     relatedGroup.setProteinIds(generateRandomIds(400, 600));
@@ -129,7 +136,7 @@ public class DataLoaderConfig {
     private Set<String> generateRandomIds(int start, int end) {
         return ThreadLocalRandom.current()
                 .ints(start, end)
-                .limit(21)
+                .limit( 11)
                 .skip(1)
                 .boxed()
                 .map(Object::toString)

@@ -1,17 +1,5 @@
 package com.greethy.nutrition.core.domain.entity;
 
-import java.util.Date;
-import java.util.Objects;
-
-import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.eventsourcing.EventSourcingHandler;
-import org.axonframework.modelling.command.AggregateIdentifier;
-import org.axonframework.modelling.command.AggregateLifecycle;
-import org.axonframework.spring.stereotype.Aggregate;
-import org.modelmapper.ModelMapper;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.greethy.core.domain.entity.BaseEntity;
 import com.greethy.core.domain.event.UserBodySpecsAddedEvent;
 import com.greethy.core.domain.event.UserBodySpecsDeletedEvent;
@@ -25,18 +13,31 @@ import com.greethy.nutrition.core.event.BodySpecsUpdatedEvent;
 import com.greethy.nutrition.core.port.in.command.CreateBodySpecsCommand;
 import com.greethy.nutrition.core.port.in.command.DeleteBodySpecsCommand;
 import com.greethy.nutrition.core.port.in.command.UpdateBodySpecsCommand;
-
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.modelling.command.AggregateLifecycle;
+import org.axonframework.spring.stereotype.Aggregate;
+import org.bson.types.ObjectId;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
+
+import java.util.Date;
 
 
 @Data
 @Aggregate
 @NoArgsConstructor
 @Document(collection = "body_specs")
+@EqualsAndHashCode(callSuper = true)
 public class BodySpecs extends BaseEntity {
 
-    @Id
+    @MongoId(FieldType.OBJECT_ID)
     @AggregateIdentifier
     private String id;
 
@@ -139,15 +140,4 @@ public class BodySpecs extends BaseEntity {
         AggregateLifecycle.markDeleted();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BodySpecs bodySpecs)) return false;
-        return Objects.equals(getId(), bodySpecs.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
 }

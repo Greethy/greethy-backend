@@ -1,6 +1,7 @@
 package com.greethy.nutrition.core.domain.entity;
 
 import lombok.Data;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
@@ -17,6 +18,11 @@ public class RelatedGroup {
 
     private String name;
 
+    @Indexed
+    @Field(name = "nutrition_type")
+    private String NutritionType;
+
+    @Indexed
     private String meal;
 
     @Field(name = "cereal_ids")

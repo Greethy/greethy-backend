@@ -11,7 +11,8 @@ public enum Group {
     SOUP("soup"),
     PROTEIN("protein"),
     VEGETABLE("vegetable"),
-    DESERT("desert");
+    DESERT("desert"),
+    FRUIT("fruit");
 
     private final String name;
 }

@@ -1,20 +1,23 @@
 package com.greethy.user.core.domain.service;
 
-import org.axonframework.eventhandling.EventHandler;
-import org.springframework.stereotype.Service;
-
 import com.greethy.user.core.event.NetworkingCreatedEvent;
 import com.greethy.user.core.event.NetworkingDeletedEvent;
-import com.greethy.user.core.port.out.write.DeleteNetworkingPort;
-import com.greethy.user.core.port.out.write.SaveNetworkingPort;
-
+import com.greethy.user.core.port.out.NetworkingPort;
+import org.axonframework.eventhandling.EventHandler;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
 public class NetworkingEventHandler {
 
+    private final NetworkingPort networkingPort;
+
+    public NetworkingEventHandler(NetworkingPort networkingPort) {
+        this.networkingPort = networkingPort;
+    }
+
     @EventHandler
-    void on(NetworkingCreatedEvent event, SaveNetworkingPort networkingPort) {
+    void on(NetworkingCreatedEvent event) {
         Mono.just(event)
                 .map(NetworkingCreatedEvent::getNetworking)
                 .flatMap(networkingPort::save)
@@ -22,7 +25,7 @@ public class NetworkingEventHandler {
     }
 
     @EventHandler
-    void on(NetworkingDeletedEvent event, DeleteNetworkingPort networkingPort) {
+    void on(NetworkingDeletedEvent event) {
         Mono.just(event)
                 .map(NetworkingDeletedEvent::getNetworkingId)
                 .flatMap(networkingPort::deleteById)

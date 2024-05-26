@@ -77,7 +77,8 @@ public class Food extends BaseEntity {
 
     @CommandHandler
     Food(CreateFoodCommand command, ModelMapper mapper, UserPort userPort) {
-        var foodCreatedEvent = userPort.getById(command.getUserId())
+        String userId = command.getUserId();
+        var foodCreatedEvent = userPort.getById(userId)
                 .map(user -> {
                     var owner = mapper.map(user, Owner.class);
                     var event = mapper.map(command, FoodCreatedEvent.class);

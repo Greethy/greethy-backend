@@ -27,17 +27,21 @@ public class EndpointRouter {
 
     private final IngredientQueriesHandler ingredientQueriesHandler;
 
-    private final MenuCommandsHandler menuCommandsHandler;
+    private final MenuCommandsEndpointHandler menuCommandsHandler;
+
+    private final UserEndpointHandler userEndpointHandler;
 
     @Bean
     @NutritionOpenApi
     public RouterFunction<ServerResponse> route() {
         return RouterFunctions.route()
                 .path("/api/v1/users/{user-id}", builder -> builder
+                        .GET("", userEndpointHandler::getUser)
                         .nest(accept(MediaType.APPLICATION_JSON), routeBuilder -> routeBuilder
                                 .POST("body-specs", bodySpecsCommandsHandler::createUserBodySpecs)
                                 .GET("body-specs", bodySpecsQueriesEndpointHandler::getUserBodySpecsWithPagination)
                                 .POST("food", foodCommandEndpointHandler::createFood)
+                                .POST("menu", menuCommandsHandler::createMenu)
                                 .DELETE("body-specs/{body-specs-id}", bodySpecsCommandsHandler::deleteBodySpecs))
                 ).path("/api/v1/body-specs", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
@@ -46,7 +50,7 @@ public class EndpointRouter {
                                 .GET("", bodySpecsQueriesEndpointHandler::getBodySpecsPagination))
                 ).path("/api/v1/menus", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
-                                .POST("/default", menuCommandsHandler::createDefaultMenu))
+                                .POST("/default", menuCommandsHandler::createMenu))
                 ).path("/api/v1/foods", builder -> builder
                         .GET("all", request -> foodQueriesEndpointHandler.getAllFood())
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder

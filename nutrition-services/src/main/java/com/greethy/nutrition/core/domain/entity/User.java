@@ -1,4 +1,4 @@
-package com.greethy.nutrition.core.domain.value;
+package com.greethy.nutrition.core.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,5 +17,6 @@ public class User {
 
     private String username;
 
+    @JsonProperty("body_specs_ids")
     private List<String> bodySpecsIds = new ArrayList<>();
 }

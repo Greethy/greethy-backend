@@ -8,11 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="annotation" />
+        <module name="user-query" />
+        <module name="greethy-docker" />
+        <module name="mapper" />
+        <module name="user-model" />
         <module name="core" />
         <module name="nutrition" />
-        <module name="greethy-docker" />
+        <module name="user-command" />
         <module name="discovery" />
-        <module name="mapper" />
         <module name="config" />
         <module name="user" />
         <module name="gateway" />
@@ -52,6 +55,10 @@
       <module name="services-infrastructure" options="" />
       <module name="test" options="-parameters" />
       <module name="user" options="-parameters" />
+      <module name="user-command" options="-parameters" />
+      <module name="user-model" options="-parameters" />
+      <module name="user-query" options="-parameters" />
+      <module name="user-service" options="" />
     </option>
   </component>
 </project>

@@ -19,9 +19,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserResponse {
 
-    @Schema(
-            description =
-                    "The name displayed on the user's profile, as entered by the user when creating their account. Important!")
+    @JsonProperty("user_id")
+    private String id;
+
+    @Schema(description = "The name displayed on the user's profile, as entered by the user when creating their account. Important!")
     private String username;
 
     @Schema(description = "The user's email address, as entered by the user when creating their account. Important!")

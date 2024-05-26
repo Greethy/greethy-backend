@@ -1,15 +1,5 @@
 package com.greethy.nutrition.api.rest.controller.handler;
 
-import java.util.UUID;
-
-import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway;
-import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
-import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
-
 import com.greethy.annotation.reactive.EndpointHandler;
 import com.greethy.core.api.handler.ExceptionHandler;
 import com.greethy.core.domain.query.CheckIfUserExistsQuery;
@@ -17,9 +7,18 @@ import com.greethy.nutrition.api.rest.dto.request.CreateBodySpecsRequest;
 import com.greethy.nutrition.api.rest.dto.request.UpdateBodySpecsRequest;
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsCreatedResponse;
 import com.greethy.nutrition.core.domain.exception.NotFoundException;
-import com.greethy.nutrition.core.port.in.command.*;
-
+import com.greethy.nutrition.core.port.in.command.CreateBodySpecsCommand;
+import com.greethy.nutrition.core.port.in.command.DeleteBodySpecsCommand;
+import com.greethy.nutrition.core.port.in.command.UpdateBodySpecsCommand;
 import lombok.RequiredArgsConstructor;
+import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway;
+import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway;
+import org.bson.types.ObjectId;
+import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @EndpointHandler
@@ -46,7 +45,7 @@ public class BodySpecsCommandsEndpointHandler {
                 .map(request -> mapper.map(request, CreateBodySpecsCommand.class))
                 .doOnNext(command -> {
                     command.setUserId(userId);
-                    command.setBodySpecsId(UUID.randomUUID().toString());
+                    command.setBodySpecsId(new ObjectId().toString());
                 })
                 .flatMap(commandGateway::send)
                 .map(BodySpecsCreatedResponse::new)
