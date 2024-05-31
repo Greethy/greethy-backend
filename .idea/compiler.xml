@@ -11,7 +11,7 @@
         <module name="user-query" />
         <module name="greethy-docker" />
         <module name="mapper" />
-        <module name="user-model" />
+        <module name="user-common" />
         <module name="core" />
         <module name="nutrition" />
         <module name="user-command" />
@@ -56,7 +56,7 @@
       <module name="test" options="-parameters" />
       <module name="user" options="-parameters" />
       <module name="user-command" options="-parameters" />
-      <module name="user-model" options="-parameters" />
+      <module name="user-common" options="-parameters" />
       <module name="user-query" options="-parameters" />
       <module name="user-service" options="" />
     </option>

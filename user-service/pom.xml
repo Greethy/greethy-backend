@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>user-model</module>
+        <module>user-common</module>
         <module>user-command</module>
         <module>user-query</module>
     </modules>
@@ -36,6 +36,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
         </dependency>
         <!-- REACTIVE KAFKA -->
         <dependency>
@@ -66,6 +70,7 @@
             <artifactId>spring-kafka-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>

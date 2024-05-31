@@ -5,12 +5,29 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.greethy</groupId>
-        <artifactId>greethy-project</artifactId>
+        <artifactId>user-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>user-query</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.greethy</groupId>
+            <artifactId>user-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.greethy</groupId>
+            <artifactId>mapper</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.greethy</groupId>
+            <artifactId>annotation</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

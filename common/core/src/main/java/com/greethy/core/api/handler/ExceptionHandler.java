@@ -1,5 +1,6 @@
 package com.greethy.core.api.handler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import com.greethy.core.domain.exception.BaseException;
 
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Component
 public class ExceptionHandler {
 
@@ -24,6 +26,7 @@ public class ExceptionHandler {
      * @return A {@link Mono} representing the server response with error details.
      */
     public Mono<ServerResponse> handlingException(Throwable throwable) {
+        log.error("Some exception have pop up: {}", throwable.getMessage());
         if (throwable instanceof BaseException exception) {
             return ServerResponse.status(exception.getStatus())
                     .contentType(MediaType.APPLICATION_JSON)
@@ -32,6 +35,7 @@ public class ExceptionHandler {
                             .status(exception.getStatus())
                             .build());
         }
-        return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR).bodyValue(throwable.getMessage());
+        return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .bodyValue(throwable.getMessage());
     }
 }

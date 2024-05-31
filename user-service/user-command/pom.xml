@@ -15,7 +15,7 @@
         <!-- GREETHY'S COMMON MODULES -->
         <dependency>
             <groupId>com.greethy</groupId>
-            <artifactId>user-model</artifactId>
+            <artifactId>user-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -28,6 +28,7 @@
             <artifactId>annotation</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <!-- EMAIL SENDER -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

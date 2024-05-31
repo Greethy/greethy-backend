@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.greethy.mapper.MapperApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.968 s -- in com.greethy.mapper.MapperApplicationTests
