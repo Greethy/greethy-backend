@@ -26,7 +26,7 @@ public class ExceptionHandler {
      * @return A {@link Mono} representing the server response with error details.
      */
     public Mono<ServerResponse> handlingException(Throwable throwable) {
-        log.error("Some exception have pop up: {}", throwable.getMessage());
+        log.error("Some exception has been thrown: {}", throwable.getMessage());
         if (throwable instanceof BaseException exception) {
             return ServerResponse.status(exception.getStatus())
                     .contentType(MediaType.APPLICATION_JSON)

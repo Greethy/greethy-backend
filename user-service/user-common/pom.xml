@@ -13,6 +13,7 @@
     <name>user-common</name>
     <artifactId>user-common</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <groupId>com.greethy.usercommon</groupId>
 
     <dependencies>
         <dependency>

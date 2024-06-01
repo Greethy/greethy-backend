@@ -10,11 +10,15 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <name>user-command</name>
     <artifactId>user-command</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <groupId>com.greethy.usercommand</groupId>
+
     <dependencies>
         <!-- GREETHY'S COMMON MODULES -->
         <dependency>
-            <groupId>com.greethy</groupId>
+            <groupId>com.greethy.usercommon</groupId>
             <artifactId>user-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

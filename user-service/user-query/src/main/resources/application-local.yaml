@@ -3,3 +3,24 @@ server:
 spring:
   application:
     name: user-query
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: GreethyUser
+
+springdoc:
+  swagger-ui:
+    use-root-path: true
+  api-docs:
+    version: openapi_3_1
+  show-actuator: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  info:
+    env:
+      enabled: true

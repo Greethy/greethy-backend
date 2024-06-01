@@ -23,6 +23,8 @@
         <option value="$PROJECT_DIR$/authentication-services/pom.xml" />
         <option value="$PROJECT_DIR$/test-security/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/nutrition-service/nutrition-command/pom.xml" />
+        <option value="$PROJECT_DIR$/nutrition-service/nutrition-query/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -31,6 +33,7 @@
         <option value="$PROJECT_DIR$/authorization-services/pom.xml" />
         <option value="$PROJECT_DIR$/financial-services/pom.xml" />
         <option value="$PROJECT_DIR$/infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/nutrition-service/untitled/pom.xml" />
         <option value="$PROJECT_DIR$/test-security/pom.xml" />
       </set>
     </option>

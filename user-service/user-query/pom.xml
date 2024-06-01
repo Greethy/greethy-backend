@@ -10,10 +10,14 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <name>user-query</name>
     <artifactId>user-query</artifactId>
+    <groupId>com.greethy.userquery</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+
     <dependencies>
         <dependency>
-            <groupId>com.greethy</groupId>
+            <groupId>com.greethy.usercommon</groupId>
             <artifactId>user-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

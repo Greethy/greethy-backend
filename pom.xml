@@ -30,6 +30,9 @@
 
 		<!-- BUSINESS MODULES -->
 		<module>user-service</module>
+		<module>nutrition-service</module>
+
+		<!-- -->
 		<module>user-services</module>
 		<module>nutrition-services</module>
 		<module>finance-services</module>

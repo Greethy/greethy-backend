@@ -9,15 +9,19 @@
         <outputRelativeToContentRoot value="true" />
         <module name="annotation" />
         <module name="user-query" />
+        <module name="untitled" />
         <module name="greethy-docker" />
         <module name="mapper" />
+        <module name="nutrition-command" />
         <module name="user-common" />
+        <module name="nutrition-common" />
         <module name="core" />
         <module name="nutrition" />
         <module name="user-command" />
         <module name="discovery" />
         <module name="config" />
         <module name="user" />
+        <module name="nutrition-query" />
         <module name="gateway" />
         <module name="finance" />
       </profile>
@@ -32,6 +36,7 @@
       <module name="reactive-parent" target="1.5" />
       <module name="services-infrastructure" target="1.5" />
       <module name="test" target="17" />
+      <module name="untitled" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -52,8 +57,13 @@
       <module name="keycloak" options="-parameters" />
       <module name="mapper" options="-parameters" />
       <module name="nutrition" options="-parameters" />
+      <module name="nutrition-command" options="-parameters" />
+      <module name="nutrition-common" options="-parameters" />
+      <module name="nutrition-query" options="-parameters" />
+      <module name="nutrition-service" options="" />
       <module name="services-infrastructure" options="" />
       <module name="test" options="-parameters" />
+      <module name="untitled" options="-parameters" />
       <module name="user" options="-parameters" />
       <module name="user-command" options="-parameters" />
       <module name="user-common" options="-parameters" />

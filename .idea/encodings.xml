@@ -19,6 +19,12 @@
     <file url="file://$PROJECT_DIR$/greethy-docker/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/infrastructure/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nutrition-service/nutrition-command/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nutrition-service/nutrition-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nutrition-service/nutrition-query/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nutrition-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nutrition-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nutrition-service/untitled/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/nutrition-services/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/nutrition-services/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services-discovery/src/main/java" charset="UTF-8" />
