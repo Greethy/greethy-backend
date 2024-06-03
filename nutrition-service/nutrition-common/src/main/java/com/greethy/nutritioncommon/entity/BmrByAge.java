@@ -1,15 +1,17 @@
-package com.greethy.nutritioncommon.entity.value;
+package com.greethy.nutritioncommon.entity;
 
+import com.greethy.nutritioncommon.entity.value.Range;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
 @Document(collection = "bmr_by_ages")
 public class BmrByAge {
 
-    @Id
+    @MongoId(FieldType.STRING)
     private String id;
 
     @Field(name = "age_group")

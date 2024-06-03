@@ -12,7 +12,7 @@ import com.greethy.core.api.response.PageSupport;
 import com.greethy.core.domain.query.CheckIfUserExistsQuery;
 import com.greethy.core.domain.query.FindUserBodySpecsIdsPaginationQuery;
 import com.greethy.core.domain.query.FindUserBodySpecsIdsQuery;
-import com.greethy.core.util.ServerRequestUtil;
+import com.greethy.core.infra.util.ServerRequestUtil;
 import com.greethy.nutrition.api.rest.dto.response.BodySpecsResponse;
 import com.greethy.nutrition.core.domain.exception.NotFoundException;
 import com.greethy.nutrition.core.port.in.query.*;

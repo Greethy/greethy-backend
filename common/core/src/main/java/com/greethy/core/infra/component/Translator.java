@@ -1,6 +1,6 @@
-package com.greethy.core.component;
+package com.greethy.core.infra.component;
 
-import com.greethy.core.util.DataUtil;
+import com.greethy.core.infra.util.DataUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ResourceBundleMessageSource;

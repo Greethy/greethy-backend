@@ -1,6 +1,6 @@
 package com.greethy.userquery.domain.service.impl;
 
-import com.greethy.core.component.Translator;
+import com.greethy.core.infra.component.Translator;
 import com.greethy.usercommon.constant.Constant;
 import com.greethy.usercommon.exception.NotFoundException;
 import com.greethy.userquery.domain.port.UserPort;

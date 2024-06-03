@@ -2,7 +2,6 @@ package com.greethy.usercommand.api.rest;
 
 import com.greethy.usercommand.api.rest.handler.UserCommandHandler;
 import com.greethy.usercommon.annotation.CommandSwagger;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -15,14 +14,11 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 @Configuration
 public class EndpointsRouter {
 
-    @Value("${custom.api.path.prefix}")
-    private String pathPrefix;
-
     @Bean
     @CommandSwagger
     public RouterFunction<ServerResponse> route(UserCommandHandler userCommandHandler) {
         return RouterFunctions.route()
-                .path(pathPrefix + "/users", builder -> builder
+                .path( "api/v1/users", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
                                 .POST(userCommandHandler::registerUser)
                                 .PUT("{user-id}", userCommandHandler::updateUser)

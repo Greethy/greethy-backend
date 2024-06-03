@@ -1,4 +1,4 @@
-package com.greethy.core.util;
+package com.greethy.core.infra.util;
 
 import java.util.Optional;
 
