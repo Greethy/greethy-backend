@@ -16,18 +16,22 @@ public class Networking {
     private String id;
 
     @Field(name = "following_ids")
-    private List<String> followingIds = new ArrayList<>();
+    private List<String> followingIds;
 
     @Field(name = "total_following")
-    private Integer totalFollowing = 0;
+    private Integer totalFollowing;
 
     @Field(name = "follower_ids")
-    private List<String> followers = new ArrayList<>();
+    private List<String> followersIds;
 
     @Field(name = "total_followers")
-    private Integer totalFollowers = 0;
+    private Integer totalFollowers;
 
     public Networking(String id) {
         this.id = id;
+        this.followingIds = new ArrayList<>();
+        this.totalFollowing = 0;
+        this.followersIds = new ArrayList<>();
+        this.totalFollowers = 0;
     }
 }

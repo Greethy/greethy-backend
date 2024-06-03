@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ErrorResponse {
 
-    @Schema(description = "The HTTP status code, Range 400-599.")
+    @Schema(description = "The HTTP status code, Range 400-599.", examples = {"400", "401", "403", "429", "500"})
     private Integer status;
 
-    @Schema(description = "A short description of the cause of the error.")
+    @Schema(description = "A short description of the cause of the error.", examples = {"400", "401", "403", "429", "500"})
     private String message;
 }

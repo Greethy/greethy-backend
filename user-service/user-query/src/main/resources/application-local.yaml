@@ -15,6 +15,7 @@ springdoc:
   api-docs:
     version: openapi_3_1
   show-actuator: true
+  remove-broken-reference-definitions: false
 
 management:
   endpoints:

@@ -14,5 +14,23 @@
     <artifactId>nutrition-command</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.greethy.nutritioncommon</groupId>
+            <artifactId>nutrition-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.greethy</groupId>
+            <artifactId>mapper</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.greethy</groupId>
+            <artifactId>annotation</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

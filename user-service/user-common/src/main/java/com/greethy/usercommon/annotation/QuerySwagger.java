@@ -26,6 +26,7 @@ import java.lang.annotation.Target;
                 method = RequestMethod.GET,
                 path = "/api/v1/users",
                 operation = @Operation(
+                        tags = "User Query",
                         operationId = "getAllUserByPagination",
                         summary = "Get all users with pagination",
                         description = "Retrieve a list of users with pagination support. You can specify page and size parameters to control the number of results.",
@@ -75,18 +76,18 @@ import java.lang.annotation.Target;
                         }
                 )
         ),
-        @RouterOperation(
-                method = RequestMethod.GET,
-                path = "/api/v1/users/{user-id}"
-        ),
-        @RouterOperation(
-                method = RequestMethod.GET,
-                path = "/api/v1/users/user"
-        ),
-        @RouterOperation(
-                method = RequestMethod.GET,
-                path = "/api/v1/users/user-email/exists"
-        )
+//        @RouterOperation(
+//                method = RequestMethod.GET,
+//                path = "/api/v1/users/{user-id}"
+//        ),
+//        @RouterOperation(
+//                method = RequestMethod.GET,
+//                path = "/api/v1/users/user"
+//        ),
+//        @RouterOperation(
+//                method = RequestMethod.GET,
+//                path = "/api/v1/users/user-email/exists"
+//        )
 })
 public @interface QuerySwagger {
 }
