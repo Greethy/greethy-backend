@@ -1,6 +1,6 @@
 package com.greethy.usercommand.domain.service.impl;
 
-import com.greethy.core.component.Translator;
+import com.greethy.core.infra.component.Translator;
 import com.greethy.usercommon.constant.Constant;
 import com.greethy.usercommand.domain.port.NetworkingPort;
 import com.greethy.usercommand.domain.port.RolePort;

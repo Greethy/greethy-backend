@@ -1,4 +1,4 @@
-package com.greethy.core.client;
+package com.greethy.core.infra.config.properties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

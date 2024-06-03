@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import com.greethy.annotation.reactive.EndpointHandler;
 import com.greethy.core.api.handler.ExceptionHandler;
 import com.greethy.core.api.response.PageSupport;
-import com.greethy.core.util.ServerRequestUtil;
+import com.greethy.core.infra.util.ServerRequestUtil;
 import com.greethy.nutrition.api.rest.dto.response.FoodResponse;
 import com.greethy.nutrition.core.domain.exception.NotFoundException;
 import com.greethy.nutrition.core.port.in.query.*;

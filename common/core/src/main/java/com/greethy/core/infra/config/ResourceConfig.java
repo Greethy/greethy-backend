@@ -1,4 +1,4 @@
-package com.greethy.core.config;
+package com.greethy.core.infra.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,5 +1,6 @@
-package com.greethy.nutritioncommon.entity.value;
+package com.greethy.nutritioncommon.entity;
 
+import com.greethy.nutritioncommon.entity.value.Range;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;

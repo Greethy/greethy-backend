@@ -25,11 +25,6 @@ springdoc:
     version: openapi_3_1
   show-actuator: true
 
-custom:
-  api:
-    path:
-      prefix: /api/v1
-
 management:
   endpoints:
     web:
