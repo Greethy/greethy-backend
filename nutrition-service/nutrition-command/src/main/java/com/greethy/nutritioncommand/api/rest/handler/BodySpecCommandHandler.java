@@ -26,4 +26,7 @@ public class BodySpecCommandHandler {
                 .onErrorResume(exceptionHandler::handlingException);
     }
 
+    public Mono<ServerResponse> updateUserBodySpec(ServerRequest serverRequest) {
+        return null;
+    }
 }

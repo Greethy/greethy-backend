@@ -48,7 +48,8 @@ public class SecurityConfig {
         return http.csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .cors(ServerHttpSecurity.CorsSpec::disable)
                 .authenticationManager(authenticationManager)
-                .authorizeExchange(exchange -> exchange.pathMatchers(AUTH_WHITELIST)
+                .authorizeExchange(exchange -> exchange
+                        .pathMatchers(AUTH_WHITELIST)
                         .permitAll()
                         .anyExchange()
                         .authenticated())

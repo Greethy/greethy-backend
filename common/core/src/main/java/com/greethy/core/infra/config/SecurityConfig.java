@@ -17,7 +17,6 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity httpSecurity) {
         return httpSecurity.csrf(ServerHttpSecurity.CsrfSpec::disable)
-
                 .build();
     }
 

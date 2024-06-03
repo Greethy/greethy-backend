@@ -18,8 +18,9 @@ public class EndpointsRouter {
         return RouterFunctions.route()
                 .path("/api/v1/body-specs", routerBuilder1 -> routerBuilder1
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder2 -> routerBuilder2
-                                .POST("", bodySpecHandler::createUserBodySpec)))
-                .build();
+                                .POST("", bodySpecHandler::createUserBodySpec)
+                                .PUT("/body-spec-id", bodySpecHandler::updateUserBodySpec))
+                ).build();
     }
 
 }
