@@ -9,6 +9,7 @@ spring:
       port: 27017
       database: GreethyUser
 
+
 springdoc:
   swagger-ui:
     use-root-path: true

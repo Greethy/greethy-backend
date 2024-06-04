@@ -1,15 +1,15 @@
 package com.greethy.core.api.handler;
 
+import com.greethy.core.api.response.ErrorResponse;
+import com.greethy.core.domain.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerResponse;
-
-import com.greethy.core.api.response.ErrorResponse;
-import com.greethy.core.domain.exception.BaseException;
-
 import reactor.core.publisher.Mono;
+
+import java.util.Arrays;
 
 @Slf4j
 @Component
@@ -26,7 +26,7 @@ public class ExceptionHandler {
      * @return A {@link Mono} representing the server response with error details.
      */
     public Mono<ServerResponse> handlingException(Throwable throwable) {
-        log.error("Some exception has been thrown: {}", throwable.getMessage());
+        log.error("Some exception has been thrown: {}", Arrays.toString(throwable.getStackTrace()));
         if (throwable instanceof BaseException exception) {
             return ServerResponse.status(exception.getStatus())
                     .contentType(MediaType.APPLICATION_JSON)

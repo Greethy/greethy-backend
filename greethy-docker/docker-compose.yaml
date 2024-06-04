@@ -1,7 +1,6 @@
 version: '3.3'
 
 services:
-
 # MESSAGE BROKER
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -54,6 +53,20 @@ services:
 
   # DATABASE - MYSQL
   mysql:
+    image: mysql:8.2.0
+    container_name: greethy-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: greethy
+      MYSQL_PASSWORD: greethy_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+
     image: mysql/mysql-server
     container_name: greethy-mysql
     ports:
@@ -135,13 +148,13 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-      KC_DB: mysql
-      KC_DB_URL_DATABASE: keycloak
-      KC_DB_USERNAME: greethy
-      KC_DB_PASSWORD: greethy@
+#      KC_DB: mysql
+#      KC_DB_URL_DATABASE: jdbc:mysql://localhost:3306/keycloak
+#      KC_DB_USERNAME: greethy
+#      KC_DB_PASSWORD: greethy_pass
       KC_HEALTH_ENABLED: true
-    depends_on:
-      - mysql
+#    depends_on:
+#      - mysql
     volumes:
       - /home/keycloak/realm.json:/opt/keycloak/data/import/realm.json
 

@@ -1,4 +1,4 @@
-package com.greethy.core.infra.component;
+package com.greethy.core.infra.component.database;
 
 import com.greethy.core.domain.entity.BaseEntity;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;

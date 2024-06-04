@@ -1,15 +1,5 @@
 package com.greethy.gateway.api.rest.controller;
 
-import java.time.Duration;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.*;
-
 import com.greethy.gateway.api.rest.dto.request.AuthRequest;
 import com.greethy.gateway.api.rest.dto.request.RegisterRequest;
 import com.greethy.gateway.api.rest.dto.response.ServerTokenResponse;
@@ -18,10 +8,17 @@ import com.greethy.gateway.core.exception.UserNotFoundException;
 import com.greethy.gateway.core.service.AuthService;
 import com.greethy.gateway.core.service.UserService;
 import com.greethy.gateway.infra.config.security.jwt.JwtTokenProvider;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
+
+import java.time.Duration;
 
 @RestController
 @RequiredArgsConstructor
@@ -48,7 +45,7 @@ public class AuthController {
                 .filter(userInfo -> Boolean.TRUE.equals(
                         userService.checkIfUserEmailExists(userInfo.getEmail()).block()))
                 .switchIfEmpty(Mono.error(
-                        new UserNotFoundException(HttpStatus.BAD_REQUEST.value(), "Google account is not registered")))
+                        new UserNotFoundException(400, "")))
                 .map(userInfo -> new UsernamePasswordAuthenticationToken(userInfo.getEmail(), password))
                 .flatMap(authenticationManager::authenticate)
                 .delayElement(Duration.ofSeconds(3))

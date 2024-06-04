@@ -1,4 +1,4 @@
-package com.greethy.core.infra.component;
+package com.greethy.core.infra.component.i18n;
 
 import com.greethy.core.infra.util.DataUtil;
 import lombok.RequiredArgsConstructor;

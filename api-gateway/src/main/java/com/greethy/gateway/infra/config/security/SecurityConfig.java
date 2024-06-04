@@ -29,15 +29,15 @@ import reactor.core.publisher.Mono;
 public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
-        "/test",
-        "/eureka/**",
-        "/actuator/**",
-        "/api/v1/auth/**",
-        "/swagger-resources/**",
-        "/swagger-ui.html",
-        "/webjars/**",
-        "/v3/api-docs/**",
-        "/api/v1/test/**"
+            "/test",
+            "/eureka/**",
+            "/actuator/**",
+            "/api/v1/auth/**",
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/webjars/**",
+            "/v3/api-docs/**",
+            "/api/v1/test/**"
     };
 
     @Bean
@@ -54,14 +54,12 @@ public class SecurityConfig {
                         .anyExchange()
                         .authenticated())
                 .addFilterAt(jwtTokenFilter, SecurityWebFiltersOrder.HTTP_BASIC)
-                .exceptionHandling(handle -> handle.authenticationEntryPoint((exchange, ex) -> Mono.fromCallable(
-                                        () -> exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED))
-                                .then())
-                        .accessDeniedHandler((exchange, denied) -> {
-                            var serverResponse = exchange.getResponse();
-                            serverResponse.setStatusCode(HttpStatus.FORBIDDEN);
-                            return serverResponse.writeWith(Mono.error(denied));
-                        }))
+                .exceptionHandling(handle -> handle.authenticationEntryPoint((exchange, ex) -> Mono.fromCallable(() -> exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED)).then()
+                ).accessDeniedHandler((exchange, denied) -> {
+                    var serverResponse = exchange.getResponse();
+                    serverResponse.setStatusCode(HttpStatus.FORBIDDEN);
+                    return serverResponse.writeWith(Mono.error(denied));
+                }))
                 .build();
     }
 
