@@ -39,7 +39,7 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
 
-  # DATABASE-MONGODB
+  # DATABASE - MONGODB
   mongodb:
     image: mongo:latest
     container_name: greethy-mongodb
@@ -51,7 +51,7 @@ services:
       MONGODB_INITDB_ROOT_USERNAME: root
       MONGODB_INITDB_ROOT_PASSWORD: 123456
 
-  # DATABASE-MYSQL
+  # DATABASE - MYSQL
   mysql:
     image: mysql:8.2.0
     container_name: greethy-mysql
@@ -67,9 +67,22 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+    image: mysql/mysql-server
+    container_name: greethy-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: greethy
+      MYSQL_PASSWORD: greethy@
+      MYSQL_ROOT_PASSWORD: root_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
 
+  #CACHE STORAGE - REDIS
   redis:
     image: redis
+    container_name: greethy-redis
     restart: unless-stopped
     ports:
       - "6379:6379"

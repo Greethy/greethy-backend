@@ -19,6 +19,15 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+
+/**
+ * Service implementation for body specification change BodySpec resources (create, update, delete).
+ * This service handles the creation of {@link BodySpec} instances which include health indices
+ * like BMI (Body Mass Index), BMR (Basal Metabolic Rate), and PAL (Physical Activity Level).
+ *
+ * @author KienThanh
+ * @see BodySpecCommandService
+ */
 @Slf4j
 @Service
 public class BodySpecCommandServiceImpl implements BodySpecCommandService {
@@ -45,6 +54,16 @@ public class BodySpecCommandServiceImpl implements BodySpecCommandService {
         this.bodySpecPort = bodySpecPort;
     }
 
+    /**
+     * Creates and persists a BodySpec entity based on the given command.
+     * The method computes BMI, BMR, and PAL based on the input parameters from {@code CreateBodySpecCommand},
+     * maps them to a new BodySpec entity, and saves it using a reactive repository.
+     *
+     * @param command A command object containing the necessary data to create a BodySpec,
+     *               including weight, height, age, and activity level.
+     * @return A {@link Mono} that emits {@link BodySpecResponse} upon successful creation
+     * and persistence of the BodySpec entity.
+     */
     @Override
     public Mono<BodySpecResponse> createBodySpec(CreateBodySpecCommand command) {
         Double bmiIndex = DataUtil.toDoubleSafely(
@@ -87,6 +106,5 @@ public class BodySpecCommandServiceImpl implements BodySpecCommandService {
                 }).flatMap(bodySpecPort::save)
                 .doOnSuccess(bodySpec -> log.info("User"))
                 .map(bodySpec -> mapper.map(bodySpec, BodySpecResponse.class));
-
     }
 }
