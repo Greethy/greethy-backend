@@ -19,11 +19,6 @@
 	</properties>
 	<dependencies>
 		<!-- GREETHY'S COMMON MODULES -->
-		<dependency>
-			<groupId>com.greethy</groupId>
-			<artifactId>core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 
 		<!-- MICROSERVICE API GATEWAY, LOAD BALANCER, CIRCUIT BREAKER -->
 		<dependency>

@@ -1,5 +1,6 @@
 package com.greethy.usercommand.api.rest;
 
+import com.greethy.usercommand.api.rest.handler.AuthCommandHandler;
 import com.greethy.usercommand.api.rest.handler.UserCommandHandler;
 import com.greethy.usercommon.annotation.CommandSwagger;
 import org.springframework.context.annotation.Bean;
@@ -16,13 +17,19 @@ public class EndpointsRouter {
 
     @Bean
     @CommandSwagger
-    public RouterFunction<ServerResponse> route(UserCommandHandler userCommandHandler) {
+    public RouterFunction<ServerResponse> route(UserCommandHandler userHandler,
+                                                AuthCommandHandler authHandler) {
         return RouterFunctions.route()
-                .path( "api/v1/users", builder -> builder
+                .path( "/api/v1/users", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
-                                .POST(userCommandHandler::registerUser)
-                                .PUT("{user-id}", userCommandHandler::updateUser)
-                                .DELETE("{user-id}/temporary", userCommandHandler::deleteUserTemporary)
+                                .POST(userHandler::registerUser)
+                                .PUT("{user-id}", userHandler::updateUser)
+                                .DELETE("{user-id}/temporary", userHandler::deleteUserTemporary)
+                        ).build()
+                ).path("/auth", builder -> builder
+                        .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
+                                .POST("login", authHandler::authenticate)
+                                .POST("register", authHandler::registerGreethyUser)
                         ).build()
                 ).build();
     }

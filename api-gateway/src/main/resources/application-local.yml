@@ -3,7 +3,7 @@ spring:
     name: api-gateway
   config:
     import: optional:configserver:http://localhost:8888
-app:
+application:
   password: F!(h3hZXjeGKr+9hB#+kw*pv7gtAs@Y3
   jwt:
     iss: accounts.greethy.com
