@@ -4,11 +4,11 @@ public final class Constant {
 
     public static class RoleType {
 
-        public static final String ROLE_REGULAR = "regular";
-        public static final String ROLE_PREMIUM = "premium";
-        public static final String ROLE_EXPERT = "expert";
-        public static final String ROLE_MERCHANT = "merchant";
-        public static final String ROLE_ADMIN = "admin";
+        public static final String ROLE_REGULAR = "REGULAR";
+        public static final String ROLE_PREMIUM = "PREMIUM";
+        public static final String ROLE_EXPERT = "EXPERT";
+        public static final String ROLE_MERCHANT = "MERCHANT";
+        public static final String ROLE_ADMIN = "ADMIN";
 
     }
 

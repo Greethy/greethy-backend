@@ -4,7 +4,6 @@ import com.greethy.gateway.api.rest.dto.request.AuthRequest;
 import com.greethy.gateway.api.rest.dto.request.RegisterRequest;
 import com.greethy.gateway.api.rest.dto.response.ServerTokenResponse;
 import com.greethy.gateway.api.rest.dto.response.UserRegisteredResponse;
-import com.greethy.gateway.core.exception.UserNotFoundException;
 import com.greethy.gateway.core.service.AuthService;
 import com.greethy.gateway.core.service.UserService;
 import com.greethy.gateway.infra.config.security.jwt.JwtTokenProvider;
@@ -44,8 +43,6 @@ public class AuthController {
                 .publishOn(Schedulers.boundedElastic())
                 .filter(userInfo -> Boolean.TRUE.equals(
                         userService.checkIfUserEmailExists(userInfo.getEmail()).block()))
-                .switchIfEmpty(Mono.error(
-                        new UserNotFoundException(400, "")))
                 .map(userInfo -> new UsernamePasswordAuthenticationToken(userInfo.getEmail(), password))
                 .flatMap(authenticationManager::authenticate)
                 .delayElement(Duration.ofSeconds(3))

@@ -26,3 +26,7 @@ management:
   info:
     env:
       enabled: true
+application:
+  jwt:
+    iss: accounts.greethy.com
+    secret-key: ecf1222c-88fd-47f3-988f-bdd78bade1ad

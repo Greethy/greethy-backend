@@ -8,7 +8,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
@@ -55,8 +54,8 @@ public class User extends BaseEntity {
 
     private Premium premium;
 
-    @DocumentReference
-    private Networking networking;
+    @Field(name = "networking_id")
+    private String networkingId;
 
     private List<Role> roles;
 

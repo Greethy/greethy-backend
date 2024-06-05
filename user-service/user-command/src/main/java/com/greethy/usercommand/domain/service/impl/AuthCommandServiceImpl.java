@@ -56,7 +56,6 @@ public class AuthCommandServiceImpl implements AuthCommandService {
                 .map(authentication -> {
                     String accessToken = tokenProvider.createToken(authentication);
                     String message = translator.getLocalizedMessage(Constant.MessageKeys.LOGIN_SUCCESS);
-
                     return AuthResponse.builder()
                             .message(message)
                             .tokenType("Bearer")
@@ -78,17 +77,19 @@ public class AuthCommandServiceImpl implements AuthCommandService {
                 .doOnNext(tuple -> {
                     User user = tuple.getT1();
                     String encodedPassword = encoder.encode(user.getPassword());
-                    user.setNetworking(new Networking(UUID.randomUUID().toString()));
                     user.setRoles(Collections.singletonList(tuple.getT2()));
                     user.setPassword(encodedPassword);
                 }).map(Tuple2::getT1)
-                .flatMap(user -> Mono.zip(
-                                mongoUserPort.save(user).map(User::getUsername),
-                                mongoNetworkingPort.save(user.getNetworking())
-                        ).map(Tuple2::getT1)
-                ).doOnSuccess(username -> log.info("User {} saved to MongoDB", username))
-                .map(username -> {
-                    String accessToken = tokenProvider.createToken(username);
+                .flatMap(user -> {
+                    var networking = new Networking(UUID.randomUUID().toString());
+                    user.setNetworkingId(networking.getId());
+                    return Mono.when(
+                            mongoUserPort.save(user),
+                            mongoNetworkingPort.save(networking)
+                    ).thenReturn(user);
+                }).doOnSuccess(user -> log.info("User {} saved to MongoDB", user.getUsername()))
+                .map(user -> {
+                    String accessToken = tokenProvider.createToken(user.getUsername());
                     String message = translator.getLocalizedMessage(Constant.MessageKeys.REGISTER_SUCCESS);
                     return AuthResponse.builder()
                             .message(message)

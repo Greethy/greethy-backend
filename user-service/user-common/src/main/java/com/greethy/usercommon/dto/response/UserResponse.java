@@ -2,6 +2,7 @@ package com.greethy.usercommon.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.greethy.usercommon.dto.value.NetworkingDto;
+import com.greethy.usercommon.dto.value.PersonalDetailDto;
 import com.greethy.usercommon.dto.value.PremiumDto;
 import com.greethy.usercommon.dto.value.RoleDto;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -28,11 +29,12 @@ public class UserResponse {
     @Schema(description = "Verification status of the user's email")
     private Boolean verified;
 
+    @JsonProperty("avatar_url")
     @Schema(description = "URL to the user's avatar image")
-    private String avatar;
+    private String avatarUrl;
 
-    @Schema(description = "URL to the user's banner image")
     @JsonProperty("banner_url")
+    @Schema(description = "URL to the user's banner image")
     private String bannerUrl;
 
     @Schema(description = "Biography of the user")
@@ -40,6 +42,9 @@ public class UserResponse {
 
     @Schema(description = "Premium membership details of the user")
     private PremiumDto premium;
+
+    @JsonProperty("personal_detail")
+    private PersonalDetailDto personalDetail;
 
     @Schema(description = "Networking information of the user")
     private NetworkingDto networking;

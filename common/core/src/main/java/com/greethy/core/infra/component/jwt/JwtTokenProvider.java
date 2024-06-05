@@ -1,9 +1,8 @@
 package com.greethy.core.infra.component.jwt;
 
 import com.greethy.core.infra.config.properties.JwtProperties;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ClaimsBuilder;
-import io.jsonwebtoken.Jwts;
+import com.greethy.core.infra.util.DataUtil;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -43,12 +42,19 @@ public class JwtTokenProvider {
         return createToken(authentication.getName(), authentication.getAuthorities());
     }
 
+    public String createToken(String username) {
+        var defaultAuthorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_REGULAR"));
+        return createToken(username, defaultAuthorities);
+    }
+
     public String createToken(String username, Collection<? extends GrantedAuthority> authorities) {
         ClaimsBuilder claimsBuilder = Jwts.claims().subject(username);
-        if (!authorities.isEmpty()) {
+        if (!DataUtil.isNullOrEmpty(authorities)) {
             claimsBuilder.add(
                     AUTHORITIES_KEY,
-                    authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(", ")));
+                    authorities.stream()
+                            .map(GrantedAuthority::getAuthority)
+                            .collect(Collectors.joining(", ")));
         }
         Claims claims = claimsBuilder.build();
         return Jwts.builder()
@@ -57,11 +63,6 @@ public class JwtTokenProvider {
                 .issuedAt(new Date())
                 .signWith(secretKey, Jwts.SIG.HS256)
                 .compact();
-    }
-
-    public String createToken(String username) {
-        var defaultAuthorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
-        return createToken(username, defaultAuthorities);
     }
 
     public Authentication getAuthentication(String token) {
@@ -76,5 +77,19 @@ public class JwtTokenProvider {
                 : AuthorityUtils.commaSeparatedStringToAuthorityList(authoritiesClaims.toString());
         User principal = new User(claims.getSubject(), "", authorities);
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parser()
+                    .verifyWith(this.secretKey)
+                    .build()
+                    .parseSignedClaims(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException ex) {
+            log.error("Invalid JWT token: {}", ex.getMessage());
+            log.trace("Invalid JWT token, trace: ", ex);
+            return false;
+        }
     }
 }
