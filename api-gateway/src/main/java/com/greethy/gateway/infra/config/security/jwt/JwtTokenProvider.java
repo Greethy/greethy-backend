@@ -47,7 +47,10 @@ public class JwtTokenProvider {
         if (!authorities.isEmpty()) {
             claimsBuilder.add(
                     AUTHORITIES_KEY,
-                    authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(", ")));
+                    authorities.stream()
+                            .map(GrantedAuthority::getAuthority)
+                            .collect(Collectors.joining(", "))
+            );
         }
         Claims claims = claimsBuilder.build();
         return Jwts.builder()
@@ -59,7 +62,7 @@ public class JwtTokenProvider {
     }
 
     public String createToken(String username) {
-        var defaultAuthorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+        var defaultAuthorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_REGULAR"));
         return createToken(username, defaultAuthorities);
     }
 

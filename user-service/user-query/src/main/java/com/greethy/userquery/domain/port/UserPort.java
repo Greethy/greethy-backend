@@ -7,4 +7,6 @@ public interface UserPort {
 
     Mono<User> findById(String id);
 
+    Mono<User> findByUsernameOrEmail(String usernameOrEmail);
+
 }

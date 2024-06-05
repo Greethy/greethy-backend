@@ -1,7 +1,7 @@
 package com.greethy.core.infra.config;
 
-import com.greethy.core.infra.component.jwt.AccessDeniedHandler;
-import com.greethy.core.infra.component.jwt.AuthenticationEntryPoint;
+import com.greethy.core.infra.component.auth.AccessDeniedHandler;
+import com.greethy.core.infra.component.auth.AuthenticationEntryPoint;
 import com.greethy.core.infra.component.jwt.JwtTokenFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;

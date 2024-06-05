@@ -1,9 +1,7 @@
 package com.greethy.usercommon.entity;
 
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.data.mongodb.core.mapping.MongoId;
+import org.springframework.data.mongodb.core.mapping.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,7 @@ import java.util.List;
 @Document(collection = "networking")
 public class Networking {
 
-    @MongoId
+    @MongoId(FieldType.STRING)
     private String id;
 
     @Field(name = "following_ids")

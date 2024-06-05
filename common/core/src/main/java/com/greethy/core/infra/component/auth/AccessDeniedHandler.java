@@ -1,4 +1,4 @@
-package com.greethy.core.infra.component.jwt;
+package com.greethy.core.infra.component.auth;
 
 import com.greethy.core.infra.util.ResponseUtil;
 import org.springframework.http.HttpStatus;

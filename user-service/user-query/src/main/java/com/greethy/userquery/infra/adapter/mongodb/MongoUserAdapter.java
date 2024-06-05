@@ -17,4 +17,9 @@ public class MongoUserAdapter implements UserPort {
     public Mono<User> findById(String id) {
         return repository.findById(id);
     }
+
+    @Override
+    public Mono<User> findByUsernameOrEmail(String usernameOrEmail) {
+        return repository.findByUsernameOrEmail(usernameOrEmail);
+    }
 }
