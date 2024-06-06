@@ -18,11 +18,9 @@ import java.util.Set;
 @RequiredArgsConstructor
 @SpringBootApplication(
         scanBasePackages = {
-                "com.greethy.core",
-                "com.greethy.mapper",
-                "com.greethy.annotation",
-                "com.greethy.usercommand",
-                "com.greethy.usercommon"
+                "com.greethy.common",
+                "com.greethy.usercommon",
+                "com.greethy.usercommand"
         })
 public class UserCommandApplication implements CommandLineRunner {
 

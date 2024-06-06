@@ -1,6 +1,6 @@
 package com.greethy.usercommand.infra.adapter.mongodb;
 
-import com.greethy.annotation.hexagonal.DrivenAdapter;
+import com.greethy.common.infra.component.annotation.DrivenAdapter;
 import com.greethy.usercommand.domain.port.RolePort;
 import com.greethy.usercommon.entity.Role;
 import com.greethy.usercommon.repository.mongodb.RoleRepository;

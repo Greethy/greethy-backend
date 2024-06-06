@@ -1,6 +1,6 @@
 package com.greethy.usercommon.exception;
 
-import com.greethy.core.domain.exception.ClientException;
+import com.greethy.common.domain.exception.ClientException;
 
 public class DuplicateUniqueFieldException extends ClientException {
 

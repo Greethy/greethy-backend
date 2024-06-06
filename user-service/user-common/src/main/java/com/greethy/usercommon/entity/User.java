@@ -1,6 +1,6 @@
 package com.greethy.usercommon.entity;
 
-import com.greethy.core.domain.entity.BaseEntity;
+import com.greethy.common.domain.entity.BaseEntity;
 import com.greethy.usercommon.entity.value.PersonalDetail;
 import com.greethy.usercommon.entity.value.Premium;
 import lombok.Data;

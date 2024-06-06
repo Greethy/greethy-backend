@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
-@Component
+
 @RequiredArgsConstructor
 public class JwtTokenFilter implements WebFilter {
 

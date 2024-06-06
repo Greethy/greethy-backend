@@ -1,6 +1,6 @@
 package com.greethy.nutritioncommon.entity;
 
-import com.greethy.core.domain.entity.BaseEntity;
+import com.greethy.common.domain.entity.BaseEntity;
 import com.greethy.nutritioncommon.entity.value.Bmi;
 import com.greethy.nutritioncommon.entity.value.Bmr;
 import com.greethy.nutritioncommon.entity.value.Pal;

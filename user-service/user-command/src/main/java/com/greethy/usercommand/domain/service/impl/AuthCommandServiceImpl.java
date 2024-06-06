@@ -1,7 +1,7 @@
 package com.greethy.usercommand.domain.service.impl;
 
-import com.greethy.core.infra.component.i18n.Translator;
-import com.greethy.core.infra.component.jwt.JwtTokenProvider;
+import com.greethy.common.infra.component.i18n.Translator;
+import com.greethy.common.infra.component.jwt.JwtTokenProvider;
 import com.greethy.usercommand.domain.port.NetworkingPort;
 import com.greethy.usercommand.domain.port.RolePort;
 import com.greethy.usercommand.domain.port.UserPort;

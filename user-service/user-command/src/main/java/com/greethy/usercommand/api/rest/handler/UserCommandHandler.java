@@ -1,7 +1,7 @@
 package com.greethy.usercommand.api.rest.handler;
 
-import com.greethy.annotation.reactive.EndpointHandler;
-import com.greethy.core.api.handler.ExceptionHandler;
+import com.greethy.common.api.handler.ExceptionHandler;
+import com.greethy.common.infra.component.annotation.EndpointHandler;
 import com.greethy.usercommand.domain.service.UserCommandService;
 import com.greethy.usercommon.dto.request.command.RegisterUserCommand;
 import com.greethy.usercommon.dto.request.command.UpdateUserProfileCommand;

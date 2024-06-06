@@ -9,9 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @RequiredArgsConstructor
 @SpringBootApplication(
         scanBasePackages = {
-                "com.greethy.core",
-                "com.greethy.mapper",
-                "com.greethy.annotation",
+                "com.greethy.common",
                 "com.greethy.usercommon",
                 "com.greethy.userquery",
         })

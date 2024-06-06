@@ -2,7 +2,7 @@ package com.greethy.usercommand.api.rest;
 
 import com.greethy.usercommand.api.rest.handler.AuthCommandHandler;
 import com.greethy.usercommand.api.rest.handler.UserCommandHandler;
-import com.greethy.usercommon.annotation.CommandSwagger;
+import com.greethy.usercommand.api.rest.swagger.CommandSwagger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

@@ -1,6 +1,6 @@
 package com.greethy.nutritioncommand.domain.service.impl;
 
-import com.greethy.core.infra.util.DataUtil;
+import com.greethy.common.infra.util.DataUtil;
 import com.greethy.nutritioncommand.domain.port.BmiEvaluatePort;
 import com.greethy.nutritioncommand.domain.port.BmrByAgePort;
 import com.greethy.nutritioncommand.domain.port.BodySpecPort;

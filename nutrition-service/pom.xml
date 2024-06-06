@@ -10,7 +10,7 @@
     </parent>
 
     <name>nutrition-service</name>
-    <artifactId>nutrition-service</artifactId>
+    <artifactId>nutrition</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 

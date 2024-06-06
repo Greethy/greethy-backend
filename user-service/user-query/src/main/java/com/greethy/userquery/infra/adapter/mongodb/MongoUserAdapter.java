@@ -1,6 +1,6 @@
 package com.greethy.userquery.infra.adapter.mongodb;
 
-import com.greethy.annotation.hexagonal.DrivenAdapter;
+import com.greethy.common.infra.component.annotation.DrivenAdapter;
 import com.greethy.usercommon.entity.User;
 import com.greethy.usercommon.repository.mongodb.UserRepository;
 import com.greethy.userquery.domain.port.UserPort;

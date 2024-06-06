@@ -1,6 +1,6 @@
 package com.greethy.usercommon.config;
 
-import com.greethy.core.infra.component.i18n.Translator;
+import com.greethy.common.infra.component.i18n.Translator;
 import com.greethy.usercommon.constant.Constant;
 import com.greethy.usercommon.entity.Role;
 import com.greethy.usercommon.exception.InvalidUsernameOrEmailException;

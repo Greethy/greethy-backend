@@ -1,6 +1,6 @@
 package com.greethy.userquery.api.rest;
 
-import com.greethy.usercommon.annotation.QuerySwagger;
+import com.greethy.userquery.api.rest.swagger.QuerySwagger;
 import com.greethy.userquery.api.rest.handler.UserQueryHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

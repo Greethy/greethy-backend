@@ -22,9 +22,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @SpringBootApplication(
         scanBasePackages = {
-                "com.greethy.core",
-                "com.greethy.mapper",
-                "com.greethy.annotation",
+                "com.greethy.common",
                 "com.greethy.nutritioncommon",
                 "com.greethy.nutritioncommand"
         })

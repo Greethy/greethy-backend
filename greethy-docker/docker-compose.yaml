@@ -67,18 +67,6 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
-    image: mysql/mysql-server
-    container_name: greethy-mysql
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: greethy
-      MYSQL_PASSWORD: greethy@
-      MYSQL_ROOT_PASSWORD: root_pass
-    volumes:
-      - mysql_data:/var/lib/mysql
-
   #CACHE STORAGE - REDIS
   redis:
     image: redis

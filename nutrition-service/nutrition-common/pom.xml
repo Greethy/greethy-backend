@@ -5,10 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.greethy</groupId>
-        <artifactId>nutrition-service</artifactId>
+        <artifactId>nutrition</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
     <version>0.0.1-SNAPSHOT</version>
 
     <name>nutrition-common</name>
@@ -17,9 +18,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.greethy</groupId>
-            <artifactId>core</artifactId>
-            <version>${project.version}</version>
+            <groupId>com.greethy.common</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

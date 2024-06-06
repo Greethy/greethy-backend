@@ -24,19 +24,14 @@
 
 	<modules>
 		<!-- MICROSERVICE MODULES -->
-		<module>config-server</module>
 		<module>api-gateway</module>
-		<module>services-discovery</module>
 
 		<!-- BUSINESS MODULES -->
 		<module>user-service</module>
 		<module>nutrition-service</module>
 
 		<!-- -->
-		<module>user-services</module>
-		<module>nutrition-services</module>
 		<module>finance-services</module>
-
 		<module>greethy-docker</module>
 		<module>common</module>
 	</modules>
@@ -59,26 +54,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<dependencyManagement>
-		<!-- Project's module for microservice pattern -->
-		<dependencies>
-			<dependency>
-				<groupId>com.greethy</groupId>
-				<artifactId>config</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.greethy</groupId>
-				<artifactId>discovery</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.greethy</groupId>
-				<artifactId>mapper</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 </project>

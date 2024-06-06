@@ -21,16 +21,6 @@
             <artifactId>user-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.greethy</groupId>
-            <artifactId>mapper</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.greethy</groupId>
-            <artifactId>annotation</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
 

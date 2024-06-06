@@ -1,6 +1,6 @@
 package com.greethy.userquery.domain.service.impl;
 
-import com.greethy.core.infra.component.i18n.Translator;
+import com.greethy.common.infra.component.i18n.Translator;
 import com.greethy.usercommon.constant.Constant;
 import com.greethy.usercommon.dto.request.query.GetCurrentUserProfileQuery;
 import com.greethy.usercommon.dto.request.query.GetUserByIdQuery;
