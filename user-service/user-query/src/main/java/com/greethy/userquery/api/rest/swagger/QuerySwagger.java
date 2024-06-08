@@ -1,6 +1,7 @@
 package com.greethy.userquery.api.rest.swagger;
 
 import com.greethy.common.api.response.ErrorResponse;
+import com.greethy.usercommon.dto.response.UserProfileResponse;
 import com.greethy.usercommon.dto.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,6 +26,7 @@ import java.lang.annotation.Target;
         @RouterOperation(
                 method = RequestMethod.GET,
                 path = "/api/v1/users",
+                produces = MediaType.APPLICATION_JSON_VALUE,
                 operation = @Operation(
                         tags = "User Query",
                         operationId = "getAllUserByPagination",
@@ -35,14 +37,12 @@ import java.lang.annotation.Target;
                                         name = "offset",
                                         in = ParameterIn.QUERY,
                                         description = "The page number to retrieve, default value: 0, range 0 - ??",
-                                        schema = @Schema(type = "integer", defaultValue = "0", minimum = "0")
-                                ),
+                                        schema = @Schema(type = "integer", defaultValue = "0", minimum = "0")),
                                 @Parameter(
-                                        name = "size",
+                                        name = "limit",
                                         in = ParameterIn.QUERY,
                                         description = "The number of records per page, default value: 10, range 1 - 20",
-                                        schema = @Schema(type = "integer", defaultValue = "10", minimum = "1", maximum = "20")
-                                )
+                                        schema = @Schema(type = "integer", defaultValue = "10", minimum = "1", maximum = "20"))
                         },
                         responses = {
                                 @ApiResponse(
@@ -50,23 +50,48 @@ import java.lang.annotation.Target;
                                         description = "Successful retrieval of user list",
                                         content = @Content(
                                                 mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                array = @ArraySchema(schema = @Schema(implementation = UserResponse.class))
-                                        )
-                                ),
-                                @ApiResponse(
-                                        responseCode = "400",
-                                        description = "The request could not be understood by the server due to malformed syntax.",
-                                        content = @Content(
-                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                schema = @Schema(implementation = ErrorResponse.class))
-                                ),
+                                                array = @ArraySchema(schema = @Schema(implementation = UserResponse.class)))),
                                 @ApiResponse(
                                         responseCode = "401",
                                         description = "User authorization has been refused for those credentials.",
                                         content = @Content(
                                                 mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                                schema = @Schema(implementation = ErrorResponse.class))
-                                ),
+                                                schema = @Schema(implementation = ErrorResponse.class))),
+                                @ApiResponse(
+                                        responseCode = "404",
+                                        description = "he requested resource could not be found. This error can be due to a temporary or permanent condition.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The app has exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)))
+                        })),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/me",
+                produces = MediaType.APPLICATION_JSON_VALUE,
+                operation = @Operation(
+                        tags = "User Query",
+                        operationId = "getCurrentUserProfile",
+                        summary = "Get current User",
+                        description = "",
+                        responses = {
+                                @ApiResponse(
+                                        responseCode = "200",
+                                        description = "Successful retrieval of user list",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                array = @ArraySchema(schema = @Schema(implementation = UserProfileResponse.class)))),
+                                @ApiResponse(
+                                        responseCode = "401",
+                                        description = "User authorization has been refused for those credentials.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))),
                                 @ApiResponse(
                                         responseCode = "429",
                                         description = "The app has exceeded its rate limits.",
@@ -75,19 +100,7 @@ import java.lang.annotation.Target;
                                                 schema = @Schema(implementation = ErrorResponse.class)))
                         }
                 )
-        ),
-//        @RouterOperation(
-//                method = RequestMethod.GET,
-//                path = "/api/v1/users/{user-id}"
-//        ),
-//        @RouterOperation(
-//                method = RequestMethod.GET,
-//                path = "/api/v1/users/user"
-//        ),
-//        @RouterOperation(
-//                method = RequestMethod.GET,
-//                path = "/api/v1/users/user-email/exists"
-//        )
+        )
 })
 public @interface QuerySwagger {
 }

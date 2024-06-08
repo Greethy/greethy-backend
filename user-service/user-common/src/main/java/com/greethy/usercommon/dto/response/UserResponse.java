@@ -7,11 +7,13 @@ import com.greethy.usercommon.dto.value.PremiumDto;
 import com.greethy.usercommon.dto.value.RoleDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class UserResponse {
 
     @Schema(description = "Unique identifier of the user")

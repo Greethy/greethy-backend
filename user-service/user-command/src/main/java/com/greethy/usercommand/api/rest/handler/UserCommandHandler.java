@@ -7,7 +7,6 @@ import com.greethy.usercommon.dto.request.command.RegisterUserCommand;
 import com.greethy.usercommon.dto.request.command.UpdateUserProfileCommand;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
@@ -24,7 +23,7 @@ public class UserCommandHandler {
     public Mono<ServerResponse> registerUser(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(RegisterUserCommand.class)
                 .flatMap(userService::registerUser)
-                .flatMap(response -> ServerResponse.status(HttpStatus.CREATED)
+                .flatMap(response -> ServerResponse.accepted()
                         .bodyValue(response))
                 .onErrorResume(exceptionHandler::handlingException);
     }

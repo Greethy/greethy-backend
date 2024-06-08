@@ -22,7 +22,7 @@ public class EndpointsRouter {
         return RouterFunctions.route()
                 .path("api/v1/users", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
-                                .GET("", userHandler::getAllByPagination)
+                                .GET(userHandler::getAllByPagination)
                                 .GET("{user-id}", userHandler::getUserById)
                                 .GET("user",
                                         queryParam("username-or-email", StringUtils::hasText),

@@ -2,6 +2,7 @@ package com.greethy.userquery.domain.service.impl;
 
 import com.greethy.common.infra.component.i18n.Translator;
 import com.greethy.usercommon.constant.Constant;
+import com.greethy.usercommon.dto.request.query.GetAllUsersByPaginationQuery;
 import com.greethy.usercommon.dto.request.query.GetCurrentUserProfileQuery;
 import com.greethy.usercommon.dto.request.query.GetUserByIdQuery;
 import com.greethy.usercommon.dto.request.query.GetUserByUsernameOrEmailQuery;
@@ -14,7 +15,9 @@ import com.greethy.userquery.domain.port.UserPort;
 import com.greethy.userquery.domain.service.UserQueryService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -84,4 +87,13 @@ public class UserQueryServiceImpl implements UserQueryService {
                     return response;
                 });
     }
+
+    @Override
+    public Flux<UserResponse> getAllUsersByPagination(GetAllUsersByPaginationQuery query) {
+        var pageable = PageRequest.of(query.getOffset(), query.getLimit());
+        return Flux.just(pageable)
+                .flatMap(mongoUserPort::findByPagination)
+                .map(user -> mapper.map(user, UserResponse.class));
+    }
+
 }

@@ -10,7 +10,7 @@
     </parent>
 
     <name>user-service</name>
-    <artifactId>user-service</artifactId>
+    <artifactId>user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -51,8 +51,7 @@
             <artifactId>reactor-kafka</artifactId>
             <version>${reactor.kafka.version}</version>
         </dependency>
-
-        <!-- -->
+        <!-- SWAGGER FOR WEBFLUX -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
