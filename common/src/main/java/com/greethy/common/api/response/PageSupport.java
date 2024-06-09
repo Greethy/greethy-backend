@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record PageSupport<T>(List<T> content, int pageNumber, int size, long total) {
+public record PageSupport<T>(List<T> content, @JsonProperty("page_number") int pageNumber, int size, long total) {
 
     @JsonProperty("total_pages")
     public long totalPages() {
@@ -20,4 +20,5 @@ public record PageSupport<T>(List<T> content, int pageNumber, int size, long tot
     public boolean last() {
         return (long) (pageNumber + 1) * size >= total;
     }
+
 }

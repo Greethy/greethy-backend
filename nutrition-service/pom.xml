@@ -23,6 +23,7 @@
     <properties>
         <java.version>17</java.version>
         <springdoc.version>2.3.0</springdoc.version>
+        <reactor.kafka.version>1.3.22</reactor.kafka.version>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
     </properties>
 
@@ -41,6 +42,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
         </dependency>
+
+        <!-- REACTIVE KAFKA -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor.kafka</groupId>
+            <artifactId>reactor-kafka</artifactId>
+            <version>${reactor.kafka.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>

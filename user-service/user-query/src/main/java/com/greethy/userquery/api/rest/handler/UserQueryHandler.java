@@ -52,10 +52,6 @@ public class UserQueryHandler {
                 .body(fluxResponse, UserResponse.class);
     }
 
-    public Mono<ServerResponse> checkIfEmailIsExisted(ServerRequest serverRequest) {
-        return null;
-    }
-
     public Mono<ServerResponse> getCurrentUser(ServerRequest serverRequest) {
         return serverRequest.principal()
                 .map(principal -> new GetCurrentUserProfileQuery(principal.getName()))
@@ -64,4 +60,15 @@ public class UserQueryHandler {
                 .onErrorResume(exceptionHandler::handlingException);
     }
 
+    public Mono<ServerResponse> getIdentity(ServerRequest serverRequest) {
+        return Mono.justOrEmpty(serverRequest.queryParam("username-or-email"))
+                .map(GetUserByUsernameOrEmailQuery::new)
+                .flatMap(userQueryService::getUserIdentityByUsernameOrEmail)
+                .flatMap(response -> ServerResponse.ok().bodyValue(response))
+                .onErrorResume(exceptionHandler::handlingException);
+    }
+
+    public Mono<ServerResponse> checkIfEmailIsExisted(ServerRequest serverRequest) {
+        return null;
+    }
 }

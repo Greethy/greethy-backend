@@ -1,11 +1,12 @@
 package com.greethy.userquery.domain.service.impl;
 
 import com.greethy.common.infra.component.i18n.Translator;
-import com.greethy.usercommon.constant.Constant;
+import com.greethy.usercommon.constant.Constants;
 import com.greethy.usercommon.dto.request.query.GetAllUsersByPaginationQuery;
 import com.greethy.usercommon.dto.request.query.GetCurrentUserProfileQuery;
 import com.greethy.usercommon.dto.request.query.GetUserByIdQuery;
 import com.greethy.usercommon.dto.request.query.GetUserByUsernameOrEmailQuery;
+import com.greethy.usercommon.dto.response.IdentityResponse;
 import com.greethy.usercommon.dto.response.UserProfileResponse;
 import com.greethy.usercommon.dto.response.UserResponse;
 import com.greethy.usercommon.dto.value.NetworkingDto;
@@ -47,7 +48,7 @@ public class UserQueryServiceImpl implements UserQueryService {
     public Mono<UserProfileResponse> getUserProfileByUsernameOrEmail(GetCurrentUserProfileQuery query) {
         return mongoUserPort.findByUsernameOrEmail(query.getUsernameOrEmail())
                 .switchIfEmpty(Mono.error(() -> {
-                    String message = translator.getLocalizedMessage(Constant.MessageKeys.USER_NOT_FOUND);
+                    String message = translator.getLocalizedMessage(Constants.MessageKeys.USER_NOT_FOUND);
                     return new NotFoundException(message);
                 })).flatMap(user -> Mono.zip(Mono.just(user), mongoNetworkingPort.findById(user.getNetworkingId()))
                 ).map(tuple -> {
@@ -59,10 +60,19 @@ public class UserQueryServiceImpl implements UserQueryService {
     }
 
     @Override
+    public Mono<IdentityResponse> getUserIdentityByUsernameOrEmail(GetUserByUsernameOrEmailQuery query) {
+        return mongoUserPort.findByUsernameOrEmail(query.getUsernameOrEmail())
+                .switchIfEmpty(Mono.error(() -> {
+                    String message = translator.getLocalizedMessage(Constants.MessageKeys.USER_NOT_FOUND);
+                    return new NotFoundException(message);
+                })).map(user -> mapper.map(user, IdentityResponse.class));
+    }
+
+    @Override
     public Mono<UserResponse> getUserById(GetUserByIdQuery query) {
         return mongoUserPort.findById(query.getUserId())
                 .switchIfEmpty(Mono.error(() -> {
-                    String message = translator.getLocalizedMessage(Constant.MessageKeys.USER_NOT_FOUND);
+                    String message = translator.getLocalizedMessage(Constants.MessageKeys.USER_NOT_FOUND);
                     return new NotFoundException(message);
                 })).flatMap(user -> Mono.zip(Mono.just(user), mongoNetworkingPort.findById(user.getNetworkingId()))
                 ).map(tuple -> {
@@ -77,7 +87,7 @@ public class UserQueryServiceImpl implements UserQueryService {
     public Mono<UserResponse> getUserByUsernameOrEmail(GetUserByUsernameOrEmailQuery query) {
         return mongoUserPort.findByUsernameOrEmail(query.getUsernameOrEmail())
                 .switchIfEmpty(Mono.error(() -> {
-                    String message = translator.getLocalizedMessage(Constant.MessageKeys.USER_NOT_FOUND);
+                    String message = translator.getLocalizedMessage(Constants.MessageKeys.USER_NOT_FOUND);
                     return new NotFoundException(message);
                 })).flatMap(user -> Mono.zip(Mono.just(user), mongoNetworkingPort.findById(user.getNetworkingId()))
                 ).map(tuple -> {

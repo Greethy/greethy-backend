@@ -1,6 +1,6 @@
 package com.greethy.usercommand;
 
-import com.greethy.usercommon.constant.Constant;
+import com.greethy.usercommon.constant.Constants;
 import com.greethy.usercommon.entity.Role;
 import com.greethy.usercommon.entity.enums.Permission;
 import com.greethy.usercommon.repository.mongodb.RoleRepository;
@@ -40,11 +40,11 @@ public class UserCommandApplication implements CommandLineRunner {
 
     private Set<Role> roles() {
         var roles = new HashSet<Role>();
-        roles.add(new Role("1", Constant.RoleType.ROLE_REGULAR, true, Set.of(Permission.READ)));
-        roles.add(new Role("2", Constant.RoleType.ROLE_PREMIUM, false, Set.of(Permission.READ)));
-        roles.add(new Role("3", Constant.RoleType.ROLE_EXPERT, false, Set.of(Permission.READ)));
-        roles.add(new Role("4", Constant.RoleType.ROLE_MERCHANT, false, Set.of(Permission.READ, Permission.DELETE)));
-        roles.add(new Role("5", Constant.RoleType.ROLE_ADMIN, false, Set.of(Permission.READ, Permission.WRITE, Permission.DELETE)));
+        roles.add(new Role("1", Constants.RoleType.ROLE_REGULAR, true, Set.of(Permission.READ)));
+        roles.add(new Role("2", Constants.RoleType.ROLE_PREMIUM, false, Set.of(Permission.READ)));
+        roles.add(new Role("3", Constants.RoleType.ROLE_EXPERT, false, Set.of(Permission.READ)));
+        roles.add(new Role("4", Constants.RoleType.ROLE_MERCHANT, false, Set.of(Permission.READ, Permission.DELETE)));
+        roles.add(new Role("5", Constants.RoleType.ROLE_ADMIN, false, Set.of(Permission.READ, Permission.WRITE, Permission.DELETE)));
         return roles;
     }
 

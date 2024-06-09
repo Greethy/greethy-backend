@@ -6,7 +6,7 @@ import com.greethy.usercommand.domain.port.NetworkingPort;
 import com.greethy.usercommand.domain.port.RolePort;
 import com.greethy.usercommand.domain.port.UserPort;
 import com.greethy.usercommand.domain.service.AuthCommandService;
-import com.greethy.usercommon.constant.Constant;
+import com.greethy.usercommon.constant.Constants;
 import com.greethy.usercommon.dto.request.command.RegisterUserCommand;
 import com.greethy.usercommon.dto.request.command.UserLoginCommand;
 import com.greethy.usercommon.dto.response.AuthResponse;
@@ -55,7 +55,7 @@ public class AuthCommandServiceImpl implements AuthCommandService {
         return authenticationManager.authenticate(authenticationToken)
                 .map(authentication -> {
                     String accessToken = tokenProvider.createToken(authentication);
-                    String message = translator.getLocalizedMessage(Constant.MessageKeys.LOGIN_SUCCESS);
+                    String message = translator.getLocalizedMessage(Constants.MessageKeys.LOGIN_SUCCESS);
                     return AuthResponse.builder()
                             .message(message)
                             .tokenType("Bearer")
@@ -69,7 +69,7 @@ public class AuthCommandServiceImpl implements AuthCommandService {
         return mongoUserPort.existsByUsernameOrEmail(registerUserCommand.getUsername(), registerUserCommand.getEmail())
                 .filter(isExisted -> !isExisted)
                 .switchIfEmpty(Mono.error(() -> {
-                    String exceptionMessage = translator.getLocalizedMessage(Constant.MessageKeys.EMAIL_DUPLICATE);
+                    String exceptionMessage = translator.getLocalizedMessage(Constants.MessageKeys.EMAIL_DUPLICATE);
                     return new DuplicateUniqueFieldException(exceptionMessage);
                 })).then(Mono.just(registerUserCommand))
                 .map(command -> mapper.map(command, User.class))
@@ -90,7 +90,7 @@ public class AuthCommandServiceImpl implements AuthCommandService {
                 }).doOnSuccess(user -> log.info("User {} saved to MongoDB", user.getUsername()))
                 .map(user -> {
                     String accessToken = tokenProvider.createToken(user.getUsername());
-                    String message = translator.getLocalizedMessage(Constant.MessageKeys.REGISTER_SUCCESS);
+                    String message = translator.getLocalizedMessage(Constants.MessageKeys.REGISTER_SUCCESS);
                     return AuthResponse.builder()
                             .message(message)
                             .tokenType("Bearer")

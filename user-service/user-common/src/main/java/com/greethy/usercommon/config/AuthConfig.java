@@ -1,7 +1,7 @@
 package com.greethy.usercommon.config;
 
 import com.greethy.common.infra.component.i18n.Translator;
-import com.greethy.usercommon.constant.Constant;
+import com.greethy.usercommon.constant.Constants;
 import com.greethy.usercommon.entity.Role;
 import com.greethy.usercommon.exception.InvalidUsernameOrEmailException;
 import com.greethy.usercommon.repository.mongodb.UserRepository;
@@ -29,10 +29,9 @@ public class AuthConfig {
     public ReactiveUserDetailsService userDetailsService(UserRepository userRepository, Translator translator) {
         return usernameOrEmail -> userRepository.findByUsernameOrEmail(usernameOrEmail)
                 .switchIfEmpty(Mono.error(() -> {
-                    String message = translator.getLocalizedMessage(Constant.MessageKeys.INVALID_USERNAME_OR_EMAIL);
+                    String message = translator.getLocalizedMessage(Constants.MessageKeys.INVALID_USERNAME_OR_EMAIL);
                     return new InvalidUsernameOrEmailException(message);
-                }))
-                .map(user -> User.withUsername(user.getUsername())
+                })).map(user -> User.withUsername(user.getUsername())
                         .password(user.getPassword())
                         .roles(user.getRoles()
                                 .stream()

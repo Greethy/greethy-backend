@@ -22,6 +22,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
+            "/internal/**",
             "/auth/**",
             "/eureka/**",
             "/actuator/**",

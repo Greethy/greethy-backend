@@ -34,6 +34,7 @@ public class NutritionCommandApplication implements CommandLineRunner {
 
     private final PalEvaluateRepository palEvaluateRepository;
 
+
     public static void main(String[] args) {
         SpringApplication.run(NutritionCommandApplication.class);
     }

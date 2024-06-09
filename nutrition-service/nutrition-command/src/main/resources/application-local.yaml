@@ -8,3 +8,14 @@ spring:
       host: localhost
       port: 27017
       database: GreethyNutrition
+
+  kafka:
+    bootstrap-servers: localhost:29092
+    topic: greethy-nutrition-sys-bodyspec-v1
+    consumer:
+      group-id: user-reactive-kafka-consumer
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      key-serializer:

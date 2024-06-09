@@ -9,8 +9,8 @@ import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@DrivenAdapter
 @RequiredArgsConstructor
+@DrivenAdapter("mongoUserAdapter")
 public class MongoUserAdapter implements UserPort {
 
     private final UserRepository repository;

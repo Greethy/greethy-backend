@@ -27,18 +27,17 @@
 		<module>api-gateway</module>
 
 		<!-- BUSINESS MODULES -->
+		<module>common</module>
 		<module>user-service</module>
 		<module>nutrition-service</module>
-
-		<!-- -->
+		<module>event-store</module>
 		<module>finance-services</module>
+		<!-- INFRASTRUCTURE -->
 		<module>greethy-docker</module>
-		<module>common</module>
-	</modules>
+    </modules>
 
 	<dependencies>
 		<dependency>
-
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
