@@ -37,7 +37,7 @@ public class KafkaConfig {
         private String autoOffsetReset;
 
         @Bean
-        public ReceiverOptions<String, Object> receiverOptions(@Value("${spring.kafka.topic}") String topic) {
+        public ReceiverOptions<String, Object> receiverOptions(@Value("${spring.kafka.consumer.topic}") String topic) {
             Map<String, Object> consumerProps = new HashMap<>();
             consumerProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
             consumerProps.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);

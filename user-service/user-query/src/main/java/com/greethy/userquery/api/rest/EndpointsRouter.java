@@ -33,7 +33,11 @@ public class EndpointsRouter {
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
                                 .GET("", userHandler::getCurrentUser)
                         ).build()
-                ).build();
+                ).path("internal", builder -> builder
+                        .GET("identity",
+                                queryParam("username-or-email", StringUtils::hasText),
+                                userHandler::getIdentity))
+                .build();
     }
 
 

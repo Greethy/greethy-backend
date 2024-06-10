@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Documented
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EndpointHandler {
+public @interface RestClient {
 
     /**
      * The value may indicate a suggestion for a logical component name,

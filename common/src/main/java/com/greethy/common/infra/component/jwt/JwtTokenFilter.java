@@ -3,6 +3,7 @@ package com.greethy.common.infra.component.jwt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -19,6 +20,8 @@ import java.util.Optional;
 public class JwtTokenFilter implements WebFilter {
 
     private final JwtTokenProvider tokenProvider;
+
+    private final ReactiveAuthenticationManager authenticationManager;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {

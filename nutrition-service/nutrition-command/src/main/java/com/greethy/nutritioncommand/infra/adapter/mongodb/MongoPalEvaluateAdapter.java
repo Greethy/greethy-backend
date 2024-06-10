@@ -1,6 +1,6 @@
 package com.greethy.nutritioncommand.infra.adapter.mongodb;
 
-import com.greethy.annotation.hexagonal.DrivenAdapter;
+import com.greethy.common.infra.component.annotation.DrivenAdapter;
 import com.greethy.nutritioncommand.domain.port.PalEvaluatePort;
 import com.greethy.nutritioncommon.entity.PalEvaluate;
 import com.greethy.nutritioncommon.repository.PalEvaluateRepository;

@@ -21,8 +21,8 @@
     </modules>
 
     <properties>
-        <reactor.kafka.version>1.3.22</reactor.kafka.version>
         <springdoc.version>2.3.0</springdoc.version>
+        <reactor.kafka.version>1.3.22</reactor.kafka.version>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
     </properties>
 

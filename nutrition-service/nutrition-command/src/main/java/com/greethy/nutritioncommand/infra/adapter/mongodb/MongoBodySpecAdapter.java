@@ -1,6 +1,6 @@
 package com.greethy.nutritioncommand.infra.adapter.mongodb;
 
-import com.greethy.annotation.hexagonal.DrivenAdapter;
+import com.greethy.common.infra.component.annotation.DrivenAdapter;
 import com.greethy.nutritioncommand.domain.port.BodySpecPort;
 import com.greethy.nutritioncommon.entity.BodySpec;
 import com.greethy.nutritioncommon.repository.BodySpecRepository;

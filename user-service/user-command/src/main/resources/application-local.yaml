@@ -10,13 +10,15 @@ spring:
       port: 27017
       database: GreethyUser
   kafka:
-    topic: greethy.topic.user-topic
+    bootstrap-servers: localhost:29092
     consumer:
-      bootstrap-servers: localhost:29092
+      topic: greethy-nutrition-sys-bodyspec-v1
       group-id: user-reactive-kafka-consumer
       auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
     producer:
-      bootstrap-servers: localhost:29092
+      key-serializer:
 
 springdoc:
   swagger-ui:

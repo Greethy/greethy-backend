@@ -1,10 +1,12 @@
 package com.greethy.nutritioncommand.domain.service.impl;
 
 import com.greethy.common.infra.util.DataUtil;
+import com.greethy.nutritioncommand.domain.event.AddToUserEvent;
 import com.greethy.nutritioncommand.domain.port.BmiEvaluatePort;
 import com.greethy.nutritioncommand.domain.port.BmrByAgePort;
 import com.greethy.nutritioncommand.domain.port.BodySpecPort;
 import com.greethy.nutritioncommand.domain.port.PalEvaluatePort;
+import com.greethy.nutritioncommand.domain.port.producer.BodySpecEventProducer;
 import com.greethy.nutritioncommand.domain.service.BodySpecCommandService;
 import com.greethy.nutritioncommon.dto.request.CreateBodySpecCommand;
 import com.greethy.nutritioncommon.dto.response.BodySpecResponse;
@@ -14,6 +16,7 @@ import com.greethy.nutritioncommon.entity.BodySpec;
 import com.greethy.nutritioncommon.entity.value.Bmi;
 import com.greethy.nutritioncommon.entity.value.Bmr;
 import com.greethy.nutritioncommon.entity.value.Pal;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -30,6 +33,7 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class BodySpecCommandServiceImpl implements BodySpecCommandService {
 
     private final ModelMapper mapper;
@@ -40,19 +44,9 @@ public class BodySpecCommandServiceImpl implements BodySpecCommandService {
 
     private final PalEvaluatePort palEvaluatePort;
 
-    private final BodySpecPort bodySpecPort;
+    private final BodySpecPort mongoBodySpecPort;
 
-    public BodySpecCommandServiceImpl(ModelMapper mapper,
-                                      BmrByAgePort bmrByAgePort,
-                                      BmiEvaluatePort bmiEvaluatePort,
-                                      PalEvaluatePort palEvaluatePort,
-                                      BodySpecPort bodySpecPort) {
-        this.mapper = mapper;
-        this.bmrByAgePort = bmrByAgePort;
-        this.bmiEvaluatePort = bmiEvaluatePort;
-        this.palEvaluatePort = palEvaluatePort;
-        this.bodySpecPort = bodySpecPort;
-    }
+    private final BodySpecEventProducer bodySpecEventProducer;
 
     /**
      * Creates and persists a BodySpec entity based on the given command.
@@ -60,17 +54,14 @@ public class BodySpecCommandServiceImpl implements BodySpecCommandService {
      * maps them to a new BodySpec entity, and saves it using a reactive repository.
      *
      * @param command A command object containing the necessary data to create a BodySpec,
-     *               including weight, height, age, and activity level.
+     *                including weight, height, age, and activity level.
      * @return A {@link Mono} that emits {@link BodySpecResponse} upon successful creation
      * and persistence of the BodySpec entity.
      */
     @Override
     public Mono<BodySpecResponse> createBodySpec(CreateBodySpecCommand command) {
-        Double bmiIndex = DataUtil.toDoubleSafely(
-                (command.getWeight() / (command.getHeight() * command.getHeight()))
-        );
-        return Mono.zip(
-                        bmiEvaluatePort.findByIndexInRange(bmiIndex)
+        Double bmiIndex = DataUtil.toDoubleSafely((command.getWeight() / (command.getHeight() * command.getHeight())));
+        return Mono.zip(bmiEvaluatePort.findByIndexInRange(bmiIndex)
                                 .map(BmiEvaluate::getCategory)
                                 .map(category -> new Bmi(bmiIndex, category)),
                         bmrByAgePort.findByAgeGroup(command.getAge())
@@ -78,33 +69,30 @@ public class BodySpecCommandServiceImpl implements BodySpecCommandService {
                                 .map(bmrPerKg -> new Bmr(bmrPerKg, bmrPerKg * command.getWeight())),
                         palEvaluatePort.findByAgeGroup(command.getAge())
                                 .map(palEvaluate -> {
-                                            switch (command.getActivityLevel()) {
-                                                case SEDENTARY -> {
-                                                    return palEvaluate.getSedentary();
-                                                }
-                                                case MODERATELY -> {
-                                                    return palEvaluate.getModerately();
-                                                }
-                                                case VIGOROUS -> {
-                                                    return palEvaluate.getVigorous();
-                                                }
-                                                default -> {
-                                                    return 1.6d;
-                                                }
-                                            }
-                                        }
-                                ).map(palValue -> new Pal(command.getActivityLevel().getName(), palValue))
+                                    Double palValue;
+                                    switch (command.getActivityLevel()) {
+                                        case SEDENTARY -> palValue = palEvaluate.getSedentary();
+                                        case MODERATELY -> palValue = palEvaluate.getModerately();
+                                        case VIGOROUS -> palValue = palEvaluate.getVigorous();
+                                        default -> palValue = 1.6d;
+                                    }
+                                    return palValue;
+                                }).map(palValue -> new Pal(command.getActivityLevel().getName(), palValue))
                 ).map(tuple3 -> {
                     var bodySpec = mapper.map(command, BodySpec.class);
+                    var tdee = tuple3.getT2().getBmrPerDay() * tuple3.getT3().getValue();
+                    bodySpec.setTdee(tdee);
                     bodySpec.setBmi(tuple3.getT1());
                     bodySpec.setBmr(tuple3.getT2());
                     bodySpec.setPal(tuple3.getT3());
-                    var tdee = tuple3.getT2().getBmrPerDay() * tuple3.getT3().getValue();
-                    bodySpec.setTdee(tdee);
                     bodySpec.setGoal(command.getGoal().getName());
                     return bodySpec;
-                }).flatMap(bodySpecPort::save)
-                .doOnSuccess(bodySpec -> log.info("User"))
+                }).flatMap(mongoBodySpecPort::save)
+                .doOnSuccess(bodySpec -> log.info("BodySpec {} created ", bodySpec))
+                .flatMap(bodySpec -> Mono
+                        .just(new AddToUserEvent(bodySpec.getId(), command.getUsername()))
+                        .flatMap(bodySpecEventProducer::produce)
+                        .thenReturn(bodySpec))
                 .map(bodySpec -> mapper.map(bodySpec, BodySpecResponse.class));
     }
 }

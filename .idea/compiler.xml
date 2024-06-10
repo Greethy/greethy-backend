@@ -10,15 +10,16 @@
         <module name="user-query" />
         <module name="untitled" />
         <module name="greethy-docker" />
-        <module name="user-command" />
-        <module name="common" />
         <module name="nutrition-command" />
         <module name="user-common" />
+        <module name="nutrition-common" />
+        <module name="docker" />
+        <module name="user-command" />
+        <module name="event-store" />
+        <module name="common" />
         <module name="nutrition-query" />
         <module name="gateway" />
         <module name="finance" />
-        <module name="nutrition-common" />
-        <module name="docker" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -50,6 +51,7 @@
       <module name="core" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="docker" options="-parameters" />
+      <module name="event-store" options="-parameters" />
       <module name="finance" options="-parameters" />
       <module name="financial" options="" />
       <module name="gateway" options="-parameters" />

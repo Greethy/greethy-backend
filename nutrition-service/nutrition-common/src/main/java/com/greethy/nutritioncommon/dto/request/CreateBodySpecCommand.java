@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class CreateBodySpecCommand {
 
-    private String userId;
+    private String username;
 
     private Integer age;
 
@@ -21,6 +21,7 @@ public class CreateBodySpecCommand {
     @Schema(type = "string", allowableValues = { "SEDENTARY", "MODERATELY", "VIGOROUS"})
     private ActivityLevel activityLevel;
 
+    @Schema
     private NutritionType goal;
 
 }

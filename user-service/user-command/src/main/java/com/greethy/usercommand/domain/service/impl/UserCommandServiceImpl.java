@@ -5,7 +5,7 @@ import com.greethy.usercommand.domain.port.NetworkingPort;
 import com.greethy.usercommand.domain.port.RolePort;
 import com.greethy.usercommand.domain.port.UserPort;
 import com.greethy.usercommand.domain.service.UserCommandService;
-import com.greethy.usercommon.constant.Constant;
+import com.greethy.usercommon.constant.Constants;
 import com.greethy.usercommon.dto.request.command.RegisterUserCommand;
 import com.greethy.usercommon.dto.request.command.UpdateUserProfileCommand;
 import com.greethy.usercommon.dto.response.UserResponse;
@@ -49,7 +49,7 @@ public class UserCommandServiceImpl implements UserCommandService {
 //                mongoUserPort.existsByUsernameOrEmail(createUserCommand.getUsername(), createUserCommand.getEmail())
 //                .filter(isExisted -> !isExisted)
 //                .switchIfEmpty(Mono.error(() -> {
-//                    String exceptionMessage = translator.getLocalizedMessage(Constant.MessageKeys.EMAIL_DUPLICATE);
+//                    String exceptionMessage = translator.getLocalizedMessage(Constants.MessageKeys.EMAIL_DUPLICATE);
 //                    return new DuplicateUniqueFieldException(exceptionMessage);
 //                }))
 //                .then(Mono.just(createUserCommand))
@@ -73,7 +73,7 @@ public class UserCommandServiceImpl implements UserCommandService {
     public Mono<UserResponse> updateUserProfile(String userId, UpdateUserProfileCommand command) {
         return mongoUserPort.findById(userId)
                 .switchIfEmpty(Mono.error(() -> {
-                    String exceptionMessage = translator.getLocalizedMessage(Constant.MessageKeys.USER_NOT_FOUND);
+                    String exceptionMessage = translator.getLocalizedMessage(Constants.MessageKeys.USER_NOT_FOUND);
                     return new NotFoundException(exceptionMessage);
                 }))
                 .doOnNext(user -> {
