@@ -11,11 +11,8 @@ spring:
       database: GreethyUser
   kafka:
     bootstrap-servers: localhost:29092
-    topic: greethy.topic.user-topic
     consumer:
-      topics:
-        - greethy-nutrition-sys-bodyspec-v1
-
+      topic: greethy-nutrition-sys-bodyspec-v1
       group-id: user-reactive-kafka-consumer
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer

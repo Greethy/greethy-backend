@@ -1,4 +1,6 @@
 package com.greethy.nutritioncommand.domain.event;
 
-public record AddToUserEvent (String addId, String username) {
+import java.io.Serializable;
+
+public record AddToUserEvent (String addId, String username) implements Serializable {
 }

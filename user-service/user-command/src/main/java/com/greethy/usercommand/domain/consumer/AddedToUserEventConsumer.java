@@ -14,7 +14,7 @@ public class AddedToUserEventConsumer {
 
     private final ReactiveKafkaConsumerTemplate<String, Object> consumerTemplate;
 
-    @KafkaListener(topics = "${spring.kafka.consumer.topics[0]}")
+    @KafkaListener(topics = "${spring.kafka.consumer.topic}")
     private void consumeAddToUserEvent() {
         consumerTemplate.receiveAutoAck()
                 .doOnNext(consumerRecord -> log.info("key = {}, value = {}, topic = {}, offset = {}",

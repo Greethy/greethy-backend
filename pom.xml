@@ -8,12 +8,12 @@
 		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.greethy</groupId>
-	<artifactId>greethy-project</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>greethy-project</name>
-	<description>Parent Module for centralize dependencies</description>
+	<artifactId>greethy-project</artifactId>
+	<groupId>com.greethy</groupId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<description>Parent Module for centralize dependencies</description>
 
 	<properties>
 		<java.version>17</java.version>

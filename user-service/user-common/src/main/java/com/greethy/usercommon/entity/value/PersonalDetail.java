@@ -21,5 +21,5 @@ public class PersonalDetail {
 
     private String website;
 
-    private Integer gender;
+    private String gender;
 }
