@@ -1,7 +1,7 @@
 package com.greethy.nutritioncommand.domain.service.impl;
 
 import com.greethy.common.infra.util.DataUtil;
-import com.greethy.nutritioncommand.domain.event.AddToUserEvent;
+import com.greethy.common.domain.event.AddToUserEvent;
 import com.greethy.nutritioncommand.domain.port.BmiEvaluatePort;
 import com.greethy.nutritioncommand.domain.port.BmrByAgePort;
 import com.greethy.nutritioncommand.domain.port.BodySpecPort;
@@ -19,14 +19,18 @@ import com.greethy.nutritioncommon.entity.value.Pal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 /**
  * Service implementation for body specification change BodySpec resources (create, update, delete).
  * This service handles the creation of {@link BodySpec} instances which include health indices
- * like BMI (Body Mass Index), BMR (Basal Metabolic Rate), and PAL (Physical Activity Level).
+ * like BMI (Body Measure Index), BMR (Basal Metabolic Rate), and PAL (Physical Activity Level).
  *
  * @author KienThanh
  * @see BodySpecCommandService
@@ -35,6 +39,9 @@ import reactor.core.publisher.Mono;
 @Service
 @RequiredArgsConstructor
 public class BodySpecCommandServiceImpl implements BodySpecCommandService {
+
+    @Value("${spring.application.name}")
+    private String serviceName;
 
     private final ModelMapper mapper;
 
@@ -88,11 +95,17 @@ public class BodySpecCommandServiceImpl implements BodySpecCommandService {
                     bodySpec.setGoal(command.getGoal().getName());
                     return bodySpec;
                 }).flatMap(mongoBodySpecPort::save)
+                .doOnNext(bodySpec -> {
+                    var event = AddToUserEvent.builder()
+                            .id(UUID.randomUUID().toString())
+                            .name(AddToUserEvent.class.getSimpleName())
+                            .createdAt(LocalDateTime.now())
+                            .source(serviceName)
+                            .payload(new AddToUserEvent.Payload(bodySpec.getId(), command.getUsername()))
+                            .build();
+                    bodySpecEventProducer.produce(event);
+                })
                 .doOnSuccess(bodySpec -> log.info("BodySpec {} created ", bodySpec))
-                .flatMap(bodySpec -> Mono
-                        .just(new AddToUserEvent(bodySpec.getId(), command.getUsername()))
-                        .flatMap(bodySpecEventProducer::produce)
-                        .thenReturn(bodySpec))
                 .map(bodySpec -> mapper.map(bodySpec, BodySpecResponse.class));
     }
 }
