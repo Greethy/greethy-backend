@@ -20,8 +20,7 @@ public class EndpointsRouter {
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder2 -> routerBuilder2
                                 .POST("", bodySpecHandler::createUserBodySpec)
                                 .PUT("/body-spec-id", bodySpecHandler::updateUserBodySpec))
-                )
-                .build();
+                ).build();
     }
 
 }

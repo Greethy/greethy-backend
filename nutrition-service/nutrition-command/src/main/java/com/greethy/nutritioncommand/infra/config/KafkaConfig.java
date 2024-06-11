@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.reactive.ReactiveKafkaProducerTemplate;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+import reactor.kafka.sender.KafkaSender;
 import reactor.kafka.sender.SenderOptions;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @Configuration
 public class KafkaConfig {
@@ -22,18 +22,13 @@ public class KafkaConfig {
         private String bootstrapServer;
 
         @Bean
-        public SenderOptions<String, Object> senderOptions() {
-            Map<String, Object> props = new HashMap<>();
+        public ReactiveKafkaProducerTemplate<String, Object> producerTemplate() {
+            var props = new HashMap<String, Object>();
             props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
             props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
             props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-            props.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
-            return SenderOptions.create(props);
-        }
-
-        @Bean
-        public ReactiveKafkaProducerTemplate<String, Object> producerTemplate(SenderOptions<String, Object> options) {
-            return new ReactiveKafkaProducerTemplate<>(options);
+            var options = SenderOptions.<String, Object>create(props);
+            return new ReactiveKafkaProducerTemplate<>(KafkaSender.create(options));
         }
 
     }

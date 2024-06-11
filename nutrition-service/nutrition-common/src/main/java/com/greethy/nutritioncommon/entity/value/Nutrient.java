@@ -5,20 +5,20 @@ import lombok.Data;
 @Data
 public class Nutrient {
 
-    private Mass protein;
+    private Measure protein;
 
-    private Mass carbohydrate;
+    private Measure carbohydrate;
 
-    private Mass lipid;
+    private Measure lipid;
 
-    private Mass fiber;
+    private Measure fiber;
 
-    private Mass iron;
+    private Measure iron;
 
-    private Mass sodium;
+    private Measure sodium;
 
     @Data
-    public static class Mass {
+    public static class Measure {
 
         private Double value;
 

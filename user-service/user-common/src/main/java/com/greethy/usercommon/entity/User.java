@@ -1,6 +1,7 @@
 package com.greethy.usercommon.entity;
 
 import com.greethy.common.domain.entity.BaseEntity;
+import com.greethy.usercommon.entity.value.Management;
 import com.greethy.usercommon.entity.value.PersonalDetail;
 import com.greethy.usercommon.entity.value.Premium;
 import lombok.Data;
@@ -11,7 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -59,6 +59,6 @@ public class User extends BaseEntity {
 
     private List<Role> roles;
 
-    @Field(name = "body_specs_ids")
-    private List<String> bodySpecsIds = new ArrayList<>();
+    private Management management;
+
 }

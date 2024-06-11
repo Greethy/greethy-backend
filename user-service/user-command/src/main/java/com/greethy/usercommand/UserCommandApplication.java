@@ -56,24 +56,28 @@ public class UserCommandApplication implements CommandLineRunner {
                 .flatMap(roleRepository::save)
                 .subscribe(role -> log.info("Role: {} has been stored in MongoDB", role));
 
-        Mono.when(userRepository.deleteAll(), networkingRepository.deleteAll())
-                .subscribeOn(Schedulers.boundedElastic())
-                .thenMany(
-                        Flux.interval(Duration.ofMillis(10))
-                                .take(1000)
-                                .flatMap(this::createUser)
-                                .parallel()
-                                .runOn(Schedulers.parallel())
-                                .flatMap(tuple2 -> Mono.when(
-                                                userRepository.save(tuple2.getT1()),
-                                                networkingRepository.save(tuple2.getT2())
-                                        ).thenReturn(tuple2.getT1())
-                                )
-                ).subscribe(
-                        user -> log.info("Fake user: {} has been stored in MongoDB", user),
-                        error -> log.error("Error occurred during user saving: ", error),
-                        () -> log.info("All users have been processed and saved.")
-                );
+        var count = userRepository.count().block();
+        assert count != null;
+        if (count != 1000) {
+            Mono.when(userRepository.deleteAll(), networkingRepository.deleteAll())
+                    .subscribeOn(Schedulers.boundedElastic())
+                    .thenMany(
+                            Flux.interval(Duration.ofMillis(10))
+                                    .take(1000)
+                                    .flatMap(this::createUser)
+                                    .parallel()
+                                    .runOn(Schedulers.parallel())
+                                    .flatMap(tuple2 -> Mono.when(
+                                                    userRepository.save(tuple2.getT1()),
+                                                    networkingRepository.save(tuple2.getT2())
+                                            ).thenReturn(tuple2.getT1())
+                                    )
+                    ).subscribe(
+                            user -> log.info("Fake user: {} has been stored in MongoDB", user),
+                            error -> log.error("Error occurred during user saving: ", error),
+                            () -> log.info("All users have been processed and saved.")
+                    );
+        }
     }
 
     private Mono<Tuple2<User, Networking>> createUser(Long i) {
