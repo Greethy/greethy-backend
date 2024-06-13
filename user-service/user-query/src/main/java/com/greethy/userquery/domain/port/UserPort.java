@@ -11,6 +11,8 @@ public interface UserPort {
 
     Mono<User> findByUsernameOrEmail(String usernameOrEmail);
 
+    Flux<User> findAll();
+
     Flux<User> findByPagination(Pageable pageable);
 
 }

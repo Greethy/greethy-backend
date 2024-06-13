@@ -51,12 +51,10 @@ public class UserResponse {
     @Schema(description = "Networking information of the user")
     private NetworkingDto networking;
 
+    private List<String> labels;
+
     @Schema(description = "Roles assigned to the user")
     private List<RoleDto> roles;
-
-    @Schema(description = "List of body specifications IDs associated with the user")
-    @JsonProperty("body_specs_ids")
-    private List<String> bodySpecsIds;
 
     @Schema(description = "Timestamp when the user was created", format = "date-time")
     @JsonProperty("created_at")

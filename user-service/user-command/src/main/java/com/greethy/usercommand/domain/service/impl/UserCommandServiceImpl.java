@@ -6,7 +6,7 @@ import com.greethy.usercommand.domain.port.RolePort;
 import com.greethy.usercommand.domain.port.UserPort;
 import com.greethy.usercommand.domain.service.UserCommandService;
 import com.greethy.usercommon.constant.Constants;
-import com.greethy.usercommon.dto.request.command.RegisterUserCommand;
+import com.greethy.usercommon.dto.request.command.UserRegistrationCommand;
 import com.greethy.usercommon.dto.request.command.UpdateUserProfileCommand;
 import com.greethy.usercommon.dto.response.UserResponse;
 import com.greethy.usercommon.entity.value.PersonalDetail;
@@ -44,7 +44,7 @@ public class UserCommandServiceImpl implements UserCommandService {
     }
 
     @Override
-    public Mono<UserResponse> registerUser(RegisterUserCommand createUserCommand) {
+    public Mono<UserResponse> registerUser(UserRegistrationCommand createUserCommand) {
         return null;
 //                mongoUserPort.existsByUsernameOrEmail(createUserCommand.getUsername(), createUserCommand.getEmail())
 //                .filter(isExisted -> !isExisted)

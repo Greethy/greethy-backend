@@ -61,6 +61,7 @@ public class UserQueryHandler {
     }
 
     public Mono<ServerResponse> getIdentity(ServerRequest serverRequest) {
+
         return Mono.justOrEmpty(serverRequest.queryParam("username-or-email"))
                 .map(GetUserByUsernameOrEmailQuery::new)
                 .flatMap(userQueryService::getUserIdentityByUsernameOrEmail)
@@ -71,4 +72,15 @@ public class UserQueryHandler {
     public Mono<ServerResponse> checkIfEmailIsExisted(ServerRequest serverRequest) {
         return null;
     }
+
+    public Mono<ServerResponse> getAllUserIds() {
+        return userQueryService.getAllUserIds()
+                .collectList()
+                .flatMap(ids -> ServerResponse.ok().bodyValue(ids));
+    }
+
+    public Mono<ServerResponse> getCurrentUserProfile(ServerRequest serverRequest) {
+        return null;
+    }
+
 }

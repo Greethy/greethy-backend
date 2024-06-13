@@ -1,7 +1,7 @@
 package com.greethy.nutritioncommand.domain.service.impl;
 
 import com.greethy.common.infra.util.DataUtil;
-import com.greethy.common.domain.event.AddToUserEvent;
+import com.greethy.common.domain.event.AddBodySpecToUserEvent;
 import com.greethy.nutritioncommand.domain.port.BmiEvaluatePort;
 import com.greethy.nutritioncommand.domain.port.BmrByAgePort;
 import com.greethy.nutritioncommand.domain.port.BodySpecPort;
@@ -95,17 +95,16 @@ public class BodySpecCommandServiceImpl implements BodySpecCommandService {
                     bodySpec.setGoal(command.getGoal().getName());
                     return bodySpec;
                 }).flatMap(mongoBodySpecPort::save)
-                .doOnNext(bodySpec -> {
-                    var event = AddToUserEvent.builder()
+                .doOnSuccess(bodySpec -> {
+                    var event = AddBodySpecToUserEvent.builder()
                             .id(UUID.randomUUID().toString())
-                            .name(AddToUserEvent.class.getSimpleName())
+                            .name(AddBodySpecToUserEvent.class.getSimpleName())
                             .createdAt(LocalDateTime.now())
                             .source(serviceName)
-                            .payload(new AddToUserEvent.Payload(bodySpec.getId(), command.getUsername()))
+                            .payload(new AddBodySpecToUserEvent.Payload(bodySpec.getId(), command.getUsername()))
                             .build();
                     bodySpecEventProducer.produce(event);
-                })
-                .doOnSuccess(bodySpec -> log.info("BodySpec {} created ", bodySpec))
-                .map(bodySpec -> mapper.map(bodySpec, BodySpecResponse.class));
+                    log.info("BodySpec {} created ", bodySpec);
+                }).map(bodySpec -> mapper.map(bodySpec, BodySpecResponse.class));
     }
 }

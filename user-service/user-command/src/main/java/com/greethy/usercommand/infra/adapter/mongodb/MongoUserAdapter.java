@@ -29,6 +29,11 @@ public class MongoUserAdapter implements UserPort {
     }
 
     @Override
+    public Mono<User> findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
+
+    @Override
     public Mono<Boolean> existsByUsernameOrEmail(String username, String email) {
         return repository.existsByUsernameOrEmail(username, email);
     }

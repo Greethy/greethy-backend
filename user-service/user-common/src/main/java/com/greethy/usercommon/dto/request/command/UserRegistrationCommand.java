@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class RegisterUserCommand {
+public class UserRegistrationCommand {
 
     @NotBlank(message = Constants.MessageKeys.DATA_USERNAME_OR_EMAIL_BLANK)
     private String username;

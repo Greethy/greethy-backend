@@ -15,6 +15,8 @@ public interface UserRepository extends ReactiveMongoRepository<User, String> {
 
     Mono<Boolean> existsByUsernameOrEmail(String username, String email);
 
+    Mono<User> findByUsername(String username);
+
     @Query("""
            {
                 '$or' : [

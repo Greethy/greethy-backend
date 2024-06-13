@@ -26,6 +26,11 @@ public class MongoUserAdapter implements UserPort {
     }
 
     @Override
+    public Flux<User> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
     public Flux<User> findByPagination(Pageable pageable) {
         return repository.findBy(pageable);
     }

@@ -1,22 +1,30 @@
 package com.greethy.nutritioncommand;
 
-import com.greethy.nutritioncommon.entity.BmiEvaluate;
-import com.greethy.nutritioncommon.entity.BmrByAge;
-import com.greethy.nutritioncommon.entity.PalEvaluate;
+import com.greethy.common.infra.util.RandomUtil;
+import com.greethy.nutritioncommand.domain.port.GorseClientPort;
+import com.greethy.nutritioncommon.entity.*;
+import com.greethy.nutritioncommon.entity.enums.FoodLabel;
+import com.greethy.nutritioncommon.entity.enums.Group;
+import com.greethy.nutritioncommon.entity.enums.Meal;
 import com.greethy.nutritioncommon.entity.value.Range;
 import com.greethy.nutritioncommon.repository.BmiEvaluateRepository;
 import com.greethy.nutritioncommon.repository.BmrByAgeRepository;
+import com.greethy.nutritioncommon.repository.FoodRepository;
 import com.greethy.nutritioncommon.repository.PalEvaluateRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.datafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -28,12 +36,17 @@ import java.util.Set;
         })
 public class NutritionCommandApplication implements CommandLineRunner {
 
-    private final BmiEvaluateRepository bmiEvaluateRepository;
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+
+    private final GorseClientPort gorsePort;
+
+    private final FoodRepository foodRepository;
 
     private final BmrByAgeRepository bmrByAgeRepository;
 
-    private final PalEvaluateRepository palEvaluateRepository;
+    private final BmiEvaluateRepository bmiEvaluateRepository;
 
+    private final PalEvaluateRepository palEvaluateRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(NutritionCommandApplication.class);
@@ -42,25 +55,37 @@ public class NutritionCommandApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
         Mono.when(
+                foodRepository.deleteAll()
+                        .doOnSuccess(unused -> log.info("Deleted Foods collections")),
                 bmiEvaluateRepository.deleteAll()
-                        .doOnSuccess(unused -> log.info("Deleted BMI Evaluate collections")),
+                        .doOnSuccess(unused -> log.info("Deleted BMI-Evaluates collections")),
                 bmrByAgeRepository.deleteAll()
-                        .doOnSuccess(unused -> log.info("Deleted BMR by Age collections")),
+                        .doOnSuccess(unused -> log.info("Deleted BMR-by-Ages collections")),
                 palEvaluateRepository.deleteAll()
-                        .doOnSuccess(unused -> log.info("Deleted Pal Evaluate collections"))
+                        .doOnSuccess(unused -> log.info("Deleted Pal-Evaluates collections"))
         ).then(Mono.when(
                 Flux.fromIterable(bmiEvaluates())
                         .flatMap(bmiEvaluateRepository::save)
-                        .doOnNext(bmiEvaluate -> log.info("BMI Evaluate: {} saved to MongoDB.", bmiEvaluate))
-                        .then(),
+                        .doOnNext(bmiEvaluate -> log.info("BMI Evaluate: {} saved to MongoDB.", bmiEvaluate)),
                 Flux.fromIterable(bmrByAgesTable())
                         .flatMap(bmrByAgeRepository::save)
-                        .doOnNext(bmrByAge -> log.info("BMR by Age: {} saved to MongoDB.", bmrByAge))
-                        .then(),
+                        .doOnNext(bmrByAge -> log.info("BMR by Age: {} saved to MongoDB.", bmrByAge)),
                 Flux.fromIterable(palEvaluates())
                         .flatMap(palEvaluateRepository::save)
-                        .doOnNext(palEvaluate -> log.info("PAL Evaluate: {} saved to MongoDB.", palEvaluate))
-                        .then())
+                        .doOnNext(palEvaluate -> log.info("PAL Evaluate: {} saved to MongoDB.", palEvaluate)),
+                Flux.fromIterable(foods())
+                        .flatMap(foodRepository::save)
+                        .flatMap(food -> {
+                            var item = GorseItem.builder()
+                                    .itemId(food.getId())
+                                    .labels(food.getLabels())
+                                    .isHidden(false)
+                                    .timestamp(LocalDateTime.now().format(formatter))
+                                    .categories(Collections.singletonList(food.getGroup()))
+                                    .build();
+                            return gorsePort.saveItem(item).thenReturn(food);
+                        }).doOnNext(food -> log.info("Food: {} saved to MongoDB and Gorse's MySQL.", food))
+                )
         ).subscribe();
     }
 
@@ -106,6 +131,34 @@ public class NutritionCommandApplication implements CommandLineRunner {
         palEvaluates.add(new PalEvaluate(new Range(50d, 69d), 1.5d, 1.75d, 2d));
         palEvaluates.add(new PalEvaluate(new Range(70d, Double.MAX_VALUE), 1.45d, 1.7d, 1.95d));
         return palEvaluates;
+    }
+
+    private List<Food> foods() {
+        var faker = new Faker(new Locale("en"));
+        var foodNames = IntStream.iterate(0, i -> i + 1)
+                .limit(50000)
+                .mapToObj(i -> RandomUtil.getSingleRandomFromStrings(
+                        faker.food().allergen(), faker.food().dish(), faker.food().spice(),
+                        faker.food().fruit(), faker.food().sushi(), faker.food().vegetable()
+                )).collect(Collectors.toSet());
+        return foodNames.stream()
+                .map(name -> {
+                    var meals = Arrays.stream(Meal.values()).map(Meal::getName).toList();
+                    var allLabels = Arrays.stream(FoodLabel.values()).map(FoodLabel::getLabel).toList();
+                    var groups = Arrays.stream(Group.values()).map(Group::getName).toList();
+
+                    var meal = RandomUtil.getSingleRandomFromStrings(meals);
+                    var labels = RandomUtil.getListRandomFromStrings(5, allLabels);
+                    var group = RandomUtil.getSingleRandomFromStrings(groups);
+                    return Food.builder()
+                            .name(name)
+                            .labels(labels).meal(meal).group(group)
+                            .recipe("This is recipe")
+                            .imageUrl(faker.internet().image())
+                            .instructionUrl(faker.internet().url())
+                            .totalCalories(RandomUtil.getSingleRandomInteger(100, 400))
+                            .build();
+                }).collect(Collectors.toList());
     }
 
 }

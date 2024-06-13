@@ -7,7 +7,7 @@ import com.greethy.usercommand.domain.port.RolePort;
 import com.greethy.usercommand.domain.port.UserPort;
 import com.greethy.usercommand.domain.service.AuthCommandService;
 import com.greethy.usercommon.constant.Constants;
-import com.greethy.usercommon.dto.request.command.RegisterUserCommand;
+import com.greethy.usercommon.dto.request.command.UserRegistrationCommand;
 import com.greethy.usercommon.dto.request.command.UserLoginCommand;
 import com.greethy.usercommon.dto.response.AuthResponse;
 import com.greethy.usercommon.entity.Networking;
@@ -65,14 +65,13 @@ public class AuthCommandServiceImpl implements AuthCommandService {
     }
 
     @Override
-    public Mono<AuthResponse> registerGreethyUser(RegisterUserCommand registerUserCommand) {
-        return mongoUserPort.existsByUsernameOrEmail(registerUserCommand.getUsername(), registerUserCommand.getEmail())
+    public Mono<AuthResponse> registerGreethyUser(UserRegistrationCommand command) {
+        return mongoUserPort.existsByUsernameOrEmail(command.getUsername(), command.getEmail())
                 .filter(isExisted -> !isExisted)
                 .switchIfEmpty(Mono.error(() -> {
                     String exceptionMessage = translator.getLocalizedMessage(Constants.MessageKeys.EMAIL_DUPLICATE);
                     return new DuplicateUniqueFieldException(exceptionMessage);
-                })).then(Mono.just(registerUserCommand))
-                .map(command -> mapper.map(command, User.class))
+                })).then(Mono.fromSupplier(() -> mapper.map(command, User.class)))
                 .zipWith(mongoRolePort.getRoleByDefaultIsTrue())
                 .doOnNext(tuple -> {
                     User user = tuple.getT1();

@@ -19,7 +19,8 @@ public class AuthConfig {
 
     @Bean
     public ReactiveUserDetailsService userDetailsService() {
-        return usernameOrEmail -> WebClient.builder().build()
+        return usernameOrEmail -> WebClient
+                .builder().baseUrl("").build()
                 .get()
                 .uri(builder -> builder.path("/internal/identity")
                         .queryParam("username-or-email", usernameOrEmail)
@@ -31,7 +32,8 @@ public class AuthConfig {
                         .accountExpired(false)
                         .credentialsExpired(false)
                         .accountLocked(false)
-                        .build());
+                        .build()
+                );
     }
 
 }

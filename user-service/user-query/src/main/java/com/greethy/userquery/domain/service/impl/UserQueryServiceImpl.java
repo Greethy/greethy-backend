@@ -10,6 +10,7 @@ import com.greethy.usercommon.dto.response.IdentityResponse;
 import com.greethy.usercommon.dto.response.UserProfileResponse;
 import com.greethy.usercommon.dto.response.UserResponse;
 import com.greethy.usercommon.dto.value.NetworkingDto;
+import com.greethy.usercommon.entity.User;
 import com.greethy.usercommon.exception.NotFoundException;
 import com.greethy.userquery.domain.port.NetworkingPort;
 import com.greethy.userquery.domain.port.UserPort;
@@ -104,6 +105,16 @@ public class UserQueryServiceImpl implements UserQueryService {
         return Flux.just(pageable)
                 .flatMap(mongoUserPort::findByPagination)
                 .map(user -> mapper.map(user, UserResponse.class));
+    }
+
+    @Override
+    public Flux<String> getAllUserIds() {
+        return mongoUserPort.findAll()
+                .switchIfEmpty(Mono.error(() -> {
+                    String message = translator.getLocalizedMessage(Constants.MessageKeys.USER_NOT_FOUND);
+                    return new NotFoundException(message);
+                }))
+                .map(User::getId);
     }
 
 }

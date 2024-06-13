@@ -1,6 +1,5 @@
 server:
   port: 8181
-
 spring:
   application:
     name: user-command
@@ -48,3 +47,7 @@ management:
   info:
     env:
       enabled: true
+
+client:
+  name: gorse-server
+  base-url: http://localhost:8087
