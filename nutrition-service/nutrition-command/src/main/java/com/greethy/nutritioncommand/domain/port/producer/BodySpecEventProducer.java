@@ -1,13 +1,9 @@
 package com.greethy.nutritioncommand.domain.port.producer;
 
-import com.greethy.common.domain.event.AddToUserEvent;
-import com.greethy.nutritioncommand.domain.event.BodySpecCreatedEvent;
-import reactor.core.publisher.Mono;
+import com.greethy.common.domain.event.AddBodySpecToUserEvent;
 
 public interface BodySpecEventProducer {
 
-    void produce(AddToUserEvent event);
-
-    Mono<Void> produce(BodySpecCreatedEvent event);
+    void produce(AddBodySpecToUserEvent event);
 
 }

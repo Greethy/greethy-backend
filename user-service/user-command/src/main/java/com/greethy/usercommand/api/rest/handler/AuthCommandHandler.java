@@ -4,7 +4,7 @@ import com.greethy.common.api.handler.ExceptionHandler;
 import com.greethy.common.infra.component.annotation.EndpointHandler;
 import com.greethy.common.infra.component.validation.RequestValidation;
 import com.greethy.usercommand.domain.service.AuthCommandService;
-import com.greethy.usercommon.dto.request.command.RegisterUserCommand;
+import com.greethy.usercommon.dto.request.command.UserRegistrationCommand;
 import com.greethy.usercommon.dto.request.command.UserLoginCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -30,7 +30,7 @@ public class AuthCommandHandler {
     }
 
     public Mono<ServerResponse> registerGreethyUser(ServerRequest serverRequest) {
-        return serverRequest.bodyToMono(RegisterUserCommand.class)
+        return serverRequest.bodyToMono(UserRegistrationCommand.class)
                 .doOnNext(validation::validate)
                 .flatMap(authService::registerGreethyUser)
                 .flatMap(response -> ServerResponse.ok().bodyValue(response))

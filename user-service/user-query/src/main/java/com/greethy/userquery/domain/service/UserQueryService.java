@@ -22,4 +22,6 @@ public interface UserQueryService {
 
     Flux<UserResponse> getAllUsersByPagination(GetAllUsersByPaginationQuery query);
 
+    Flux<String> getAllUserIds();
+
 }

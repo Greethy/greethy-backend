@@ -1,10 +1,14 @@
 package com.greethy.usercommand;
 
+import com.greethy.common.infra.util.RandomUtil;
+import com.greethy.usercommand.domain.port.GorseClientPort;
 import com.greethy.usercommon.constant.Constants;
+import com.greethy.usercommon.entity.GorseUser;
 import com.greethy.usercommon.entity.Networking;
 import com.greethy.usercommon.entity.Role;
 import com.greethy.usercommon.entity.User;
 import com.greethy.usercommon.entity.enums.Permission;
+import com.greethy.usercommon.entity.enums.UserLabel;
 import com.greethy.usercommon.entity.value.PersonalDetail;
 import com.greethy.usercommon.repository.mongodb.NetworkingRepository;
 import com.greethy.usercommon.repository.mongodb.RoleRepository;
@@ -22,10 +26,7 @@ import reactor.core.scheduler.Schedulers;
 import reactor.util.function.Tuple2;
 
 import java.time.Duration;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -38,6 +39,8 @@ import java.util.UUID;
 public class UserCommandApplication implements CommandLineRunner {
 
     private final PasswordEncoder encoder;
+
+    private final GorseClientPort gorseClient;
 
     private final RoleRepository roleRepository;
 
@@ -55,25 +58,27 @@ public class UserCommandApplication implements CommandLineRunner {
                 .thenMany(Flux.fromIterable(roles()))
                 .flatMap(roleRepository::save)
                 .subscribe(role -> log.info("Role: {} has been stored in MongoDB", role));
-
         var count = userRepository.count().block();
         assert count != null;
-        if (count != 1000) {
+        if (count < 2000) {
             Mono.when(userRepository.deleteAll(), networkingRepository.deleteAll())
                     .subscribeOn(Schedulers.boundedElastic())
-                    .thenMany(
-                            Flux.interval(Duration.ofMillis(10))
-                                    .take(1000)
-                                    .flatMap(this::createUser)
-                                    .parallel()
-                                    .runOn(Schedulers.parallel())
-                                    .flatMap(tuple2 -> Mono.when(
-                                                    userRepository.save(tuple2.getT1()),
-                                                    networkingRepository.save(tuple2.getT2())
-                                            ).thenReturn(tuple2.getT1())
-                                    )
+                    .thenMany(Flux.interval(Duration.ofMillis(3)))
+                    .take(2000)
+                    .flatMap(this::createUser)
+                    .parallel().runOn(Schedulers.parallel())
+                    .flatMap(tuple2 -> Mono.when(
+                                    userRepository.save(tuple2.getT1()),
+                                    networkingRepository.save(tuple2.getT2()))
+                            .thenReturn(tuple2.getT1())
+                    ).flatMap(user -> gorseClient.saveUser(
+                                    GorseUser.builder()
+                                            .userId(user.getId())
+                                            .labels(user.getLabels())
+                                            .build()
+                            ).thenReturn(user)
                     ).subscribe(
-                            user -> log.info("Fake user: {} has been stored in MongoDB", user),
+                            user -> log.info("Fake user: {} has been stored in MongoDB and Gorse's MySQL", user),
                             error -> log.error("Error occurred during user saving: ", error),
                             () -> log.info("All users have been processed and saved.")
                     );
@@ -84,6 +89,8 @@ public class UserCommandApplication implements CommandLineRunner {
         var faker = new Faker();
         var user = new User();
         var networking = new Networking(UUID.randomUUID().toString());
+        var allLabels = Arrays.stream(UserLabel.values()).map(UserLabel::getName).toList();
+        var labels = RandomUtil.getListRandomFromStrings(5, allLabels);
         user.setUsername(faker.internet().username());
         user.setEmail(faker.internet().emailAddress());
         user.setPassword(encoder.encode("123456"));
@@ -100,6 +107,8 @@ public class UserCommandApplication implements CommandLineRunner {
                 faker.internet().webdomain(),
                 faker.gender().types())
         );
+        user.setLabels(labels);
+
         return Mono.zip(Mono.just(user), Mono.just(networking));
     }
 

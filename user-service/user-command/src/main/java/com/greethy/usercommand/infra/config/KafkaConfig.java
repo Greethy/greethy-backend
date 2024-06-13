@@ -1,6 +1,6 @@
 package com.greethy.usercommand.infra.config;
 
-import com.greethy.common.domain.event.AddToUserEvent;
+import com.greethy.common.domain.event.AddBodySpecToUserEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -43,14 +43,14 @@ public class KafkaConfig {
             props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
             props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
             props.put(JsonDeserializer.USE_TYPE_INFO_HEADERS, false);
-            props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, AddToUserEvent.class);
+            props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, AddBodySpecToUserEvent.class);
             props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
             return props;
         }
 
         @Bean
-        public ReactiveKafkaConsumerTemplate<String, AddToUserEvent> reactiveKafkaConsumerTemplate(@Value("${spring.kafka.topic}") String topic) {
-            var options = ReceiverOptions.<String, AddToUserEvent>create(consumerProperties())
+        public ReactiveKafkaConsumerTemplate<String, AddBodySpecToUserEvent> reactiveKafkaConsumerTemplate(@Value("${spring.kafka.topic}") String topic) {
+            var options = ReceiverOptions.<String, AddBodySpecToUserEvent>create(consumerProperties())
                     .subscription(Collections.singletonList(topic));
             return new ReactiveKafkaConsumerTemplate<>(KafkaReceiver.create(options));
         }

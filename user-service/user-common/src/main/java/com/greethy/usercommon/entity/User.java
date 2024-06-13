@@ -1,7 +1,6 @@
 package com.greethy.usercommon.entity;
 
 import com.greethy.common.domain.entity.BaseEntity;
-import com.greethy.usercommon.entity.value.Management;
 import com.greethy.usercommon.entity.value.PersonalDetail;
 import com.greethy.usercommon.entity.value.Premium;
 import lombok.Data;
@@ -57,8 +56,10 @@ public class User extends BaseEntity {
     @Field(name = "networking_id")
     private String networkingId;
 
+    private List<String> labels;
+
     private List<Role> roles;
 
-    private Management management;
+    private String bodySpecsManagementId;
 
 }

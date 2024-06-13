@@ -10,8 +10,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
-import static org.springframework.web.reactive.function.server.RequestPredicates.queryParam;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
 public class EndpointsRouter {
@@ -22,22 +21,20 @@ public class EndpointsRouter {
         return RouterFunctions.route()
                 .path("api/v1/users", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
-                                .GET(userHandler::getAllByPagination)
+                                .GET("", queryParam("offset", StringUtils::hasText).or(queryParam("limit", StringUtils::hasText)), userHandler::getAllByPagination)
                                 .GET("{user-id}", userHandler::getUserById)
-                                .GET("user",
-                                        queryParam("username-or-email", StringUtils::hasText),
-                                        userHandler::getByUsernameOrEmail)
+                                .GET("user", queryParam("username-or-email", StringUtils::hasText), userHandler::getByUsernameOrEmail)
                                 .GET("user-email/exists", userHandler::checkIfEmailIsExisted)
                         ).build()
                 ).path("api/v1/me", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
                                 .GET("", userHandler::getCurrentUser)
+                                .GET("/profile", userHandler::getCurrentUserProfile)
                         ).build()
                 ).path("internal", builder -> builder
-                        .GET("identity",
-                                queryParam("username-or-email", StringUtils::hasText),
-                                userHandler::getIdentity))
-                .build();
+                        .GET("identity", queryParam("username-or-email", StringUtils::hasText), userHandler::getIdentity)
+                        .GET("ids", request -> userHandler.getAllUserIds())
+                ).build();
     }
 
 

@@ -2,8 +2,10 @@ package com.greethy.usercommand.api.rest.swagger;
 
 import com.greethy.common.api.response.ErrorResponse;
 import com.greethy.usercommon.dto.request.command.UpdateUserProfileCommand;
+import com.greethy.usercommon.dto.request.command.UserLoginCommand;
+import com.greethy.usercommon.dto.response.AuthResponse;
 import com.greethy.usercommon.dto.response.UserResponse;
-import com.greethy.usercommon.dto.request.command.RegisterUserCommand;
+import com.greethy.usercommon.dto.request.command.UserRegistrationCommand;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -26,6 +28,100 @@ import java.lang.annotation.Target;
 @RouterOperations({
         @RouterOperation(
                 method = RequestMethod.POST,
+                path = "/auth/login",
+                operation = @Operation(
+                        operationId = "greethyLogin",
+                        summary = "User login",
+                        description = "Provide Access-token for Authentication",
+                        tags = "Auth",
+                        requestBody = @RequestBody(
+                                description = "User basic authentication information",
+                                required = true,
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                        schema = @Schema(implementation = UserLoginCommand.class)
+                                )
+                        ),
+                        responses = {
+                                @ApiResponse(
+                                        responseCode = "201",
+                                        description = "A Greethy user has been registered successfully.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = AuthResponse.class))
+                                ),
+                                @ApiResponse(
+                                        responseCode = "400",
+                                        description = "The request could not be understood by the server due to malformed syntax.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
+                                @ApiResponse(
+                                        responseCode = "401",
+                                        description = "User authorization has been refused for those credentials.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The app has exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)))
+                        }
+                )
+        ),
+        @RouterOperation(
+                method = RequestMethod.POST,
+                path = "/auth/register",
+                operation = @Operation(
+                        operationId = "greethyRegister",
+                        summary = "User registration",
+                        description = "Register a new user account",
+                        tags = "Auth",
+                        requestBody = @RequestBody(
+                                description = "User registration information",
+                                required = true,
+                                content = @Content(
+                                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                        schema = @Schema(implementation = UserRegistrationCommand.class)
+                                )
+                        ),
+                        responses = {
+                                @ApiResponse(
+                                        responseCode = "201",
+                                        description = "User has been registered successfully.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = AuthResponse.class))
+                                ),
+                                @ApiResponse(
+                                        responseCode = "400",
+                                        description = "The request could not be understood by the server due to malformed syntax.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
+                                @ApiResponse(
+                                        responseCode = "409",
+                                        description = "Conflict - User with provided username/email already exists.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))
+                                ),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The app has exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)))
+                        }
+                )
+        ),
+        @RouterOperation(
+                method = RequestMethod.POST,
                 path = "/api/v1/users",
                 operation = @Operation(
                         operationId = "registerUser",
@@ -37,7 +133,7 @@ import java.lang.annotation.Target;
                                 required = true,
                                 content = @Content(
                                         mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                        schema = @Schema(implementation = RegisterUserCommand.class)
+                                        schema = @Schema(implementation = UserRegistrationCommand.class)
                                 )
                         ),
                         responses = {

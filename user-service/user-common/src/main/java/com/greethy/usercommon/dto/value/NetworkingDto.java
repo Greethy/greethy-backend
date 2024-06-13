@@ -15,7 +15,7 @@ public class NetworkingDto {
     private Integer totalFollowing;
 
     @JsonProperty("follower_ids")
-    private List<String> followers;
+    private List<String> followerIds;
 
     @JsonProperty("total_followers")
     private Integer totalFollowers;

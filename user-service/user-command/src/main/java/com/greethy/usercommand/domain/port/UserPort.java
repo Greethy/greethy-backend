@@ -11,6 +11,8 @@ public interface UserPort {
 
     Mono<User> findById(String id);
 
+    Mono<User> findByUsername(String username);
+
     Mono<Boolean> existsByUsernameOrEmail(String username, String email);
 
 }

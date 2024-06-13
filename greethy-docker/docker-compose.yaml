@@ -53,17 +53,14 @@ services:
 
   # DATABASE - MYSQL
   mysql:
-    image: mysql:8.2.0
-    container_name: greethy-mysql
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql/mysql-server
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: root_pass
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: greethy
-      MYSQL_PASSWORD: greethy_pass
+      MYSQL_DATABASE: gorse
+      MYSQL_USER: gorse
+      MYSQL_PASSWORD: gorse_pass
     volumes:
       - mysql_data:/var/lib/mysql
 
@@ -111,7 +108,7 @@ services:
       - "8088:8088"
     environment:
       GORSE_CACHE_STORE: redis://redis:6379
-      GORSE_DATA_STORE: mysql://gorse:gorse_pass@tcp(mysql:3306)/greethy
+      GORSE_DATA_STORE: mysql://gorse:gorse_pass@tcp(mysql:3306)/gorse
     command: >
       -c /config/config.toml
       --log-path /var/log/gorse/master.log 

@@ -6,9 +6,10 @@ import java.time.LocalDateTime;
 
 @Getter
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddToUserEvent {
+public class AddBodySpecToUserEvent {
 
     private String id;
 
@@ -22,6 +23,6 @@ public class AddToUserEvent {
 
     private LocalDateTime createdAt;
 
-    public record Payload(String objectId, String username) {}
+    public record Payload(String bodySpecId, String username) {}
 
 }

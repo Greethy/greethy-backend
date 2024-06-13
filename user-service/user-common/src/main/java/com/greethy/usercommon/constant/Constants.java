@@ -15,7 +15,7 @@ public final class Constants {
         public static final String REGISTER_SUCCESS = "user.success.register";
 
         public static final String EMAIL_DUPLICATE = "user.bad-request.email.duplicated";
-        public static final String USER_NOT_FOUND = "user.bad-request.not-found";
+        public static final String USER_NOT_FOUND = "user.id.not-found";
 
         public static final String DATA_USERNAME_OR_EMAIL_BLANK = "data.invalid.blank.username-or-email";
         public static final String DATA_PASSWORD_BLANK = "data.invalid.blank.password";

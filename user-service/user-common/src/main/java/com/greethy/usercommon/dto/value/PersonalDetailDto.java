@@ -17,6 +17,6 @@ public class PersonalDetailDto {
 
     private String website;
 
-    private Integer gender;
+    private String gender;
 
 }

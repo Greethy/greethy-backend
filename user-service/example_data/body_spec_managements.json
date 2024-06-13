@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "6667f7f28c8266683a45f0f7",
+    "user_id": "6666c2bc6ce2155cfa1fb62e",
+    "present_body_spec_id": "6667f8801d8b8f767346d791",
+    "body_spec_ids": [
+      "6667f7da1d8b8f767346d78f",
+      "6667f8801d8b8f767346d791"
+    ],
+    "_class": "com.greethy.usercommon.entity.BodySpecsManagement"
+  }
+]

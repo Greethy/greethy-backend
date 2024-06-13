@@ -9,4 +9,8 @@ public class ClientException extends BaseException {
     public ClientException(String message) {
         super(HttpStatus.BAD_REQUEST.value(), message);
     }
+
+    public ClientException(int status, String message) {
+        super(status, message);
+    }
 }

@@ -20,7 +20,7 @@ public class Networking {
     private Integer totalFollowing;
 
     @Field(name = "follower_ids")
-    private List<String> followersIds;
+    private List<String> followerIds;
 
     @Field(name = "total_followers")
     private Integer totalFollowers;
@@ -29,7 +29,7 @@ public class Networking {
         this.id = id;
         this.followingIds = new ArrayList<>();
         this.totalFollowing = 0;
-        this.followersIds = new ArrayList<>();
+        this.followerIds = new ArrayList<>();
         this.totalFollowers = 0;
     }
 }

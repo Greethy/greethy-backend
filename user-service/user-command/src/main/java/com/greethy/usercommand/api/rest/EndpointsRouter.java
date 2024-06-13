@@ -22,7 +22,7 @@ public class EndpointsRouter {
         return RouterFunctions.route()
                 .path( "/api/v1/users", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
-                                .POST(userHandler::registerUser)
+                                .POST(userHandler::registerGreethyUser)
                                 .PUT("{user-id}", userHandler::updateUser)
                                 .DELETE("{user-id}/temporary", userHandler::deleteUserTemporary)
                         ).build()

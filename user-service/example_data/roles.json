@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "2",
+    "name": "PREMIUM",
+    "is_default": false,
+    "permissions": [
+      "READ"
+    ],
+    "_class": "com.greethy.usercommon.entity.Role"
+  },
+  {
+    "_id": "5",
+    "name": "ADMIN",
+    "is_default": false,
+    "permissions": [
+      "DELETE",
+      "WRITE",
+      "READ"
+    ],
+    "_class": "com.greethy.usercommon.entity.Role"
+  },
+  {
+    "_id": "4",
+    "name": "MERCHANT",
+    "is_default": false,
+    "permissions": [
+      "READ",
+      "DELETE"
+    ],
+    "_class": "com.greethy.usercommon.entity.Role"
+  },
+  {
+    "_id": "3",
+    "name": "EXPERT",
+    "is_default": false,
+    "permissions": [
+      "READ"
+    ],
+    "_class": "com.greethy.usercommon.entity.Role"
+  },
+  {
+    "_id": "1",
+    "name": "REGULAR",
+    "is_default": true,
+    "permissions": [
+      "READ"
+    ],
+    "_class": "com.greethy.usercommon.entity.Role"
+  }
+]
