@@ -12,6 +12,7 @@
 
     <name>nutrition-query</name>
     <artifactId>nutrition-query</artifactId>
+    <groupId>com.greethy.nutritionquery</groupId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>

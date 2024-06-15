@@ -60,11 +60,11 @@ public class UserCommandApplication implements CommandLineRunner {
                 .subscribe(role -> log.info("Role: {} has been stored in MongoDB", role));
         var count = userRepository.count().block();
         assert count != null;
-        if (count < 2000) {
+        if (count < 5000) {
             Mono.when(userRepository.deleteAll(), networkingRepository.deleteAll())
                     .subscribeOn(Schedulers.boundedElastic())
                     .thenMany(Flux.interval(Duration.ofMillis(3)))
-                    .take(2000)
+                    .take(5000)
                     .flatMap(this::createUser)
                     .parallel().runOn(Schedulers.parallel())
                     .flatMap(tuple2 -> Mono.when(

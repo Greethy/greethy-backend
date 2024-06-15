@@ -1,9 +1,11 @@
 package com.greethy.nutritioncommon.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -20,7 +22,8 @@ public class GorseItem {
     private List<String> categories;
 
     @JsonProperty("Timestamp")
-    private String timestamp;
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss'Z'")
+    private LocalDateTime timestamp;
 
     @JsonProperty("Labels")
     private List<String> labels;

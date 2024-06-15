@@ -1,4 +1,4 @@
-package com.greethy.nutritioncommon.dto.request;
+package com.greethy.nutritioncommon.dto.request.command;
 
 import com.greethy.nutritioncommon.entity.enums.Group;
 import com.greethy.nutritioncommon.entity.enums.Meal;

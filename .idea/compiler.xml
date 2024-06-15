@@ -14,9 +14,11 @@
         <module name="user-common" />
         <module name="nutrition-common" />
         <module name="docker" />
+        <module name="feedback-query" />
         <module name="user-command" />
         <module name="event-store" />
         <module name="common" />
+        <module name="feedback-common" />
         <module name="nutrition-query" />
         <module name="gateway" />
         <module name="finance" />
@@ -52,6 +54,9 @@
       <module name="discovery" options="-parameters" />
       <module name="docker" options="-parameters" />
       <module name="event-store" options="-parameters" />
+      <module name="feedback" options="" />
+      <module name="feedback-common" options="-parameters" />
+      <module name="feedback-query" options="-parameters" />
       <module name="finance" options="-parameters" />
       <module name="financial" options="" />
       <module name="gateway" options="-parameters" />
