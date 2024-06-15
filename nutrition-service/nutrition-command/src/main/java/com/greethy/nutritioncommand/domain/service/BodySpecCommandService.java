@@ -1,6 +1,6 @@
 package com.greethy.nutritioncommand.domain.service;
 
-import com.greethy.nutritioncommon.dto.request.CreateBodySpecCommand;
+import com.greethy.nutritioncommon.dto.request.command.CreateBodySpecCommand;
 import com.greethy.nutritioncommon.dto.response.BodySpecResponse;
 import reactor.core.publisher.Mono;
 

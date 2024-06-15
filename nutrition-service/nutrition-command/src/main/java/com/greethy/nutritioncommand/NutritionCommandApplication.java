@@ -20,8 +20,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -35,8 +35,6 @@ import java.util.stream.IntStream;
                 "com.greethy.nutritioncommand"
         })
 public class NutritionCommandApplication implements CommandLineRunner {
-
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     private final GorseClientPort gorsePort;
 
@@ -64,27 +62,28 @@ public class NutritionCommandApplication implements CommandLineRunner {
                 palEvaluateRepository.deleteAll()
                         .doOnSuccess(unused -> log.info("Deleted Pal-Evaluates collections"))
         ).then(Mono.when(
-                Flux.fromIterable(bmiEvaluates())
-                        .flatMap(bmiEvaluateRepository::save)
-                        .doOnNext(bmiEvaluate -> log.info("BMI Evaluate: {} saved to MongoDB.", bmiEvaluate)),
-                Flux.fromIterable(bmrByAgesTable())
-                        .flatMap(bmrByAgeRepository::save)
-                        .doOnNext(bmrByAge -> log.info("BMR by Age: {} saved to MongoDB.", bmrByAge)),
-                Flux.fromIterable(palEvaluates())
-                        .flatMap(palEvaluateRepository::save)
-                        .doOnNext(palEvaluate -> log.info("PAL Evaluate: {} saved to MongoDB.", palEvaluate)),
-                Flux.fromIterable(foods())
-                        .flatMap(foodRepository::save)
-                        .flatMap(food -> {
-                            var item = GorseItem.builder()
-                                    .itemId(food.getId())
-                                    .labels(food.getLabels())
-                                    .isHidden(false)
-                                    .timestamp(LocalDateTime.now().format(formatter))
-                                    .categories(Collections.singletonList(food.getGroup()))
-                                    .build();
-                            return gorsePort.saveItem(item).thenReturn(food);
-                        }).doOnNext(food -> log.info("Food: {} saved to MongoDB and Gorse's MySQL.", food))
+                        Flux.fromIterable(bmiEvaluates())
+                                .flatMap(bmiEvaluateRepository::save)
+                                .doOnNext(bmiEvaluate -> log.info("BMI Evaluate: {} saved to MongoDB.", bmiEvaluate)),
+                        Flux.fromIterable(bmrByAgesTable())
+                                .flatMap(bmrByAgeRepository::save)
+                                .doOnNext(bmrByAge -> log.info("BMR by Age: {} saved to MongoDB.", bmrByAge)),
+                        Flux.fromIterable(palEvaluates())
+                                .flatMap(palEvaluateRepository::save)
+                                .doOnNext(palEvaluate -> log.info("PAL Evaluate: {} saved to MongoDB.", palEvaluate)),
+                        Flux.fromIterable(foods())
+                                .flatMap(foodRepository::save)
+                                .delaySequence(Duration.ofMillis(500))
+                                .flatMap(food -> {
+                                    var item = GorseItem.builder()
+                                            .itemId(food.getId())
+                                            .labels(food.getLabels())
+                                            .isHidden(false)
+                                            .timestamp(LocalDateTime.now())
+                                            .categories(Collections.singletonList(food.getGroup()))
+                                            .build();
+                                    return gorsePort.saveItem(item).thenReturn(food);
+                                }).doOnNext(food -> log.info("Food: {} saved to MongoDB and Gorse's MySQL.", food))
                 )
         ).subscribe();
     }
@@ -139,7 +138,8 @@ public class NutritionCommandApplication implements CommandLineRunner {
                 .limit(50000)
                 .mapToObj(i -> RandomUtil.getSingleRandomFromStrings(
                         faker.food().allergen(), faker.food().dish(), faker.food().spice(),
-                        faker.food().fruit(), faker.food().sushi(), faker.food().vegetable()
+                        faker.food().fruit(), faker.food().sushi(), faker.food().vegetable(),
+                        faker.food().ingredient(), faker.nigeria().food(), faker.slackEmoji().foodAndDrink()
                 )).collect(Collectors.toSet());
         return foodNames.stream()
                 .map(name -> {

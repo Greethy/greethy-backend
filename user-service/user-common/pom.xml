@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.greethy.common</groupId>
             <artifactId>common</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

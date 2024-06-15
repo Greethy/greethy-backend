@@ -14,7 +14,7 @@ public class ResourceConfig {
     @Bean
     public LocaleContextResolver localeContextResolver() {
         var resolver = new AcceptHeaderLocaleContextResolver();
-        resolver.setDefaultLocale(Locale.forLanguageTag("vi"));
+        resolver.setDefaultLocale(Locale.forLanguageTag("en"));
         return resolver;
     }
 

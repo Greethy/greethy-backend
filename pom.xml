@@ -34,7 +34,8 @@
 		<module>finance-services</module>
 		<!-- INFRASTRUCTURE -->
 		<module>greethy-docker</module>
-    </modules>
+		<module>feedback-service</module>
+	</modules>
 
 	<dependencies>
 		<dependency>

@@ -8,7 +8,7 @@ import com.greethy.nutritioncommand.domain.port.BodySpecPort;
 import com.greethy.nutritioncommand.domain.port.PalEvaluatePort;
 import com.greethy.nutritioncommand.domain.port.producer.BodySpecEventProducer;
 import com.greethy.nutritioncommand.domain.service.BodySpecCommandService;
-import com.greethy.nutritioncommon.dto.request.CreateBodySpecCommand;
+import com.greethy.nutritioncommon.dto.request.command.CreateBodySpecCommand;
 import com.greethy.nutritioncommon.dto.response.BodySpecResponse;
 import com.greethy.nutritioncommon.entity.BmiEvaluate;
 import com.greethy.nutritioncommon.entity.BmrByAge;
