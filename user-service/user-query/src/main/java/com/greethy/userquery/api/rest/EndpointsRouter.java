@@ -19,21 +19,23 @@ public class EndpointsRouter {
     @QuerySwagger
     RouterFunction<ServerResponse> route(UserQueryHandler userHandler) {
         return RouterFunctions.route()
-                .path("api/v1/users", builder -> builder
+                .path("api/v1", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
-                                .GET("", queryParam("offset", StringUtils::hasText).or(queryParam("limit", StringUtils::hasText)), userHandler::getAllByPagination)
-                                .GET("{user-id}", userHandler::getUserById)
-                                .GET("user", queryParam("username-or-email", StringUtils::hasText), userHandler::getByUsernameOrEmail)
-                                .GET("user-email/exists", userHandler::checkIfEmailIsExisted)
-                        ).build()
-                ).path("api/v1/me", builder -> builder
-                        .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
-                                .GET("", userHandler::getCurrentUser)
-                                .GET("/profile", userHandler::getCurrentUserProfile)
+                                .GET("users",
+                                        queryParam("offset", StringUtils::hasText)
+                                                .or(queryParam("limit", StringUtils::hasText))
+                                                .or(queryParam("sort", StringUtils::hasText)),
+                                        userHandler::getAllByPagination)
+                                .GET("users/{user-id}", userHandler::getUserById)
+                                .GET("users/user", queryParam("username-or-email", StringUtils::hasText), userHandler::getByUsernameOrEmail)
+                                .GET("me", userHandler::getCurrentUser)
                         ).build()
                 ).path("internal", builder -> builder
-                        .GET("identity", queryParam("username-or-email", StringUtils::hasText), userHandler::getIdentity)
+                        .GET("identity",
+                                queryParam("username-or-email", StringUtils::hasText),
+                                userHandler::getIdentity)
                         .GET("ids", request -> userHandler.getAllUserIds())
+                        .GET("ids/{username}", userHandler::getUserIdByUsername)
                 ).build();
     }
 

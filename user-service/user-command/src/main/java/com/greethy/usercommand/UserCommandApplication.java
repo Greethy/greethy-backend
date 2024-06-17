@@ -91,7 +91,8 @@ public class UserCommandApplication implements CommandLineRunner {
         var networking = new Networking(UUID.randomUUID().toString());
         var allLabels = Arrays.stream(UserLabel.values()).map(UserLabel::getName).toList();
         var labels = RandomUtil.getListRandomFromStrings(5, allLabels);
-        user.setUsername(faker.internet().username());
+        user.setUsername(faker.internet().username() + i);
+        user.setId(user.getUsername());
         user.setEmail(faker.internet().emailAddress());
         user.setPassword(encoder.encode("123456"));
         user.setAvatarUrl(faker.internet().image());

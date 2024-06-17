@@ -1,7 +1,7 @@
 package com.greethy.feedbackquery.infra.adapter;
 
 import com.greethy.common.infra.component.annotation.DrivenAdapter;
-import com.greethy.feedbackcommon.dto.response.ObjectIdResponse;
+import com.greethy.common.api.response.ObjectIdResponse;
 import com.greethy.feedbackquery.domain.port.UserClientPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.reactive.function.client.WebClient;

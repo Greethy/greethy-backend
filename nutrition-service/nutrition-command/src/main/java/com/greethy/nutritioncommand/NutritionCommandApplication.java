@@ -52,40 +52,49 @@ public class NutritionCommandApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Mono.when(
-                foodRepository.deleteAll()
-                        .doOnSuccess(unused -> log.info("Deleted Foods collections")),
-                bmiEvaluateRepository.deleteAll()
-                        .doOnSuccess(unused -> log.info("Deleted BMI-Evaluates collections")),
-                bmrByAgeRepository.deleteAll()
-                        .doOnSuccess(unused -> log.info("Deleted BMR-by-Ages collections")),
-                palEvaluateRepository.deleteAll()
-                        .doOnSuccess(unused -> log.info("Deleted Pal-Evaluates collections"))
-        ).then(Mono.when(
-                        Flux.fromIterable(bmiEvaluates())
-                                .flatMap(bmiEvaluateRepository::save)
-                                .doOnNext(bmiEvaluate -> log.info("BMI Evaluate: {} saved to MongoDB.", bmiEvaluate)),
-                        Flux.fromIterable(bmrByAgesTable())
-                                .flatMap(bmrByAgeRepository::save)
-                                .doOnNext(bmrByAge -> log.info("BMR by Age: {} saved to MongoDB.", bmrByAge)),
-                        Flux.fromIterable(palEvaluates())
-                                .flatMap(palEvaluateRepository::save)
-                                .doOnNext(palEvaluate -> log.info("PAL Evaluate: {} saved to MongoDB.", palEvaluate)),
-                        Flux.fromIterable(foods())
-                                .flatMap(foodRepository::save)
-                                .delaySequence(Duration.ofMillis(500))
-                                .flatMap(food -> {
-                                    var item = GorseItem.builder()
-                                            .itemId(food.getId())
-                                            .labels(food.getLabels())
-                                            .isHidden(false)
-                                            .timestamp(LocalDateTime.now())
-                                            .categories(Collections.singletonList(food.getGroup()))
-                                            .build();
-                                    return gorsePort.saveItem(item).thenReturn(food);
-                                }).doOnNext(food -> log.info("Food: {} saved to MongoDB and Gorse's MySQL.", food))
-                )
-        ).subscribe();
+        foodRepository.count()
+                .filter(count -> count > 0)
+                .switchIfEmpty(Mono.when(
+                                foodRepository.deleteAll()
+                                        .doOnSuccess(unused -> log.info("Deleted Foods collections")),
+                                bmiEvaluateRepository.deleteAll()
+                                        .doOnSuccess(unused -> log.info("Deleted BMI-Evaluates collections")),
+                                bmrByAgeRepository.deleteAll()
+                                        .doOnSuccess(unused -> log.info("Deleted BMR-by-Ages collections")),
+                                palEvaluateRepository.deleteAll()
+                                        .doOnSuccess(unused -> log.info("Deleted Pal-Evaluates collections"))
+                        ).then(Mono.when(
+                                        Flux.fromIterable(bmiEvaluates())
+                                                .flatMap(bmiEvaluateRepository::save)
+                                                .doOnNext(bmiEvaluate -> log.info("BMI Evaluate: {} saved to MongoDB.", bmiEvaluate)),
+                                        Flux.fromIterable(bmrByAgesTable())
+                                                .flatMap(bmrByAgeRepository::save)
+                                                .doOnNext(bmrByAge -> log.info("BMR by Age: {} saved to MongoDB.", bmrByAge)),
+                                        Flux.fromIterable(palEvaluates())
+                                                .flatMap(palEvaluateRepository::save)
+                                                .doOnNext(palEvaluate -> log.info("PAL Evaluate: {} saved to MongoDB.", palEvaluate)),
+                                        Flux.fromIterable(foods())
+                                                .flatMap(foodRepository::save)
+                                                .delaySequence(Duration.ofSeconds(3))
+                                                .flatMap(food -> {
+                                                    var item = GorseItem.builder()
+                                                            .itemId(food.getId())
+                                                            .labels(food.getLabels())
+                                                            .isHidden(false)
+                                                            .timestamp(LocalDateTime.now())
+                                                            .categories(List.of("food", food.getGroup()))
+                                                            .build();
+                                                    return gorsePort.saveItem(item).thenReturn(food);
+                                                }).doOnNext(food -> log.info("Food: {} saved to MongoDB and Gorse's MySQL.", food))
+                                )
+                        ).thenReturn(0L)
+                ).subscribe(count -> {
+                    if (count == 0) {
+                        log.info("Data is loaded to DB");
+                    } else {
+                        log.info("Skipped load data to DB");
+                    }
+                });
     }
 
     private Set<BmiEvaluate> bmiEvaluates() {
@@ -135,12 +144,15 @@ public class NutritionCommandApplication implements CommandLineRunner {
     private List<Food> foods() {
         var faker = new Faker(new Locale("en"));
         var foodNames = IntStream.iterate(0, i -> i + 1)
-                .limit(50000)
-                .mapToObj(i -> RandomUtil.getSingleRandomFromStrings(
-                        faker.food().allergen(), faker.food().dish(), faker.food().spice(),
-                        faker.food().fruit(), faker.food().sushi(), faker.food().vegetable(),
-                        faker.food().ingredient(), faker.nigeria().food(), faker.slackEmoji().foodAndDrink()
-                )).collect(Collectors.toSet());
+                .limit(20000)
+                .mapToObj(i -> {
+                    var name = RandomUtil.getSingleRandomFromStrings(
+                            faker.food().allergen(), faker.food().dish(), faker.food().spice(),
+                            faker.food().fruit(), faker.food().sushi(), faker.food().vegetable(),
+                            faker.food().ingredient(), faker.nigeria().food(), faker.slackEmoji().foodAndDrink()
+                    );
+                    return name + i;
+                }).collect(Collectors.toSet());
         return foodNames.stream()
                 .map(name -> {
                     var meals = Arrays.stream(Meal.values()).map(Meal::getName).toList();
@@ -151,7 +163,7 @@ public class NutritionCommandApplication implements CommandLineRunner {
                     var labels = RandomUtil.getListRandomFromStrings(5, allLabels);
                     var group = RandomUtil.getSingleRandomFromStrings(groups);
                     return Food.builder()
-                            .name(name)
+                            .id(name).name(name)
                             .labels(labels).meal(meal).group(group)
                             .recipe("This is recipe")
                             .imageUrl(faker.internet().image())

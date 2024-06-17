@@ -24,6 +24,8 @@ public final class Constants {
         public static final String INVALID_USERNAME_OR_EMAIL = "user.auth.login.invalid-username-or-email";
 //        public static final String WRONG_PASSWORD = "user.auth.login.wrong-password";
 //        public static final String ACCESS_DENIED = "user.auth.access-denied";
+
+
     }
 
 }

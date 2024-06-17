@@ -19,12 +19,18 @@ public class ServerRequestUtil {
      * @param defaultValue  The default value to return if the query parameter is not present or empty.
      * @return The integer value of the query parameter if present and not empty, or the default value otherwise.
      */
-    public static Integer getIntegerValue(ServerRequest serverRequest, String name, String defaultValue) {
-        return serverRequest
-                .queryParam(name)
+    public static Integer getQueryParamIntegerValue(ServerRequest serverRequest, String name, String defaultValue) {
+        return serverRequest.queryParam(name)
                 .filter(StringUtils::hasText)
                 .or(() -> Optional.of(defaultValue))
                 .map(Integer::valueOf)
+                .get();
+    }
+
+    public static String getQueryParamStringValue(ServerRequest serverRequest, String name, String defaultValue) {
+        return serverRequest.queryParam(name)
+                .filter(StringUtils::hasText)
+                .or(() -> Optional.of(defaultValue))
                 .get();
     }
 }
