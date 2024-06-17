@@ -1,7 +1,7 @@
 package com.greethy.feedbackquery;
 
 import com.greethy.common.infra.util.RandomUtil;
-import com.greethy.feedbackcommon.dto.response.ObjectIdResponse;
+import com.greethy.common.api.response.ObjectIdResponse;
 import com.greethy.feedbackcommon.entity.GorseFeedback;
 import com.greethy.feedbackcommon.entity.enums.FeedbackType;
 import com.greethy.feedbackquery.domain.port.GorseClientPort;
@@ -51,7 +51,7 @@ public class FeedbackQueryApplication implements CommandLineRunner {
                     assert foodIds != null;
                     var userId = RandomUtil.getSingleRandomFromStrings(userIds);
                     var foodId = RandomUtil.getSingleRandomFromStrings(foodIds);
-                    var timestamp = LocalDateTime.now().minusDays(RandomUtil.getSingleRandomInteger(0,7));
+                    var timestamp = LocalDateTime.now().minusDays(RandomUtil.getSingleRandomInteger(0,6));
                     var feedbackType = RandomUtil.getSingleRandomFromStrings(Arrays.stream(FeedbackType.values()).map(FeedbackType::getType).toList());
                     return GorseFeedback.builder()
                             .userId(userId)

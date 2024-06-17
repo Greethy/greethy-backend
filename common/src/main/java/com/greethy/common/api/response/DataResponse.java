@@ -8,11 +8,11 @@ import java.io.Serializable;
 @Data
 public class DataResponse<T> implements Serializable {
 
-    private T data;
-
     private String message;
 
     private int code;
+
+    private T data;
 
     private Pagination pagination;
 
