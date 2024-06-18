@@ -8,6 +8,7 @@ import lombok.Getter;
 public enum Meal {
 
     BREAKFAST("Breakfast"),
+    BRUNCH("Brunch"),
     LUNCH("Lunch"),
     DINNER("Dinner"),
     SNACK("Snack");

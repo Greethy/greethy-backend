@@ -34,6 +34,10 @@ public class BodySpec extends BaseEntity {
 
     private Bmr bmr;
 
+    private String activityLevel;
+
     private String goal;
+
+    private String username;
 
 }

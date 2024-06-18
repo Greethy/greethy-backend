@@ -1,6 +1,7 @@
 package com.greethy.nutritioncommon.entity;
 
 import com.greethy.common.domain.entity.BaseEntity;
+import com.greethy.nutritioncommon.entity.value.Nutrient;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,15 +31,21 @@ public class Food extends BaseEntity {
 
     private String tips;
 
-    @Field(name = "image_url")
-    private String imageUrl;
+    @Field(name = "image_urls")
+    private List<String> imageUrls;
 
-    @Field(name = "instruction_url")
-    private String instructionUrl;
+    @Field(name = "video")
+    private String video;
+
+    @Field(name = "more_info")
+    private String moreInfo;
 
     private List<String> labels;
 
-    private List<Ingredient> ingredients;
+    @Field(name = "food_ingredients")
+    private List<FoodIngredient> foodIngredients;
+
+    private List<Nutrient> nutrients;
 
     @Field(name = "total_calories")
     private Integer totalCalories;

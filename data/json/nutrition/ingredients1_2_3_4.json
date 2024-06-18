@@ -1,0 +1,103 @@
+[
+  {
+    "name": "Gạo nếp cái",
+    "code": "01001",
+    "nutrition_per_100g": [
+      {
+        "name": "Energy",
+        "value": "348",
+        "unit": "Kcal"
+      },
+      {
+        "name": "Water",
+        "value": "14.0",
+        "unit": "g"
+      },
+      {
+        "name": "Protein",
+        "value": "8.60",
+        "unit": "g"
+      },
+      {
+        "name": "Fat",
+        "value": "1.50",
+        "unit": "g"
+      },
+      {
+        "name": "Carbohydrate",
+        "value": "75.10",
+        "unit": "g"
+      },
+      {
+        "name": "Fiber",
+        "value": "0.6",
+        "unit": "g"
+      },
+      {
+        "name": "Ash",
+        "value": "0.80",
+        "unit": "g"
+      },
+      {
+        "name": "Calcium",
+        "value": "32",
+        "unit": "mg"
+      },
+      {
+        "name": "Phosphorus",
+        "value": "98",
+        "unit": "mg"
+      },
+      {
+        "name": "Iron",
+        "value": "1.20",
+        "unit": "mg"
+      },
+      {
+        "name": "Zinc",
+        "value": "2.20",
+        "unit": "mg"
+      },
+      {
+        "name": "Sodium",
+        "value": "3",
+        "unit": "mg"
+      },
+      {
+        "name": "Potassium",
+        "value": "282",
+        "unit": "mg"
+      },
+      {
+        "name": "Magnesium",
+        "value": "17",
+        "unit": "mg"
+      },
+      {
+        "name": "Manganese",
+        "value": "1.100",
+        "unit": "mg"
+      },
+      {
+        "name": "Copper",
+        "value": "280",
+        "unit": "µg"
+      },
+      {
+        "name": "Vitamin C",
+        "value": "0.14",
+        "unit": "mg"
+      },
+      {
+        "name": "Thiamine",
+        "value": "0.06",
+        "unit": "mg"
+      },
+      {
+        "name": "Riboflavin",
+        "value": "2.4",
+        "unit": "mg"
+      }
+    ]
+  }
+]

@@ -95,11 +95,6 @@ public enum FoodLabel {
     CHEESE("Cheese"),
 
     // Occasions
-    BREAKFAST("Breakfast"),
-    BRUNCH("Brunch"),
-    LUNCH("Lunch"),
-    DINNER("Dinner"),
-    SNACK("Snack"),
     PARTY("Party"),
     POTLUCK("Potluck"),
     HOLIDAY("Holiday"),

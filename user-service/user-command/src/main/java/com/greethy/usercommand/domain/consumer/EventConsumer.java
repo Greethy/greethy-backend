@@ -33,12 +33,12 @@ public class EventConsumer {
         consumerTemplate.receiveAutoAck()
                 .doOnError(error -> log.error("Error receiving event, will retry", error))
                 .retryWhen(Retry.fixedDelay(Long.MAX_VALUE, Duration.ofSeconds(10)))
+                .map(ConsumerRecord::value)
                 .flatMap(this::processEvent)
-                .subscribe(record -> log.info("event: {}", record.value()));
+                .subscribe(event -> log.info("event: {}", event));
     }
 
-    private Mono<ConsumerRecord<String, AddBodySpecToUserEvent>> processEvent(ConsumerRecord<String, AddBodySpecToUserEvent> consumerRecord) {
-        var event = consumerRecord.value();
+    private Mono<?> processEvent(AddBodySpecToUserEvent event) {
         var payload = event.getPayload();
         return userPort.findByUsername(payload.username())
                 .switchIfEmpty(Mono.error(() -> new Exception("")))
@@ -56,7 +56,7 @@ public class EventConsumer {
                             bodySpecsManagement.setPresentBodySpecId(payload.bodySpecId());
                             bodySpecsManagement.getBodySpecIds().add(payload.bodySpecId());
                         }).flatMap(bodySpecsManagementPort::save)
-                ).thenReturn(consumerRecord);
+                ).thenReturn(event);
 
     }
 

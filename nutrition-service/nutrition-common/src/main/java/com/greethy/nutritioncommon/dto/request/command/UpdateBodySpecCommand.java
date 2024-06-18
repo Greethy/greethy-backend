@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-public class CreateBodySpecCommand {
+public class UpdateBodySpecCommand {
 
     private Integer age;
 
@@ -21,5 +21,4 @@ public class CreateBodySpecCommand {
 
     @Schema(type = "string")
     private NutritionType goal;
-
 }

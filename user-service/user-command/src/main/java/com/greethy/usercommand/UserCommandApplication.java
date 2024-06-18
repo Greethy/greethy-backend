@@ -60,11 +60,11 @@ public class UserCommandApplication implements CommandLineRunner {
                 .subscribe(role -> log.info("Role: {} has been stored in MongoDB", role));
         var count = userRepository.count().block();
         assert count != null;
-        if (count < 5000) {
+        if (count < 1500) {
             Mono.when(userRepository.deleteAll(), networkingRepository.deleteAll())
                     .subscribeOn(Schedulers.boundedElastic())
                     .thenMany(Flux.interval(Duration.ofMillis(3)))
-                    .take(5000)
+                    .take(1500)
                     .flatMap(this::createUser)
                     .parallel().runOn(Schedulers.parallel())
                     .flatMap(tuple2 -> Mono.when(
@@ -82,8 +82,27 @@ public class UserCommandApplication implements CommandLineRunner {
                             error -> log.error("Error occurred during user saving: ", error),
                             () -> log.info("All users have been processed and saved.")
                     );
+            var networking = new Networking(UUID.randomUUID().toString());
+            Mono.fromSupplier(() -> {
+                        var user = new User();
+                        var allLabels = Arrays.stream(UserLabel.values()).map(UserLabel::getName).toList();
+                        var labels = RandomUtil.getListRandomFromStrings(5, allLabels);
+                        user.setId("admin");
+                        user.setUsername("admin");
+                        user.setBio("This is Bio");
+                        user.setEmail("knkuro00@gmail.com");
+                        user.setPassword(encoder.encode("admin"));
+                        user.setVerified(true);
+                        user.setNetworkingId(networking.getId());
+                        user.setRoles(Collections.singletonList(new Role("5", Constants.RoleType.ROLE_ADMIN, false, Set.of(Permission.READ, Permission.WRITE, Permission.DELETE))));
+                        user.setLabels(labels);
+                        return user;
+                    }).flatMap(userRepository::save)
+                    .then(networkingRepository.save(networking))
+                    .subscribe();
         }
     }
+
 
     private Mono<Tuple2<User, Networking>> createUser(Long i) {
         var faker = new Faker();

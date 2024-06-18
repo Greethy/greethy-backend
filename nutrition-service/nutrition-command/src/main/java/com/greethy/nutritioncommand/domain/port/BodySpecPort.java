@@ -7,4 +7,10 @@ public interface BodySpecPort {
 
     Mono<BodySpec> save(BodySpec bodySpec);
 
+    Mono<BodySpec> findById(String id);
+
+    Mono<Void> deleteById(String id);
+
+    Mono<BodySpec> findFirstByUsernameOrOrderByCreatedAtDesc(String username);
+
 }

@@ -25,4 +25,12 @@ public class BodySpecQueryHandler {
                 .onErrorResume(exceptionHandler::handlingException);
     }
 
+    public Mono<ServerResponse> getBodySpecsPagination(ServerRequest serverRequest) {
+        return null;
+    }
+
+    public Mono<ServerResponse> getUserBodySpecsPagination(ServerRequest serverRequest) {
+        return null;
+    }
+
 }

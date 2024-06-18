@@ -23,7 +23,10 @@ public class EndpointsRouter {
         return RouterFunctions.route()
                 .path("api/v1", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
+                                .GET("body-specs", bodySpecHandler::getBodySpecsPagination)
+                                .GET("me/body-specs", bodySpecHandler::getUserBodySpecsPagination)
                                 .GET("body-specs/{body-spec-id}", bodySpecHandler::getBodySpecById)
+
                                 .GET("foods",
                                         queryParam("offset", StringUtils::hasText)
                                                 .or(queryParam("limit", StringUtils::hasText))
@@ -37,6 +40,7 @@ public class EndpointsRouter {
                                         foodHandler::searchByFoodName)
                                 .GET("foods/{food-id}",
                                         foodHandler::getFoodById)
+
                                 .GET("recommend/me/foods", recommendHandler::getMeFoodRecommendations)
                         )
                 ).path("internal", builder -> builder

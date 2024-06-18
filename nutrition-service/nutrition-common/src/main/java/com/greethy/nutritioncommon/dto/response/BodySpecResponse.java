@@ -28,6 +28,9 @@ public class BodySpecResponse {
 
     private PalDto pal;
 
+    @JsonProperty("activity_level")
+    private String activityLevel;
+
     private String goal;
 
     @Schema(description = "Timestamp when the user was created", format = "date-time")
