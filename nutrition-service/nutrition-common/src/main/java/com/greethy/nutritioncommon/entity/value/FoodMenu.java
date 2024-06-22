@@ -10,9 +10,12 @@ import java.util.List;
 @Builder
 public class FoodMenu {
 
+    @Field(name = "food_id")
     private String foodId;
 
     private String name;
+
+    private Double calories;
 
     @Field(name = "image_url")
     private List<String> imageUrl;

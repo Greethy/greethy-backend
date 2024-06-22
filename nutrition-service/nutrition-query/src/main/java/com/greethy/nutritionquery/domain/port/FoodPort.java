@@ -15,4 +15,6 @@ public interface FoodPort {
 
     Flux<Food> findAll();
 
+    Mono<Food> findRandomByGroup(String group);
+
 }

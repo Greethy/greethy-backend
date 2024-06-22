@@ -17,4 +17,9 @@ public class MongoBodySpecAdapter implements BodySpecPort {
     public Mono<BodySpec> findById(String id) {
         return repository.findById(id);
     }
+
+    @Override
+    public Mono<BodySpec> findFirstByUsernameOrOrderByCreatedAtDesc(String username) {
+        return repository.findFirstByUsernameOrderByCreatedAtDesc(username);
+    }
 }

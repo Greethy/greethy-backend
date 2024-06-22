@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -23,6 +25,9 @@ public class Menu extends BaseEntity {
 
     private List<String> labels;
 
+    private LocalDate useFor;
+
+    @Field(name = "menu_type")
     private List<String> menuType;
 
     private List<MealMenu> meals;

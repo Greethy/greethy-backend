@@ -1,7 +1,7 @@
 package com.greethy.nutritioncommon.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.greethy.nutritioncommon.entity.Ingredient;
+import com.greethy.nutritioncommon.dto.value.FoodIngredientDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,7 +33,7 @@ public class FoodResponse {
 
     private List<String> labels;
 
-    private List<Ingredient> ingredients;
+    private List<FoodIngredientDto> ingredients;
 
     @JsonProperty("total_calories")
     private Integer totalCalories;

@@ -35,4 +35,9 @@ public class MongoFoodAdapter implements FoodPort {
     public Flux<Food> findAll() {
         return repository.findAll();
     }
+
+    @Override
+    public Mono<Food> findRandomByGroup(String group) {
+        return repository.findRandomByGroup(group);
+    }
 }

@@ -7,4 +7,5 @@ public interface BodySpecPort {
 
     Mono<BodySpec> findById(String id);
 
+    Mono<BodySpec> findFirstByUsernameOrOrderByCreatedAtDesc(String username);
 }

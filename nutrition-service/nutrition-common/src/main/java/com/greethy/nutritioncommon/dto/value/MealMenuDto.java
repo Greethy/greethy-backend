@@ -1,13 +1,13 @@
-package com.greethy.nutritioncommon.entity.value;
+package com.greethy.nutritioncommon.dto.value;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.greethy.nutritioncommon.entity.value.FoodMenu;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-@Builder
-public class MealMenu {
+public class MealMenuDto {
 
     private String meal;
 
@@ -17,9 +17,11 @@ public class MealMenu {
 
     private Double carbohydrate;
 
+    @JsonProperty("total_calories")
     private Integer totalCalories;
 
     private List<FoodMenu> foods;
 
     private Boolean status;
+
 }

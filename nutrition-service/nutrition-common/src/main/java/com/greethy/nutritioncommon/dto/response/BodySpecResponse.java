@@ -33,6 +33,8 @@ public class BodySpecResponse {
 
     private String goal;
 
+    private String username;
+
     @Schema(description = "Timestamp when the user was created", format = "date-time")
     @JsonProperty("created_at")
     private Date createdAt;

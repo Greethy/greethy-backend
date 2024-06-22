@@ -169,7 +169,7 @@ public class NutritionCommandApplication implements CommandLineRunner {
                             .imageUrls(List.of(faker.internet().image()))
                             .video(faker.internet().url())
                             //.foodIngredients(foodIngredients(RandomUtil.getSingleRandomInteger(5, 10)))
-                            .totalCalories(RandomUtil.getSingleRandomInteger(100, 400))
+                            .totalCalories((double) RandomUtil.getSingleRandomInteger(100, 400))
                             .build();
                 }).collect(Collectors.toList());
     }
@@ -201,7 +201,7 @@ public class NutritionCommandApplication implements CommandLineRunner {
                 .map(entry -> Ingredient.builder()
                         .id(entry.getKey() + "")
                         .name(entry.getValue())
-                        .calories(RandomUtil.getSingleRandomInteger(100, 300))
+                        .caloriesPer100g(RandomUtil.getSingleRandomInteger(100, 300))
                         .build())
                 .collect(Collectors.toList());
     }

@@ -48,6 +48,6 @@ public class Food extends BaseEntity {
     private List<Nutrient> nutrients;
 
     @Field(name = "total_calories")
-    private Integer totalCalories;
+    private Double totalCalories;
 
 }

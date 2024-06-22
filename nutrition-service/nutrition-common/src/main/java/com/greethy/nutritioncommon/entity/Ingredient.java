@@ -23,7 +23,11 @@ public class Ingredient extends BaseEntity {
 
     private String code;
 
-    private Integer calories;
+    private Double edible;
+
+    private String description;
+
+    private Integer caloriesPer100g;
 
     private List<Nutrient> nutrients;
 
