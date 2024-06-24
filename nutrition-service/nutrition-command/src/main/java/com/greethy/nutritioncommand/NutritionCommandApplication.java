@@ -34,15 +34,9 @@ import java.util.stream.IntStream;
 public class NutritionCommandApplication implements CommandLineRunner {
 
     private final GorseClientPort gorsePort;
-
     private final FoodRepository foodRepository;
-
     private final BmrByAgeRepository bmrByAgeRepository;
-
-    private final IngredientRepository ingredientRepository;
-
     private final BmiEvaluateRepository bmiEvaluateRepository;
-
     private final PalEvaluateRepository palEvaluateRepository;
 
     public static void main(String[] args) {
@@ -61,9 +55,7 @@ public class NutritionCommandApplication implements CommandLineRunner {
                         bmrByAgeRepository.deleteAll()
                                 .doOnSuccess(unused -> log.info("Deleted BMR-by-Ages collections")),
                         palEvaluateRepository.deleteAll()
-                                .doOnSuccess(unused -> log.info("Deleted Pal-Evaluates collections")),
-                        ingredientRepository.deleteAll()
-                                .doOnSuccess(unused -> log.info("Deleted Ingredient Collections"))
+                                .doOnSuccess(unused -> log.info("Deleted Pal-Evaluates collections"))
                 ).then(Mono.when(
                                 Flux.fromIterable(bmiEvaluates())
                                         .flatMap(bmiEvaluateRepository::save)
@@ -74,9 +66,6 @@ public class NutritionCommandApplication implements CommandLineRunner {
                                 Flux.fromIterable(palEvaluates())
                                         .flatMap(palEvaluateRepository::save)
                                         .doOnNext(palEvaluate -> log.info("PAL Evaluate: {} saved to MongoDB.", palEvaluate)),
-                                Flux.fromIterable(ingredients())
-                                        .flatMap(ingredientRepository::save)
-                                        .doOnNext(ingredient -> log.info("Ingredient: {} saved to MongoDB", ingredient)),
                                 Flux.fromIterable(foods())
                                         .flatMap(foodRepository::save)
                                         .delaySequence(Duration.ofSeconds(3))
@@ -174,21 +163,9 @@ public class NutritionCommandApplication implements CommandLineRunner {
                 }).collect(Collectors.toList());
     }
 
-    private List<FoodIngredient> foodIngredients(int size) {
-        return IntStream.range(0, size)
-                .mapToObj(i -> ingredientRepository.findById("" + i)
-                        .map(ingredient -> FoodIngredient.builder().ingredientId(ingredient.getId())
-                                .value(RandomUtil.getSingleRandomInteger(50, 200))
-                                .name(ingredient.getName())
-                                .calories((double) RandomUtil.getSingleRandomInteger(50, 300))
-                                .unit("g")
-                                .prepare("This is Preparation for " + ingredient.getName())
-                                .build())
-                        .block()
-                ).collect(Collectors.toList());
-    }
-
-    private List<Ingredient> ingredients() {
+    private Set<Ingredient> ingredients() {
+        Set<Ingredient> ingredients = new HashSet<>();
+        //ingredients.add(new Ingredient());
         var faker = new Faker(new Locale("en"));
         var ingredientMap = IntStream.iterate(0, i -> i + 1)
                 .limit(1000)
@@ -203,7 +180,7 @@ public class NutritionCommandApplication implements CommandLineRunner {
                         .name(entry.getValue())
                         .caloriesPer100g(RandomUtil.getSingleRandomInteger(100, 300))
                         .build())
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
 }

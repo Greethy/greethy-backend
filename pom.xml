@@ -23,18 +23,17 @@
 	</properties>
 
 	<modules>
-		<!-- MICROSERVICE MODULES -->
-		<module>api-gateway</module>
 
 		<!-- BUSINESS MODULES -->
 		<module>common</module>
 		<module>user-service</module>
 		<module>nutrition-service</module>
 		<module>event-store</module>
-		<module>finance-services</module>
 		<!-- INFRASTRUCTURE -->
 		<module>greethy-docker</module>
 		<module>feedback-service</module>
+		<!-- MICROSERVICE MODULES -->
+		<module>api-gateway</module>
 	</modules>
 
 	<dependencies>

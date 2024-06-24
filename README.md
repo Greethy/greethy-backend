@@ -5,7 +5,7 @@
 **Greethy** is a project that offers solutions for nutrition management, workout support, personal finance tracking, and a mini social network where people can join together to manage
 and share their achievements.
 
-**Greethy Server**, powered by `Spring Framework`, `Axon Framework`, `Apache Kafka` and `MongoDB`, provides efficient handling of large-scale data, project scalability, resilience, 
+**Greethy Server**, powered by `Spring Framework`, `Apache Kafka` and `MongoDB`, provides efficient handling of large-scale data, project scalability, resilience, 
 flexibility, security and seamless integration capabilities.
 
 ## 📋 Table of Contents
@@ -38,42 +38,11 @@ flexibility, security and seamless integration capabilities.
 
 *Greethy Server* consists of multiple services represented as modules in the project file, including:
 
-* **Configuration Server** ([config-server](config-server/README.md)): is Spring's client/server approach for storing and serving distributed configurations across multiple modules 
-and environments.
-
-* **Service Discovery** ([services-discovery](services-discovery/README.md)): is a Microservice Component help to know where each instance of a service is located. It acts as a registry
-in which the addresses of all instances are tracked.
-
 * **API Gateway** ([api-gateway](api-gateway/README.md)): 
 
 ### 📦 Modular Component
 
-* **Common** ([common](common/README.md)): 
-
 ### 📁 File Structure
-
-```
-greethy-backend
-  ├─┬ api-gateway           → gateway module with Spring Cloud Gateway
-  │ ├─ src
-  │ ├─ Dockerfile
-  │ └─ pom.xml
-  ├─┬ common                → common module for shared classes
-  │ ├─┬ annotation             → annotation sub-module for customized annotation
-  │ │ ├─ src
-  │ │ └─ pom.xml
-  │ ├─┬ mapper                 → mapper sub-module for mapper configuration
-  │ │ ├─ src
-  │ │ └─ pom.xml
-  │ └─ pom.xml
-  │
-  │
-  ├─┬ services-discovery    → services discovery module with Eureka Server
-  │ ├─ src
-  │ ├─ Dockerfile
-  │ └─ pom.xml
-  └─ pom.xml       → Maven parent pom managing both modules
-```
 
 ## Technologies Stack
 
@@ -82,8 +51,6 @@ greethy-backend
 ## 👟 Run the Application
 
 ### 🖥️ Running on Local Machine
-
-Go to [run-all-modules.sh](run-all-modules.sh) to run all services component in project. Remember run the service by order from top to bottom
 
 ### ⛴️ Using Docker (Not finished yet)
 
@@ -127,5 +94,28 @@ mongodb:
 
   * Password: password
 
+### Getting Started
+To install this project, run the following commands:
+1. **Clone the repository**:
+```
+git clone https://github.com/ChunhThanhDe/greethy-backend.git
+```
+2. **Navigate to the project directory**:
+```
+cd greethy-backend
+```
+3. **Build the project**:
+```
+mvn clean install
+```
+4. **Run Docker-Compose**:
+```
+cd greethy-backend/greethy-docker
+docker-compose up -d
+```
+5. **Run the Application**:
+Open your Git bash and run this command:
+```
+./run-project.sh
+```
 
-### See API documentation at localhost:8085/swagger-ui.html

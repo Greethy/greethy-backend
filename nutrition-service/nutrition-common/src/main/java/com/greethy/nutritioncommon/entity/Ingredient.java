@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -27,8 +28,10 @@ public class Ingredient extends BaseEntity {
 
     private String description;
 
+    @Field(name = "calories_per_100g")
     private Integer caloriesPer100g;
 
-    private List<Nutrient> nutrients;
+    @Field(name = "nutrition_per_100g")
+    private List<Nutrient> nutritionPer100g;
 
 }

@@ -21,7 +21,6 @@
         <module name="feedback-common" />
         <module name="nutrition-query" />
         <module name="gateway" />
-        <module name="finance" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -31,6 +30,7 @@
       <module name="config" target="17" />
       <module name="core" target="17" />
       <module name="discovery" target="17" />
+      <module name="finance" target="17" />
       <module name="financial" target="1.5" />
       <module name="greethy" target="17" />
       <module name="infrastructure" target="1.5" />

@@ -2,12 +2,8 @@
   {
     "name": "Gạo nếp cái",
     "code": "01001",
+    "calories_per_100g": "348",
     "nutrition_per_100g": [
-      {
-        "name": "Energy",
-        "value": "348",
-        "unit": "Kcal"
-      },
       {
         "name": "Water",
         "value": "14.0",
@@ -100,4 +96,5 @@
       }
     ]
   }
+
 ]
