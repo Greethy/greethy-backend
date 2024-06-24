@@ -1,0 +1,290 @@
+[
+  {
+    "_id": "03001",
+    "name": "Cùi dừa già",
+    "code": "03001",
+    "edible": 80,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Coconut meat, mature, raw",
+    "calories_per_100g": "385"
+  },
+  {
+    "_id": "03002",
+    "name": "Cùi dừa non",
+    "code": "03002",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Coconut meat, immature, raw",
+    "calories_per_100g": "54"
+  },
+  {
+    "_id": "03003",
+    "name": "Đậu cô ve (hạt)",
+    "code": "03003",
+    "edible": 90,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Common bean, seed, dried",
+    "calories_per_100g": "335"
+  },
+  {
+    "_id": "03004",
+    "name": "Đậu đen (hạt)",
+    "code": "03004",
+    "edible": 98,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Black bean seed, dried",
+    "calories_per_100g": "341"
+  },
+  {
+    "_id": "03005",
+    "name": "Đậu đũa (hạt)",
+    "code": "03005",
+    "edible": 90,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Yardlong bean, seed, dried",
+    "calories_per_100g": "338"
+  },
+  {
+    "_id": "03006",
+    "name": "Đậu Hà Lan (hạt)",
+    "code": "03006",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Field peas, seed, dried",
+    "calories_per_100g": "342"
+  },
+  {
+    "_id": "03007",
+    "name": "Đậu tương (đậu nành)",
+    "code": "03007",
+    "edible": 98,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Soybean, seed, dried",
+    "calories_per_100g": "418"
+  },
+  {
+    "_id": "03008",
+    "name": "Đậu trắng hạt (Đậu Tây)",
+    "code": "03008",
+    "edible": 98,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Kidney bean, white bean, seed, dried",
+    "calories_per_100g": "341"
+  },
+  {
+    "_id": "03009",
+    "name": "Đậu trứng cúc",
+    "code": "03009",
+    "edible": 98,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Mungo bean",
+    "calories_per_100g": "340"
+  },
+  {
+    "_id": "03010",
+    "name": "Đậu xanh (đậu tất)",
+    "code": "03010",
+    "edible": 98,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Mung bean",
+    "calories_per_100g": "346"
+  },
+  {
+    "_id": "03011",
+    "name": "Hạt dẻ",
+    "code": "03011",
+    "edible": 70,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Chestnut, fresh",
+    "calories_per_100g": "652"
+  },
+  {
+    "_id": "03012",
+    "name": "Hạt dẻ tươi",
+    "code": "03012",
+    "edible": 82,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Chestnut, fresh",
+    "calories_per_100g": "223"
+  },
+  {
+    "_id": "03013",
+    "name": "Hạt dẻ khô",
+    "code": "03013",
+    "edible": 80,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Chestnut, dried",
+    "calories_per_100g": "363"
+  },
+  {
+    "_id": "03014",
+    "name": "Hạt đen",
+    "code": "03014",
+    "edible": 50,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Black seed, raw",
+    "calories_per_100g": "486"
+  },
+  {
+    "_id": "03015",
+    "name": "Hạt điều",
+    "code": "03015",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Cashew nut, common",
+    "calories_per_100g": "608"
+  },
+  {
+    "_id": "03016",
+    "name": "Hạt mít",
+    "code": "03016",
+    "edible": 85,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Jack fruit, seed, raw",
+    "calories_per_100g": "166"
+  },
+  {
+    "_id": "03017",
+    "name": "Lạc hạt",
+    "code": "03017",
+    "edible": 98,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Peanut, dried",
+    "calories_per_100g": "583"
+  },
+  {
+    "_id": "03018",
+    "name": "Quả cọ tươi",
+    "code": "03018",
+    "edible": 60,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Palm fruit, fresh",
+    "calories_per_100g": "192"
+  },
+  {
+    "_id": "03019",
+    "name": "Quả dại hài tươi",
+    "code": "03019",
+    "edible": 95,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Hodgsonia fruit, raw",
+    "calories_per_100g": "440"
+  },
+  {
+    "_id": "03020",
+    "name": "Vừng (đen, trắng)",
+    "code": "03020",
+    "edible": 95,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Sesame seeds, dried, black or white",
+    "calories_per_100g": "582"
+  },
+  {
+    "_id": "03021",
+    "name": "Bột đậu tương đã loại béo (đậu nành)",
+    "code": "03021",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Soybeans flour, defatted",
+    "calories_per_100g": "331"
+  },
+  {
+    "_id": "03022",
+    "name": "Bột đậu xanh",
+    "code": "03022",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Mungo bean flour",
+    "calories_per_100g": "363"
+  },
+  {
+    "_id": "03023",
+    "name": "Bột lạc",
+    "code": "03023",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Peanut flour",
+    "calories_per_100g": "583"
+  },
+  {
+    "_id": "03024",
+    "name": "Đậu phụ",
+    "code": "03024",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Tofu, raw",
+    "calories_per_100g": "97"
+  },
+  {
+    "_id": "03025",
+    "name": "Đậu phụ chức",
+    "code": "03025",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Tofu skin, yuba, bean curd skin, bean curd sheet",
+    "calories_per_100g": "415"
+  },
+  {
+    "_id": "03026",
+    "name": "Đậu phụ nướng",
+    "code": "03026",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Tofu, grilled",
+    "calories_per_100g": "116"
+  },
+  {
+    "_id": "03027",
+    "name": "Hạt bí đỏ rang",
+    "code": "03027",
+    "edible": 81,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Pumpkin seeds, fried",
+    "calories_per_100g": "528"
+  },
+  {
+    "_id": "03029",
+    "name": "Hạt dưa đỏ rang (dưa hấu)",
+    "code": "03029",
+    "edible": 78,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Watermelon seeds, fried",
+    "calories_per_100g": "558"
+  },
+  {
+    "_id": "03030",
+    "name": "Hạt điều khô, chiên dầu",
+    "code": "03030",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Cashew nut, roasted with oil",
+    "calories_per_100g": "585"
+  },
+  {
+    "_id": "03031",
+    "name": "Sữa bột đậu nành",
+    "code": "03031",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Soy flour, made from roasted soybeans",
+    "calories_per_100g": "413"
+  },
+  {
+    "_id": "03032",
+    "name": "Sữa đậu nành (100g đậu nành/L)",
+    "code": "03032",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Soya milk (100 g soybean/L)",
+    "calories_per_100g": "29"
+  },
+  {
+    "_id": "03033",
+    "name": "Tào phớ",
+    "code": "03033",
+    "edible": 100,
+    "group": "Hạt, quả giàu đạm, béo và sản phẩm chế biến",
+    "description": "Tofu in light syrup",
+    "calories_per_100g": "46"
+  }
+]

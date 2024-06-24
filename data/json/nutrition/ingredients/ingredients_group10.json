@@ -1,0 +1,83 @@
+[
+  {
+    "_id": "10001",
+    "name": "Sữa bò tươi",
+    "code": "10001",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Milk cow, fresh (Fluid)",
+    "calories_per_100g": "74"
+  },
+  {
+    "_id": "10002",
+    "name": "Sữa dê tươi",
+    "code": "10002",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Milk goat's whole",
+    "calories_per_100g": "69"
+  },
+  {
+    "_id": "10003",
+    "name": "Sữa mẹ (sữa người)",
+    "code": "10003",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Breast milk (Milk human, fluid, whole).",
+    "calories_per_100g": "61"
+  },
+  {
+    "_id": "10004",
+    "name": "Sữa chua",
+    "code": "10004",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Yogurt",
+    "calories_per_100g": "61"
+  },
+  {
+    "_id": "10005",
+    "name": "Sữa chua vớt béo",
+    "code": "10005",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Yogurt (Skimmed milk)",
+    "calories_per_100g": "26"
+  },
+  {
+    "_id": "10006",
+    "name": "Sữa bột toàn phần",
+    "code": "10006",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Milk, dried, whole powder",
+    "calories_per_100g": "494"
+  },
+  {
+    "_id": "10007",
+    "name": "Sữa bột tách béo",
+    "code": "10007",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Skimmed milk powder",
+    "calories_per_100g": "357"
+  },
+  {
+    "_id": "10008",
+    "name": "Sữa đặc có đường Việt Nam",
+    "code": "10008",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Milk condensed sweetened",
+    "calories_per_100g": "336"
+  },
+  {
+    "_id": "10009",
+    "name": "Phó mát",
+    "code": "10009",
+    "edible": 100,
+    "group": "Sữa và sản phẩm chế biến",
+    "description": "Cheese (type whole fat)",
+    "calories_per_100g": "380"
+  }
+]

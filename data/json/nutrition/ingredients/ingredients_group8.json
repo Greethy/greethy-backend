@@ -1,0 +1,596 @@
+[
+  {
+    "_id": "08001",
+    "name": "Cá bống",
+    "code": "08001",
+    "edible": 55,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Goby fish",
+    "calories_per_100g": "70"
+  },
+  {
+    "_id": "08002",
+    "name": "Cá chày",
+    "code": "08002",
+    "edible": 69,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Barbel chub",
+    "calories_per_100g": "113"
+  },
+  {
+    "_id": "08003",
+    "name": "Cá chép",
+    "code": "08003",
+    "edible": 60,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Carp",
+    "calories_per_100g": "96"
+  },
+  {
+    "_id": "08004",
+    "name": "Cá dựa",
+    "code": "08004",
+    "edible": 60,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Daggertooth pike conger",
+    "calories_per_100g": "115"
+  },
+  {
+    "_id": "08005",
+    "name": "Cá dầu",
+    "code": "08005",
+    "edible": 90,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "",
+    "calories_per_100g": "96"
+  },
+  {
+    "_id": "08006",
+    "name": "Cá diếc",
+    "code": "08006",
+    "edible": 55,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Mullet, harder",
+    "calories_per_100g": "87"
+  },
+  {
+    "_id": "08007",
+    "name": "Cá đao",
+    "code": "08007",
+    "edible": 60,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Sawfish",
+    "calories_per_100g": "94"
+  },
+  {
+    "_id": "08008",
+    "name": "Cá đẻ",
+    "code": "08008",
+    "edible": 83,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Chinese herring or slender shad",
+    "calories_per_100g": ""
+  },
+  {
+    "_id": "08009",
+    "name": "Cá đối",
+    "code": "08009",
+    "edible": 58,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Flathead grey mullet",
+    "calories_per_100g": "108"
+  },
+  {
+    "_id": "08010",
+    "name": "Cá đồng tiền",
+    "code": "08010",
+    "edible": 60,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Goby",
+    "calories_per_100g": "98"
+  },
+  {
+    "_id": "08011",
+    "name": "Cá hồi",
+    "code": "08011",
+    "edible": 60,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Salmon",
+    "calories_per_100g": "136"
+  },
+  {
+    "_id": "08012",
+    "name": "Cá khô (chim, thu, nụ, đé)",
+    "code": "08012",
+    "edible": 85,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Dried fish",
+    "calories_per_100g": "208"
+  },
+  {
+    "_id": "08013",
+    "name": "Cá lác",
+    "code": "08013",
+    "edible": 65,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "",
+    "calories_per_100g": "71"
+  },
+  {
+    "_id": "08014",
+    "name": "Cá mè",
+    "code": "08014",
+    "edible": 65,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Silver carp",
+    "calories_per_100g": "144"
+  },
+  {
+    "_id": "08015",
+    "name": "Cá mòi (cá sardin)",
+    "code": "08015",
+    "edible": 55,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Sardin",
+    "calories_per_100g": "124"
+  },
+  {
+    "_id": "08016",
+    "name": "Cá mòi",
+    "code": "08016",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "",
+    "calories_per_100g": "151"
+  },
+  {
+    "_id": "08017",
+    "name": "Cá mối",
+    "code": "08017",
+    "edible": 0,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Lizardfish",
+    "calories_per_100g": "116"
+  },
+  {
+    "_id": "08018",
+    "name": "Cá nạc",
+    "code": "08018",
+    "edible": 61,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "",
+    "calories_per_100g": "80"
+  },
+  {
+    "_id": "08019",
+    "name": "Cá ngừ",
+    "code": "08019",
+    "edible": 58,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Flying fish",
+    "calories_per_100g": "87"
+  },
+  {
+    "_id": "08020",
+    "name": "Cá nục",
+    "code": "08020",
+    "edible": 73,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Anchovy",
+    "calories_per_100g": "111"
+  },
+  {
+    "_id": "08021",
+    "name": "Cá phèn",
+    "code": "08021",
+    "edible": 0,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Goatfishes",
+    "calories_per_100g": "104"
+  },
+  {
+    "_id": "08022",
+    "name": "Cá quả",
+    "code": "08022",
+    "edible": 60,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Snakehead fish",
+    "calories_per_100g": "97"
+  },
+  {
+    "_id": "08023",
+    "name": "Cá rô đồng",
+    "code": "08023",
+    "edible": 56,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Climbing perch",
+    "calories_per_100g": "126"
+  },
+  {
+    "_id": "08024",
+    "name": "Cá rô phi",
+    "code": "08024",
+    "edible": 57,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Tilapia",
+    "calories_per_100g": "100"
+  },
+  {
+    "_id": "08025",
+    "name": "Cá thờn bơn",
+    "code": "08025",
+    "edible": 73,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Flatfishes",
+    "calories_per_100g": ""
+  },
+  {
+    "_id": "08026",
+    "name": "Cá thu",
+    "code": "08026",
+    "edible": 65,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Mackerel, kingfish",
+    "calories_per_100g": "166"
+  },
+  {
+    "_id": "08027",
+    "name": "Cá thu đao",
+    "code": "08027",
+    "edible": 70,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Pacific saury",
+    "calories_per_100g": "156"
+  },
+  {
+    "_id": "08028",
+    "name": "Cá trạch",
+    "code": "08028",
+    "edible": 74,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Spiny eels",
+    "calories_per_100g": "110"
+  },
+  {
+    "_id": "08029",
+    "name": "Cá trắm cỏ",
+    "code": "08029",
+    "edible": 65,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Grass carp",
+    "calories_per_100g": "91"
+  },
+  {
+    "_id": "08030",
+    "name": "Cá trê",
+    "code": "08030",
+    "edible": 60,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Catfish",
+    "calories_per_100g": "173"
+  },
+  {
+    "_id": "08031",
+    "name": "Cá trích",
+    "code": "08031",
+    "edible": 65,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Herring",
+    "calories_per_100g": "166"
+  },
+  {
+    "_id": "08032",
+    "name": "Cá trôi",
+    "code": "08032",
+    "edible": 72,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Mrigal carp",
+    "calories_per_100g": "127"
+  },
+  {
+    "_id": "08033",
+    "name": "Cua bể",
+    "code": "08033",
+    "edible": 60,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Crab sea water",
+    "calories_per_100g": "103"
+  },
+  {
+    "_id": "08034",
+    "name": "Cua đồng",
+    "code": "08034",
+    "edible": 31,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Crab, fresh water",
+    "calories_per_100g": "87"
+  },
+  {
+    "_id": "08035",
+    "name": "Cua ghẹ",
+    "code": "08035",
+    "edible": 32,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Flower crab, blue crab, or sand crab",
+    "calories_per_100g": "54"
+  },
+  {
+    "_id": "08036",
+    "name": "Hải sâm",
+    "code": "08036",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Sea slug, sea cucumber",
+    "calories_per_100g": "90"
+  },
+  {
+    "_id": "08037",
+    "name": "Hến",
+    "code": "08037",
+    "edible": 18,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Clam",
+    "calories_per_100g": "45"
+  },
+  {
+    "_id": "08038",
+    "name": "Lươn",
+    "code": "08038",
+    "edible": 65,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Eel, silver - pike",
+    "calories_per_100g": "130"
+  },
+  {
+    "_id": "08039",
+    "name": "Mực khô",
+    "code": "08039",
+    "edible": 96,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Dried cuttle fish squid",
+    "calories_per_100g": "291"
+  },
+  {
+    "_id": "08040",
+    "name": "Mực tươi",
+    "code": "08040",
+    "edible": 78,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Cuttle fish, raw (Squid)",
+    "calories_per_100g": "73"
+  },
+  {
+    "_id": "08041",
+    "name": "Ốc bươu",
+    "code": "08041",
+    "edible": 33,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Snail medium - size, edible",
+    "calories_per_100g": "84"
+  },
+  {
+    "_id": "08042",
+    "name": "Ốc đá",
+    "code": "08042",
+    "edible": 20,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Marble snail, Chinese mysterysnail",
+    "calories_per_100g": "63"
+  },
+  {
+    "_id": "08043",
+    "name": "Ốc nhồi",
+    "code": "08043",
+    "edible": 21,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Snail, large",
+    "calories_per_100g": "84"
+  },
+  {
+    "_id": "08044",
+    "name": "Ốc vặn",
+    "code": "08044",
+    "edible": 30,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Helix",
+    "calories_per_100g": "72"
+  },
+  {
+    "_id": "08045",
+    "name": "Rạm (muối, đồ)",
+    "code": "08045",
+    "edible": 50,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Small sea - crab bicled steamed",
+    "calories_per_100g": "83"
+  },
+  {
+    "_id": "08046",
+    "name": "Rạm tươi",
+    "code": "08046",
+    "edible": 50,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Small sea - crab",
+    "calories_per_100g": "77"
+  },
+  {
+    "_id": "08047",
+    "name": "Rươi",
+    "code": "08047",
+    "edible": 95,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Tylorhynchus sinensis",
+    "calories_per_100g": "89"
+  },
+  {
+    "_id": "08048",
+    "name": "Sò",
+    "code": "08048",
+    "edible": 20,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Oyster",
+    "calories_per_100g": "51"
+  },
+  {
+    "_id": "08049",
+    "name": "Tép gạo",
+    "code": "08049",
+    "edible": 92,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Tiny shrimp, fresh water",
+    "calories_per_100g": "58"
+  },
+  {
+    "_id": "08050",
+    "name": "Tép khô",
+    "code": "08050",
+    "edible": 95,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Tiny shrimp, sea water, dried",
+    "calories_per_100g": "269"
+  },
+  {
+    "_id": "08051",
+    "name": "Tôm biển",
+    "code": "08051",
+    "edible": 46,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Shrimp, sea water",
+    "calories_per_100g": "82"
+  },
+  {
+    "_id": "08052",
+    "name": "Tôm đồng",
+    "code": "08052",
+    "edible": 90,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Shrimp, fresh water",
+    "calories_per_100g": "90"
+  },
+  {
+    "_id": "08053",
+    "name": "Tôm khô",
+    "code": "08053",
+    "edible": 95,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Shrimp dried",
+    "calories_per_100g": "347"
+  },
+  {
+    "_id": "08054",
+    "name": "Trai",
+    "code": "08054",
+    "edible": 40,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Mussel fresh water",
+    "calories_per_100g": "38"
+  },
+  {
+    "_id": "08055",
+    "name": "Bánh phồng tôm rán",
+    "code": "08055",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Dried shrimp chips",
+    "calories_per_100g": "676"
+  },
+  {
+    "_id": "08056",
+    "name": "Bánh phồng tôm sống",
+    "code": "08056",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Raw shrimp chips",
+    "calories_per_100g": "381"
+  },
+  {
+    "_id": "08057",
+    "name": "Bột cá",
+    "code": "08057",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Fish flour bones included",
+    "calories_per_100g": "323"
+  },
+  {
+    "_id": "08058",
+    "name": "Ruốc cá quả",
+    "code": "08058",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Fish snake head dried flour with fish sauce",
+    "calories_per_100g": "312"
+  },
+  {
+    "_id": "08059",
+    "name": "Ruốc tôm",
+    "code": "08059",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Shrimp dried flour with fish sauce",
+    "calories_per_100g": "305"
+  },
+  {
+    "_id": "08060",
+    "name": "Cá chim",
+    "code": "08060",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Black pomfret",
+    "calories_per_100g": "143"
+  },
+  {
+    "_id": "08061",
+    "name": "Cá chim trắng",
+    "code": "08061",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Silver or white pomfret",
+    "calories_per_100g": "247"
+  },
+  {
+    "_id": "08062",
+    "name": "Cá diêu hồng",
+    "code": "08062",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Red tilapia",
+    "calories_per_100g": "111"
+  },
+  {
+    "_id": "08063",
+    "name": "Cá basa, phi lê",
+    "code": "08063",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Basafish, Catfish, fillet",
+    "calories_per_100g": "67"
+  },
+  {
+    "_id": "08064",
+    "name": "Chả cá basa",
+    "code": "08064",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Basafish, fishball",
+    "calories_per_100g": "186"
+  },
+  {
+    "_id": "08065",
+    "name": "Con trùng trục",
+    "code": "08065",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Mussel, fresh water",
+    "calories_per_100g": "108"
+  },
+  {
+    "_id": "08066",
+    "name": "Ngao biển trắng",
+    "code": "08066",
+    "edible": 100,
+    "group": "Thủy sản và sản phẩm chế biến",
+    "description": "Sea water clams",
+    "calories_per_100g": "42"
+  }
+]

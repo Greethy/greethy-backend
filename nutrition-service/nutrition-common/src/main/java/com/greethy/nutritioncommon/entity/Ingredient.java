@@ -24,7 +24,9 @@ public class Ingredient extends BaseEntity {
 
     private String code;
 
-    private Double edible;
+    private Integer edible;
+
+    private String group;
 
     private String description;
 

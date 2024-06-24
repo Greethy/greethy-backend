@@ -1,5 +1,6 @@
 package com.greethy.nutritioncommon.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.greethy.nutritioncommon.dto.value.MealMenuDto;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ public class MenuResponse {
 
     private List<String> labels;
 
+    @JsonProperty("menu_type")
     private List<String> menuType;
 
     private List<MealMenuDto> meals;

@@ -1,0 +1,938 @@
+[
+  {
+    "_id": "07001",
+    "name": "Thịt bê mỡ",
+    "code": "07001",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Veal meat, lean and fat",
+    "calories_per_100g": "144"
+  },
+  {
+    "_id": "07002",
+    "name": "Thịt bê nạc",
+    "code": "07002",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Veal meat, lean only",
+    "calories_per_100g": "85"
+  },
+  {
+    "_id": "07003",
+    "name": "Thịt bò loại I",
+    "code": "07003",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef meat grade I",
+    "calories_per_100g": "118"
+  },
+  {
+    "_id": "07004",
+    "name": "Thịt bò loại II",
+    "code": "07004",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef meat grade II",
+    "calories_per_100g": "167"
+  },
+  {
+    "_id": "07005",
+    "name": "Thịt bò, lưng, nạc",
+    "code": "07005",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, short loin, top loin, seperable lean only, trimmed to 1/8\" fat, prime, raw",
+    "calories_per_100g": "121"
+  },
+  {
+    "_id": "07006",
+    "name": "Thịt bò, lưng, nạc và mỡ",
+    "code": "07006",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, short loin, top loin, seperable lean only, trimmed to 1/4\" fat, prime, raw",
+    "calories_per_100g": "174"
+  },
+  {
+    "_id": "07007",
+    "name": "Thịt bồ câu ra ràng",
+    "code": "07007",
+    "edible": 40,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pigeon young bird flesh skin and giblets",
+    "calories_per_100g": "340"
+  },
+  {
+    "_id": "07008",
+    "name": "Thịt chó sẵn",
+    "code": "07008",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Dog meat",
+    "calories_per_100g": "338"
+  },
+  {
+    "_id": "07009",
+    "name": "Thịt chó vai",
+    "code": "07009",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Dog, shoulder",
+    "calories_per_100g": "230"
+  },
+  {
+    "_id": "07010",
+    "name": "Thịt cừu, nạc",
+    "code": "07010",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Mutton meat, lean",
+    "calories_per_100g": "219"
+  },
+  {
+    "_id": "07011",
+    "name": "Thịt dê, nạc",
+    "code": "07011",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Goat, meat, lean",
+    "calories_per_100g": "122"
+  },
+  {
+    "_id": "07012",
+    "name": "Thịt gà rừng",
+    "code": "07012",
+    "edible": 42,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Grouse field chicken",
+    "calories_per_100g": "141"
+  },
+  {
+    "_id": "07013",
+    "name": "Thịt gà ta",
+    "code": "07013",
+    "edible": 48,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chicken meat, average",
+    "calories_per_100g": "199"
+  },
+  {
+    "_id": "07014",
+    "name": "Thịt gà tây",
+    "code": "07014",
+    "edible": 47,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Turkey, raw flesh",
+    "calories_per_100g": "218"
+  },
+  {
+    "_id": "07015",
+    "name": "Thịt hươu",
+    "code": "07015",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Deer meat",
+    "calories_per_100g": "94"
+  },
+  {
+    "_id": "07016",
+    "name": "Thịt lợn mỡ",
+    "code": "07016",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork fat",
+    "calories_per_100g": "394"
+  },
+  {
+    "_id": "07017",
+    "name": "Thịt lợn nạc",
+    "code": "07017",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork lean",
+    "calories_per_100g": "139"
+  },
+  {
+    "_id": "07018",
+    "name": "Thịt lợn nửa nạc nửa mỡ",
+    "code": "07018",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork medium fat",
+    "calories_per_100g": "260"
+  },
+  {
+    "_id": "07019",
+    "name": "Thịt ngỗng",
+    "code": "07019",
+    "edible": 48,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Goose meat",
+    "calories_per_100g": "409"
+  },
+  {
+    "_id": "07020",
+    "name": "Thịt ngựa",
+    "code": "07020",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Horse meat",
+    "calories_per_100g": "176"
+  },
+  {
+    "_id": "07021",
+    "name": "Thịt thỏ nhà",
+    "code": "07021",
+    "edible": 55,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Rabbit meat raw",
+    "calories_per_100g": "158"
+  },
+  {
+    "_id": "07022",
+    "name": "Thịt thỏ rừng",
+    "code": "07022",
+    "edible": 55,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hare rabbit (field or wild)",
+    "calories_per_100g": "103"
+  },
+  {
+    "_id": "07023",
+    "name": "Thịt trâu",
+    "code": "07023",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Buffalo meat, average",
+    "calories_per_100g": "97"
+  },
+  {
+    "_id": "07024",
+    "name": "Thịt trâu bắp",
+    "code": "07024",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Buffalo meat (shoulder)",
+    "calories_per_100g": "115"
+  },
+  {
+    "_id": "07025",
+    "name": "Thịt trâu cổ",
+    "code": "07025",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Buffalo meat neck",
+    "calories_per_100g": "112"
+  },
+  {
+    "_id": "07026",
+    "name": "Thịt trâu đùi",
+    "code": "07026",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Buffalo meat leg",
+    "calories_per_100g": "112"
+  },
+  {
+    "_id": "07027",
+    "name": "Thịt trâu thăn",
+    "code": "07027",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Buffalo meat lean (loin)",
+    "calories_per_100g": "121"
+  },
+  {
+    "_id": "07028",
+    "name": "Thịt vịt",
+    "code": "07028",
+    "edible": 45,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Duck meat, average",
+    "calories_per_100g": "267"
+  },
+  {
+    "_id": "07029",
+    "name": "Bầu dục bò",
+    "code": "07029",
+    "edible": 93,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, kidney",
+    "calories_per_100g": "67"
+  },
+  {
+    "_id": "07030",
+    "name": "Bầu dục lợn",
+    "code": "07030",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, kidney",
+    "calories_per_100g": "81"
+  },
+  {
+    "_id": "07031",
+    "name": "Bì lợn",
+    "code": "07031",
+    "edible": 90,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork skin",
+    "calories_per_100g": "118"
+  },
+  {
+    "_id": "07032",
+    "name": "Chân giò lợn",
+    "code": "07032",
+    "edible": 62,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, leg",
+    "calories_per_100g": "230"
+  },
+  {
+    "_id": "07033",
+    "name": "Dạ dày bò",
+    "code": "07033",
+    "edible": 95,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Stomach, beef",
+    "calories_per_100g": "97"
+  },
+  {
+    "_id": "07034",
+    "name": "Dạ dày lợn",
+    "code": "07034",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Stomach, hog",
+    "calories_per_100g": "85"
+  },
+  {
+    "_id": "07035",
+    "name": "Đầu bò",
+    "code": "07035",
+    "edible": 32,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Head of beef (without tongue, brain, ears)",
+    "calories_per_100g": "185"
+  },
+  {
+    "_id": "07036",
+    "name": "Đầu lợn",
+    "code": "07036",
+    "edible": 32,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog, head",
+    "calories_per_100g": "335"
+  },
+  {
+    "_id": "07037",
+    "name": "Đuôi bò",
+    "code": "07037",
+    "edible": 54,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, tail",
+    "calories_per_100g": "137"
+  },
+  {
+    "_id": "07038",
+    "name": "Đuôi lợn",
+    "code": "07038",
+    "edible": 70,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog, tail",
+    "calories_per_100g": "467"
+  },
+  {
+    "_id": "07039",
+    "name": "Gan bò",
+    "code": "07039",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, liver",
+    "calories_per_100g": "110"
+  },
+  {
+    "_id": "07040",
+    "name": "Gan gà",
+    "code": "07040",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chicken liver",
+    "calories_per_100g": "111"
+  },
+  {
+    "_id": "07041",
+    "name": "Gan lợn",
+    "code": "07041",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork liver",
+    "calories_per_100g": "116"
+  },
+  {
+    "_id": "07042",
+    "name": "Gan vịt",
+    "code": "07042",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Duck liver",
+    "calories_per_100g": "122"
+  },
+  {
+    "_id": "07043",
+    "name": "Gân chân bò",
+    "code": "07043",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef tendon-leg",
+    "calories_per_100g": "124"
+  },
+  {
+    "_id": "07044",
+    "name": "Lưỡi bò",
+    "code": "07044",
+    "edible": 92,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef tongue",
+    "calories_per_100g": "164"
+  },
+  {
+    "_id": "07045",
+    "name": "Lưỡi lợn",
+    "code": "07045",
+    "edible": 97,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog, tongue",
+    "calories_per_100g": "178"
+  },
+  {
+    "_id": "07046",
+    "name": "Lòng lợn (ruột già)",
+    "code": "07046",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog, intestine large raw",
+    "calories_per_100g": "167"
+  },
+  {
+    "_id": "07047",
+    "name": "Lòng lợn (ruột non)",
+    "code": "07047",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog intestine small raw without fat",
+    "calories_per_100g": "44"
+  },
+  {
+    "_id": "07048",
+    "name": "Mề gà",
+    "code": "07048",
+    "edible": 96,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chicken gizzard",
+    "calories_per_100g": "99"
+  },
+  {
+    "_id": "07049",
+    "name": "Óc bò",
+    "code": "07049",
+    "edible": 92,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Brain beef",
+    "calories_per_100g": "124"
+  },
+  {
+    "_id": "07050",
+    "name": "Óc lợn",
+    "code": "07050",
+    "edible": 92,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog brain",
+    "calories_per_100g": "123"
+  },
+  {
+    "_id": "07051",
+    "name": "Phổi bò",
+    "code": "07051",
+    "edible": 92,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, lung",
+    "calories_per_100g": "103"
+  },
+  {
+    "_id": "07052",
+    "name": "Phổi lợn",
+    "code": "07052",
+    "edible": 92,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog lung raw",
+    "calories_per_100g": "92"
+  },
+  {
+    "_id": "07053",
+    "name": "Sườn lợn",
+    "code": "07053",
+    "edible": 43,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, ribs",
+    "calories_per_100g": "187"
+  },
+  {
+    "_id": "07054",
+    "name": "Tai lợn",
+    "code": "07054",
+    "edible": 96,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog ears",
+    "calories_per_100g": "126"
+  },
+  {
+    "_id": "07055",
+    "name": "Tim bò",
+    "code": "07055",
+    "edible": 92,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, heart",
+    "calories_per_100g": "89"
+  },
+  {
+    "_id": "07056",
+    "name": "Tim gà",
+    "code": "07056",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chicken heart",
+    "calories_per_100g": "114"
+  },
+  {
+    "_id": "07057",
+    "name": "Tim lợn",
+    "code": "07057",
+    "edible": 94,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog heart",
+    "calories_per_100g": "94"
+  },
+  {
+    "_id": "07058",
+    "name": "Tiết bò",
+    "code": "07058",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, blood",
+    "calories_per_100g": "75"
+  },
+  {
+    "_id": "07059",
+    "name": "Tiết lợn luộc",
+    "code": "07059",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog boiled blood",
+    "calories_per_100g": "44"
+  },
+  {
+    "_id": "07060",
+    "name": "Tiết lợn sống",
+    "code": "07060",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog raw blood",
+    "calories_per_100g": "25"
+  },
+  {
+    "_id": "07061",
+    "name": "Tủy xương bò",
+    "code": "07061",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef bone marrow",
+    "calories_per_100g": "814"
+  },
+  {
+    "_id": "07062",
+    "name": "Tủy xương lợn",
+    "code": "07062",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog, bone marrow",
+    "calories_per_100g": "749"
+  },
+  {
+    "_id": "07063",
+    "name": "Bà tê",
+    "code": "07063",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pate",
+    "calories_per_100g": "326"
+  },
+  {
+    "_id": "07064",
+    "name": "Chả lợn",
+    "code": "07064",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, mince fat meat grilled",
+    "calories_per_100g": "517"
+  },
+  {
+    "_id": "07065",
+    "name": "Chả quế lợn",
+    "code": "07065",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, cinnamon mince grilled",
+    "calories_per_100g": "416"
+  },
+  {
+    "_id": "07066",
+    "name": "Dăm bông lợn",
+    "code": "07066",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Ham pork",
+    "calories_per_100g": "318"
+  },
+  {
+    "_id": "07067",
+    "name": "Dồi lợn",
+    "code": "07067",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Blood mix-pudding with viscera in large in",
+    "calories_per_100g": "114"
+  },
+  {
+    "_id": "07068",
+    "name": "Giò bò",
+    "code": "07068",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, mince lean meat steamed",
+    "calories_per_100g": "335"
+  },
+  {
+    "_id": "07069",
+    "name": "Giò lụa",
+    "code": "07069",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, mince lean meat steamed",
+    "calories_per_100g": "205"
+  },
+  {
+    "_id": "07070",
+    "name": "Giò thủ lợn",
+    "code": "07070",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork head meat steamed",
+    "calories_per_100g": "553"
+  },
+  {
+    "_id": "07071",
+    "name": "Lạp xưởng",
+    "code": "07071",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chinese sausage",
+    "calories_per_100g": "585"
+  },
+  {
+    "_id": "07072",
+    "name": "Nem chạo",
+    "code": "07072",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Roll with pork skin and pork meat",
+    "calories_per_100g": "116"
+  },
+  {
+    "_id": "07073",
+    "name": "Nem chua",
+    "code": "07073",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork mince, fermented",
+    "calories_per_100g": "125"
+  },
+  {
+    "_id": "07074",
+    "name": "Ruốc thịt lợn",
+    "code": "07074",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Salted shredded pork",
+    "calories_per_100g": "369"
+  },
+  {
+    "_id": "07062",
+    "name": "Tủy xương lợn",
+    "code": "07062",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Hog, bone marrow",
+    "calories_per_100g": "749"
+  },
+  {
+    "_id": "07063",
+    "name": "Bà tê",
+    "code": "07063",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pate",
+    "calories_per_100g": "326"
+  },
+  {
+    "_id": "07064",
+    "name": "Chả lợn",
+    "code": "07064",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, mince fat meat grilled",
+    "calories_per_100g": "517"
+  },
+  {
+    "_id": "07065",
+    "name": "Chả quế lợn",
+    "code": "07065",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, cinnamon mince grilled",
+    "calories_per_100g": "416"
+  },
+  {
+    "_id": "07066",
+    "name": "Dăm bông lợn",
+    "code": "07066",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Ham pork",
+    "calories_per_100g": "318"
+  },
+  {
+    "_id": "07067",
+    "name": "Dồi lợn",
+    "code": "07067",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Blood mix-pudding with viscera in large in",
+    "calories_per_100g": "114"
+  },
+  {
+    "_id": "07068",
+    "name": "Giò bò",
+    "code": "07068",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Beef, mince lean meat steamed",
+    "calories_per_100g": "335"
+  },
+  {
+    "_id": "07069",
+    "name": "Giò lụa",
+    "code": "07069",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, mince lean meat steamed",
+    "calories_per_100g": "205"
+  },
+  {
+    "_id": "07070",
+    "name": "Giò thủ lợn",
+    "code": "07070",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork head meat steamed",
+    "calories_per_100g": "553"
+  },
+  {
+    "_id": "07071",
+    "name": "Lạp xưởng",
+    "code": "07071",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chinese sausage",
+    "calories_per_100g": "585"
+  },
+  {
+    "_id": "07072",
+    "name": "Nem chạo",
+    "code": "07072",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Roll with pork skin and pork meat",
+    "calories_per_100g": "116"
+  },
+  {
+    "_id": "07073",
+    "name": "Nem chua",
+    "code": "07073",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork mince, fermented",
+    "calories_per_100g": "125"
+  },
+  {
+    "_id": "07074",
+    "name": "Ruốc thịt lợn",
+    "code": "07074",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Salted shredded pork",
+    "calories_per_100g": "369"
+  },
+  {
+    "_id": "07075",
+    "name": "Thịt bò khô",
+    "code": "07075",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Dried beef",
+    "calories_per_100g": "239"
+  },
+  {
+    "_id": "07076",
+    "name": "Thịt trâu khô",
+    "code": "07076",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Buffalo meat, dried",
+    "calories_per_100g": "226"
+  },
+  {
+    "_id": "07077",
+    "name": "Xúc xích",
+    "code": "07077",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork sausage",
+    "calories_per_100g": "535"
+  },
+  {
+    "_id": "07078",
+    "name": "Bột cóc",
+    "code": "07078",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Toad meat powder",
+    "calories_per_100g": "342"
+  },
+  {
+    "_id": "07079",
+    "name": "Châu chấu",
+    "code": "07079",
+    "edible": 80,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Locust",
+    "calories_per_100g": "130"
+  },
+  {
+    "_id": "07080",
+    "name": "Ếch (thịt đùi)",
+    "code": "07080",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Frog",
+    "calories_per_100g": "90"
+  },
+  {
+    "_id": "07081",
+    "name": "Nhộng",
+    "code": "07081",
+    "edible": 98,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Silk worm",
+    "calories_per_100g": "111"
+  },
+  {
+    "_id": "07082",
+    "name": "Lòng gà (cả bộ)",
+    "code": "07082",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chicken giblets",
+    "calories_per_100g": "119"
+  },
+  {
+    "_id": "07083",
+    "name": "Thịt lợn, nạc vai",
+    "code": "07083",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, lean meat, shoulder",
+    "calories_per_100g": "149"
+  },
+  {
+    "_id": "07084",
+    "name": "Thịt lợn, nạc mông",
+    "code": "07084",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, lean meat, thighs",
+    "calories_per_100g": "141"
+  },
+  {
+    "_id": "07085",
+    "name": "Thịt lợn, nạc thăn",
+    "code": "07085",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, lean meat, tenderloin",
+    "calories_per_100g": "118"
+  },
+  {
+    "_id": "07086",
+    "name": "Thịt lợn nửa nạc, nửa mỡ, nướng",
+    "code": "07086",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork, lean and fat meat, grill",
+    "calories_per_100g": "401"
+  },
+  {
+    "_id": "07087",
+    "name": "Thịt gà công nghiệp, cánh",
+    "code": "07087",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chicken, wing",
+    "calories_per_100g": "188"
+  },
+  {
+    "_id": "07088",
+    "name": "Thịt gà công nghiệp, đùi",
+    "code": "07088",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chicken, thighs",
+    "calories_per_100g": "137"
+  },
+  {
+    "_id": "07089",
+    "name": "Thịt gà công nghiệp, lườn",
+    "code": "07089",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Chicken, breast",
+    "calories_per_100g": "134"
+  },
+  {
+    "_id": "07090",
+    "name": "Thịt ngan",
+    "code": "07090",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Goose meat",
+    "calories_per_100g": "288"
+  },
+  {
+    "_id": "07091",
+    "name": "Chả lá lốt",
+    "code": "07091",
+    "edible": 100,
+    "group": "Thịt và sản phẩm chế biến",
+    "description": "Pork roll with lolot pepper leaves",
+    "calories_per_100g": "306"
+  }
+]
