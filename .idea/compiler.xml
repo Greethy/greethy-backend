@@ -40,7 +40,6 @@
       <module name="services-infrastructure" target="1.5" />
       <module name="test" target="17" />
       <module name="untitled" target="17" />
-      <module name="user" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -73,7 +72,7 @@
       <module name="services-infrastructure" options="" />
       <module name="test" options="-parameters" />
       <module name="untitled" options="-parameters" />
-      <module name="user" options="-parameters" />
+      <module name="user" options="" />
       <module name="user-command" options="-parameters" />
       <module name="user-common" options="-parameters" />
       <module name="user-query" options="-parameters" />

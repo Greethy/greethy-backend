@@ -1,0 +1,29 @@
+server:
+  port: 8182
+spring:
+  application:
+    name: user-query
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: GreethyUser
+
+
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    security-scheme-name: Bearer Authentication
+  api-docs:
+    version: openapi_3_1
+  show-actuator: true
+  remove-broken-reference-definitions: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  info:
+    env:
+      enabled: true
