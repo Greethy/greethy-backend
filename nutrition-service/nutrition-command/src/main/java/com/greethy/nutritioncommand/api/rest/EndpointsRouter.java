@@ -30,10 +30,9 @@ public class EndpointsRouter {
                                 .PUT("foods/{food-id}", foodHandler::updateFood)
                                 .DELETE("foods/{food-id}", foodHandler::deleteFood)
 
-                                .POST("menu/arrange", menuHandler::createArrangedMenu)
-                                .POST("menu/custom", menuHandler::createManualMenu)
-                                .PUT("menu/{menu-id}", menuHandler::updateMenu)
-                                .DELETE("menu/{menu-id}", menuHandler::deleteMenu)
+                                .POST("menus", menuHandler::createArrangedMenu)
+                                .PUT("menus/{menu-id}", menuHandler::updateMenu)
+                                .DELETE("menus/{menu-id}", menuHandler::deleteMenu)
                         )).build();
     }
 

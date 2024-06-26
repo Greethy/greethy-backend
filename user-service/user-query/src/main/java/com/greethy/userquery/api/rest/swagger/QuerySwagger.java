@@ -105,6 +105,51 @@ import java.lang.annotation.Target;
                                                 schema = @Schema(implementation = ErrorResponse.class)))
                         }
                 )
+        ),
+        @RouterOperation(
+                method = RequestMethod.GET,
+                path = "/api/v1/users/{user-id}",
+                produces = MediaType.APPLICATION_JSON_VALUE,
+                operation = @Operation(
+                        tags = "User Query",
+                        operationId = "getUserByID",
+                        summary = "Get User by ID",
+                        description = "Retrieves the user details of a specific user based on their unique identifier.",
+                        parameters = {
+                                @Parameter(
+                                        name = "user-id",
+                                        in = ParameterIn.PATH,
+                                        description = "The unique identifier of the user whose profile is to be retrieved.",
+                                        required = true,
+                                        schema = @Schema(type = "string"))
+                        },
+                        responses = {
+                                @ApiResponse(
+                                        responseCode = "200",
+                                        description = "Successful retrieval of the user profile.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = UserProfileResponse.class))),
+                                @ApiResponse(
+                                        responseCode = "401",
+                                        description = "User authorization has been refused for those credentials.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))),
+                                @ApiResponse(
+                                        responseCode = "404",
+                                        description = "The user with the specified ID was not found.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class))),
+                                @ApiResponse(
+                                        responseCode = "429",
+                                        description = "The app has exceeded its rate limits.",
+                                        content = @Content(
+                                                mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                                schema = @Schema(implementation = ErrorResponse.class)))
+                        }
+                )
         )
 })
 public @interface QuerySwagger {

@@ -28,4 +28,9 @@ public class MongoFoodAdapter implements FoodPort {
         return repository.findRandomByGroup(group);
     }
 
+    @Override
+    public Mono<Void> deleteById(String id) {
+        return repository.deleteById(id);
+    }
+
 }

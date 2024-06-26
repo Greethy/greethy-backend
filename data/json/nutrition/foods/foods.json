@@ -3,11 +3,9 @@
     "name" : "Cơm",
     "group" : "Carbohydrate",
     "meal" : "lunch",
-    "labels" : [
-      "carbohydrate", "lunch", "affordable"
-    ],
+    "labels" : ["carbohydrate", "lunch", "affordable"],
     "description" : "Cơm là một loại thức ăn được làm ra từ gạo bằng cách đem nấu với một lượng vừa đủ nước để nấu chín.",
-    "image_url" : "https://vi.wikipedia.org/wiki/C%C6%A1m#/media/T%E1%BA%ADp_tin:Meshi.jpg",
+    "image_url" : ["https://vi.wikipedia.org/wiki/C%C6%A1m#/media/T%E1%BA%ADp_tin:Meshi.jpg"],
     "total_calories" : 692.0,
     "recipe" : "Nấu chín cơm bằng nồi cơm điện như thông thường.",
     "tips" : "Vo nhẹ gạo để loại bụi bẩn và sạn, tránh chà xát mạnh vào hạt gạo sẽ làm mất chất dinh dưỡng.",
@@ -27,9 +25,6 @@
         "unit" : "g",
         "prepare" : "Vo gạo"
       }
-    ],
-    "nutrient" : {
-
-    }
+    ]
   }
 ]

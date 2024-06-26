@@ -26,8 +26,10 @@ public class EndpointsRouter {
                                                 .or(queryParam("limit", StringUtils::hasText))
                                                 .or(queryParam("sort", StringUtils::hasText)),
                                         userHandler::getAllByPagination)
+                                .GET("users/user",
+                                        queryParam("username-or-email", StringUtils::hasText),
+                                        userHandler::getByUsernameOrEmail)
                                 .GET("users/{user-id}", userHandler::getUserById)
-                                .GET("users/user", queryParam("username-or-email", StringUtils::hasText), userHandler::getByUsernameOrEmail)
                                 .GET("me", userHandler::getCurrentUser)
                         ).build()
                 ).path("internal", builder -> builder

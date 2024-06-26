@@ -31,13 +31,9 @@ import java.util.Locale;
 public class MenuCommandServiceImpl implements MenuCommandService {
 
     private final MenuPort menuPort;
-
     private final FoodPort foodPort;
-
     private final Translator translator;
-
     private final BodySpecPort bodySpecPort;
-
     private final GorseClientPort gorseClientPort;
 
     @Override
@@ -61,7 +57,8 @@ public class MenuCommandServiceImpl implements MenuCommandService {
                             .map(foodMenus -> MealMenu.builder().meal("snack").foods(foodMenus).build());
                     return Flux.merge(breakfastFoods, lunchFoods, dinnerFoods, snackFoods);
                 }).collectList()
-                .map(mealMenus -> Menu.builder().meals(mealMenus).build())
+                .map(mealMenus -> Menu.builder()
+                        .meals(mealMenus).build())
                 .flatMap(menuPort::save)
                 .doOnSuccess(menu -> log.info("Menu for User {} has been created: {}", username, menu))
                 .map(menu -> new ObjectIdResponse(menu.getId()));

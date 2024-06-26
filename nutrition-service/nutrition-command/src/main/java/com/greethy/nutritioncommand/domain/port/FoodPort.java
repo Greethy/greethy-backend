@@ -11,4 +11,6 @@ public interface FoodPort {
 
     Mono<Food> findRandomByGroup(String group);
 
+    Mono<Void> deleteById(String id);
+
 }

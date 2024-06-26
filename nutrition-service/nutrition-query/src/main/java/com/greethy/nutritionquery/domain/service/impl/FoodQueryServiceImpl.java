@@ -7,6 +7,7 @@ import com.greethy.nutritioncommon.dto.request.query.GetByIdQuery;
 import com.greethy.nutritioncommon.dto.request.query.GetByPaginationQuery;
 import com.greethy.nutritioncommon.dto.request.query.SearchByNameQuery;
 import com.greethy.nutritioncommon.dto.response.FoodResponse;
+import com.greethy.nutritioncommon.entity.enums.FoodLabel;
 import com.greethy.nutritioncommon.exception.NotFoundException;
 import com.greethy.nutritionquery.domain.port.FoodPort;
 import com.greethy.nutritionquery.domain.service.FoodQueryService;
@@ -74,6 +75,12 @@ public class FoodQueryServiceImpl implements FoodQueryService {
         return mongoFoodPort.findAll()
                 .switchIfEmpty(Mono.error(this::foodNotFoundException))
                 .map(food -> new ObjectIdResponse(food.getId()));
+    }
+
+    @Override
+    public Flux<String> getAllFoodLabels() {
+        return Flux.fromArray(FoodLabel.values())
+                .map(FoodLabel::getLabel);
     }
 
     private NotFoundException foodNotFoundException() {

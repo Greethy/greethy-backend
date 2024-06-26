@@ -2,9 +2,7 @@ package com.greethy.nutritioncommon.entity;
 
 import com.greethy.common.domain.entity.BaseEntity;
 import com.greethy.nutritioncommon.entity.value.Nutrient;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -14,6 +12,8 @@ import java.util.List;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection = "foods")
 @EqualsAndHashCode(callSuper = true)
 public class Food extends BaseEntity {

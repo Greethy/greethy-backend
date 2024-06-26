@@ -54,10 +54,19 @@ public class FoodQueryHandler {
         String sort = ServerRequestUtil.getQueryParamStringValue(serverRequest, "sort", "+id");
         var fluxResponse = Flux.just(new GetByPaginationQuery(offset, limit, sort))
                 .flatMap(foodQueryService::getFoodsByPagination);
-        return ServerResponse
-                .ok().contentType(MediaType.APPLICATION_JSON)
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
                 .body(fluxResponse, FoodResponse.class)
                 .onErrorResume(exceptionHandler::handlingException);
+    }
+
+    public Mono<ServerResponse> getAllFoodLabels() {
+        return foodQueryService.getAllFoodLabels()
+                .collectList()
+                .flatMap(responses -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(responses));
+
     }
 
     public Mono<ServerResponse> getAllFoodIds() {
