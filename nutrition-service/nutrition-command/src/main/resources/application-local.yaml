@@ -12,7 +12,6 @@ spring:
       host: localhost
       port: 27017
       database: GreethyNutrition
-
   kafka:
     bootstrap-servers: localhost:29092
     topic: greethy-nutrition-sys-bodyspec-v1
@@ -24,4 +23,8 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+client:
+  nutrition-query:
+    domain: http://localhost:8184
 

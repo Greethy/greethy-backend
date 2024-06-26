@@ -17,4 +17,14 @@ public class MongoMenuAdapter implements MenuPort {
     public Mono<Menu> save(Menu menu) {
         return repository.save(menu);
     }
+
+    @Override
+    public Mono<Menu> findById(String id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public Mono<Void> deleteById(String id) {
+        return repository.deleteById(id);
+    }
 }

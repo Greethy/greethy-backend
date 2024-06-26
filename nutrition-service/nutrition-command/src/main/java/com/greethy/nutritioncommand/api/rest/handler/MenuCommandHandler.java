@@ -3,7 +3,9 @@ package com.greethy.nutritioncommand.api.rest.handler;
 import com.greethy.common.api.handler.ExceptionHandler;
 import com.greethy.common.infra.component.annotation.EndpointHandler;
 import com.greethy.nutritioncommand.domain.service.MenuCommandService;
+import com.greethy.nutritioncommon.dto.request.command.CreateMenuCommand;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -16,23 +18,21 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class MenuCommandHandler {
 
+    @Value("${client.nutrition-query.domain}")
+    private String queryDomain;
+    private final MenuCommandService menuService;
     private final ExceptionHandler exceptionHandler;
 
-    private final MenuCommandService menuCommandService;
-
-    public Mono<ServerResponse> createArrangedMenu(ServerRequest serverRequest) {
+    public Mono<ServerResponse> createMenu(ServerRequest serverRequest) {
         return serverRequest.principal()
                 .map(Principal::getName)
-                .flatMap(menuCommandService::createArrangedMenu)
+                .zipWith(serverRequest.bodyToMono(CreateMenuCommand.class))
+                .flatMap(tuples -> menuService.createMenu(tuples.getT1(), tuples.getT2()))
                 .flatMap(response -> ServerResponse
-                        .created(URI.create("/api/v1/menu" + response.id()))
+                        .created(URI.create(queryDomain + "/api/v1/menus/" + response.id()))
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(response))
                 .onErrorResume(exceptionHandler::handlingException);
-    }
-
-    public Mono<ServerResponse> createManualMenu(ServerRequest serverRequest) {
-        return null;
     }
 
     public Mono<ServerResponse> updateMenu(ServerRequest serverRequest) {
@@ -40,7 +40,10 @@ public class MenuCommandHandler {
     }
 
     public Mono<ServerResponse> deleteMenu(ServerRequest serverRequest) {
-        return null;
+        return Mono.just(serverRequest.pathVariable("menu-id"))
+                .flatMap(menuService::deleteMenu)
+                .then(Mono.defer(() -> ServerResponse.noContent().build()))
+                .onErrorResume(exceptionHandler::handlingException);
     }
 
 }

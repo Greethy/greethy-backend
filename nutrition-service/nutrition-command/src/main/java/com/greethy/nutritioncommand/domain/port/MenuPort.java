@@ -7,4 +7,7 @@ public interface MenuPort {
 
     Mono<Menu> save(Menu menu);
 
+    Mono<Menu> findById(String id);
+
+    Mono<Void> deleteById(String id);
 }
