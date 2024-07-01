@@ -1,0 +1,132 @@
+[{
+  "_id": "667158cacb02850a60613bb3",
+  "age_group": {
+    "from": 6,
+    "to": 7
+  },
+  "sedentary": 1.35,
+  "moderately": 1.55,
+  "vigorous": 1.74,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bb5",
+  "age_group": {
+    "from": 20,
+    "to": 29
+  },
+  "sedentary": 1.5,
+  "moderately": 1.75,
+  "vigorous": 2,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bb4",
+  "age_group": {
+    "from": 10,
+    "to": 11
+  },
+  "sedentary": 1.45,
+  "moderately": 1.65,
+  "vigorous": 1.85,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bb6",
+  "age_group": {
+    "from": 50,
+    "to": 69
+  },
+  "sedentary": 1.5,
+  "moderately": 1.75,
+  "vigorous": 2,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bba",
+  "age_group": {
+    "from": 0,
+    "to": 0
+  },
+  "sedentary": 0,
+  "moderately": 0,
+  "vigorous": 0,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bb7",
+  "age_group": {
+    "from": 1,
+    "to": 2
+  },
+  "sedentary": 1.35,
+  "moderately": 1.35,
+  "vigorous": 1.35,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bbb",
+  "age_group": {
+    "from": 3,
+    "to": 5
+  },
+  "sedentary": 1.45,
+  "moderately": 1.45,
+  "vigorous": 1.45,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bbc",
+  "age_group": {
+    "from": 15,
+    "to": 19
+  },
+  "sedentary": 1.55,
+  "moderately": 1.75,
+  "vigorous": 1.95,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bb9",
+  "age_group": {
+    "from": 70,
+    "to": 1.7976931348623157e+308
+  },
+  "sedentary": 1.45,
+  "moderately": 1.7,
+  "vigorous": 1.95,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bb8",
+  "age_group": {
+    "from": 30,
+    "to": 49
+  },
+  "sedentary": 1.5,
+  "moderately": 1.75,
+  "vigorous": 2,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bbd",
+  "age_group": {
+    "from": 12,
+    "to": 14
+  },
+  "sedentary": 1.5,
+  "moderately": 1.7,
+  "vigorous": 1.9,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+},
+{
+  "_id": "667158cacb02850a60613bbe",
+  "age_group": {
+    "from": 8,
+    "to": 9
+  },
+  "sedentary": 1.4,
+  "moderately": 1.6,
+  "vigorous": 1.8,
+  "_class": "com.greethy.nutritioncommon.entity.PalEvaluate"
+}]

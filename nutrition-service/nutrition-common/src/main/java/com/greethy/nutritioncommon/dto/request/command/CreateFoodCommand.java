@@ -2,7 +2,7 @@ package com.greethy.nutritioncommon.dto.request.command;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.greethy.nutritioncommon.dto.value.FoodIngredientDto;
-import com.greethy.nutritioncommon.entity.enums.Group;
+import com.greethy.nutritioncommon.entity.enums.FoodGroup;
 import com.greethy.nutritioncommon.entity.enums.Meal;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class CreateFoodCommand {
 
     private Meal meal;
 
-    private Group group;
+    private FoodGroup group;
 
     @NotBlank(message = "command.create.food.recipe.not-blank")
     private String recipe;

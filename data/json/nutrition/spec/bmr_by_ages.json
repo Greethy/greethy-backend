@@ -1,0 +1,90 @@
+[{
+  "_id": "667158cacb02850a60613ba9",
+  "age_group": {
+    "from": 0,
+    "to": 2
+  },
+  "bmr_per_kg": 61,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613bac",
+  "age_group": {
+    "from": 12,
+    "to": 14
+  },
+  "bmr_per_kg": 31,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613bad",
+  "age_group": {
+    "from": 15,
+    "to": 19
+  },
+  "bmr_per_kg": 27.8,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613bae",
+  "age_group": {
+    "from": 10,
+    "to": 11
+  },
+  "bmr_per_kg": 37.4,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613baa",
+  "age_group": {
+    "from": 6,
+    "to": 7
+  },
+  "bmr_per_kg": 44.3,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613bab",
+  "age_group": {
+    "from": 30,
+    "to": 49
+  },
+  "bmr_per_kg": 22.3,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613baf",
+  "age_group": {
+    "from": 3,
+    "to": 5
+  },
+  "bmr_per_kg": 54.8,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613bb0",
+  "age_group": {
+    "from": 20,
+    "to": 29
+  },
+  "bmr_per_kg": 24,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613bb1",
+  "age_group": {
+    "from": 8,
+    "to": 9
+  },
+  "bmr_per_kg": 40.8,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+},
+{
+  "_id": "667158cacb02850a60613bb2",
+  "age_group": {
+    "from": 50,
+    "to": 1.7976931348623157e+308
+  },
+  "bmr_per_kg": 21.5,
+  "_class": "com.greethy.nutritioncommon.entity.BmrByAge"
+}]

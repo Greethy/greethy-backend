@@ -2,7 +2,7 @@ package com.greethy.nutritioncommon.dto.request.command;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.greethy.nutritioncommon.dto.value.FoodIngredientDto;
-import com.greethy.nutritioncommon.entity.enums.Group;
+import com.greethy.nutritioncommon.entity.enums.FoodGroup;
 import com.greethy.nutritioncommon.entity.enums.Meal;
 import lombok.Data;
 
@@ -15,7 +15,7 @@ public class UpdateFoodCommand {
 
     private Meal meal;
 
-    private Group group;
+    private FoodGroup group;
 
     private String recipe;
 

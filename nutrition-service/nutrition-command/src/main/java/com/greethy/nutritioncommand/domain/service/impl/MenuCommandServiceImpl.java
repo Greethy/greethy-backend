@@ -16,6 +16,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.Date;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -39,6 +41,12 @@ public class MenuCommandServiceImpl implements MenuCommandService {
         return menuPort.findById(menuId)
                 .switchIfEmpty(Mono.error(this::menuNotFound))
                 //do update data
+                .doOnNext(menu -> {
+                    menu.setUpdatedAt(new Date());
+
+                })
+                .flatMap(menuPort::save)
+                .doOnSuccess(menu -> log.info("Menu: {} updated to MongoDB", menu.getId()))
                 .map(menu -> mapper.map(menu, MenuResponse.class));
     }
 
@@ -50,7 +58,7 @@ public class MenuCommandServiceImpl implements MenuCommandService {
 
 
     private NotFoundException menuNotFound() {
-        var message = translator.getLocalizedMessage(Constants.MessageKeys.BODY_SPEC_NOT_FOUND);
+        var message = translator.getLocalizedMessage(Constants.MessageKeys.MENU_NOT_FOUND);
         return new NotFoundException(message);
     }
 }

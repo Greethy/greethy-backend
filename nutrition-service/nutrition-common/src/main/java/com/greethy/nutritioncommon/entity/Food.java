@@ -23,13 +23,15 @@ public class Food extends BaseEntity {
 
     private String name;
 
-    private String meal;
-
     private String group;
+
+    private String meal;
 
     private String recipe;
 
     private String tips;
+
+    private String description;
 
     @Field(name = "image_urls")
     private List<String> imageUrls;
@@ -42,12 +44,12 @@ public class Food extends BaseEntity {
 
     private List<String> labels;
 
+    @Field(name = "total_calories")
+    private Double totalCalories;
+
     @Field(name = "food_ingredients")
     private List<FoodIngredient> foodIngredients;
 
     private List<Nutrient> nutrients;
-
-    @Field(name = "total_calories")
-    private Double totalCalories;
 
 }

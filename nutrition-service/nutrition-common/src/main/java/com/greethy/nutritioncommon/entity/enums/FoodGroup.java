@@ -5,14 +5,15 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum Group {
+public enum FoodGroup {
 
     CEREAL("cereal"),
     SOUP("soup"),
     PROTEIN("protein"),
     VEGETABLE("vegetable"),
     DESERT("desert"),
-    FRUIT("fruit");
+    FRUIT("fruit"),
+    DRINK("drink");
 
     private final String name;
 }

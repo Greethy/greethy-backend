@@ -6,7 +6,7 @@ import com.greethy.nutritioncommon.dto.request.query.GetByIdQuery;
 import com.greethy.nutritioncommon.dto.response.GorseSimilarityResponse;
 import com.greethy.nutritioncommon.dto.response.MenuResponse;
 import com.greethy.nutritioncommon.entity.Menu;
-import com.greethy.nutritioncommon.entity.enums.Group;
+import com.greethy.nutritioncommon.entity.enums.FoodGroup;
 import com.greethy.nutritioncommon.entity.enums.NutritionType;
 import com.greethy.nutritioncommon.entity.value.FoodMenu;
 import com.greethy.nutritioncommon.entity.value.MealMenu;
@@ -81,7 +81,7 @@ public class MenuQueryServiceImpl implements MenuQueryService {
                 .map(menu -> mapper.map(menu, MenuResponse.class));
     }
 
-    private Flux<FoodMenu> getFoodsForMenu(List<Group> groups) {
+    private Flux<FoodMenu> getFoodsForMenu(List<FoodGroup> groups) {
         var mutableGroups = new ArrayList<>(groups);
         return Flux.from(foodPort.findRandomByGroup(mutableGroups.get(0).getName()))
                 .flatMap(firstFood -> Flux.fromIterable(mutableGroups)

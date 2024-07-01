@@ -4,6 +4,7 @@ import com.greethy.common.api.handler.ExceptionHandler;
 import com.greethy.common.infra.component.annotation.EndpointHandler;
 import com.greethy.nutritioncommand.domain.service.MenuCommandService;
 import com.greethy.nutritioncommon.dto.request.command.CreateMenuCommand;
+import com.greethy.nutritioncommon.dto.request.command.UpdateMenuCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -36,7 +37,13 @@ public class MenuCommandHandler {
     }
 
     public Mono<ServerResponse> updateMenu(ServerRequest serverRequest) {
-        return null;
+        return Mono.just(serverRequest.pathVariable("menu-id"))
+                .zipWith(serverRequest.bodyToMono(UpdateMenuCommand.class))
+                .flatMap(tuples -> menuService.updateMenu(tuples.getT1(), tuples.getT2()))
+                .flatMap(response -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(response))
+                .onErrorResume(exceptionHandler::handlingException);
     }
 
     public Mono<ServerResponse> deleteMenu(ServerRequest serverRequest) {

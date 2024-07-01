@@ -22,31 +22,6 @@ public enum FoodLabel {
     TACO("Taco"),
     SUSHI("Sushi"),
 
-    // Cuisines
-    VIETNAMESE("Vietnamese"),
-    ASIAN("Asian"),
-    CHINESE("Chinese"),
-    JAPANESE("Japanese"),
-    KOREAN("Korean"),
-    THAI("Thai"),
-    INDIAN("Indian"),
-    EUROPEAN("European"),
-    FRENCH("French"),
-    ITALIAN("Italian"),
-    SPANISH("Spanish"),
-    GREEK("Greek"),
-    MIDDLE_EASTERN("Middle Eastern"),
-    MEDITERRANEAN("Mediterranean"),
-    LATIN_AMERICAN("Latin American"),
-    MEXICAN("Mexican"),
-    BRAZILIAN("Brazilian"),
-    AFRICAN("African"),
-    MOROCCAN("Moroccan"),
-    ETHIOPIAN("Ethiopian"),
-    NORTH_AMERICAN("North American"),
-    AMERICAN("American"),
-    CANADIAN("Canadian"),
-
     // Dietary Restrictions & Preferences
     VEGETARIAN("Vegetarian"),
     VEGAN("Vegan"),
@@ -92,23 +67,7 @@ public enum FoodLabel {
     NUT("Nut"),
     EGG("Egg"),
     DAIRY("Dairy"),
-    CHEESE("Cheese"),
-
-    // Occasions
-    PARTY("Party"),
-    POTLUCK("Potluck"),
-    HOLIDAY("Holiday"),
-
-    // Seasons
-    SPRING("Spring"),
-    SUMMER("Summer"),
-    AUTUMN("Autumn"),
-    WINTER("Winter"),
-
-    // Difficulty Levels
-    EASY("Easy"),
-    MEDIUM("Medium"),
-    HARD("Hard");
+    CHEESE("Cheese");
 
     private final String label;
 

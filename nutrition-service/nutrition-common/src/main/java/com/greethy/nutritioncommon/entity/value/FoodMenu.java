@@ -24,4 +24,6 @@ public class FoodMenu {
     @Field(name = "image_url")
     private List<String> imageUrl;
 
+    private Boolean status;
+
 }
