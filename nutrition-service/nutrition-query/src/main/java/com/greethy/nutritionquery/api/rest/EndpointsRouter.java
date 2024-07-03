@@ -38,14 +38,20 @@ public class EndpointsRouter {
                                                 .or(queryParam("limit", StringUtils::hasText))
                                                 .or(queryParam("sort", StringUtils::hasText)),
                                         foodHandler::searchByFoodName)
+                                .GET("foods/labels", request -> foodHandler.getAllFoodLabels())
                                 .GET("foods/{food-id}", foodHandler::getFoodById)
 
-                                .GET("ingredients/{ingredient-id}", ingredientHandler::getIngredientById)
                                 .GET("ingredients",
                                         queryParam("offset", StringUtils::hasText)
                                                 .or(queryParam("limit", StringUtils::hasText))
                                                 .or(queryParam("sort", StringUtils::hasText)),
-                                        ingredientHandler::getIngredientById)
+                                        ingredientHandler::getIngredientPagination)
+                                .GET("ingredients/groups/{group-name}",
+                                        queryParam("offset", StringUtils::hasText)
+                                                .or(queryParam("limit", StringUtils::hasText))
+                                                .or(queryParam("sort", StringUtils::hasText)),
+                                        ingredientHandler::getIngredientsByGroup)
+                                .GET("ingredients/{ingredient-id}", ingredientHandler::getIngredientById)
 
                                 .GET("menus/{menu-id}", menuHandler::getMenuById)
                                 .GET("menus/suggest/foods", menuHandler::suggestMenuFoods)

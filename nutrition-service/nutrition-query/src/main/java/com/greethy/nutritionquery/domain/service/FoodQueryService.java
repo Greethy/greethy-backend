@@ -18,4 +18,6 @@ public interface FoodQueryService {
 
     Flux<ObjectIdResponse> getAllFoodIds();
 
+    Flux<String> getAllFoodLabels();
+
 }

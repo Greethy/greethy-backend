@@ -1,11 +1,15 @@
 package com.greethy.nutritioncommon.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class FoodIngredient {
 
     @Field(name = "ingredient_id")
@@ -13,7 +17,7 @@ public class FoodIngredient {
 
     private String name;
 
-    private Integer value;
+    private Double value;
 
     private String unit;
 

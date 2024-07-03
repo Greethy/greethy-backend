@@ -2,9 +2,7 @@ package com.greethy.nutritioncommon.entity;
 
 import com.greethy.common.domain.entity.BaseEntity;
 import com.greethy.nutritioncommon.entity.value.Nutrient;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -14,6 +12,8 @@ import java.util.List;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection = "foods")
 @EqualsAndHashCode(callSuper = true)
 public class Food extends BaseEntity {
@@ -23,13 +23,15 @@ public class Food extends BaseEntity {
 
     private String name;
 
-    private String meal;
-
     private String group;
+
+    private String meal;
 
     private String recipe;
 
     private String tips;
+
+    private String description;
 
     @Field(name = "image_urls")
     private List<String> imageUrls;
@@ -42,12 +44,12 @@ public class Food extends BaseEntity {
 
     private List<String> labels;
 
+    @Field(name = "total_calories")
+    private Double totalCalories;
+
     @Field(name = "food_ingredients")
     private List<FoodIngredient> foodIngredients;
 
     private List<Nutrient> nutrients;
-
-    @Field(name = "total_calories")
-    private Double totalCalories;
 
 }

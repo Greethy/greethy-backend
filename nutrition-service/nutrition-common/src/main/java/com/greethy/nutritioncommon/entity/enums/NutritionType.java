@@ -10,110 +10,110 @@ import java.util.List;
 public enum NutritionType {
 
     REGULAR("Regular",
-            List.of(Group.CEREAL, Group.DESERT),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.VEGETABLE, Group.DESERT),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.SOUP, Group.DESERT),
-            List.of(Group.DESERT)
+            List.of(FoodGroup.CEREAL, FoodGroup.DESERT),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.VEGETABLE, FoodGroup.DESERT),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.SOUP, FoodGroup.DESERT),
+            List.of(FoodGroup.DESERT)
     ),
     LOW_CALORIE("Low Calorie",
-            List.of(Group.FRUIT),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.VEGETABLE, Group.SOUP),
-            List.of(Group.CEREAL, Group.VEGETABLE, Group.SOUP, Group.FRUIT),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.FRUIT),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.VEGETABLE, FoodGroup.SOUP),
+            List.of(FoodGroup.CEREAL, FoodGroup.VEGETABLE, FoodGroup.SOUP, FoodGroup.FRUIT),
+            List.of(FoodGroup.FRUIT)
     ),
     HIGH_PROTEIN("High Protein",
-            List.of(Group.CEREAL, Group.PROTEIN),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.PROTEIN, Group.SOUP, Group.VEGETABLE),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.PROTEIN, Group.DESERT),
-            List.of(Group.DESERT)
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.PROTEIN, FoodGroup.SOUP, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.PROTEIN, FoodGroup.DESERT),
+            List.of(FoodGroup.DESERT)
     ),
     VEGETARIAN("Vegetarian",
-            List.of(Group.CEREAL, Group.FRUIT),
-            List.of(Group.VEGETABLE, Group.SOUP, Group.CEREAL),
-            List.of(Group.VEGETABLE, Group.CEREAL),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.CEREAL, FoodGroup.FRUIT),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.SOUP, FoodGroup.CEREAL),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.CEREAL),
+            List.of(FoodGroup.FRUIT)
     ),
     KETO("Keto",
-            List.of(Group.PROTEIN),
-            List.of(Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.PROTEIN)
+            List.of(FoodGroup.PROTEIN),
+            List.of(FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.PROTEIN)
     ),
     DIABETIC("Diabetic",
-            List.of(Group.CEREAL),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.CEREAL, Group.PROTEIN),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.CEREAL),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN),
+            List.of(FoodGroup.FRUIT)
     ),
     HIGH_FIBER("High Fiber",
-            List.of(Group.CEREAL, Group.FRUIT),
-            List.of(Group.VEGETABLE, Group.CEREAL),
-            List.of(Group.VEGETABLE, Group.CEREAL),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.CEREAL, FoodGroup.FRUIT),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.CEREAL),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.CEREAL),
+            List.of(FoodGroup.FRUIT)
     ),
     LOW_CARB("Low Carb",
-            List.of(Group.PROTEIN, Group.FRUIT),
-            List.of(Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.PROTEIN, FoodGroup.FRUIT),
+            List.of(FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.FRUIT)
     ),
     HEART_HEALTHY("Heart Healthy",
-            List.of(Group.CEREAL, Group.FRUIT),
-            List.of(Group.CEREAL, Group.VEGETABLE, Group.PROTEIN),
-            List.of(Group.CEREAL, Group.VEGETABLE),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.CEREAL, FoodGroup.FRUIT),
+            List.of(FoodGroup.CEREAL, FoodGroup.VEGETABLE, FoodGroup.PROTEIN),
+            List.of(FoodGroup.CEREAL, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.FRUIT)
     ),
     PREGNANCY("Pregnancy",
-            List.of(Group.CEREAL, Group.FRUIT),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.FRUIT, Group.DESERT)
+            List.of(FoodGroup.CEREAL, FoodGroup.FRUIT),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.FRUIT, FoodGroup.DESERT)
     ),
     SENIOR("Senior",
-            List.of(Group.CEREAL, Group.FRUIT),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.CEREAL, Group.PROTEIN),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.CEREAL, FoodGroup.FRUIT),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN),
+            List.of(FoodGroup.FRUIT)
     ),
     ATHLETE("Athlete",
-            List.of(Group.CEREAL, Group.PROTEIN),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.CEREAL, Group.PROTEIN, Group.PROTEIN),
-            List.of(Group.PROTEIN)
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.CEREAL, FoodGroup.PROTEIN, FoodGroup.PROTEIN),
+            List.of(FoodGroup.PROTEIN)
     ),
     MENTAL_HEALTH("Mental Health",
-            List.of(Group.CEREAL, Group.FRUIT),
-            List.of(Group.VEGETABLE, Group.CEREAL, Group.PROTEIN),
-            List.of(Group.VEGETABLE, Group.CEREAL),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.CEREAL, FoodGroup.FRUIT),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.CEREAL, FoodGroup.PROTEIN),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.CEREAL),
+            List.of(FoodGroup.FRUIT)
     ),
     DIGESTIVE_HEALTH("Digestive Health",
-            List.of(Group.CEREAL, Group.FRUIT),
-            List.of(Group.VEGETABLE, Group.CEREAL),
-            List.of(Group.VEGETABLE, Group.CEREAL),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.CEREAL, FoodGroup.FRUIT),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.CEREAL),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.CEREAL),
+            List.of(FoodGroup.FRUIT)
     ),
     HYPOALLERGENIC("Hypoallergenic",
-            List.of(Group.CEREAL),
-            List.of(Group.VEGETABLE, Group.PROTEIN),
-            List.of(Group.VEGETABLE),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.CEREAL),
+            List.of(FoodGroup.VEGETABLE, FoodGroup.PROTEIN),
+            List.of(FoodGroup.VEGETABLE),
+            List.of(FoodGroup.FRUIT)
     ),
     GLUTEN_FREE("Gluten Free",
-            List.of(Group.PROTEIN, Group.FRUIT),
-            List.of(Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.PROTEIN, Group.VEGETABLE),
-            List.of(Group.FRUIT)
+            List.of(FoodGroup.PROTEIN, FoodGroup.FRUIT),
+            List.of(FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.PROTEIN, FoodGroup.VEGETABLE),
+            List.of(FoodGroup.FRUIT)
     );
 
     private final String name;
 
-    private final List<Group> breakfastGroup;
+    private final List<FoodGroup> breakfastGroup;
 
-    private final List<Group> lunchGroup;
+    private final List<FoodGroup> lunchGroup;
 
-    private final List<Group> dinnerGroup;
+    private final List<FoodGroup> dinnerGroup;
 
-    private final List<Group> snackGroup;
+    private final List<FoodGroup> snackGroup;
 
 }

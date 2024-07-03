@@ -50,19 +50,12 @@ public class BodySpecCommandServiceImpl implements BodySpecCommandService {
 
     @Value("${spring.application.name}")
     private String serviceName;
-
     private final ModelMapper mapper;
-
     private final Translator translator;
-
     private final BmrByAgePort bmrByAgePort;
-
     private final BmiEvaluatePort bmiEvaluatePort;
-
     private final PalEvaluatePort palEvaluatePort;
-
     private final BodySpecPort mongoBodySpecPort;
-
     private final BodySpecEventProducer bodySpecEventProducer;
 
     /**

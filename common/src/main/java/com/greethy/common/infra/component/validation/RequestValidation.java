@@ -20,10 +20,7 @@ public class RequestValidation {
         var constraintViolations = validator.validate(object);
         if(!constraintViolations.isEmpty()) {
             var errorMessage = constraintViolations.stream()
-                    .map(violation -> {
-                        var message = violation.getMessage();
-                        return translator.getLocalizedMessage(message);
-                    })
+                    .map(violation -> translator.getLocalizedMessage(violation.getMessage()))
                     .collect(Collectors.joining(", "));
             throw new ClientException(errorMessage);
         }

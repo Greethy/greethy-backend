@@ -18,6 +18,4 @@ public class MongoListener extends AbstractMongoEventListener<BaseEntity> {
         event.getSource().setUpdatedAt(dateNow);
     }
 
-
-
 }

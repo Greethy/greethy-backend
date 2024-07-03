@@ -13,7 +13,6 @@ public class MongoBmiEvaluateAdapter implements BmiEvaluatePort {
 
     private final BmiEvaluateRepository repository;
 
-
     @Override
     public Mono<BmiEvaluate> findByIndexInRange(Double bmiIndex) {
         return repository.findByIndexInRange(bmiIndex);

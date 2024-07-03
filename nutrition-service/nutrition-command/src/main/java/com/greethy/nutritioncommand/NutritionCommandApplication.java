@@ -4,7 +4,7 @@ import com.greethy.common.infra.util.RandomUtil;
 import com.greethy.nutritioncommand.domain.port.GorseClientPort;
 import com.greethy.nutritioncommon.entity.*;
 import com.greethy.nutritioncommon.entity.enums.FoodLabel;
-import com.greethy.nutritioncommon.entity.enums.Group;
+import com.greethy.nutritioncommon.entity.enums.FoodGroup;
 import com.greethy.nutritioncommon.entity.enums.Meal;
 import com.greethy.nutritioncommon.entity.value.Range;
 import com.greethy.nutritioncommon.repository.*;
@@ -144,7 +144,7 @@ public class NutritionCommandApplication implements CommandLineRunner {
                 .map(name -> {
                     var meals = Arrays.stream(Meal.values()).map(Meal::getName).toList();
                     var allLabels = Arrays.stream(FoodLabel.values()).map(FoodLabel::getLabel).toList();
-                    var groups = Arrays.stream(Group.values()).map(Group::getName).toList();
+                    var groups = Arrays.stream(FoodGroup.values()).map(FoodGroup::getName).toList();
                     var meal = RandomUtil.getSingleRandomFromStrings(meals);
                     var labels = RandomUtil.getListRandomFromStrings(RandomUtil.getSingleRandomInteger(5, 15), allLabels);
                     var group = RandomUtil.getSingleRandomFromStrings(groups);
@@ -161,26 +161,6 @@ public class NutritionCommandApplication implements CommandLineRunner {
                             .totalCalories((double) RandomUtil.getSingleRandomInteger(100, 400))
                             .build();
                 }).collect(Collectors.toList());
-    }
-
-    private Set<Ingredient> ingredients() {
-        Set<Ingredient> ingredients = new HashSet<>();
-        //ingredients.add(new Ingredient());
-        var faker = new Faker(new Locale("en"));
-        var ingredientMap = IntStream.iterate(0, i -> i + 1)
-                .limit(1000)
-                .boxed()
-                .collect(Collectors.toMap(
-                        i -> i,
-                        i -> RandomUtil.getSingleRandomFromStrings(faker.food().ingredient()) + i));
-        return ingredientMap.entrySet()
-                .stream()
-                .map(entry -> Ingredient.builder()
-                        .id(entry.getKey() + "")
-                        .name(entry.getValue())
-                        .caloriesPer100g(RandomUtil.getSingleRandomInteger(100, 300))
-                        .build())
-                .collect(Collectors.toSet());
     }
 
 }
