@@ -45,13 +45,13 @@ public class FeedbackQueryApplication implements CommandLineRunner {
         List<String> foodIds = nutritionClientPort.getAllFoodIds()
                 .map(ObjectIdResponse::id)
                 .collectList().block();
-        var feedbacks = IntStream.range(0, 100000)
+        var feedbacks = IntStream.range(0, 60000)
                 .mapToObj(i -> {
                     assert userIds != null;
                     assert foodIds != null;
                     var userId = RandomUtil.getSingleRandomFromStrings(userIds);
                     var foodId = RandomUtil.getSingleRandomFromStrings(foodIds);
-                    var timestamp = LocalDateTime.now().minusDays(RandomUtil.getSingleRandomInteger(0,6));
+                    var timestamp = LocalDateTime.now().minusDays(RandomUtil.getSingleRandomInteger(0, 15));
                     var feedbackType = RandomUtil.getSingleRandomFromStrings(Arrays.stream(FeedbackType.values()).map(FeedbackType::getType).toList());
                     return GorseFeedback.builder()
                             .userId(userId)

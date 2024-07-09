@@ -2,7 +2,7 @@ package com.greethy.nutritionquery.api.rest.handler;
 
 import com.greethy.common.api.handler.ExceptionHandler;
 import com.greethy.common.infra.component.annotation.EndpointHandler;
-import com.greethy.nutritioncommon.dto.request.query.GetMeFoodRecommendationQuery;
+import com.greethy.nutritioncommon.dto.request.query.GetFoodRecommendationQuery;
 import com.greethy.nutritioncommon.dto.response.FoodResponse;
 import com.greethy.nutritionquery.domain.service.RecommendationQueryService;
 import lombok.RequiredArgsConstructor;
@@ -17,18 +17,20 @@ import reactor.core.publisher.Mono;
 public class RecommendQueryHandler {
 
     private final ExceptionHandler exceptionHandler;
-
     private final RecommendationQueryService recommendationQueryService;
 
-    public Mono<ServerResponse> getMeFoodRecommendations(ServerRequest serverRequest) {
+    public Mono<ServerResponse> getFoodRecommendation(ServerRequest serverRequest) {
         var fluxResponse = Flux.from(serverRequest.principal())
-                .map(principal -> new GetMeFoodRecommendationQuery(principal.getName()))
-                .flatMap(recommendationQueryService::getMeFoodRecommendation)
-                .flatMap(response -> ServerResponse.ok().bodyValue(response));
+                .map(principal -> new GetFoodRecommendationQuery(principal.getName()))
+                .flatMap(recommendationQueryService::getMeFoodRecommendation);
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(fluxResponse, FoodResponse.class)
                 .onErrorResume(exceptionHandler::handlingException);
+    }
+
+    public Mono<ServerResponse> getMenuRecommendation(ServerRequest serverRequest) {
+        return null;
     }
 
 }

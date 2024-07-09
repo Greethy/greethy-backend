@@ -9,10 +9,15 @@ public class FoodIngredientDto {
     @JsonProperty("ingredient_id")
     private String ingredientId;
 
+    private String name;
+
     private Double value;
 
     private String unit;
 
     private String prepare;
+
+    private Double calories;
+
 
 }

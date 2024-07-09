@@ -19,7 +19,6 @@ import java.security.Principal;
 public class BodySpecCommandHandler {
 
     private final ExceptionHandler exceptionHandler;
-
     private final BodySpecCommandService bodySpecService;
 
     public Mono<ServerResponse> createUserBodySpec(ServerRequest serverRequest) {

@@ -18,7 +18,7 @@ public class UserClientAdapter implements UserClientPort {
                 .baseUrl("http://localhost:8182")
                 .build()
                 .get()
-                .uri(builder -> builder.path("identity/ids/" + username).build())
+                .uri(builder -> builder.path("/internal/ids/" + username).build())
                 .retrieve()
                 .bodyToMono(ObjectIdResponse.class);
     }

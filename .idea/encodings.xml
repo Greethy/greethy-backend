@@ -13,6 +13,7 @@
     <file url="file://$PROJECT_DIR$/config-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-server/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/event-store/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/feedback-service/feedback-command/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/feedback-service/feedback-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/feedback-service/feedback-query/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/feedback-service/src/main/java" charset="UTF-8" />

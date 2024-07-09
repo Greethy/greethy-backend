@@ -17,6 +17,7 @@
     <modules>
         <module>feedback-common</module>
         <module>feedback-query</module>
+        <module>feedback-command</module>
     </modules>
 
     <properties>

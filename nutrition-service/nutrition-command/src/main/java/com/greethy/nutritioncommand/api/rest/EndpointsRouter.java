@@ -3,6 +3,7 @@ package com.greethy.nutritioncommand.api.rest;
 import com.greethy.nutritioncommand.api.rest.handler.BodySpecCommandHandler;
 import com.greethy.nutritioncommand.api.rest.handler.FoodCommandHandler;
 import com.greethy.nutritioncommand.api.rest.handler.MenuCommandHandler;
+import com.greethy.nutritioncommand.api.rest.handler.ScheduleCommandHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -16,9 +17,10 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class EndpointsRouter {
 
     @Bean
-    RouterFunction<ServerResponse> route(BodySpecCommandHandler bodySpecHandler,
-                                         FoodCommandHandler foodHandler,
-                                         MenuCommandHandler menuHandler) {
+    RouterFunction<ServerResponse> route(FoodCommandHandler foodHandler,
+                                         MenuCommandHandler menuHandler,
+                                         BodySpecCommandHandler bodySpecHandler,
+                                         ScheduleCommandHandler scheduleHandler) {
         return RouterFunctions.route()
                 .path("api/v1", builder -> builder
                         .nest(accept(MediaType.APPLICATION_JSON), routerBuilder -> routerBuilder
@@ -33,6 +35,8 @@ public class EndpointsRouter {
                                 .POST("menus", menuHandler::createMenu)
                                 .PUT("menus/{menu-id}", menuHandler::updateMenu)
                                 .DELETE("menus/{menu-id}", menuHandler::deleteMenu)
+
+                                .POST("schedules", scheduleHandler::createSchedule)
 
                         )).build();
     }

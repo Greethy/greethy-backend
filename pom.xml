@@ -31,7 +31,7 @@
 		<module>greethy-docker</module>
 		<module>feedback-service</module>
 		<module>api-gateway</module>
-	</modules>
+    </modules>
 
 	<dependencies>
 		<dependency>

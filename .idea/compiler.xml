@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="feedback-command" />
         <module name="user-query" />
         <module name="untitled" />
         <module name="greethy-docker" />
@@ -55,6 +56,7 @@
       <module name="docker" options="-parameters" />
       <module name="event-store" options="-parameters" />
       <module name="feedback" options="" />
+      <module name="feedback-command" options="-parameters" />
       <module name="feedback-common" options="-parameters" />
       <module name="feedback-query" options="-parameters" />
       <module name="finance" options="-parameters" />

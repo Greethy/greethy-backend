@@ -56,7 +56,8 @@ public class EndpointsRouter {
                                 .GET("menus/{menu-id}", menuHandler::getMenuById)
                                 .GET("menus/suggest/foods", menuHandler::suggestMenuFoods)
 
-                                .GET("recommend/me/foods", recommendHandler::getMeFoodRecommendations)
+                                .GET("recommend/foods", recommendHandler::getFoodRecommendation)
+                                .GET("recommend/menus", recommendHandler::getMenuRecommendation)
                         )
                 ).path("internal", builder -> builder
                         .GET("foods/ids", request -> foodHandler.getAllFoodIds()))

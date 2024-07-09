@@ -2,6 +2,7 @@ package com.greethy.nutritioncommon.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.greethy.nutritioncommon.dto.value.FoodIngredientDto;
+import com.greethy.nutritioncommon.dto.value.NutrientDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,25 +18,30 @@ public class FoodResponse {
 
     private String name;
 
-    private String meal;
-
     private String group;
+
+    private String meal;
 
     private String recipe;
 
     private String tips;
 
-    @JsonProperty("image_url")
-    private String imageUrl;
+    private String description;
 
-    @JsonProperty("instruction_url")
-    private String instructionUrl;
+    @JsonProperty("image_urls")
+    private List<String> imageUrls;
+
+    @JsonProperty("video")
+    private String video;
 
     private List<String> labels;
 
-    private List<FoodIngredientDto> ingredients;
-
     @JsonProperty("total_calories")
     private Integer totalCalories;
+
+    @JsonProperty("food_ingredients")
+    private List<FoodIngredientDto> foodIngredients;
+
+    private List<NutrientDto> nutrients;
 
 }
