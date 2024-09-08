@@ -1,5 +1,0 @@
-server:
-  port: 8186
-spring:
-  application:
-    name: feedback-query

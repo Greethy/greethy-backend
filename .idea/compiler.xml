@@ -7,44 +7,50 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="user-query" />
         <module name="untitled" />
+        <module name="account" />
         <module name="greethy-docker" />
-        <module name="nutrition-command" />
-        <module name="user-common" />
-        <module name="nutrition-common" />
-        <module name="docker" />
-        <module name="feedback-query" />
-        <module name="user-command" />
-        <module name="event-store" />
-        <module name="common" />
-        <module name="feedback-common" />
-        <module name="nutrition-query" />
-        <module name="gateway" />
-        <module name="finance" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="annotation" target="17" />
       <module name="auth" target="1.5" />
       <module name="authorization" target="17" />
+      <module name="common" target="17" />
       <module name="config" target="17" />
       <module name="core" target="17" />
       <module name="discovery" target="17" />
+      <module name="docker" target="17" />
+      <module name="event-store" target="17" />
+      <module name="feedback" target="17" />
+      <module name="feedback-command" target="17" />
+      <module name="feedback-common" target="17" />
+      <module name="feedback-query" target="17" />
+      <module name="finance" target="17" />
       <module name="financial" target="1.5" />
+      <module name="gateway" target="17" />
       <module name="greethy" target="17" />
       <module name="infrastructure" target="1.5" />
       <module name="keycloak" target="17" />
       <module name="mapper" target="17" />
+      <module name="nutrition" target="17" />
+      <module name="nutrition-command" target="17" />
+      <module name="nutrition-common" target="17" />
+      <module name="nutrition-query" target="17" />
       <module name="reactive-parent" target="1.5" />
       <module name="services-infrastructure" target="1.5" />
       <module name="test" target="17" />
       <module name="untitled" target="17" />
       <module name="user" target="17" />
+      <module name="user-command" target="17" />
+      <module name="user-common" target="17" />
+      <module name="user-query" target="17" />
+      <module name="user-services" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="account" options="-parameters" />
       <module name="annotation" options="-parameters" />
       <module name="auth" options="" />
       <module name="authorization" options="-parameters" />
@@ -55,6 +61,7 @@
       <module name="docker" options="-parameters" />
       <module name="event-store" options="-parameters" />
       <module name="feedback" options="" />
+      <module name="feedback-command" options="-parameters" />
       <module name="feedback-common" options="-parameters" />
       <module name="feedback-query" options="-parameters" />
       <module name="finance" options="-parameters" />
@@ -73,11 +80,11 @@
       <module name="services-infrastructure" options="" />
       <module name="test" options="-parameters" />
       <module name="untitled" options="-parameters" />
-      <module name="user" options="-parameters" />
+      <module name="user" options="" />
       <module name="user-command" options="-parameters" />
       <module name="user-common" options="-parameters" />
       <module name="user-query" options="-parameters" />
-      <module name="user-service" options="" />
+      <module name="user-services" options="" />
     </option>
   </component>
 </project>
