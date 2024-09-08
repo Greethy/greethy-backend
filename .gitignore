@@ -1,0 +1,11 @@
+# Intellj
+.idea/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# VScode
