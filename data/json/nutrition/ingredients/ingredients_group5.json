@@ -1,0 +1,506 @@
+[
+  {
+    "_id": "05001",
+    "name": "Bưởi",
+    "code": "05001",
+    "edible": 65,
+    "group": "Quả chín",
+    "description": "Pomelo, Pummelo; Shaddock",
+    "calories_per_100g": "33"
+  },
+  {
+    "_id": "05002",
+    "name": "Cam",
+    "code": "05002",
+    "edible": 75,
+    "group": "Quả chín",
+    "description": "Orange",
+    "calories_per_100g": "43"
+  },
+  {
+    "_id": "05003",
+    "name": "Chanh",
+    "code": "05003",
+    "edible": 75,
+    "group": "Quả chín",
+    "description": "Lemon",
+    "calories_per_100g": "29"
+  },
+  {
+    "_id": "05004",
+    "name": "Chôm chôm",
+    "code": "05004",
+    "edible": 47,
+    "group": "Quả chín",
+    "description": "Rambutan",
+    "calories_per_100g": "77"
+  },
+  {
+    "_id": "05005",
+    "name": "Chuối khô",
+    "code": "05005",
+    "edible": 100,
+    "group": "Quả chín",
+    "description": "Banana dried",
+    "calories_per_100g": "301"
+  },
+  {
+    "_id": "05006",
+    "name": "Chuối tây",
+    "code": "05006",
+    "edible": 76,
+    "group": "Quả chín",
+    "description": "Banana",
+    "calories_per_100g": "66"
+  },
+  {
+    "_id": "05007",
+    "name": "Chuối tiêu",
+    "code": "05007",
+    "edible": 70,
+    "group": "Quả chín",
+    "description": "Banana, dwarf",
+    "calories_per_100g": "100"
+  },
+  {
+    "_id": "05008",
+    "name": "Dâu gia",
+    "code": "05008",
+    "edible": 44,
+    "group": "Quả chín",
+    "description": "Fruit of Baccaurea sapida",
+    "calories_per_100g": "27"
+  },
+  {
+    "_id": "05009",
+    "name": "Dâu tây",
+    "code": "05009",
+    "edible": 85,
+    "group": "Quả chín",
+    "description": "Strawberry",
+    "calories_per_100g": "59"
+  },
+  {
+    "_id": "05010",
+    "name": "Dưa bở",
+    "code": "05010",
+    "edible": 90,
+    "group": "Quả chín",
+    "description": "Musk melon, Spanish melon, Cantaloupe",
+    "calories_per_100g": "21"
+  },
+  {
+    "_id": "05011",
+    "name": "Dưa hấu",
+    "code": "05011",
+    "edible": 52,
+    "group": "Quả chín",
+    "description": "Watermelon",
+    "calories_per_100g": "18"
+  },
+  {
+    "_id": "05012",
+    "name": "Dưa hồng",
+    "code": "05012",
+    "edible": 84,
+    "group": "Quả chín",
+    "description": "",
+    "calories_per_100g": "19"
+  },
+  {
+    "_id": "05013",
+    "name": "Dưa lê",
+    "code": "05013",
+    "edible": 82,
+    "group": "Quả chín",
+    "description": "Honey dew melon",
+    "calories_per_100g": "20"
+  },
+  {
+    "_id": "05014",
+    "name": "Dứa ta",
+    "code": "05014",
+    "edible": 60,
+    "group": "Quả chín",
+    "description": "Pineapple",
+    "calories_per_100g": "32"
+  },
+  {
+    "_id": "05015",
+    "name": "Dứa tây",
+    "code": "05015",
+    "edible": 60,
+    "group": "Quả chín",
+    "description": "Pineapple",
+    "calories_per_100g": "40"
+  },
+  {
+    "_id": "05016",
+    "name": "Đào",
+    "code": "05016",
+    "edible": 88,
+    "group": "Quả chín",
+    "description": "Peach",
+    "calories_per_100g": "37"
+  },
+  {
+    "_id": "05017",
+    "name": "Đu đủ chín",
+    "code": "05017",
+    "edible": 88,
+    "group": "Quả chín",
+    "description": "Papaya ripe",
+    "calories_per_100g": "38"
+  },
+  {
+    "_id": "05018",
+    "name": "Giổi",
+    "code": "05018",
+    "edible": 81,
+    "group": "Quả chín",
+    "description": "Ohia; Malaya roseapple",
+    "calories_per_100g": "27"
+  },
+  {
+    "_id": "05019",
+    "name": "Hồng bì",
+    "code": "05019",
+    "edible": 54,
+    "group": "Quả chín",
+    "description": "Wampee, Chinese; Wampi",
+    "calories_per_100g": "44"
+  },
+  {
+    "_id": "05020",
+    "name": "Hồng đỏ",
+    "code": "05020",
+    "edible": 88,
+    "group": "Quả chín",
+    "description": "Persimmon kaki soft type ripe",
+    "calories_per_100g": "38"
+  },
+  {
+    "_id": "05021",
+    "name": "Hồng ngâm",
+    "code": "05021",
+    "edible": 87,
+    "group": "Quả chín",
+    "description": "Persimmon kaki, Hard-type ripe",
+    "calories_per_100g": "48"
+  },
+  {
+    "_id": "05022",
+    "name": "Hồng xiêm",
+    "code": "05022",
+    "edible": 90,
+    "group": "Quả chín",
+    "description": "Sapodilla, sapota ponderosa",
+    "calories_per_100g": "58"
+  },
+  {
+    "_id": "05023",
+    "name": "Lê",
+    "code": "05023",
+    "edible": 88,
+    "group": "Quả chín",
+    "description": "Pear",
+    "calories_per_100g": "48"
+  },
+  {
+    "_id": "05024",
+    "name": "Lựu",
+    "code": "05024",
+    "edible": 15,
+    "group": "Quả chín",
+    "description": "Pome granate",
+    "calories_per_100g": "79"
+  },
+  {
+    "_id": "05025",
+    "name": "Mãng cầu xiêm",
+    "code": "05025",
+    "edible": 79,
+    "group": "Quả chín",
+    "description": "Soursop",
+    "calories_per_100g": "58"
+  },
+  {
+    "_id": "05026",
+    "name": "Mác cọoc",
+    "code": "05026",
+    "edible": 86,
+    "group": "Quả chín",
+    "description": "Wild Himalayan pear",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "05027",
+    "name": "Mận tím",
+    "code": "05027",
+    "edible": 85,
+    "group": "Quả chín",
+    "description": "Japanese, plum",
+    "calories_per_100g": "23"
+  },
+  {
+    "_id": "05028",
+    "name": "Mít dai",
+    "code": "05028",
+    "edible": 45,
+    "group": "Quả chín",
+    "description": "Jackfruit, mature",
+    "calories_per_100g": "54"
+  },
+  {
+    "_id": "05029",
+    "name": "Mít khô",
+    "code": "05029",
+    "edible": 100,
+    "group": "Quả chín",
+    "description": "Dried jackfruit",
+    "calories_per_100g": "286"
+  },
+  {
+    "_id": "05030",
+    "name": "Mít mật",
+    "code": "05030",
+    "edible": 45,
+    "group": "Quả chín",
+    "description": "Jack fruit, honey",
+    "calories_per_100g": "67"
+  },
+  {
+    "_id": "05031",
+    "name": "Mơ",
+    "code": "05031",
+    "edible": 86,
+    "group": "Quả chín",
+    "description": "Apricot, Apricot nectar",
+    "calories_per_100g": "50"
+  },
+  {
+    "_id": "05032",
+    "name": "Mơ khô",
+    "code": "05032",
+    "edible": 100,
+    "group": "Quả chín",
+    "description": "Apricot dried unsulfured",
+    "calories_per_100g": "290"
+  },
+  {
+    "_id": "05033",
+    "name": "Muồm, quéo",
+    "code": "05033",
+    "edible": 80,
+    "group": "Quả chín",
+    "description": "Mango, common; Indian mango, unripe",
+    "calories_per_100g": "69"
+  },
+  {
+    "_id": "05034",
+    "name": "Na",
+    "code": "05034",
+    "edible": 50,
+    "group": "Quả chín",
+    "description": "Sugar apple, sweetsop",
+    "calories_per_100g": "69"
+  },
+  {
+    "_id": "05035",
+    "name": "Nhãn",
+    "code": "05035",
+    "edible": 55,
+    "group": "Quả chín",
+    "description": "Longan",
+    "calories_per_100g": "52"
+  },
+  {
+    "_id": "05036",
+    "name": "Nhãn khô",
+    "code": "05036",
+    "edible": 100,
+    "group": "Quả chín",
+    "description": "Longan dried",
+    "calories_per_100g": "292"
+  },
+  {
+    "_id": "05037",
+    "name": "Nho ngọt",
+    "code": "05037",
+    "edible": 90,
+    "group": "Quả chín",
+    "description": "Grape, European, sweet",
+    "calories_per_100g": "71"
+  },
+  {
+    "_id": "05038",
+    "name": "Nho ta (nho chua)",
+    "code": "05038",
+    "edible": 87,
+    "group": "Quả chín",
+    "description": "Grape fruit",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "05039",
+    "name": "Nhót",
+    "code": "05039",
+    "edible": 76,
+    "group": "Quả chín",
+    "description": "Silver berry",
+    "calories_per_100g": "22"
+  },
+  {
+    "_id": "05040",
+    "name": "Ổi",
+    "code": "05040",
+    "edible": 95,
+    "group": "Quả chín",
+    "description": "Guava common",
+    "calories_per_100g": "61"
+  },
+  {
+    "_id": "05041",
+    "name": "Quả bơ vỏ tím",
+    "code": "05041",
+    "edible": 74,
+    "group": "Quả chín",
+    "description": "Avocado, Alligator Pear",
+    "calories_per_100g": "76"
+  },
+  {
+    "_id": "05042",
+    "name": "Quả bơ vỏ xanh",
+    "code": "05042",
+    "edible": 72,
+    "group": "Quả chín",
+    "description": "Avocado, Alligator Pear",
+    "calories_per_100g": "103"
+  },
+  {
+    "_id": "05043",
+    "name": "Quả cóc",
+    "code": "05043",
+    "edible": 75,
+    "group": "Quả chín",
+    "description": "Hog plum, Tahitian apple, Otaheite apple",
+    "calories_per_100g": "62"
+  },
+  {
+    "_id": "05044",
+    "name": "Quả thanh long",
+    "code": "05044",
+    "edible": 100,
+    "group": "Quả chín",
+    "description": "Dragon's eyes fruit",
+    "calories_per_100g": "47"
+  },
+  {
+    "_id": "05045",
+    "name": "Quả trứng gà",
+    "code": "05045",
+    "edible": 75,
+    "group": "Quả chín",
+    "description": "Lúcuma",
+    "calories_per_100g": "106"
+  },
+  {
+    "_id": "05046",
+    "name": "Quất chín (cả vỏ)",
+    "code": "05046",
+    "edible": 96,
+    "group": "Quả chín",
+    "description": "Mandarin",
+    "calories_per_100g": "42"
+  },
+  {
+    "_id": "05047",
+    "name": "Quýt",
+    "code": "05047",
+    "edible": 74,
+    "group": "Quả chín",
+    "description": "Tangerine; Orange; Mandarin",
+    "calories_per_100g": "40"
+  },
+  {
+    "_id": "05048",
+    "name": "Sầu riêng",
+    "code": "05048",
+    "edible": 25,
+    "group": "Quả chín",
+    "description": "Durian",
+    "calories_per_100g": "138"
+  },
+  {
+    "_id": "05049",
+    "name": "Sấu chín",
+    "code": "05049",
+    "edible": 76,
+    "group": "Quả chín",
+    "description": "Sanpidus, ripe",
+    "calories_per_100g": "49"
+  },
+  {
+    "_id": "05050",
+    "name": "Táo ta",
+    "code": "05050",
+    "edible": 86,
+    "group": "Quả chín",
+    "description": "Jujube, common or Chinese; Chinese date",
+    "calories_per_100g": "40"
+  },
+  {
+    "_id": "05051",
+    "name": "Táo tây",
+    "code": "05051",
+    "edible": 88,
+    "group": "Quả chín",
+    "description": "Apple common, domestic",
+    "calories_per_100g": "50"
+  },
+  {
+    "_id": "05052",
+    "name": "Vải",
+    "code": "05052",
+    "edible": 52,
+    "group": "Quả chín",
+    "description": "Litchi; lychee",
+    "calories_per_100g": "49"
+  },
+  {
+    "_id": "05053",
+    "name": "Vải khô",
+    "code": "05053",
+    "edible": 56,
+    "group": "Quả chín",
+    "description": "Litchi, dried with shells",
+    "calories_per_100g": "264"
+  },
+  {
+    "_id": "05054",
+    "name": "Vú sữa",
+    "code": "05054",
+    "edible": 78,
+    "group": "Quả chín",
+    "description": "Starapple, cainito",
+    "calories_per_100g": "51"
+  },
+  {
+    "_id": "05055",
+    "name": "Xoài chín",
+    "code": "05055",
+    "edible": 80,
+    "group": "Quả chín",
+    "description": "Mango, common; India mango (ripe)",
+    "calories_per_100g": "69"
+  },
+  {
+    "_id": "05056",
+    "name": "Quả kiwi",
+    "code": "05056",
+    "edible": 86,
+    "group": "Quả chín",
+    "description": "Kiwifruit, Chinese gooseberry",
+    "calories_per_100g": "68"
+  }
+]

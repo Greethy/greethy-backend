@@ -1,0 +1,660 @@
+[
+  {
+    "_id": "15001",
+    "name": "Bánh bao chiên có nhân",
+    "code": "15001",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Filled steamed bread, fried",
+    "calories_per_100g": "177"
+  },
+  {
+    "_id": "15002",
+    "name": "Bánh bèo",
+    "code": "15002",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Bloating Fern-shaped cake",
+    "calories_per_100g": "118"
+  },
+  {
+    "_id": "15003",
+    "name": "Bánh bột lọc",
+    "code": "15003",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Rice dumpling cake",
+    "calories_per_100g": "137"
+  },
+  {
+    "_id": "15004",
+    "name": "Bánh chay",
+    "code": "15004",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Stuffed sticky rice balls, large",
+    "calories_per_100g": "156"
+  },
+  {
+    "_id": "15005",
+    "name": "Bánh chín tầng mây",
+    "code": "15005",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "",
+    "calories_per_100g": "169"
+  },
+  {
+    "_id": "15006",
+    "name": "Bánh chưng",
+    "code": "15006",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Stuffed sticky rice cake",
+    "calories_per_100g": "181"
+  },
+  {
+    "_id": "15007",
+    "name": "Bánh chuối",
+    "code": "15007",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Banana cake",
+    "calories_per_100g": "297"
+  },
+  {
+    "_id": "15008",
+    "name": "Bánh cốm",
+    "code": "15008",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Young rice cake",
+    "calories_per_100g": "250"
+  },
+  {
+    "_id": "15009",
+    "name": "Bánh cuốn",
+    "code": "15009",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Stuffed pancake",
+    "calories_per_100g": "129"
+  },
+  {
+    "_id": "15010",
+    "name": "Bánh cuốn nóng nhân thịt",
+    "code": "15010",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Stuffed pancake, with pork",
+    "calories_per_100g": "102"
+  },
+  {
+    "_id": "15011",
+    "name": "Bánh dẻo nhân thập cẩm",
+    "code": "15011",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice cake (filled with preserved fruit and meat)",
+    "calories_per_100g": "349"
+  },
+  {
+    "_id": "15012",
+    "name": "Bánh dẻo nhân trứng",
+    "code": "15012",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice cake (filled with egg)",
+    "calories_per_100g": "338"
+  },
+  {
+    "_id": "15013",
+    "name": "Bánh đúc nguội",
+    "code": "15013",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Plain rice flan; rice cake made of rice flour, and lime water",
+    "calories_per_100g": "88"
+  },
+  {
+    "_id": "15014",
+    "name": "Bánh đúc nóng",
+    "code": "15014",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Plain rice flan; rice cake made of rice flour, and lime water, hot",
+    "calories_per_100g": "108"
+  },
+  {
+    "_id": "15015",
+    "name": "Bánh gai",
+    "code": "15015",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Stuffed sticky rice cake with ramie leaves",
+    "calories_per_100g": "251"
+  },
+  {
+    "_id": "15016",
+    "name": "Bánh gio",
+    "code": "15016",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice cake with ash water",
+    "calories_per_100g": "173"
+  },
+  {
+    "_id": "15017",
+    "name": "Bánh giò",
+    "code": "15017",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Pyramidal rice dumpling (filled with meat, onion, mushroom), meat pie",
+    "calories_per_100g": "234"
+  },
+  {
+    "_id": "15018",
+    "name": "Bánh khoai",
+    "code": "15018",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Cake made of sweet potato meal (mixed with rice flour)",
+    "calories_per_100g": "141"
+  },
+  {
+    "_id": "15019",
+    "name": "Bánh khoái",
+    "code": "15019",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Plain rice flan",
+    "calories_per_100g": "159"
+  },
+  {
+    "_id": "15020",
+    "name": "Bánh khoai sọ chiên",
+    "code": "15020",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Taro cake, fried",
+    "calories_per_100g": "197"
+  },
+  {
+    "_id": "15021",
+    "name": "Bánh khúc",
+    "code": "15021",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Cake made of glutinous rice mixed with everlasting gnaphalium leaves (filled with green bean paste and sprinkled with grains of cooked glutinous rice)",
+    "calories_per_100g": "249"
+  },
+  {
+    "_id": "15022",
+    "name": "Bánh mè",
+    "code": "15022",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Bread with egg and sesame seed, fried",
+    "calories_per_100g": "482"
+  },
+  {
+    "_id": "15023",
+    "name": "Bánh mì xíu mại",
+    "code": "15023",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Bread with egg and beef",
+    "calories_per_100g": "189"
+  },
+  {
+    "_id": "15024",
+    "name": "Bánh mỳ patê",
+    "code": "15024",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Bread with pate",
+    "calories_per_100g": "266"
+  },
+  {
+    "_id": "15025",
+    "name": "Bánh nếp",
+    "code": "15025",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice cake",
+    "calories_per_100g": "216"
+  },
+  {
+    "_id": "15026",
+    "name": "Bánh nướng nhân thập cẩm",
+    "code": "15026",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Pie filled with various fruit and meat",
+    "calories_per_100g": "386"
+  },
+  {
+    "_id": "15027",
+    "name": "Bánh nướng nhân trứng đậu xanh",
+    "code": "15027",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Pie filled with egg and mungbean",
+    "calories_per_100g": "371"
+  },
+  {
+    "_id": "15028",
+    "name": "Bánh phu thê (su sê, xu xuê)",
+    "code": "15028",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Yellow-coloured wedding pastry",
+    "calories_per_100g": "185"
+  },
+  {
+    "_id": "15029",
+    "name": "Bánh rán bọc đường",
+    "code": "15029",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Rice cake, fried with sugar",
+    "calories_per_100g": "318"
+  },
+  {
+    "_id": "15030",
+    "name": "Bánh tẻ",
+    "code": "15030",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Rice cake,, filled with meat",
+    "calories_per_100g": "104"
+  },
+  {
+    "_id": "15031",
+    "name": "Bánh tôm",
+    "code": "15031",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Crisp shrimp pastry",
+    "calories_per_100g": "204"
+  },
+  {
+    "_id": "15032",
+    "name": "Bánh trôi",
+    "code": "15032",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Stuffed sticky rice balls",
+    "calories_per_100g": "202"
+  },
+  {
+    "_id": "15033",
+    "name": "Bún bò Nam bộ",
+    "code": "15033",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli noodles with beef, southern style",
+    "calories_per_100g": "81"
+  },
+  {
+    "_id": "15034",
+    "name": "Bún chả",
+    "code": "15034",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli noodles with grilled pork",
+    "calories_per_100g": "136"
+  },
+  {
+    "_id": "15035",
+    "name": "Bún cua",
+    "code": "15035",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli noodles with fresh water crab",
+    "calories_per_100g": "53"
+  },
+  {
+    "_id": "15036",
+    "name": "Bún đậu",
+    "code": "15036",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli noodles with tofu, dried",
+    "calories_per_100g": "151"
+  },
+  {
+    "_id": "15037",
+    "name": "Bún dọc mùng",
+    "code": "15037",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli noodles with giant elephant ear stem",
+    "calories_per_100g": "408"
+  },
+  {
+    "_id": "15038",
+    "name": "Bún nem",
+    "code": "15038",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli noodles with pork rolls",
+    "calories_per_100g": "120"
+  },
+  {
+    "_id": "15039",
+    "name": "Bún ốc",
+    "code": "15039",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli noodles with snail",
+    "calories_per_100g": "62"
+  },
+  {
+    "_id": "15040",
+    "name": "Caramen",
+    "code": "15040",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Caramel cake",
+    "calories_per_100g": "109"
+  },
+  {
+    "_id": "15041",
+    "name": "Chả quế",
+    "code": "15041",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Roasted cinnamon pork",
+    "calories_per_100g": "339"
+  },
+  {
+    "_id": "15042",
+    "name": "Cháo lòng",
+    "code": "15042",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Pig's tripes soup",
+    "calories_per_100g": "69"
+  },
+  {
+    "_id": "15043",
+    "name": "Cháo sườn",
+    "code": "15043",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Rice soup with pork rips",
+    "calories_per_100g": "40"
+  },
+  {
+    "_id": "15044",
+    "name": "Cháo trai",
+    "code": "15044",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Rice soup with clams",
+    "calories_per_100g": "49"
+  },
+  {
+    "_id": "15045",
+    "name": "Chè bưởi",
+    "code": "15045",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with pomelo flavor",
+    "calories_per_100g": "73"
+  },
+  {
+    "_id": "15046",
+    "name": "Chè chuối",
+    "code": "15046",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with banana",
+    "calories_per_100g": "82"
+  },
+  {
+    "_id": "15047",
+    "name": "Chè cốm",
+    "code": "15047",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with young rice",
+    "calories_per_100g": "80"
+  },
+  {
+    "_id": "15048",
+    "name": "Chè đỗ đen",
+    "code": "15048",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with black bean",
+    "calories_per_100g": "79"
+  },
+  {
+    "_id": "15049",
+    "name": "Chè đỗ đỏ",
+    "code": "15049",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with red bean",
+    "calories_per_100g": "77"
+  },
+  {
+    "_id": "15050",
+    "name": "Chè đỗ xanh",
+    "code": "15050",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with mungbean",
+    "calories_per_100g": "79"
+  },
+  {
+    "_id": "15051",
+    "name": "Chè hạt sen",
+    "code": "15051",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with lotus seed",
+    "calories_per_100g": "75"
+  },
+  {
+    "_id": "15052",
+    "name": "Chè khoai sọ",
+    "code": "15052",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with taro",
+    "calories_per_100g": "83"
+  },
+  {
+    "_id": "15053",
+    "name": "Chè ngô cốm",
+    "code": "15053",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with corn and young rice seeds",
+    "calories_per_100g": "72"
+  },
+  {
+    "_id": "15054",
+    "name": "Chè sắn",
+    "code": "15054",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel with Kudzu root",
+    "calories_per_100g": "86"
+  },
+  {
+    "_id": "15055",
+    "name": "Chè Thái",
+    "code": "15055",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sweets gruel, Thailand style",
+    "calories_per_100g": "82"
+  },
+  {
+    "_id": "15056",
+    "name": "Cơm rang",
+    "code": "15056",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Fried rice with egg and pork",
+    "calories_per_100g": "198"
+  },
+  {
+    "_id": "15057",
+    "name": "Gà tần",
+    "code": "15057",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Stewed chicken with medicinal herbs",
+    "calories_per_100g": "131"
+  },
+  {
+    "_id": "15058",
+    "name": "Miến lươn",
+    "code": "15058",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli made of cassava, with eels",
+    "calories_per_100g": "73"
+  },
+  {
+    "_id": "15059",
+    "name": "Miến ngan",
+    "code": "15059",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Vermicelli made of cassava, with goose meat",
+    "calories_per_100g": "65"
+  },
+  {
+    "_id": "15060",
+    "name": "Mỳ vằn thắn",
+    "code": "15060",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Wonton soup",
+    "calories_per_100g": "81"
+  },
+  {
+    "_id": "15061",
+    "name": "Mỳ xào",
+    "code": "15061",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Instant noodle, fried with vegetable and meat",
+    "calories_per_100g": "139"
+  },
+  {
+    "_id": "15062",
+    "name": "Nem lụi",
+    "code": "15062",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Roll pork meat, grilled",
+    "calories_per_100g": "183"
+  },
+  {
+    "_id": "15063",
+    "name": "Nem rán",
+    "code": "15063",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Spring roll, fried",
+    "calories_per_100g": "145"
+  },
+  {
+    "_id": "15064",
+    "name": "Nộm tai lợn",
+    "code": "15064",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Pork ear salad",
+    "calories_per_100g": "119"
+  },
+  {
+    "_id": "15065",
+    "name": "Phở bò chín",
+    "code": "15065",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Rice noodle with beef, cooked",
+    "calories_per_100g": "73"
+  },
+  {
+    "_id": "15066",
+    "name": "Phở bò tái",
+    "code": "15066",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Rice noodle with beef, rare",
+    "calories_per_100g": "67"
+  },
+  {
+    "_id": "15067",
+    "name": "Phở gà",
+    "code": "15067",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Rice noodle with chicken",
+    "calories_per_100g": "73"
+  },
+  {
+    "_id": "15068",
+    "name": "Thịt xiên nướng",
+    "code": "15068",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Pork meat, grilled",
+    "calories_per_100g": "322"
+  },
+
+  {
+    "_id": "15069",
+    "name": "Xôi đỗ xanh",
+    "code": "15069",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice with mungbean, cooked",
+    "calories_per_100g": "230"
+  },
+  {
+    "_id": "15070",
+    "name": "Xôi gấc",
+    "code": "15070",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice with Gac fruit, cooked",
+    "calories_per_100g": "231"
+  },
+  {
+    "_id": "15071",
+    "name": "Xôi lạc",
+    "code": "15071",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice with peanut, cooked",
+    "calories_per_100g": "246"
+  },
+  {
+    "_id": "15072",
+    "name": "Xôi ngô",
+    "code": "15072",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice with corn, cooked",
+    "calories_per_100g": "198"
+  },
+  {
+    "_id": "15073",
+    "name": "Xôi xéo",
+    "code": "15073",
+    "edible": 100,
+    "group": "Thức ăn truyền thống",
+    "description": "Sticky rice with mungbean paste, cooked",
+    "calories_per_100g": "254"
+  }
+]

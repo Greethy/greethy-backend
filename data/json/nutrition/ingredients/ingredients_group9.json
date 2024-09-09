@@ -1,0 +1,110 @@
+[
+  {
+    "_id": "09001",
+    "name": "Trứng gà ta",
+    "code": "09001",
+    "edible": 86,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Hen egg (Raw, whole)",
+    "calories_per_100g": "150"
+  },
+  {
+    "_id": "09002",
+    "name": "Lòng đỏ trứng gà",
+    "code": "09002",
+    "edible": 100,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Hen egg, yolk",
+    "calories_per_100g": "327"
+  },
+  {
+    "_id": "09003",
+    "name": "Lòng trắng trứng gà",
+    "code": "09003",
+    "edible": 100,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Hen egg, white",
+    "calories_per_100g": "46"
+  },
+  {
+    "_id": "09004",
+    "name": "Trứng vịt",
+    "code": "09004",
+    "edible": 88,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Duck egg",
+    "calories_per_100g": "172"
+  },
+  {
+    "_id": "09005",
+    "name": "Lòng đỏ trứng vịt",
+    "code": "09005",
+    "edible": 100,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Duck egg, yolk",
+    "calories_per_100g": "364"
+  },
+  {
+    "_id": "09006",
+    "name": "Lòng trắng trứng vịt",
+    "code": "09006",
+    "edible": 100,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Duck egg, white",
+    "calories_per_100g": "47"
+  },
+  {
+    "_id": "09007",
+    "name": "Trứng chim cút",
+    "code": "09007",
+    "edible": 89,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Quail egg",
+    "calories_per_100g": "157"
+  },
+  {
+    "_id": "09008",
+    "name": "Trứng cá",
+    "code": "09008",
+    "edible": 100,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Fish roe",
+    "calories_per_100g": "171"
+  },
+  {
+    "_id": "09009",
+    "name": "Trứng cá muối",
+    "code": "09009",
+    "edible": 100,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Fish caviar, black and red, granule",
+    "calories_per_100g": "274"
+  },
+  {
+    "_id": "09010",
+    "name": "Trứng vịt lộn",
+    "code": "09010",
+    "edible": 88,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Duck embryonated egg",
+    "calories_per_100g": "182"
+  },
+  {
+    "_id": "09011",
+    "name": "Bột trứng",
+    "code": "09011",
+    "edible": 100,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "Egg powder",
+    "calories_per_100g": "563"
+  },
+  {
+    "_id": "09012",
+    "name": "Trứng gà công nghiệp",
+    "code": "09012",
+    "edible": 100,
+    "group": "Trứng và sản phẩm chế biến",
+    "description": "",
+    "calories_per_100g": "132"
+  }
+]

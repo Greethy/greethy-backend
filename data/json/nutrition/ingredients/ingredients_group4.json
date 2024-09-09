@@ -1,0 +1,1173 @@
+[
+  {
+    "_id": "04001",
+    "name": "Bầu",
+    "code": "04001",
+    "edible": 84,
+    "group": "Rau, quả, củ",
+    "description": "Calabash, Bottle gourd, raw",
+    "calories_per_100g": "18"
+  },
+  {
+    "_id": "04002",
+    "name": "Bí đao (bí xanh)",
+    "code": "04002",
+    "edible": 73,
+    "group": "Rau, quả, củ",
+    "description": "Asgourd, winter melon, raw",
+    "calories_per_100g": "16"
+  },
+  {
+    "_id": "04003",
+    "name": "Bí ngô",
+    "code": "04003",
+    "edible": 86,
+    "group": "Rau, quả, củ",
+    "description": "Pumpkin squash, raw",
+    "calories_per_100g": "29"
+  },
+  {
+    "_id": "04004",
+    "name": "Cà bát",
+    "code": "04004",
+    "edible": 95,
+    "group": "Rau, quả, củ",
+    "description": "Egg plant, large round, raw",
+    "calories_per_100g": "28"
+  },
+  {
+    "_id": "04005",
+    "name": "Cà chua",
+    "code": "04005",
+    "edible": 95,
+    "group": "Rau, quả, củ",
+    "description": "Tomato, raw",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04006",
+    "name": "Cà pháo",
+    "code": "04006",
+    "edible": 90,
+    "group": "Rau, quả, củ",
+    "description": "Egg plant - small, raw",
+    "calories_per_100g": "27"
+  },
+  {
+    "_id": "04007",
+    "name": "Cà rốt (củ đỏ, vàng)",
+    "code": "04007",
+    "edible": 85,
+    "group": "Rau, quả, củ",
+    "description": "Carrots, all variety, raw",
+    "calories_per_100g": "44"
+  },
+  {
+    "_id": "04008",
+    "name": "Cà rốt khô",
+    "code": "04008",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Carrot, dried",
+    "calories_per_100g": "330"
+  },
+  {
+    "_id": "04009",
+    "name": "Cà tím",
+    "code": "04009",
+    "edible": 95,
+    "group": "Rau, quả, củ",
+    "description": "Aubergine, raw",
+    "calories_per_100g": "28"
+  },
+  {
+    "_id": "04010",
+    "name": "Cải bắp",
+    "code": "04010",
+    "edible": 90,
+    "group": "Rau, quả, củ",
+    "description": "Cabbage, common, raw",
+    "calories_per_100g": "36"
+  },
+  {
+    "_id": "04011",
+    "name": "Cải bắp đỏ",
+    "code": "04011",
+    "edible": 78,
+    "group": "Rau, quả, củ",
+    "description": "Cabbage, red, raw",
+    "calories_per_100g": "61"
+  },
+  {
+    "_id": "04012",
+    "name": "Cải bắp khô",
+    "code": "04012",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Dried cabbage",
+    "calories_per_100g": "301"
+  },
+  {
+    "_id": "04013",
+    "name": "Cải cúc",
+    "code": "04013",
+    "edible": 75,
+    "group": "Rau, quả, củ",
+    "description": "Crown daisy, raw",
+    "calories_per_100g": "22"
+  },
+  {
+    "_id": "04014",
+    "name": "Cải soong",
+    "code": "04014",
+    "edible": 70,
+    "group": "Rau, quả, củ",
+    "description": "Water cress, raw",
+    "calories_per_100g": "22"
+  },
+  {
+    "_id": "04015",
+    "name": "Cải thìa (cải trắng)",
+    "code": "04015",
+    "edible": 75,
+    "group": "Rau, quả, củ",
+    "description": "Chinese cabbage, raw",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04016",
+    "name": "Cải xanh",
+    "code": "04016",
+    "edible": 76,
+    "group": "Vegetables and derivatives",
+    "description": "Mustard greens, raw",
+    "calories_per_100g": "23"
+  },
+  {
+    "_id": "04017",
+    "name": "Cần ta",
+    "code": "04017",
+    "edible": 80,
+    "group": "Vegetables and derivatives",
+    "description": "Water drop-wort, raw",
+    "calories_per_100g": "16"
+  },
+  {
+    "_id": "04018",
+    "name": "Cần tây",
+    "code": "04018",
+    "edible": 84,
+    "group": "Vegetables and derivatives",
+    "description": "Celery, raw",
+    "calories_per_100g": "54"
+  },
+  {
+    "_id": "04019",
+    "name": "Chuối xanh",
+    "code": "04019",
+    "edible": 68,
+    "group": "Vegetables and derivatives",
+    "description": "Banana common varieties, unripe",
+    "calories_per_100g": "78"
+  },
+  {
+    "_id": "04020",
+    "name": "Củ cải đỏ",
+    "code": "04020",
+    "edible": 80,
+    "group": "Vegetables and derivatives",
+    "description": "Red radish oriental, raw",
+    "calories_per_100g": "52"
+  },
+  {
+    "_id": "04021",
+    "name": "Củ cải trắng",
+    "code": "04021",
+    "edible": 85,
+    "group": "Vegetables and derivatives",
+    "description": "Radish garden white, raw",
+    "calories_per_100g": "27"
+  },
+  {
+    "_id": "04022",
+    "name": "Củ cải trắng khô",
+    "code": "04022",
+    "edible": 100,
+    "group": "Vegetables and derivatives",
+    "description": "White radish, dried",
+    "calories_per_100g": "290"
+  },
+  {
+    "_id": "04023",
+    "name": "Củ đậu",
+    "code": "04023",
+    "edible": 85,
+    "group": "Vegetables and derivatives",
+    "description": "Jicama, Mexican yam bean",
+    "calories_per_100g": "31"
+  },
+  {
+    "_id": "04024",
+    "name": "Củ năng",
+    "code": "04024",
+    "edible": 87,
+    "group": "Vegetables and derivatives",
+    "description": "Manchurian wild rice, stem, raw",
+    "calories_per_100g": "37"
+  },
+  {
+    "_id": "04025",
+    "name": "Dọc củ cải (non)",
+    "code": "04025",
+    "edible": 96,
+    "group": "Vegetables and derivatives",
+    "description": "Radish garden, immature, raw",
+    "calories_per_100g": "21"
+  },
+  {
+    "_id": "04026",
+    "name": "Dọc mùng",
+    "code": "04026",
+    "edible": 90,
+    "group": "Vegetables and derivatives",
+    "description": "Indian taro, stem, raw",
+    "calories_per_100g": "13"
+  },
+  {
+    "_id": "04027",
+    "name": "Dưa chuột",
+    "code": "04027",
+    "edible": 95,
+    "group": "Vegetables and derivatives",
+    "description": "Cucumber",
+    "calories_per_100g": "18"
+  },
+  {
+    "_id": "04028",
+    "name": "Dưa gang",
+    "code": "04028",
+    "edible": 95,
+    "group": "Vegetables and derivatives",
+    "description": "Large cucumber",
+    "calories_per_100g": "14"
+  },
+  {
+    "_id": "04029",
+    "name": "Đậu cô ve",
+    "code": "04029",
+    "edible": 90,
+    "group": "Vegetables and derivatives",
+    "description": "Common bean, string bean, raw",
+    "calories_per_100g": "77"
+  },
+  {
+    "_id": "04030",
+    "name": "Đậu đũa",
+    "code": "04030",
+    "edible": 90,
+    "group": "Vegetables and derivatives",
+    "description": "Yardlong bean, raw",
+    "calories_per_100g": "67"
+  },
+  {
+    "_id": "04031",
+    "name": "Đậu Hà Lan",
+    "code": "04031",
+    "edible": 90,
+    "group": "Vegetables and derivatives",
+    "description": "Green peas; field pea, raw",
+    "calories_per_100g": "75"
+  },
+
+  {
+    "_id": "04032",
+    "name": "Đậu rồng (quả non)",
+    "code": "04032",
+    "edible": 95,
+    "group": "Rau, quả, củ",
+    "description": "Winged bean, asparagus pea, raw",
+    "calories_per_100g": "40"
+  },
+  {
+    "_id": "04033",
+    "name": "Đu đủ xanh",
+    "code": "04033",
+    "edible": 75,
+    "group": "Rau, quả, củ",
+    "description": "Papaya, unripe, raw",
+    "calories_per_100g": "30"
+  },
+  {
+    "_id": "04034",
+    "name": "Gấc",
+    "code": "04034",
+    "edible": 20,
+    "group": "Rau, quả, củ",
+    "description": "Gac fruit, whole, raw",
+    "calories_per_100g": "129"
+  },
+  {
+    "_id": "04035",
+    "name": "Giá đậu tương",
+    "code": "04035",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Sprout of soybeans, raw",
+    "calories_per_100g": "82"
+  },
+  {
+    "_id": "04036",
+    "name": "Giá đậu xanh",
+    "code": "04036",
+    "edible": 95,
+    "group": "Rau, quả, củ",
+    "description": "Mungobean sprouts",
+    "calories_per_100g": "52"
+  },
+  {
+    "_id": "04037",
+    "name": "Hành củ tươi",
+    "code": "04037",
+    "edible": 76,
+    "group": "Rau, quả, củ",
+    "description": "Onion, bulb onion, raw",
+    "calories_per_100g": "29"
+  },
+  {
+    "_id": "04038",
+    "name": "Hành lá (hành hoa)",
+    "code": "04038",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Onion, leave",
+    "calories_per_100g": "26"
+  },
+  {
+    "_id": "04039",
+    "name": "Hành tây",
+    "code": "04039",
+    "edible": 83,
+    "group": "Rau, quả, củ",
+    "description": "Onion, common, garden, raw",
+    "calories_per_100g": "45"
+  },
+  {
+    "_id": "04040",
+    "name": "Hạt sen tươi",
+    "code": "04040",
+    "edible": 61,
+    "group": "Hạt, các loại đậu",
+    "description": "Lotus seed, raw",
+    "calories_per_100g": "164"
+  },
+  {
+    "_id": "04041",
+    "name": "Hạt sen khô",
+    "code": "04041",
+    "edible": 100,
+    "group": "Hạt, các loại đậu",
+    "description": "Dried lotus seed",
+    "calories_per_100g": "342"
+  },
+  {
+    "_id": "04042",
+    "name": "Hẹ lá",
+    "code": "04042",
+    "edible": 87,
+    "group": "Rau, quả, củ",
+    "description": "Onion, fragrant, Chinese leek, raw",
+    "calories_per_100g": "21"
+  },
+  {
+    "_id": "04043",
+    "name": "Hoa chuối",
+    "code": "04043",
+    "edible": 71,
+    "group": "Rau, quả, củ",
+    "description": "Banana, buds and flowers, raw",
+    "calories_per_100g": "28"
+  },
+  {
+    "_id": "04044",
+    "name": "Hoa lý",
+    "code": "04044",
+    "edible": 97,
+    "group": "Rau, quả, củ",
+    "description": "Daylily, lemon flowers, raw",
+    "calories_per_100g": "35"
+  },
+  {
+    "_id": "04045",
+    "name": "Khế",
+    "code": "04045",
+    "edible": 87,
+    "group": "Rau, quả, củ",
+    "description": "Carambola; Star fruit, raw",
+    "calories_per_100g": "26"
+  },
+  {
+    "_id": "04046",
+    "name": "Lá lốt",
+    "code": "04046",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Lolot pepper, raw",
+    "calories_per_100g": "49"
+  },
+  {
+    "_id": "04047",
+    "name": "Lá me",
+    "code": "04047",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "",
+    "calories_per_100g": "46"
+  },
+  {
+    "_id": "04048",
+    "name": "Lá mơ lông",
+    "code": "04048",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Skunk vine",
+    "calories_per_100g": "48"
+  },
+  {
+    "_id": "04049",
+    "name": "Lá sắn tươi",
+    "code": "04049",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Cassava leaves, raw",
+    "calories_per_100g": "96"
+  },
+  {
+    "_id": "04050",
+    "name": "Măng chua",
+    "code": "04050",
+    "edible": 76,
+    "group": "Rau, quả, củ",
+    "description": "Bamboo shoot, fermented, raw",
+    "calories_per_100g": "28"
+  },
+  {
+    "_id": "04051",
+    "name": "Măng khô",
+    "code": "04051",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Bamboo shoot, dried",
+    "calories_per_100g": "301"
+  },
+  {
+    "_id": "04052",
+    "name": "Măng tây",
+    "code": "04052",
+    "edible": 50,
+    "group": "Rau, quả, củ",
+    "description": "Asparagus, white, raw",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04053",
+    "name": "Măng tre",
+    "code": "04053",
+    "edible": 50,
+    "group": "Rau, quả, củ",
+    "description": "Bamboo shoots, raw",
+    "calories_per_100g": "31"
+  },
+  {
+    "_id": "04054",
+    "name": "Mướp",
+    "code": "04054",
+    "edible": 88,
+    "group": "Rau, quả, củ",
+    "description": "Gourd, sponge gourd, raw",
+    "calories_per_100g": "18"
+  },
+  {
+    "_id": "04055",
+    "name": "Mướp đắng",
+    "code": "04055",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Balsam-pear, Bitter gourd",
+    "calories_per_100g": "20"
+  },
+  {
+    "_id": "04056",
+    "name": "Mướp Nhật bản",
+    "code": "04056",
+    "edible": 90,
+    "group": "Rau, quả, củ",
+    "description": "Sponge gourd, Japanese origin, raw",
+    "calories_per_100g": "16"
+  },
+  {
+    "_id": "04057",
+    "name": "Ngải cứu",
+    "code": "04057",
+    "edible": 69,
+    "group": "Rau, quả, củ",
+    "description": "Mugwort, wormwood, raw",
+    "calories_per_100g": "33"
+  },
+  {
+    "_id": "04058",
+    "name": "Ngô bao tử",
+    "code": "04058",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Baby corn, raw",
+    "calories_per_100g": "42"
+  },
+  {
+    "_id": "04059",
+    "name": "Ngó sen",
+    "code": "04059",
+    "edible": 89,
+    "group": "Rau, quả, củ",
+    "description": "Lotus, stem underground, raw",
+    "calories_per_100g": "65"
+  },
+  {
+    "_id": "04060",
+    "name": "Nụ mướp",
+    "code": "04060",
+    "edible": 82,
+    "group": "Rau, quả, củ",
+    "description": "Sponge gourd, young flower, raw",
+    "calories_per_100g": "36"
+  },
+  {
+    "_id": "04061",
+    "name": "Ớt đỏ to",
+    "code": "04061",
+    "edible": 82,
+    "group": "Rau, quả, củ",
+    "description": "Peppers, red, raw",
+    "calories_per_100g": "31"
+  },
+  {
+    "_id": "04062",
+    "name": "Ớt vàng to",
+    "code": "04062",
+    "edible": 90,
+    "group": "Rau, quả, củ",
+    "description": "Peppers, yellow, raw",
+    "calories_per_100g": "34"
+  },
+  {
+    "_id": "04063",
+    "name": "Ớt xanh to",
+    "code": "04063",
+    "edible": 90,
+    "group": "Rau, quả, củ",
+    "description": "Peppers, green, raw",
+    "calories_per_100g": "31"
+  },
+  {
+    "_id": "04064",
+    "name": "Quả dọc",
+    "code": "04064",
+    "edible": 64,
+    "group": "Rau, quả, củ",
+    "description": "Bira tai, raw",
+    "calories_per_100g": "19"
+  },
+  {
+    "_id": "04065",
+    "name": "Quả me chua",
+    "code": "04065",
+    "edible": 85,
+    "group": "Rau, quả, củ",
+    "description": "Tamarind fruit, pulp, raw",
+    "calories_per_100g": "35"
+  },
+  {
+    "_id": "04066",
+    "name": "Rau bí",
+    "code": "04066",
+    "edible": 70,
+    "group": "Rau, quả, củ",
+    "description": "Pumpkin leaves, raw",
+    "calories_per_100g": "26"
+  },
+  {
+    "_id": "04067",
+    "name": "Rau câu khô",
+    "code": "04067",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Dried seaweed",
+    "calories_per_100g": "281"
+  },
+  {
+    "_id": "04068",
+    "name": "Rau câu tươi",
+    "code": "04068",
+    "edible": 96,
+    "group": "Rau, quả, củ",
+    "description": "Seaweed, fresh",
+    "calories_per_100g": "45"
+  },
+  {
+    "_id": "04069",
+    "name": "Rau diếp",
+    "code": "04069",
+    "edible": 90,
+    "group": "Rau, quả, củ",
+    "description": "Lettuce, garden, raw",
+    "calories_per_100g": "15"
+  },
+  {
+    "_id": "04070",
+    "name": "Rau đay",
+    "code": "04070",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Jute potherb, raw",
+    "calories_per_100g": "31"
+  },
+  {
+    "_id": "04071",
+    "name": "Rau giấp cá, diếp cá",
+    "code": "04071",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Lizard tail, fishwort, raw",
+    "calories_per_100g": "30"
+  },
+  {
+    "_id": "04072",
+    "name": "Rau giền cơm",
+    "code": "04072",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Amaranth, spineless, raw",
+    "calories_per_100g": "27"
+  },
+  {
+    "_id": "04073",
+    "name": "Rau giền đỏ",
+    "code": "04073",
+    "edible": 62,
+    "group": "Rau, quả, củ",
+    "description": "Amaranth, sp. Red, raw",
+    "calories_per_100g": "47"
+  },
+  {
+    "_id": "04074",
+    "name": "Rau giền trắng",
+    "code": "04074",
+    "edible": 86,
+    "group": "Rau, quả, củ",
+    "description": "Amaranth, sp White, raw",
+    "calories_per_100g": "48"
+  },
+  {
+    "_id": "04075",
+    "name": "Rau húng",
+    "code": "04075",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Basil sweet leaves raw",
+    "calories_per_100g": "34"
+  },
+  {
+    "_id": "04076",
+    "name": "Rau khoai lang",
+    "code": "04076",
+    "edible": 95,
+    "group": "Rau, quả, củ",
+    "description": "Sweet potato leaves, raw",
+    "calories_per_100g": "28"
+  },
+  {
+    "_id": "04077",
+    "name": "Rau kinh giới",
+    "code": "04077",
+    "edible": 84,
+    "group": "Rau, quả, củ",
+    "description": "Vietnamese Balm, raw",
+    "calories_per_100g": "36"
+  },
+  {
+    "_id": "04078",
+    "name": "Rau má rừng",
+    "code": "04078",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Wild centella, raw",
+    "calories_per_100g": "31"
+  },
+  {
+    "_id": "04079",
+    "name": "Rau má, má mơ",
+    "code": "04079",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Centella, gotu kola, raw",
+    "calories_per_100g": "38"
+  },
+  {
+    "_id": "04080",
+    "name": "Rau mồng tơi",
+    "code": "04080",
+    "edible": 83,
+    "group": "Rau, quả, củ",
+    "description": "Malabar, Ceylon spinach, raw",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04081",
+    "name": "Rau mùi",
+    "code": "04081",
+    "edible": 85,
+    "group": "Rau, quả, củ",
+    "description": "Coriander, raw",
+    "calories_per_100g": "22"
+  },
+  {
+    "_id": "04082",
+    "name": "Rau mùi tàu",
+    "code": "04082",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Parsley, curley, raw",
+    "calories_per_100g": "30"
+  },
+  {
+    "_id": "04083",
+    "name": "Rau muống",
+    "code": "04083",
+    "edible": 85,
+    "group": "Rau, quả, củ",
+    "description": "Water spinach, raw",
+    "calories_per_100g": "28"
+  },
+  {
+    "_id": "04084",
+    "name": "Rau muống khô",
+    "code": "04084",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Water spinach, dried",
+    "calories_per_100g": "293"
+  },
+  {
+    "_id": "04085",
+    "name": "Rau ngổ",
+    "code": "04085",
+    "edible": 71,
+    "group": "Rau, quả, củ",
+    "description": "Buffalo spinach, raw",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04086",
+    "name": "Rau ngót",
+    "code": "04086",
+    "edible": 77,
+    "group": "Rau, quả, củ",
+    "description": "Sauropus, sp. Leaves, raw",
+    "calories_per_100g": "45"
+  },
+  {
+    "_id": "04087",
+    "name": "Rau ngót khô",
+    "code": "04087",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Sauropus, dried",
+    "calories_per_100g": "299"
+  },
+  {
+    "_id": "04088",
+    "name": "Rau răm",
+    "code": "04088",
+    "edible": 75,
+    "group": "Rau, quả, củ",
+    "description": "Vietnamese mint, hot mint, raw",
+    "calories_per_100g": "45"
+  },
+  {
+    "_id": "04089",
+    "name": "Rau rút",
+    "code": "04089",
+    "edible": 45,
+    "group": "Rau, quả, củ",
+    "description": "Water mimosa, raw",
+    "calories_per_100g": "35"
+  },
+  {
+    "_id": "04090",
+    "name": "Rau sà lách",
+    "code": "04090",
+    "edible": 90,
+    "group": "Rau, quả, củ",
+    "description": "Lettuce, garden asparagus, raw",
+    "calories_per_100g": "18"
+  },
+  {
+    "_id": "04091",
+    "name": "Rau sam",
+    "code": "04091",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Purslane, pursley, raw",
+    "calories_per_100g": "20"
+  },
+  {
+    "_id": "04092",
+    "name": "Rau sắng (chùa hương)",
+    "code": "04092",
+    "edible": 60,
+    "group": "Rau, quả, củ",
+    "description": "",
+    "calories_per_100g": "62"
+  },
+  {
+    "_id": "04093",
+    "name": "Rau tàu bay",
+    "code": "04093",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Redflower ragleaf, fireweed, raw",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04094",
+    "name": "Rau thơm",
+    "code": "04094",
+    "edible": 75,
+    "group": "Rau, quả, củ",
+    "description": "Mint leaves, raw",
+    "calories_per_100g": "30"
+  },
+  {
+    "_id": "04095",
+    "name": "Sầu xanh",
+    "code": "04095",
+    "edible": 65,
+    "group": "Rau, quả, củ",
+    "description": "Fruit of Dracontomelon duperreanum, immature, raw",
+    "calories_per_100g": "19"
+  },
+  {
+    "_id": "04096",
+    "name": "Su hào",
+    "code": "04096",
+    "edible": 78,
+    "group": "Rau, quả, củ",
+    "description": "Kohlrabi, turnip cabbage, raw",
+    "calories_per_100g": "44"
+  },
+  {
+    "_id": "04097",
+    "name": "Su hào khô",
+    "code": "04097",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Dried kohlrabi",
+    "calories_per_100g": "311"
+  },
+  {
+    "_id": "04098",
+    "name": "Su su",
+    "code": "04098",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Chayote, fruit raw",
+    "calories_per_100g": "23"
+  },
+  {
+    "_id": "04099",
+    "name": "Súp lơ trắng",
+    "code": "04099",
+    "edible": 60,
+    "group": "Rau, quả, củ",
+    "description": "Cauliflower, raw",
+    "calories_per_100g": "34"
+  },
+  {
+    "_id": "04100",
+    "name": "Súp lơ xanh",
+    "code": "04100",
+    "edible": 61,
+    "group": "Rau, quả, củ",
+    "description": "Broccoli, raw",
+    "calories_per_100g": "39"
+  },
+  {
+    "_id": "04101",
+    "name": "Thìa là",
+    "code": "04101",
+    "edible": 75,
+    "group": "Rau, quả, củ",
+    "description": "Dill, raw",
+    "calories_per_100g": "47"
+  },
+  {
+    "_id": "04102",
+    "name": "Tía tô",
+    "code": "04102",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Balm-mint, garden-balm, raw",
+    "calories_per_100g": "40"
+  },
+  {
+    "_id": "04103",
+    "name": "Tỏi ta",
+    "code": "04103",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Garlic bulbs, raw",
+    "calories_per_100g": "126"
+  },
+  {
+    "_id": "04104",
+    "name": "Tỏi tây (cả lá)",
+    "code": "04104",
+    "edible": 80,
+    "group": "Rau, quả, củ",
+    "description": "Chinese Leek, Onion fragrant, raw",
+    "calories_per_100g": "35"
+  },
+  {
+    "_id": "04105",
+    "name": "Trám đen chín",
+    "code": "04105",
+    "edible": 50,
+    "group": "Rau, quả, củ",
+    "description": "Fruit of Canarium pimela, ripe",
+    "calories_per_100g": "134"
+  },
+  {
+    "_id": "04106",
+    "name": "Trám xanh sống, trám trắng",
+    "code": "04106",
+    "edible": 66,
+    "group": "Hạt, các loại đậu",
+    "description": "Canarium nut, pili nut, Java almond, raw",
+    "calories_per_100g": "56"
+  },
+  {
+    "_id": "04107",
+    "name": "Xương sông",
+    "code": "04107",
+    "edible": 90,
+    "group": "Rau, quả, củ",
+    "description": "Edible leaves of Blumea lanceolaria, raw",
+    "calories_per_100g": "28"
+  },
+  {
+    "_id": "04108",
+    "name": "Cải ngọt",
+    "code": "04108",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Elongated mustard, raw",
+    "calories_per_100g": "17"
+  },
+  {
+    "_id": "04109",
+    "name": "Cải thảo",
+    "code": "04109",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Chinese cabbage, raw",
+    "calories_per_100g": "14"
+  },
+  {
+    "_id": "04110",
+    "name": "Ngọn su su",
+    "code": "04110",
+    "edible": 100,
+    "group": "Rau, quả, củ",
+    "description": "Chayote, young stem and leaves raw",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04111",
+    "name": "Đậu ván",
+    "code": "04111",
+    "edible": 100,
+    "group": "Hạt, các loại đậu",
+    "description": "Hyacinth bean, Australian pea, raw",
+    "calories_per_100g": "39"
+  },
+  {
+    "_id": "04112",
+    "name": "Cà chua muối",
+    "code": "04112",
+    "edible": 95,
+    "group": "Dưa muối",
+    "description": "Tomato, pickled with salt",
+    "calories_per_100g": "10"
+  },
+  {
+    "_id": "04113",
+    "name": "Cà muối nén",
+    "code": "04113",
+    "edible": 95,
+    "group": "Dưa muối",
+    "description": "Eggplant, pickled with salt",
+    "calories_per_100g": "20"
+  },
+  {
+    "_id": "04114",
+    "name": "Cà muối sổi",
+    "code": "04114",
+    "edible": 95,
+    "group": "Dưa muối",
+    "description": "Eggplant, pickled with salt",
+    "calories_per_100g": "23"
+  },
+  {
+    "_id": "04115",
+    "name": "Dưa cải bắp",
+    "code": "04115",
+    "edible": 95,
+    "group": "Dưa muối",
+    "description": "Cabbage Chinese pickled with salt",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04116",
+    "name": "Dưa cải bẹ",
+    "code": "04116",
+    "edible": 95,
+    "group": "Dưa muối",
+    "description": "Mustard green, pickled with salt",
+    "calories_per_100g": "25"
+  },
+  {
+    "_id": "04117",
+    "name": "Dưa cải sen",
+    "code": "04117",
+    "edible": 95,
+    "group": "Dưa muối",
+    "description": "Field mustard, pickled with salt",
+    "calories_per_100g": "17"
+  },
+  {
+    "_id": "04118",
+    "name": "Dưa chuột muối",
+    "code": "04118",
+    "edible": 95,
+    "group": "Dưa muối",
+    "description": "Cucumber, pickled with salt",
+    "calories_per_100g": "17"
+  },
+  {
+    "_id": "04119",
+    "name": "Dưa giá (đậu xanh)",
+    "code": "04119",
+    "edible": 95,
+    "group": "Dưa muối",
+    "description": "Mung bean sprouts, pickled with salt",
+    "calories_per_100g": "47"
+  },
+  {
+    "_id": "04120",
+    "name": "Hành củ muối",
+    "code": "04120",
+    "edible": 70,
+    "group": "Dưa muối",
+    "description": "Onion, pickled with salt",
+    "calories_per_100g": "24"
+  },
+  {
+    "_id": "04121",
+    "name": "Kiệu muối",
+    "code": "04121",
+    "edible": 70,
+    "group": "Dưa muối",
+    "description": "Onion shallot, scallion, pickled with salt",
+    "calories_per_100g": "29"
+  },
+  {
+    "_id": "04122",
+    "name": "Nhút (dưa muối từ mít non, lá đậu xanh non...)",
+    "code": "04122",
+    "edible": 100,
+    "group": "Dưa muối",
+    "description": "Mix pickled from young jack fruit, mung bean leaves and other",
+    "calories_per_100g": "25"
+  },
+  {
+    "_id": "04123",
+    "name": "Men bia khô",
+    "code": "04123",
+    "edible": 100,
+    "group": "Nấm",
+    "description": "Brewer's yeast, fried enzyme",
+    "calories_per_100g": "367"
+  },
+  {
+    "_id": "04124",
+    "name": "Men bia tươi",
+    "code": "04124",
+    "edible": 100,
+    "group": "Nấm",
+    "description": "Baker's yeast compressed",
+    "calories_per_100g": "103"
+  },
+  {
+    "_id": "04125",
+    "name": "Mộc nhĩ",
+    "code": "04125",
+    "edible": 90,
+    "group": "Nấm",
+    "description": "Jew's ear, Wood-ear, Tender variety, dried",
+    "calories_per_100g": "332"
+  },
+  {
+    "_id": "04126",
+    "name": "Nấm hương khô",
+    "code": "04126",
+    "edible": 90,
+    "group": "Nấm",
+    "description": "Mushroom, shiitake, dried",
+    "calories_per_100g": "342"
+  },
+  {
+    "_id": "04127",
+    "name": "Nấm hương tươi",
+    "code": "04127",
+    "edible": 75,
+    "group": "Nấm",
+    "description": "Mushroom, shiitake, raw",
+    "calories_per_100g": "51"
+  },
+  {
+    "_id": "04128",
+    "name": "Nấm mỡ (Nấm tây)",
+    "code": "04128",
+    "edible": 90,
+    "group": "Nấm",
+    "description": "Common mushroom, table mushroom, raw",
+    "calories_per_100g": "37"
+  },
+  {
+    "_id": "04129",
+    "name": "Nấm rơm",
+    "code": "04129",
+    "edible": 90,
+    "group": "Nấm",
+    "description": "Straw mushroom, raw",
+    "calories_per_100g": "61"
+  },
+  {
+    "_id": "04130",
+    "name": "Nấm thường tươi",
+    "code": "04130",
+    "edible": 75,
+    "group": "Nấm",
+    "description": "Gilled mushroom, meadow mushroom, raw",
+    "calories_per_100g": "48"
+  }
+]

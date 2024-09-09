@@ -1,0 +1,100 @@
+[
+  {
+    "_id" : "1",
+    "name": "CƠM",
+    "group": "carbohydrate",
+    "meal": "lunch",
+    "recipe": "Nấu chín cơm bằng nồi cơm điện như thông thường.",
+    "tips": "Vo nhẹ gạo để loại bụi bẩn và sạn, tránh chà xát mạnh vào hạt gạo sẽ làm mất chất dinh dưỡng.",
+    "description": "Cơm là một loại thức ăn được làm ra từ gạo bằng cách đem nấu với một lượng vừa đủ nước để nấu chín.",
+    "image_urls": [
+      "https://vi.wikipedia.org/wiki/C%C6%A1m#/media/T%E1%BA%ADp_tin:Meshi.jpg",
+      "https://cdn.tgdd.vn/Files/2021/08/24/1377378/com-nguoi-lam-mon-gi-ngon-202108240922557216.jpg"
+    ],
+    "more_info" : "Vui lòng truy cập : '' để biết thêm các thông tin bên lề",
+    "video" : "QJZUwiJhKZ0",
+    "labels": [
+      "carbohydrate",
+      "lunch",
+      "affordable"
+    ],
+    "total_calories": 692.0,
+    "owned_by": "admin",
+    "created_at": "2024-05-05T08:11:34.271Z",
+    "updated_at": "2024-05-05T08:11:34.271Z",
+    "foodIngredients": [
+      {
+        "id": "01004",
+        "name": "Gạo tẻ máy",
+        "value": 200,
+        "unit": "g",
+        "prepare": "Vo gạo"
+      }
+    ]
+  },
+  {
+    "_id" : "2",
+    "name": "PANCAKE CẢI BÓ XÔI DÂU TÂY",
+    "group": "vegetable",
+    "meal": "breakfast",
+    "recipe": "•  Pha bột bánh rán: Cho cải bó xôi cắt nhỏ vào cối xay với nước lọc, xay nhuyễn, lọc lấy nước. Cho Bột bánh rán vào tô, đổ nước đã lọc từ cải bó xôi xay vào từ từ, khuấy đều thành hỗn hợp bột có độ sánh sệt.\n•  Làm bánh rán: Đun nóng chảo chống dính trên bếp, nhấc chảo ra đặt lên một xấp khăn ướt cho chảo nguội bớt, dùng vá múc bột bánh rán pha sẵn đổ vào giữa chảo, đặt chảo lên bếp, giảm lửa nhỏ, rán đến khi bề mặt bột có bong bóng và viền bánh se lại, dùng xẻng lật mặt bánh, rán thêm khoảng 1 phút 30 giây cho mặt bánh chín thì lấy ra. Tiếp tục đổ bánh và rán cho hết bột.\n•  Chiên thịt xông khói: Đun nóng dầu, cho thịt xông khói vào chiên lửa vừa đến khi thịt chín vàng thơm, cho hành tây vào cùng chiên hơi rám mặt, cho ra dĩa.\n•  Trình bày: Xếp bánh rán cải bó xôi ra dĩa, xếp thịt xông khói, hành tây, dâu tây và húng lủi vào bên cạnh, dùng nóng.",
+    "tips": "• Chiên thịt xông khói với lửa vừa để thịt chín từ từ sẽ thơm ngon hơn.\n• Chỉ cần sử dụng chảo chống dính, không cần sử dụng dầu ăn khi rán bánh từ Bột bánh rán",
+    "description": "Cơm là một loại thức ăn được làm ra từ gạo bằng cách đem nấu với một lượng vừa đủ nước để nấu chín.",
+    "image_urls": [
+      "https://cdn.tgdd.vn/Files/2020/12/12/1313248/cach-lam-mon-pancake-pho-mai-chanh-trang-mieng-khien-be-thich-thu-202201181518429032.jpg"
+    ],
+    "more_info" : "Vui lòng truy cập : '' để biết thêm các thông tin bên lề",
+    "video" : "QJZUwiJhKZ0",
+    "labels": [
+      "vegetable",
+      "breakfast",
+      "affordable"
+    ],
+    "total_calories": 146.8,
+    "owned_by": "admin",
+    "created_at": "2024-05-05T08:11:34.271Z",
+    "updated_at": "2024-05-05T08:11:34.271Z",
+    "foodIngredients": [
+      {
+        "id": "05009",
+        "name": "dâu tây",
+        "value": 50,
+        "unit": "g",
+        "prepare": "Ngâm nước muối loãng, cắt đôi"
+      },
+      {
+        "id": "04039",
+        "name": "hành tây",
+        "value": 50,
+        "unit": "g",
+        "prepare": "Thái sợi mỏng"
+      },
+      {
+        "id": "07085",
+        "name": "thịt lợn, nặc thăn",
+        "value": 20,
+        "unit": "g",
+        "prepare": "Cắt miếng vừa ăn"
+      },
+      {
+        "id": "04075",
+        "name": "Rau húng",
+        "value": 5,
+        "unit": "g",
+        "prepare": "Ngâm nước muối loãng, cắt nhỏ"
+      },
+      {
+        "id": "06014",
+        "name": "Dầu ô liu",
+        "value": 7,
+        "unit": "g"
+      },
+      {
+        "id": "01018",
+        "name": "Bột mì",
+        "value": 70,
+        "unit": "g"
+      }
+    ]
+  }
+]
