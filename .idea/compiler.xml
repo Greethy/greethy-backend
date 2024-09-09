@@ -29,7 +29,6 @@
       <module name="finance" target="17" />
       <module name="financial" target="1.5" />
       <module name="gateway" target="17" />
-      <module name="greethy" target="17" />
       <module name="infrastructure" target="1.5" />
       <module name="keycloak" target="17" />
       <module name="mapper" target="17" />
@@ -67,7 +66,7 @@
       <module name="finance" options="-parameters" />
       <module name="financial" options="" />
       <module name="gateway" options="-parameters" />
-      <module name="greethy" options="-parameters" />
+      <module name="greethy" options="" />
       <module name="greethy-docker" options="-parameters" />
       <module name="greethy-project" options="" />
       <module name="keycloak" options="-parameters" />
