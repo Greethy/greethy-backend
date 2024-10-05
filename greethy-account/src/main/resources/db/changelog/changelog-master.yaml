@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - preConditions:
+      - onFail: HALT
+      - onError: HALT
+  - changeSet:
+      id: create-userProfile-table
+      labels: create accountProfile
+      author: nt.kien
+      changes:
+        - createTable:
+            remarks: Account Info
+            tableName: account
+            columns:
+              - column:
+                  remarks: Account Profile Primary Key
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    unique: true

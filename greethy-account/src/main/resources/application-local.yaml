@@ -1,0 +1,20 @@
+server:
+  port: 8081
+  servlet:
+    context-path:
+
+spring:
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/accountDB
+    username: ${MYSQL_ROOT_USER}
+    password: ${MYSQL_ROOT_PASSWORD}
+    pool:
+      initial-size: 100
+      max-size: 500
+      max-idle-time: 30m
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.yaml
+    url: jdbc:mysql://localhost:3306/accountDB
+    user: ${MYSQL_ROOT_USER:root}
+    password: ${MYSQL_ROOT_PASSWORD:greethy@123}

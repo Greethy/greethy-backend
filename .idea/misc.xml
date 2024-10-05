@@ -27,6 +27,8 @@
         <option value="$PROJECT_DIR$/nutrition-service/nutrition-query/pom.xml" />
         <option value="$PROJECT_DIR$/greethy-docker/pom.xml" />
         <option value="$PROJECT_DIR$/account-service/pom.xml" />
+        <option value="$PROJECT_DIR$/greethy-core/pom.xml" />
+        <option value="$PROJECT_DIR$/greethy-account/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
