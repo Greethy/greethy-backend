@@ -1,4 +1,4 @@
-package com.greethy.account.domain.entity;
+package com.greethy.account.domain.valueobject;
 
 public enum AccountStatus {
     ACTIVE,

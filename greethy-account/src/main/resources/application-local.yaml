@@ -18,3 +18,9 @@ spring:
     url: jdbc:mysql://localhost:3306/accountDB
     user: ${MYSQL_ROOT_USER:root}
     password: ${MYSQL_ROOT_PASSWORD:greethy@123}
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${JWT_PROVIDER_URI:http://localhost:9090/}

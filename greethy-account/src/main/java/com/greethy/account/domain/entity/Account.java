@@ -1,25 +1,33 @@
 package com.greethy.account.domain.entity;
 
-import com.greethy.core.domain.DomainEntity;
+import com.greethy.account.domain.valueobject.AccountStatus;
+import com.greethy.account.domain.valueobject.Gender;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
-
+import java.time.ZonedDateTime;
+import java.util.Date;
 
 @Data
-@SuperBuilder
-@Table("accounts")
-@EqualsAndHashCode(callSuper = true)
-public class Account extends DomainEntity {
+public class Account {
 
-    @Id
     private String id;
 
-    @Column("user_id")
     private String userId;
+
+    private String image;
+
+    private Date dateOfBirth;
+
+    private Gender gender;
+
+    private AccountStatus status;
+
+    private ZonedDateTime createdAt;
+
+    private ZonedDateTime modifiedAt;
+
+    private String createdBy;
+
+    private String modifiedBy;
 
 }

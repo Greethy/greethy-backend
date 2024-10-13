@@ -1,12 +1,10 @@
 package com.greethy.core.domain;
 
-import lombok.Data;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.relational.core.mapping.Column;
 
 import java.time.ZonedDateTime;
 
-@Data
 @SuperBuilder
 public class DomainEntity {
 
