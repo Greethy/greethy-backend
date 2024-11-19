@@ -1,6 +1,8 @@
 package com.greethy.account.user.infrastructure.adapter;
 
 import com.greethy.account.config.security.keycloak.KeycloakProperties;
+import com.greethy.account.user.domain.entity.User;
+import com.greethy.account.user.domain.port.UserDrivenPort;
 import com.greethy.account.user.infrastructure.model.KeycloakUser;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.lang.NonNull;
@@ -12,7 +14,7 @@ import reactor.core.publisher.Mono;
 
 
 @Component
-public class UserKeycloakAdapter {
+public class UserKeycloakAdapter implements UserDrivenPort {
 
     private final WebClient webClient;
     private final EmailValidator emailValidator;
@@ -42,10 +44,16 @@ public class UserKeycloakAdapter {
                 .retrieve().bodyToFlux(KeycloakUser.class);
     }
 
+    @Override
+    public Mono<Void> save(User user) {
+        return null;
+    }
+
+    @Override
     public Mono<Boolean> exists(@NonNull String usernameOrEmail) {
         String userUri = "/admin/realms/" + keycloakProperties.getRealm() + "/users";
         var queryParameters = new LinkedMultiValueMap<String, String>();
-        queryParameters.add("exact", "true");
+        queryParameters.add("exact", Boolean.TRUE.toString());
         if (emailValidator.isValid(usernameOrEmail)) {
             queryParameters.add("email", usernameOrEmail);
         } else {
@@ -58,7 +66,7 @@ public class UserKeycloakAdapter {
                 .retrieve()
                 .bodyToFlux(KeycloakUser.class)
                 .collectList()
-                .flatMap(keycloakUsers -> (keycloakUsers.isEmpty()) ? Mono.just(false) : Mono.just(true));
+                .flatMap(keycloakUsers -> keycloakUsers.isEmpty() ? Mono.just(Boolean.FALSE) : Mono.just(Boolean.TRUE));
 
     }
 
