@@ -45,8 +45,9 @@ spring:
 
 keycloak:
   base-url: http://localhost:8180
+  resource-path: /admin/realms/{realm}/users
   realm: greethy
-  grant_type: client_credentials
+  grant-type: client_credentials
   client-id: greethy_client
   client-secret: enaHnvSF0SAVt1s5AuZtvT5JH7HVAb5U
   scope: openid

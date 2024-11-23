@@ -26,5 +26,6 @@ public class AccountServiceApplication implements CommandLineRunner {
 				.subscribe(returnValue -> log.info("get keycloak users: {}", returnValue));
 		userKeycloakAdapter.exists("greethy@gmail.com")
 				.subscribe(exists -> log.info("exists: {}", exists));
+
 	}
 }

@@ -2,20 +2,18 @@ package com.greethy.account.user.domain.entity;
 
 import com.greethy.account.user.application.rest.handler.dto.RegisterUserCommand;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.springframework.data.domain.AbstractAggregateRoot;
 
 import java.util.List;
 import java.util.UUID;
 
-
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class User extends AbstractAggregateRoot<User> {
+public class User {
 
     private String id;
     private String email;
     private String username;
+    private String firstName;
+    private String lastName;
     private boolean enabled;
     private boolean emailVerified;
     private List<Credential> credentials;

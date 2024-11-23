@@ -11,6 +11,7 @@ public class KeycloakProperties {
 
     private String baseUrl;
     private String realm;
+    private String resourcePath;
     private String grantType;
     private String clientId;
     private String clientSecret;

@@ -5,22 +5,32 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.5</version>
+		<version>3.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<groupId>com.greethy</groupId>
+	<artifactId>greethy</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>greethy</name>
-	<artifactId>greethy</artifactId>
-	<groupId>com.greethy</groupId>
-	<version>1.0.0-SNAPSHOT</version>
+	<name>Greethy Project</name>
 	<url>https://github.com/Greethy</url>
-	<description>The Greethy Project</description>
-
+	<description>Greethy Project Server Side providing a solution in Health Care and Nutrition</description>
+	<organization>
+		<name>Greethy Inc.</name>
+		<url>https://github.com/Greethy/</url>
+	</organization>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
 	<developers>
 		<developer>
 			<name>ThanhKien</name>
-			<url>https://github.com/ThanhKien00</url>
+			<email>kien.nt112002@gmail.com</email>
+			<url>https://linkedin.com/in/thanh-kien/</url>
 			<timezone>UTC+7</timezone>
 		</developer>
 		<developer>
@@ -31,14 +41,21 @@
 		<license>
 			<name>Apache License, Version 2.0</name>
 			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+			<comments>
+				Licensed under the Apache License, Version 2.0 (the "License");
+				you may not use this file except in compliance with the License.
+				You may obtain a copy of the License at
+
+				https://www.apache.org/licenses/LICENSE-2.0
+
+				Unless required by applicable law or agreed to in writing, software
+				distributed under the License is distributed on an "AS IS" BASIS,
+				WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+				See the License for the specific language governing permissions and
+				limitations under the License.
+			</comments>
 		</license>
 	</licenses>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
 	<properties>
 		<java.version>22</java.version>
 		<spring-modulith.version>1.2.5</spring-modulith.version>

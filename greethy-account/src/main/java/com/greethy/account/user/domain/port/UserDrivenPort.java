@@ -1,11 +1,13 @@
 package com.greethy.account.user.domain.port;
 
-import com.greethy.account.user.domain.entity.User;
+import com.greethy.account.user.infrastructure.model.KeycloakUser;
+import com.greethy.core.port.CrudDrivenPort;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface UserDrivenPort {
+public interface UserDrivenPort extends CrudDrivenPort<KeycloakUser, String> {
 
-    Mono<Void> save(User user);
+    Flux<KeycloakUser> getUsers();
 
     Mono<Boolean> exists(String usernameOrEmail);
 
