@@ -2,6 +2,8 @@ server:
   port: 8081
 
 spring:
+  application:
+    expose-url:
   r2dbc:
     url: r2dbc:mysql://localhost:3306/accountDB
     username: ${MYSQL_ROOT_USER:root}
@@ -28,7 +30,7 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: ${CLIENT_ISSUER_URI:http://localhost:8180/realms/greethy}
+            issuer-uri: ${CLIENT_ISSUER_URI:http://localhost:8180/realms/${keycloak.realm}}
             user-name-attribute: preferred_username
         registration:
           keycloak:
@@ -40,14 +42,13 @@ spring:
 
       resourceserver:
         jwt:
-          issuer-uri: ${IDP_ISSUER_URI:http://localhost:8180/realms/greethy}
-          jwk-set-uri: ${IDP_JWK_SET_URI:http://localhost:8180/realms/greethy/protocol/openid-connect/certs}
+          issuer-uri: ${IDP_ISSUER_URI:http://localhost:8180/realms/${keycloak.realm}}
+          jwk-set-uri: ${IDP_JWK_SET_URI:http://localhost:8180/realms/${keycloak.realm}/protocol/openid-connect/certs}
 
 keycloak:
   base-url: http://localhost:8180
-  resource-path: /admin/realms/{realm}/users
   realm: greethy
-  grant-type: client_credentials
+  grant-type: password
   client-id: greethy_client
   client-secret: enaHnvSF0SAVt1s5AuZtvT5JH7HVAb5U
   scope: openid

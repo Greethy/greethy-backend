@@ -5,7 +5,7 @@ import reactor.core.publisher.Mono;
 
 public interface CrudDrivenPort<T, ID> {
 
-    Mono<Void> save(T t);
+    Mono<String> save(T t);
 
     Mono<T> findById(ID id);
 

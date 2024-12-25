@@ -8,29 +8,23 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>account</artifactId>
+
+	<artifactId>greethy-account</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>greethy-account</name>
+	<name>Greethy Account</name>
 	<description>Greethy's Account Management</description>
 
 	<properties>
+		<wiremock.version>3.10.0</wiremock.version>
 		<mapstruct.version>1.6.2</mapstruct.version>
 		<common.validator.version>1.9.0</common.validator.version>
 	</properties>
-	<repositories>
-		<repository>
-			<id>maven_central</id>
-			<name>Maven Central</name>
-			<url>https://repo.maven.apache.org/maven2/</url>
-		</repository>
-	</repositories>
+
 	<dependencies>
 		<!-- Shared Library -->
 		<dependency>
 			<groupId>com.greethy</groupId>
 			<artifactId>core</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-validator</groupId>
@@ -94,7 +88,12 @@
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
@@ -113,6 +112,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-contract-wiremock</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
@@ -122,7 +127,9 @@
 			<artifactId>spring-modulith-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -135,6 +142,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+
 				</configuration>
 			</plugin>
 			<plugin>

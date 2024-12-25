@@ -9,8 +9,6 @@ public class DataResponse<T> {
 
     private T data;
 
-    private String message;
-
-    private int code;
+    private Boolean success;
 
 }
